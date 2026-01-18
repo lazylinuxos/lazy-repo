@@ -1,0 +1,23 @@
+# Template file for 'lazy-fluent-grey'
+pkgname=lazy-fluent-grey
+version=0.0.1
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="gnome-themes-extra gtk-engine-murrine sassc"
+short_desc="LazyLinux Fluent Grey themes and icons"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/lazylinuxos/lazy-fluent-grey"
+distfiles="https://github.com/lazylinuxos/${pkgname}/archive/refs/tags/v${version}.tar.gz"
+checksum=f3212b82651a6f808dfad370b7513e661f18dfca803eabf4c336f56e5383a08f
+
+do_install() {
+	# Install the files
+	vmkdir /usr/share/themes
+	vmkdir /usr/share/icons
+	vcopy ${pkgname}-${version}/themes/* /usr/share/themes
+	vcopy ${pkgname}-${version}/icons/* /usr/share/icons
+}

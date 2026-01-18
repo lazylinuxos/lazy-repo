@@ -1,0 +1,27 @@
+# Template file for 'doublecmd-gtk-bin'
+pkgname=doublecmd-gtk-bin
+version=1.1.29
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar xz"
+short_desc="Twin-panel (commander-style) file manager"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="http://doublecmd.sourceforge.net/"
+distfiles="https://github.com/doublecmd/doublecmd/releases/download/v${version}/doublecmd-${version}.gtk2.x86_64.tar.xz"
+checksum="a6d35068ca9717df2dd57b59123eff2167aa264a6e17a6952812adf00c55301c"
+nopie=yes
+noshlibprovides=yes
+
+do_install() {
+	vmkdir usr/lib/doublecmd
+	vcopy ${wrksrc}/doublecmd/* usr/lib/doublecmd
+ 
+	vinstall ${wrksrc}/doublecmd/doublecmd.png 644 usr/share/pixmaps
+	vinstall ${FILESDIR}/doublecmd.desktop 644 usr/share/applications
+
+	vmkdir usr/bin/
+	ln -s /usr/lib/doublecmd/doublecmd ${DESTDIR}/usr/bin/
+}

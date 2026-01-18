@@ -1,0 +1,19 @@
+# Template file for 'thunar-shares-plugin'
+pkgname=thunar-shares-plugin
+version=0.4.0
+revision=1
+archs="x86_64"
+hostmakedepends="rpmextract"
+depends="samba smbclient gvfs-smb"
+short_desc="Quickly share a folder using Samba from Thunar"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://gitlab.xfce.org/thunar-plugins/thunar-shares-plugin"
+changelog="https://gitlab.xfce.org/thunar-plugins/thunar-shares-plugin/-/blob/master/NEWS"
+distfiles="https://download.opensuse.org/repositories/X11:/xfce/openSUSE_Factory/x86_64/thunar-shares-plugin-${version}-5.2.x86_64.rpm"
+checksum=9a5cdfa726a381f07f7ae96d9905095dd9c24dd1608239570c1e6b15d344ae9f
+
+do_install() {
+	vmkdir usr/lib64/thunarx-3
+	vcopy lib64/thunarx-3/* usr/lib64/thunarx-3/
+}

@@ -1,0 +1,24 @@
+--- a/vicinae/src/services/emoji-service/emoji-service.cpp
++++ b/vicinae/src/services/emoji-service/emoji-service.cpp
+@@ -22,7 +22,7 @@
+     auto kws = data.keywords | std::views::transform([](auto &&s) {
+                  return WS{s, 1.0f};
+                }); // keywords are manually set by the user, they have high relevance
+-    auto ss = std::views::concat(fields, kws);
++	 auto ss = std::views::join(std::array{fields, kws});
+     int score = fzf::defaultMatcher.fuzzy_match_v2_score_query(ss, query);
+ 
+     return {&data, score};
+@@ -53,9 +53,9 @@
+   query.prepare(R"(
+   	INSERT INTO visited_emoji (emoji, visit_count, last_visited_at)
+ 	VALUES (:emoji, 1, :epoch)
+-	ON CONFLICT(emoji) DO UPDATE 
+-	SET 
+-		visit_count = visit_count + 1, 
++	ON CONFLICT(emoji) DO UPDATE
++	SET
++		visit_count = visit_count + 1,
+ 		last_visited_at = :epoch
+ 	)");
+   query.bindValue(":emoji", QString::fromUtf8(emoji.data(), emoji.size()));

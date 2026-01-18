@@ -1,0 +1,52 @@
+# Template file for 'rustdesk-bin'
+pkgname=rustdesk-bin
+version=1.4.5
+revision=1
+archs="x86_64"
+hostmakedepends="rpmextract"
+depends="
+ gtk+3
+ xdotool
+ libxcb
+ libXfixes
+ alsa-lib
+ libva
+ libvdpau
+ pam
+ gst-plugins-base1
+ gstreamer1-pipewire
+ libayatana-appindicator
+"
+short_desc="Yet another remote desktop software written in Rust"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0-only"
+homepage="https://github.com/rustdesk/rustdesk"
+distfiles="https://github.com/rustdesk/rustdesk/releases/download/${version}/rustdesk-${version}-0.x86_64.rpm"
+checksum="2e1a76cd0768124c54940cc1ad92f49c16a07f3482b8e1f2da4cb7b6e633f3e4"
+nostrip=yes
+nodebug=yes
+noverifyrdeps=yes
+disable_shlib_provides=yes
+
+do_install() {
+	vmkdir usr/bin
+	vmkdir usr/share
+	vmkdir usr/share/applications
+	vmkdir usr/libexec/rustdesk
+	vmkdir usr/libexec/rustdesk/data
+	vmkdir usr/libexec/rustdesk/lib
+	
+	mv share/rustdesk/data/*  ${DESTDIR}/usr/libexec/rustdesk/data
+	mv share/rustdesk/lib/*  ${DESTDIR}/usr/libexec/rustdesk/lib
+	vcopy share/*  usr/share/
+		
+	vinstall share/rustdesk/files/rustdesk.desktop 644 usr/share/applications
+	vinstall share/rustdesk/files/rustdesk-link.desktop 644 usr/share/applications
+	vsv rustdesk
+
+	mv share/rustdesk/rustdesk ${DESTDIR}/usr/libexec/rustdesk
+	ln -s /usr/libexec/rustdesk/rustdesk ${DESTDIR}/usr/bin/rustdesk
+	
+	rm ${DESTDIR}/usr/share/rustdesk/rustdesk
+	rm -rf ${DESTDIR}/usr/share/rustdesk/files
+}

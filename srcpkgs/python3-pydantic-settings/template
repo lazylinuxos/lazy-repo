@@ -1,0 +1,41 @@
+# Template file for 'python3-pydantic-settings'
+pkgname=python3-pydantic-settings
+version=2.11.0
+revision=1
+wrksrc="pydantic-settings-${version}"
+hostmakedepends="python3 python3-build python3-installer hatchling"
+makedepends="python3-dotenv python3-pydantic python3-pydantic-core python3-typing_extensions"
+depends="${makedepends}"
+checkdepends="python3-pytest python3-pytest-examples python3-pytest-mock"
+short_desc="Settings management using pydantic"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/pydantic/pydantic-settings"
+distfiles="https://github.com/pydantic/pydantic-settings/archive/refs/tags/v${version}.tar.gz"
+checksum=037cf3952bb02a67586ea94ab75499ff93d3e5e2581c31bb0005fe9a086f9734
+
+do_build() {
+	python3 -m build --wheel --no-isolation
+}
+
+do_check() {
+	local pytest_options=(
+		-vv
+		--ignore tests/test_docs.py
+		--ignore tests/test_source_azure_key_vault.py
+		--ignore tests/test_source_gcp_secret_manager.py
+	)
+
+	local site_packages=$(python3 -c "import site; print(site.getsitepackages()[0])")
+
+	mkdir -p test_dir
+	python3 -m installer --destdir=test_dir dist/*.whl
+	export PYTHONPATH="$PWD/test_dir/$site_packages:$PYTHONPATH"
+	pytest "${pytest_options[@]}"
+}
+
+do_install() {
+	python3 -m installer --destdir="${DESTDIR}" dist/*.whl
+	vinstall LICENSE 644 usr/share/licenses/${pkgname}
+	vinstall README.md 644 usr/share/doc/${pkgname}
+}

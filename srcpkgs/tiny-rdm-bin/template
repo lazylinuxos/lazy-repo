@@ -1,0 +1,31 @@
+# Template file for 'tiny-rdm-bin'
+pkgname=tiny-rdm-bin
+version=1.2.5
+revision=1
+hostmakedepends="tar xz"
+depends="glibc hicolor-icon-theme gtk+3 glib libwebkit2gtk41 gdk-pixbuf"
+short_desc="Modern, colorful, super lightweight Redis GUI client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/tiny-craft/tiny-rdm"
+distfiles="https://github.com/tiny-craft/tiny-rdm/releases/download/v${version}/tiny-rdm_${version}_linux_amd64.deb"
+checksum=96f3044ee43b38508d76e4fd1881a0accc06dfcc8835c8f8b2a0e41322bf4fbd
+nopie=yes
+nostrip=yes
+noverifyrdeps=yes
+disable_shlib_provides=yes
+
+do_extract() {
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/tiny-rdm_${version}_linux_amd64.deb
+	tar xf data.tar.xz
+}
+
+do_install() {
+    vbin usr/local/bin/tiny-rdm
+
+    vinstall usr/share/applications/tiny-rdm.desktop 644 usr/share/applications
+    vinstall usr/share/icons/hicolor/512x512/apps/tiny-rdm.png 644 usr/share/icons/hicolor/512x512/apps
+
+    # Fix .desktop Exec path
+    vsed -i 's|/usr/local/bin/|/usr/bin/|g' ${DESTDIR}/usr/share/applications/tiny-rdm.desktop
+}

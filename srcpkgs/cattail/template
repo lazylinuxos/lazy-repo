@@ -1,0 +1,29 @@
+# Template file for 'cattail'
+pkgname=cattail
+version=1.1.0
+_version=1.1.0
+revision=3
+archs="x86_64"
+build_style="fetch"
+depends="libsoup3 libwebkit2gtk41 tailscale"
+short_desc="Unofficial Tailscale client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/nerdyslacker/cattail"
+distfiles="https://github.com/nerdyslacker/cattail/releases/download/v${_version}/cattail-linux-amd64"
+checksum=7060edb2462e34a262ccdf1d777312f451377071228541531050fff475fb5b79
+nopie=yes
+noverifyrdeps=yes
+disable_shlib_provides=yes
+
+do_install() {
+	vmkdir usr/bin
+	vcopy cattail-linux-amd64 usr/bin/cattail
+	chmod +x ${DESTDIR}/usr/bin/cattail
+	
+	vmkdir usr/share/applications
+	vinstall ${FILESDIR}/cattail.desktop 644 usr/share/applications
+	
+	vmkdir usr/share/pixmaps
+	vinstall ${FILESDIR}/cattail.png 644 usr/share/pixmaps
+}

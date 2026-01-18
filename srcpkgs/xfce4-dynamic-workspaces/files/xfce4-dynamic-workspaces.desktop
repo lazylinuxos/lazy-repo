@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=xfce4-dynamic-workspaces
+Comment=XFCE dynamic workspaces
+Exec=/usr/bin/xfce4-dynamic-workspaces
+Terminal=false
+Type=Application
+NoDisplay=true

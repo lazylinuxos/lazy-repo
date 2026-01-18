@@ -1,0 +1,108 @@
+From 52b0cab7650f18c0bf1f83f997b201ba58aab14b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 26 Jul 2025 19:40:33 +0200
+Subject: [PATCH] Add "new-window" command-line option
+
+This allows the user to choose the desired action when the application is
+launched: when the "new-window" command-line option is requested, a new
+window will be opened, otherwise raise the existing window.
+
+Specify the action also in the desktop file. This allows application
+launchers to provide direct access to this action.
+---
+ ....gitlab.adhami3310.Converter.desktop.in.in |  9 ++++-
+ src/application.rs                            | 39 ++++++++++++++++++-
+ 2 files changed, 45 insertions(+), 3 deletions(-)
+
+diff --git a/data/io.gitlab.adhami3310.Converter.desktop.in.in b/data/io.gitlab.adhami3310.Converter.desktop.in.in
+index 36bff62..a0ed6e4 100644
+--- a/data/io.gitlab.adhami3310.Converter.desktop.in.in
++++ b/data/io.gitlab.adhami3310.Converter.desktop.in.in
+@@ -11,4 +11,11 @@ Keywords=converter;image;convert;converting;processing
+ StartupNotify=true
+ # Translators: Do NOT translate or transliterate this text (these are enum types)!
+ X-Purism-FormFactor=Workstation;Mobile;
+-MimeType=image/png;image/jpeg;image/webp;image/svg+xml;image/heic;image/heif;image/bmp;image/avif;image/jxl;image/tiff;application/pdf;image/gif;image/x-icon;image/vnd-ms.dds
+\ No newline at end of file
++MimeType=image/png;image/jpeg;image/webp;image/svg+xml;image/heic;image/heif;image/bmp;image/avif;image/jxl;image/tiff;application/pdf;image/gif;image/x-icon;image/vnd-ms.dds
++Actions=new-window;
++
++[Desktop Action new-window]
++Exec=switcheroo --new-window
++Name=New Window
++# TRANSLATORS: Do NOT translate or transliterate this text (this is an icon file name)!
++Icon=window-new
+diff --git a/src/application.rs b/src/application.rs
+index 061487c..14924b0 100644
+--- a/src/application.rs
++++ b/src/application.rs
+@@ -1,6 +1,7 @@
+ use glib::{clone, ExitCode};
+-use log::{debug, info};
++use log::{debug, error, info};
+ 
++use gettextrs::gettext;
+ use gtk::{gio, glib, prelude::*, subclass::prelude::*};
+ 
+ use crate::config::{APP_ID, PKGDATADIR, PROFILE, VERSION};
+@@ -37,6 +38,16 @@ mod imp {
+             self.parent_constructed();
+ 
+             let obj = self.obj();
++
++            obj.add_main_option(
++                "new-window",
++                glib::Char::from(b'w'),
++                glib::OptionFlags::NONE,
++                glib::OptionArg::None,
++                &gettext("Open a new window"),
++                None,
++            );
++
+             obj.setup_gactions();
+             obj.setup_accels();
+         }
+@@ -45,8 +56,14 @@ mod imp {
+     impl ApplicationImpl for App {
+         fn activate(&self) {
+             debug!("Application::activate");
++            self.parent_activate();
+ 
+-            self.obj().present_main_window();
++            let application = self.obj();
++            if let Some(window) = application.active_window() {
++                window.present();
++            } else {
++                application.present_main_window();
++            }
+         }
+ 
+         fn startup(&self) {
+@@ -75,6 +92,24 @@ mod imp {
+                     .open_files(files);
+             }
+         }
++
++        fn handle_local_options(&self, options: &glib::VariantDict) -> glib::ExitCode {
++            debug!("Application::handle_local_options");
++
++            let application = self.obj();
++            if options.contains("new-window") {
++                if let Err(err) = application.register(None::<&gio::Cancellable>) {
++                    error!("Failed to register the application: {err}");
++                }
++
++                if application.is_remote() {
++                    application.activate_action("new-window", None);
++                    return glib::ExitCode::SUCCESS;
++                }
++            }
++
++            self.parent_handle_local_options(options)
++        }
+     }
+ 
+     impl gtk::subclass::prelude::GtkApplicationImpl for App {}
+-- 
+GitLab
+

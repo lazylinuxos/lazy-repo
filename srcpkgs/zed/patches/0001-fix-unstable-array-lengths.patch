@@ -1,0 +1,46 @@
+--- a/crates/audio/src/audio.rs
++++ b/crates/audio/src/audio.rs
+@@ -137,7 +137,7 @@
+                     target_os = "freebsd"
+                 )))]
+                 let source = source.inspect_buffer::<BUFFER_SIZE, _>(move |buffer| {
+-                    let mut buf: [i16; _] = buffer.map(|s| s.to_sample());
++                    let mut buf: Vec<i16> = buffer.map(|s| s.to_sample()).to_vec();
+                     echo_canceller
+                         .lock()
+                         .process_reverse_stream(
+@@ -185,7 +185,7 @@
+             .constant_samplerate(SAMPLE_RATE)
+             .limit(LimitSettings::live_performance())
+             .process_buffer::<BUFFER_SIZE, _>(move |buffer| {
+-                let mut int_buffer: [i16; _] = buffer.map(|s| s.to_sample());
++                let mut int_buffer: Vec<i16> = buffer.map(|s| s.to_sample()).to_vec();
+                 if voip_parts
+                     .echo_canceller
+                     .lock()
+
+--- a/crates/editor/src/display_map/block_map.rs
++++ b/crates/editor/src/display_map/block_map.rs
+@@ -26,8 +26,8 @@
+ use text::{BufferId, Edit};
+ use ui::ElementId;
+ 
+-const NEWLINES: &[u8; rope::Chunk::MASK_BITS] = &[b'\n'; _];
+-const BULLETS: &[u8; rope::Chunk::MASK_BITS] = &[b'*'; _];
++const NEWLINES: &[u8; rope::Chunk::MASK_BITS] = &([b'\n'; rope::Chunk::MASK_BITS]);
++const BULLETS: &[u8; rope::Chunk::MASK_BITS] = &([b'*'; rope::Chunk::MASK_BITS]);
+ 
+ /// Tracks custom blocks such as diagnostics that should be displayed within buffer.
+ ///
+
+--- a/crates/editor/src/display_map/tab_map.rs
++++ b/crates/editor/src/display_map/tab_map.rs
+@@ -11,7 +11,7 @@
+ const MAX_EXPANSION_COLUMN: u32 = 256;
+ 
+ // Handles a tab width <= 128
+-const SPACES: &[u8; rope::Chunk::MASK_BITS] = &[b' '; _];
++const SPACES: &[u8; rope::Chunk::MASK_BITS] = &([b' '; rope::Chunk::MASK_BITS]);
+ const MAX_TABS: NonZeroU32 = NonZeroU32::new(SPACES.len() as u32).unwrap();
+ 
+ /// Keeps track of hard tabs in a text buffer.

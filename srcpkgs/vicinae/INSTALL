@@ -1,0 +1,5 @@
+# case "$ACTION" in
+# post)
+#     ln -s /etc/sv/vicinae etc/runit/runsvdir/default
+#     ;;
+# esac

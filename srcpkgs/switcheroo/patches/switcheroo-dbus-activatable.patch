@@ -1,0 +1,61 @@
+From d65f25e38a78c5d81b9aad1c94530180a4015d36 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sat, 26 Jul 2025 19:50:30 +0200
+Subject: [PATCH] Add D-Bus service file
+
+And mark the application as D-Bus activatable. This allows application
+launchers to activate it via D-Bus.
+---
+ data/io.gitlab.adhami3310.Converter.desktop.in.in |  1 +
+ data/io.gitlab.adhami3310.Converter.service.in    |  3 +++
+ data/meson.build                                  | 13 ++++++++++++-
+ 3 files changed, 16 insertions(+), 1 deletion(-)
+ create mode 100644 data/io.gitlab.adhami3310.Converter.service.in
+
+diff --git a/data/io.gitlab.adhami3310.Converter.desktop.in.in b/data/io.gitlab.adhami3310.Converter.desktop.in.in
+index 36bff62..c46e614 100644
+--- a/data/io.gitlab.adhami3310.Converter.desktop.in.in
++++ b/data/io.gitlab.adhami3310.Converter.desktop.in.in
+@@ -9,6 +9,7 @@ Type=Application
+ Categories=GTK;GNOME;Graphics;ImageProcessing;Utility;
+ Keywords=converter;image;convert;converting;processing
+ StartupNotify=true
++DBusActivatable=true
+ # Translators: Do NOT translate or transliterate this text (these are enum types)!
+ X-Purism-FormFactor=Workstation;Mobile;
+ MimeType=image/png;image/jpeg;image/webp;image/svg+xml;image/heic;image/heif;image/bmp;image/avif;image/jxl;image/tiff;application/pdf;image/gif;image/x-icon;image/vnd-ms.dds
+\ No newline at end of file
+diff --git a/data/io.gitlab.adhami3310.Converter.service.in b/data/io.gitlab.adhami3310.Converter.service.in
+new file mode 100644
+index 0000000..e7d4e39
+--- /dev/null
++++ b/data/io.gitlab.adhami3310.Converter.service.in
+@@ -0,0 +1,3 @@
++[D-BUS Service]
++Name=@app-id@
++Exec=@bindir@/switcheroo --gapplication-service
+diff --git a/data/meson.build b/data/meson.build
+index a7b64d5..50a7aa4 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -73,4 +73,15 @@ if glib_compile_schemas.found()
+       '--strict', '--dry-run', meson.current_build_dir()
+     ],
+   )
+-endif
+\ No newline at end of file
++endif
++
++# D-Bus service file
++service_conf = configuration_data()
++service_conf.set('app-id', application_id)
++service_conf.set('bindir', bindir)
++configure_file(
++  input: '@0@.service.in'.format(base_id),
++  output: '@0@.service'.format(application_id),
++  configuration: service_conf,
++  install_dir: datadir / 'dbus-1' / 'services'
++)
+-- 
+GitLab
+

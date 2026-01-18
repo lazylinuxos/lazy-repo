@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Double Commander
+Comment=Double Commander
+Exec=/usr/bin/doublecmd
+Icon=doublecmd.png
+Terminal=false
+StartupWMClass=doublecmd
+Type=Application
+Categories=System
+MimeType=

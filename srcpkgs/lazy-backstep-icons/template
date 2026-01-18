@@ -1,0 +1,25 @@
+# Template file for 'lazy-backstep-icons'
+pkgname=lazy-backstep-icons
+version=0.0.1
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="io.elementary.icons"
+short_desc="Icons based on Flexicons"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/lazylinuxos/lazy-backstep-icons"
+distfiles="https://github.com/lazylinuxos/${pkgname}/archive/refs/tags/v${version}.tar.gz"
+checksum=794638392bc9a699a451168a66d8f9fcff743a9351a71141e6ba4b9e022ae1d1
+
+do_install() {
+	# Install the files
+	vmkdir /usr/share/icons/backstep-common
+	vmkdir /usr/share/icons/backstep-dark-jade
+	vmkdir /usr/share/icons/backstep-light-sand
+	vcopy ${pkgname}-${version}/backstep-common/* /usr/share/icons/backstep-common
+	vcopy ${pkgname}-${version}/backstep-dark-jade/* /usr/share/icons/backstep-dark-jade
+	vcopy ${pkgname}-${version}/backstep-light-sand/* /usr/share/icons/backstep-light-sand
+}

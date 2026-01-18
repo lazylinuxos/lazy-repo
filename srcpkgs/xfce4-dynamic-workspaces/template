@@ -1,0 +1,22 @@
+# Template file for 'xfce4-dynamic-workspaces'
+pkgname=xfce4-dynamic-workspaces
+version=0.3.0
+revision=1
+archs="x86_64"
+build_style="fetch"
+short_desc="XFCE dynamic workspaces"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/rhino-linux/xfce4-dynamic-workspaces"
+distfiles="https://github.com/rhino-linux/xfce4-dynamic-workspaces/releases/download/${version}/xfce4-dynamic-workspaces-amd64"
+checksum=0a1d230cee6a71da75628397332168f37a6ca6bb75258a8960d91138f124d6c1
+nopie=yes
+
+do_install() {
+	vmkdir usr/bin
+	vcopy xfce4-dynamic-workspaces-amd64 usr/bin/xfce4-dynamic-workspaces
+	chmod +x ${DESTDIR}/usr/bin/xfce4-dynamic-workspaces
+	
+	vmkdir etc/xdg/autostart
+	vinstall ${FILESDIR}/xfce4-dynamic-workspaces.desktop 644 etc/xdg/autostart
+}

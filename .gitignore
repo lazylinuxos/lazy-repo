@@ -1,0 +1,27 @@
+*.swo
+*.swp
+*~
+\#*#
+
+# exclude everything in root except files and directories from lazy-repo
+/*
+!/.editorconfig
+!/.gitattributes
+!/.github
+!/.gitignore
+!/.mailmap
+!/CONTRIBUTING.md
+!/COPYING
+!/Manual.md
+!/README.md
+!/common
+!/etc
+!/srcpkgs
+!/xbps-src
+!/repo-keys
+!/99-repository-lazy.conf
+etc/conf
+etc/conf.*
+etc/virtual
+etc/xbps.d/custom
+etc/repo-keys

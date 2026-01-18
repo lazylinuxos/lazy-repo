@@ -1,0 +1,39 @@
+# Template file for 'switcheroo'
+pkgname=switcheroo
+version=2.4.0
+revision=1
+archs="x86_64"
+build_style=meson
+hostmakedepends="gettext desktop-file-utils cmake appstream-glib blueprint-compiler rust cargo pkg-config"
+makedepends="dconf gdk-pixbuf ghostscript glib gtk4-devel hicolor-icon-theme ImageMagick
+ libadwaita-devel libheif libjpeg-turbo libjxl librsvg tiff libwebp webp-pixbuf-loader zip"
+depends="glibc libgcc gtk4"
+short_desc="Convert between different image filetypes and resize them easily"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://apps.gnome.org/Converter/"
+distfiles="https://gitlab.com/adhami3310/Switcheroo/-/archive/v${version}/Switcheroo-v${version}.tar.gz"
+checksum=a93cc75581e4641ca3c87773f60bb66f0860e35a4c3b8a7fd0c241f771d415e9
+configure_args="--prefix=/usr"
+
+do_configure() {
+    # Configure Meson build directory
+    CARGO_HOME="${wrksrc}/build/cargo-home" \
+        meson setup build ${configure_args}
+}
+
+do_build() {
+    CARGO_PROFILE_RELEASE_LTO=true \
+    CARGO_PROFILE_RELEASE_CODEGEN_UNITS=1 \
+    CARGO_PROFILE_RELEASE_DEBUG=2 \
+    CARGO_PROFILE_RELEASE_STRIP=false \
+    meson compile -C build
+}
+
+do_check() {
+    meson test -C build --print-errorlogs --no-rebuild
+}
+
+do_install() {
+    meson install -C build --destdir="${DESTDIR}" --no-rebuild
+}

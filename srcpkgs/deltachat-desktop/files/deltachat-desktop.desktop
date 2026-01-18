@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=DeltaChat
+Exec=/usr/bin/deltachat-desktop %U
+Terminal=false
+Type=Application
+Icon=deltachat-desktop
+StartupWMClass=DeltaChat
+Comment=The Email messenger (https://delta.chat)
+Keywords=dc;chat;delta;messaging;messenger;email
+MimeType=application/x-webxdc;x-scheme-handler/openpgp4fpr;x-scheme-handler/dcaccount;x-scheme-handler/dclogin;x-scheme-handler/mailto;
+Categories=Network;Chat;InstantMessaging;

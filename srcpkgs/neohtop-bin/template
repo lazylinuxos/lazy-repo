@@ -1,0 +1,21 @@
+# Template file for 'neohtop-bin'
+pkgname=neohtop-bin
+version=1.2.0
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+hostmakedepends="rpmextract"
+short_desc="Htop on steroids"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://abdenasser.github.io/neohtop/"
+changelog="https://github.com/Abdenasser/neohtop/compare/v1.1.3...v1.2.0"
+distfiles="https://github.com/Abdenasser/neohtop/releases/download/v${version}/NeoHtop_${version}_x86_64.rpm"
+checksum=fae08cc75033fd6393d87f376ab7de2d0130134a914cfe50a8bad3a699e6d806
+replaces="neohtop"
+
+do_install() {
+	# Copy files
+	vcopy "*" /
+	vlicense ${FILESDIR}/LICENSE
+}

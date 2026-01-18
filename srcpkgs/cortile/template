@@ -1,0 +1,26 @@
+# Template file for 'cortile'
+pkgname=cortile
+version=2.5.2
+revision=1
+short_desc="Linux auto tiling manager with hot corner"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/leukipp/cortile"
+distfiles="https://github.com/leukipp/cortile/releases/download/v${version}/${pkgname}_${version}_linux_amd64.tar.gz"
+checksum=dcc104bb2dbdf5596b6de5e578b8988347200759ca5c1134f9d0bec3b19ef3dd
+nopie=yes
+
+do_install() {
+	vmkdir /usr/lib
+	vcopy "${pkgname}" /usr/lib/${pkgname}
+
+	vmkdir /usr/bin
+	ln -s /usr/lib/${pkgname} ${DESTDIR}/usr/bin/${pkgname}
+
+	vmkdir usr/share/applications
+	vinstall ${FILESDIR}/cortile.desktop 644 usr/share/applications
+	vinstall ${FILESDIR}/cortile.png 644 usr/share/pixmaps
+
+	vdoc README.md
+	vlicense LICENSE
+}

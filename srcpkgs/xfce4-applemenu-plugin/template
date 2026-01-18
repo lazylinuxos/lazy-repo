@@ -1,0 +1,22 @@
+# Template file for 'xfce4-applemenu-plugin'
+pkgname=xfce4-applemenu-plugin
+version=0.3.0
+revision=1
+hostmakedepends="tar xz"
+short_desc="MacOS like apple menu plugin for XFCE4 Panel"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0"
+homepage="https://github.com/Axis0S/xfce4-applemenu-plugin"
+distfiles="https://github.com/Axis0S/${pkgname}/releases/download/v${version}/${pkgname}_${version}-1_amd64.deb"
+checksum=6db4010c818629dedcb1da84fc7aa1ce5075aa0f5ca1ec523635317dca4bb039
+nostrip=yes
+
+do_extract() {
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${pkgname}_${version}-1_amd64.deb
+}
+
+do_install() {
+	tar xf data.tar.xz -C ${DESTDIR}
+	mv ${DESTDIR}/usr/lib/x86_64-linux-gnu/* ${DESTDIR}/usr/lib
+}

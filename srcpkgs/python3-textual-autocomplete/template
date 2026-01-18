@@ -1,0 +1,29 @@
+# Template file for 'python3-textual-autocomplete'
+pkgname=python3-textual-autocomplete
+version=4.0.6
+revision=1
+wrksrc="textual_autocomplete-${version}"
+hostmakedepends="python3 python3-build hatchling python3-installer"
+depends="python3 python3-rich python3-textual python3-typing_extensions"
+short_desc="Easily add autocomplete dropdowns to your Textual apps"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/darrenburns/textual-autocomplete"
+distfiles="https://files.pythonhosted.org/packages/source/t/textual_autocomplete/textual_autocomplete-${version}.tar.gz"
+checksum=2ba2f0d767be4480ecacb3e4b130cf07340e033c3500fc424fed9125d27a4586
+
+do_build() {
+	python3 -m build --wheel --no-isolation
+}
+
+do_install() {
+	python3 -m installer --destdir=${DESTDIR} dist/*.whl
+
+	vinstall README.md 644 usr/share/doc/${pkgname}
+
+	local license_file=$(find ${DESTDIR} -type f -name LICENSE | head -n1)
+	if [ -n "$license_file" ]; then
+		vmkdir usr/share/licenses/${pkgname}
+		ln -sf "../../../..${license_file#${DESTDIR}}" "${DESTDIR}/usr/share/licenses/${pkgname}/LICENSE"
+	fi
+}

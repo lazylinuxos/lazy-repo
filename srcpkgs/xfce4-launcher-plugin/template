@@ -1,0 +1,23 @@
+# Template file for 'xfce4-launcher-plugin'
+pkgname=xfce4-launcher-plugin
+_pkgname=xfce4-panel-launcher
+version=0.6
+revision=1
+hostmakedepends="tar xz"
+short_desc="MacOS like launcher plugin for XFCE4 Panel"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0"
+homepage="https://github.com/Axis0S/xfce-panel-launcher"
+distfiles="https://github.com/Axis0S/xfce-panel-launcher/releases/download/v${version}/${_pkgname}_${version}_amd64.deb"
+checksum=f160fd8e1f89866cbf0465c8e6b8aeec9207f084e7f97d697a20a9f4c2b56d48
+nostrip=yes
+
+do_extract() {
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/${_pkgname}_${version}_amd64.deb
+}
+
+do_install() {
+	tar xf data.tar.xz -C ${DESTDIR}
+	mv ${DESTDIR}/usr/lib/x86_64-linux-gnu/* ${DESTDIR}/usr/lib
+}

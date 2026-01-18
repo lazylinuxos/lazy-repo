@@ -1,0 +1,42 @@
+# Template file for 'vicinae'
+pkgname=vicinae
+version=0.18.1
+revision=1
+build_style=cmake
+configure_args="-G Ninja -DVICINAE_GIT_TAG=v${version} -DCMAKE_BUILD_TYPE=Release"
+hostmakedepends="git nodejs rapidfuzz-cpp jq protobuf pkg-config"
+makedepends="qt6-base-devel qt6-base-private-devel qt6-wayland-devel qt6-wayland-private-devel qt6-svg-devel 
+ protobuf-devel cmark-gfm-devel layer-shell-qt-devel libqalculate-devel minizip-devel qtkeychain-qt6-devel glaze"
+depends="nodejs qt6-base qt6-wayland qt6-svg protobuf cmark-gfm layer-shell-qt libqalculate minizip qtkeychain-qt6"
+short_desc="Focused launcher for your desktop — native, fast, extensible"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/vicinaehq/vicinae"
+distfiles="https://github.com/vicinaehq/vicinae/archive/refs/tags/v${version}.tar.gz
+ https://api.github.com/repos/vicinaehq/vicinae/git/ref/tags/v${version}>meta.yml"
+checksum="52f2082135387e1a90fa72732ab9cac521f82f9469b08cf4117783cffe8d7e81
+ c754184fe0667d1f63be8cedd1a323f6ad87145c9bacbe573b74f53b5a485a03"
+skip_extraction="meta.yml"
+
+pre_configure() {
+	SHA=$(jq .object.sha "${XBPS_SRCDISTDIR}/${pkgname}-${version}/meta.yml" -r)
+	configure_args+=" -DVICINAE_GIT_COMMIT_HASH=${SHA:0:7}"
+}
+
+post_install() {
+    vbin build/vicinae/vicinae vicinae
+
+    vmkdir usr/share/${pkgname}
+    vcopy extra/themes/* usr/share/${pkgname}/
+
+    vinstall ${pkgname}/icons/${pkgname}.svg 644 usr/share/icons/hicolor/scalable/apps
+    vinstall extra/${pkgname}.desktop 644 usr/share/applications
+    vinstall extra/${pkgname}-url-handler.desktop 644 usr/share/applications
+
+	rm -rf ${DESTDIR}/usr/lib
+	vsv ${pkgname}
+	
+	# Service doesn't work at this moment, add daemon to autostart 
+	vmkdir etc/xdg/autostart
+	vinstall ${FILESDIR}/${pkgname}-server.desktop 644 etc/xdg/autostart
+}

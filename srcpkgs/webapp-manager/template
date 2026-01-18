@@ -1,0 +1,33 @@
+# Template file for 'webapp-manager'
+pkgname=webapp-manager
+version=1.4.5
+revision=1
+hostmakedepends="gettext"
+depends="dconf python3-BeautifulSoup4 python3-configobj python3-gobject
+ python3-Pillow python3-setproctitle python3-tldextract xapps"
+short_desc="Run websites as if they were apps"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/linuxmint/webapp-manager"
+distfiles="https://github.com/linuxmint/${pkgname}/archive/refs/tags/${version}.tar.gz"
+checksum=4f1cd0d1dc7c79140d3a7b0c589d8acf91315c72428f56e37fadf0618286e32d
+
+pre_build() {
+	# Fix browser names
+	vsed "s|brave-browser|brave-browser-stable|g" -i usr/lib/${pkgname}/common.py
+
+	# Fix license path
+	vsed "s|common-licenses/GPL|license/GPL-3|" -i usr/lib/${pkgname}/${pkgname}.py
+
+	# Set version in About dialog
+	vsed "s|__DEB_VERSION__|${version}|" -i usr/lib/${pkgname}/${pkgname}.py
+}
+
+do_build() {
+	make
+}
+
+do_install() {
+	vcopy etc /
+	vcopy usr /
+}

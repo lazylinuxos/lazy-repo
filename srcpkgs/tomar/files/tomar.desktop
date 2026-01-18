@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Tomar
+GenericName=RSS Reader
+Comment=Minimalist RSS reader
+Exec=/usr/bin/tomar
+Icon=application-rss+xml
+Terminal=false
+StartupWMClass=rssreader
+Type=Application
+Categories=Network;News;

@@ -1,0 +1,33 @@
+pkgname=python3-flit-core
+version=3.12.0
+revision=1
+wrksrc="flit-${version}"
+hostmakedepends="python3 python3-build python3-installer"
+checkdepends="python3-pytest python3-testpath"
+short_desc="A PEP 517 build backend for packages using Flit"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://github.com/pypa/flit/tree/main/flit_core"
+distfiles="https://github.com/pypa/flit/archive/refs/tags/${version}.tar.gz"
+checksum=c157ff92c01f4bb169182722ff76aadac113926b729215e91909021aa56e2ea3
+
+do_build() {
+	cd flit_core
+	python3 -m build --wheel --skip-dependency-check --no-isolation
+}
+
+do_check() {
+	cd flit_core
+	pytest -vv
+}
+
+do_install() {
+	cd flit_core
+	python3 -m installer --destdir="${DESTDIR}" dist/*.whl
+	vinstall ../LICENSE 644 usr/share/licenses/${pkgname}
+
+	# Remove tests and vendored deps
+	local site_packages=$(python3 -c "import site; print(site.getsitepackages()[0])")
+	rm -rf "${DESTDIR}/${site_packages}/flit_core/tests"
+	rm -rf "${DESTDIR}/${site_packages}/flit_core/vendor"
+}

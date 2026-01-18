@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Cortile
+Comment=Linux auto tiling manager with hot corner.
+Exec=/usr/bin/cortile
+Icon=cortile
+Type=Application
+Categories=Network;WebBrowser;
+StartupNotify=false
+Terminal=false
+

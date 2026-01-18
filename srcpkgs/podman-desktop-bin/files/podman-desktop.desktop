@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Podman Desktop
+Comment=A graphical tool for developing on containers and Kubernetes
+Exec=/usr/bin/podman-desktop
+Icon=podman-desktop
+Type=Application
+StartupWMClass=Podman Desktop
+Categories=Development;
+Terminal=false
+

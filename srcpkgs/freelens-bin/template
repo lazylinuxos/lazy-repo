@@ -1,0 +1,36 @@
+# Template file for 'freelens-bin'
+pkgname=freelens-bin
+version=1.8.0
+revision=1
+archs="x86_64"
+wrksrc="freelens-bin-${version}"
+hostmakedepends="xdg-utils"
+depends="gtk+3 nss"
+short_desc="Free Open Source Kubernetes IDE"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://freelens.app/"
+distfiles="https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.AppImage"
+checksum=b206ec194a7f4ca41984f6603296c8272ee7f815b4506929e798c51cb3b94fcb
+python_version=3
+nocross=yes
+nopie=yes
+nostrip=yes
+nodebug=yes
+noverifyrdeps=yes
+disable_shlib_provides=yes
+
+do_install() {
+	vmkdir usr/lib/freelens
+	cp -a * ${DESTDIR}/usr/lib/freelens
+
+    vinstall ${wrksrc}/usr/share/icons/hicolor/512x512/apps/freelens.png 644 usr/share/icons/hicolor/512x512/apps
+
+	vmkdir usr/share/applications
+	vinstall ${wrksrc}/freelens.desktop 644 usr/share/applications
+
+	vmkdir usr/bin
+	ln -sf /usr/lib/freelens/freelens ${DESTDIR}/usr/bin/freelens
+
+	rm -rf ${DESTDIR}/usr/lib/freelens/{AppRun,freelens.desktop,usr}
+}

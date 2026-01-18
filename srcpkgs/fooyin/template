@@ -1,0 +1,25 @@
+# Template file for 'fooyin'
+pkgname=fooyin
+version=0.9.2
+revision=1
+wrksrc="fooyin-${version}"
+build_style=cmake
+configure_args="-DBUILD_PCH=ON -DBUILD_WERROR=OFF -DINSTALL_HEADERS=ON -DCMAKE_BUILD_TYPE=None"
+hostmakedepends="cmake gcc ninja pkgconf tar"
+makedepends="qt6-base-devel qt6-svg-devel qt6-tools alsa-lib-devel taglib-devel ffmpeg-devel KDSingleApplication libvgm-player libpipewire icu-devel libopenmpt-devel libsndfile-devel libebur128-devel libarchive-devel libgme-devel"
+depends="qt6-base qt6-svg qt6-tools alsa-lib taglib ffmpeg KDSingleApplication libvgm-player"
+short_desc="A customisable music player"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://www.fooyin.org/"
+distfiles="https://github.com/ludouzi/fooyin/archive/refs/tags/v${version}.tar.gz"
+checksum=a3b0e880047790d169223983d4f9a26a2196499275d57321b15e9578dd716a94
+
+pre_configure() {
+    # Patch needed line before build
+    find src -type f -print0 | xargs -0 sed -i 's/opt.backgroundBrush = {};/opt.backgroundBrush = Qt::NoBrush;/g'
+}
+
+post_install() {
+    vlicense COPYING
+}

@@ -1,0 +1,40 @@
+# Template file for 'zed'
+pkgname=zed
+version=0.218.6
+revision=1
+build_style=cargo
+build_helper=rust
+hostmakedepends="rust cargo-about clang cmake protobuf pkg-config"
+makedepends="alsa-lib-devel libcurl-devel fontconfig-devel libxcb-devel protobuf-devel
+ libxkbcommon-devel libX11-devel openssl-devel sqlite-devel Vulkan-Headers
+ vulkan-loader-devel wayland-devel zlib-devel libzstd-devel libgit2-1.9-devel"
+depends="nodejs netcat Vulkan-Tools"
+short_desc="High-performance, multiplayer code editor from creators of Atom and Tree-sitter"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later, AGPL-3.0-or-later, Apache-2.0"
+homepage="https://zed.dev"
+distfiles="https://github.com/zed-industries/zed/archive/refs/tags/v${version}.tar.gz"
+checksum=4192fc27529937f5fb7f3a8a95f021f04acdeadd4d205b0239fc90fc008c325a
+conflicts="zed-bin"
+replaces="zed-bin"
+
+export CARGO_TARGET_DIR=target
+export ZED_UPDATE_EXPLANATION='Updates are handled by xbps'
+export RELEASE_VERSION="$version"
+export PROTOC=/usr/bin/protoc
+export PROTOC_INCLUDE=/usr/include
+
+pre_build() {
+	cargo fetch --locked
+}
+
+do_build() {
+    cargo build --release --frozen --package zed --package cli
+}
+
+do_install() {
+    vbin target/release/cli zed
+    vinstall target/release/zed 0755 usr/lib/zed/ zed-editor
+    vinstall crates/zed/resources/app-icon.png 644 usr/share/icons/
+    vinstall ${FILESDIR}/zed.desktop 644 usr/share/applications/ 
+}

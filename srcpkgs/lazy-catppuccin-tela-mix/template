@@ -1,0 +1,24 @@
+# Template file for 'lazy-catppuccin-tela-mix'
+pkgname=lazy-catppuccin-tela-mix
+version=0.0.1
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+short_desc="LazyLinux Catppuccin theme and Tela icons"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/lazylinuxos/lazy-catppuccin-tela-mix"
+distfiles="https://github.com/lazylinuxos/${pkgname}/archive/refs/tags/v${version}.tar.gz"
+checksum=efb281e0cc672e8001262a48c62a2c59b63ac99603a3512e0bc704a384153fa2
+
+do_install() {
+	# Install the files
+	vmkdir /usr/share/themes
+	vmkdir /usr/share/icons
+	vmkdir /usr/share/backgrounds
+	vcopy ${pkgname}-${version}/themes/* /usr/share/themes
+	vcopy ${pkgname}-${version}/icons/* /usr/share/icons
+	vcopy ${pkgname}-${version}/wallpapers/* /usr/share/backgrounds
+}

@@ -1,0 +1,7 @@
+#!/bin/sh
+exec 2>&1
+
+export PULSE_LATENCY_MSEC=60
+export PIPEWIRE_LATENCY=1024/48000
+
+exec /usr/bin/rustdesk --service

@@ -1,0 +1,7 @@
+case "$ACTION" in
+post)
+    # Create temp directory with proper permissions
+    mkdir -p /usr/lib/windterm/temp
+    chmod 1777 /usr/lib/windterm/temp
+    ;;
+esac

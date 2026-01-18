@@ -1,0 +1,5 @@
+case "$ACTION" in
+post)
+    ln -s /usr/lib/libsoup-3.0.so.0 /usr/lib/libsoup-2.4.so.1
+    ;;
+esac

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Kiorg
+Comment=Hacker's file manager with VIM inspired keybind
+Exec=/usr/bin/kiorg
+Icon=kiorg
+Type=Application
+Categories=System
+StartupWMClass=kiorg

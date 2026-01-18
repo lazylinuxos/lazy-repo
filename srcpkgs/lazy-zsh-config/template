@@ -1,0 +1,21 @@
+# Template file for 'lazy-zsh-config'
+pkgname=lazy-zsh-config
+version=0.0.1
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="zsh oh-my-zsh zsh-syntax-highlighting zsh-autosuggestions zsh-history-substring-search zsh-theme-powerlevel10k"
+short_desc="LazyLinux Zsh config"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/lazylinuxos/lazy-zsh-config"
+distfiles="https://github.com/lazylinuxos/lazy-zsh-config/releases/download/v${version}/lazy-zsh-config.tar.xz"
+checksum=fb9e51e8f9f71258efddb0a177dc7d27a6e46d6cb7215f01d25e251509bcc5ac
+
+do_install() {
+	# Install the files
+	vmkdir /usr/share/lazy-zsh-config
+	vcopy lazy-zsh-config/* /usr/share/lazy-zsh-config
+}

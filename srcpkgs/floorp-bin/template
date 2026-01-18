@@ -1,0 +1,29 @@
+# Template file for 'floorp-bin'
+pkgname=floorp-bin
+_pkgname=floorp
+version=12.9.2
+revision=1
+archs="x86_64"
+depends="gtk+3 desktop-file-utils hicolor-icon-theme"
+short_desc="Advanced and Fast Firefox derivative"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MPL-2.0, GPL-2.0-or-later, LGPL-2.1-or-later"
+homepage="https://floorp.app/en"
+distfiles="https://github.com/Floorp-Projects/Floorp/releases/download/v${version}/${_pkgname}-linux-x86_64.tar.xz"
+checksum=c73cd19566b8c4d80cdd01ae8d76bbc8198b210027fbd590e250dc7ab1252032
+nopie=yes
+replaces="floorp"
+
+do_install() {
+	vmkdir usr/lib/${_pkgname}
+	vmkdir usr/share/applications
+	vmkdir usr/bin
+	vmkdir usr/share/pixmaps
+
+	vcopy * usr/lib/${_pkgname}
+	vinstall ${FILESDIR}/${_pkgname}.desktop 644 usr/share/applications
+	vinstall ${FILESDIR}/policies.json 644 usr/lib/${_pkgname}/distribution
+	vcopy ${DESTDIR}/usr/lib/${_pkgname}/browser/chrome/icons/default/default128.png usr/share/pixmaps/${_pkgname}.png
+
+	ln -frs ${DESTDIR}/usr/lib/${_pkgname}/${_pkgname} ${DESTDIR}/usr/bin
+}

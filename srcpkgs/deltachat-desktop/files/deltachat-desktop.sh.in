@@ -1,0 +1,2 @@
+#!/bin/sh
+exec @ELECTRON@ /usr/lib/deltachat-desktop/app.asar --disable-dev-mode "$@"

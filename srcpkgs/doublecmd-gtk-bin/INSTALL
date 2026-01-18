@@ -1,0 +1,7 @@
+case "$ACTION" in
+post)
+    # Create settings directory with proper permissions
+    mkdir -p /usr/lib/doublecmd/settings
+    chmod 1777 /usr/lib/doublecmd/settings
+    ;;
+esac

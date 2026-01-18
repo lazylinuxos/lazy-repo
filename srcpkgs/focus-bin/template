@@ -1,0 +1,25 @@
+# Template file for 'focus-bin'
+pkgname=focus-bin
+version=0.3.8
+revision=1
+archs="x86_64"
+wrksrc="."
+build_style="fetch"
+short_desc="Simple and fast text editor"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0"
+homepage="https://github.com/focus-editor/focus"
+distfiles="https://github.com/focus-editor/focus/releases/download/${version}/focus-linux"
+checksum=cbb30eb2cd73e8bd7ace56e0f3ff4cb1ae93fa24aab9378610f221416112e0ec
+nopie=yes
+replaces="focus"
+
+do_install() {
+	vmkdir usr/bin
+	vcopy ${wrksrc}/focus-linux usr/bin/focus
+    chmod +x ${DESTDIR}/usr/bin/focus
+	
+	vinstall ${FILESDIR}/LICENSE 644 usr/share/licenses/focus
+	vinstall ${FILESDIR}/focus.desktop 644 usr/share/applications
+	vinstall ${FILESDIR}/focus.png 644 usr/share/pixmaps
+}

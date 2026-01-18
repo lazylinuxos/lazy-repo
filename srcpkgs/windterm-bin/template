@@ -1,0 +1,68 @@
+# Template file for 'windterm-bin'
+pkgname=windterm-bin
+version=2.7.0
+revision=2
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="unzip"
+short_desc="SSH/Sftp/Shell/Telnet/Tmux/Serial terminal"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Apache-2.0"
+homepage="https://kingtoolbox.github.io/"
+distfiles="https://github.com/kingToolbox/WindTerm/releases/download/${version}/WindTerm_${version}_Linux_Portable_x86_64.zip"
+checksum=7797697eeb60239020512e2b549695a60c39b3fd01fe7ebb047fd50a2889103c
+nocheckperms=yes
+nofixperms=yes
+nopie=yes
+nostrip=yes
+replaces="windterm"
+
+pre_install() {
+	# Replace placeholders
+	sed -i \
+		-e "s/@appname@/windterm/g" \
+		-e "s/@runname@/WindTerm/g" \
+		${FILESDIR}/windterm.sh
+
+	# Fix .desktop exec line
+	sed -i "s|/usr/bin/windterm|windterm %U|" \
+		${wrksrc}/WindTerm_${version}/windterm.desktop
+
+	# Clean up platform-specific terminal folders
+	rm -rf ${wrksrc}/WindTerm_${version}/terminal/{macos,windows,cmd,powershell,wsl}
+
+	# Set proper permissions
+	find ${wrksrc}/WindTerm_${version}/ -type d -exec chmod 755 {} \;
+	find ${wrksrc}/WindTerm_${version}/global -type f -exec chmod 644 {} \;
+	find ${wrksrc}/WindTerm_${version}/lib -type f -exec chmod 644 {} \;
+	find ${wrksrc}/WindTerm_${version}/terminal/applets -type f -exec chmod 755 {} \;
+	find ${wrksrc}/WindTerm_${version}/terminal/commands -type f -exec chmod 755 {} \;
+	find ${wrksrc}/WindTerm_${version}/terminal/configs -type f -exec chmod 644 {} \;
+	find ${wrksrc}/WindTerm_${version}/terminal/protocols -type f -exec chmod 644 {} \;
+	find ${wrksrc}/WindTerm_${version}/terminal/schemes -type f -exec chmod 644 {} \;
+	find ${wrksrc}/WindTerm_${version}/terminal/terms -type f -exec chmod 644 {} \;
+	find ${wrksrc}/WindTerm_${version}/vendors -type f -exec chmod 755 {} \;
+
+	chmod 644 ${wrksrc}/WindTerm_${version}/{license.txt,qt.conf,windterm.desktop,windterm.png}
+	chmod 755 ${wrksrc}/WindTerm_${version}/WindTerm
+}
+
+do_install() {
+	# Install launcher wrapper
+	vbin ${FILESDIR}/windterm.sh windterm
+
+	# Copy entire WindTerm app to lib directory
+	vmkdir usr/lib/windterm
+	vcopy ${wrksrc}/WindTerm_${version}/* usr/lib/windterm
+
+	# Pre-create temp dir
+    vmkdir usr/lib/windterm/temp
+	vinstall /dev/null 644 usr/lib/windterm/temp .ignore
+
+	# Desktop entry and icon
+	vinstall ${wrksrc}/WindTerm_${version}/windterm.png 644 usr/share/pixmaps
+	vinstall ${wrksrc}/WindTerm_${version}/windterm.desktop 644 usr/share/applications
+
+	vinstall ${FILESDIR}/profiles.config 775 usr/lib/windterm/
+}

@@ -1,0 +1,22 @@
+# Template file for 'fluffychat-bin'
+pkgname=fluffychat-bin
+version=2.3.1
+revision=1
+archs="x86_64"
+depends="gtk+3 jsoncpp libsecret xdg-user-dirs zenity libwebkit2gtk41"
+short_desc="The cutest instant messenger in the [matrix]"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0-only"
+homepage="https://fluffy.chat"
+distfiles="https://github.com/krille-chan/fluffychat/releases/download/v${version}/fluffychat-linux-x64.tar.gz"
+checksum=e5f54a2697b742af9fde06b3a785faeb514b83f5ac49438a723f24673030b664
+
+do_install() {
+    vmkdir opt/fluffychat
+    vcopy * opt/fluffychat
+
+    vbin fluffychat
+
+    vinstall data/flutter_assets/assets/favicon.png 644 usr/share/pixmaps fluffychat.png
+    vinstall ${FILESDIR}/fluffychat.desktop 644 usr/share/applications 
+}

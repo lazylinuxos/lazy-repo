@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=FluffyChat
+Comment=Open, nonprofit, easy-to-use Matrix messenger
+Exec=/opt/fluffychat/fluffychat
+Icon=fluffychat
+Terminal=false
+Categories=Network;InstantMessaging;Chat;MatrixClient;

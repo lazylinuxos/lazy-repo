@@ -1,0 +1,11 @@
+--- a/vicinae/src/extension/extension-list-model.hpp
++++ b/vicinae/src/extension/extension-list-model.hpp
+@@ -29,7 +29,7 @@
+       using WS = fzf::WeightedString;
+       std::initializer_list<WS> fields = {WS{item.title, TITLE_WEIGHT}, WS{item.subtitle, SUBTITLE_WEIGHT}};
+       auto kws = item.keywords | std::views::transform([](auto &&s) { return WS{s, KEYWORD_WEIGHT}; });
+-      auto ss = std::views::concat(fields, kws);
++      auto ss = std::views::join(std::array{fields, kws});
+       int score = fzf::defaultMatcher.fuzzy_match_v2_score_query(ss, q);
+ 
+       return ScoredItem{.item = &item, .score = score};

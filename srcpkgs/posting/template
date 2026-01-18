@@ -1,0 +1,42 @@
+# Template file for 'posting'
+pkgname=posting
+version=2.9.2
+revision=1
+wrksrc="posting-${version}"
+hostmakedepends="python3-build hatchling python3-installer"
+depends="python3 python3-click python3-dotenv python3-httpx python3-click-default-group 
+ python3-pydantic python3-pydantic-settings python3-openapi-pydantic python3-pyperclip python3-rich 
+ python3-textual python3-textual-autocomplete python3-watchfiles python3-typing_extensions  
+ python3-yaml python3-xdg-base-dirs python3-linkify-it-py python3-typing-inspection"
+short_desc="Modern API client that lives in your terminal"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/darrenburns/posting"
+distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
+checksum=72f5931fae361ddd164a12a62f9678752e3c8f207b1d29070d00b8ff53eb79c1
+
+# If needed, uncomment and modify the prepare phase to handle any renaming or patches
+#prepare() {
+#	cd src/posting
+#	mv types.py posting_types.py
+#	find . -type f -name '*.py' -exec sed -i 's/from posting.types/from posting.posting_types/g' {} +
+#	find . -type f -name '*.py' -exec sed -i 's/import posting.types/import posting.posting_types/g' {} +
+#}
+
+do_build() {
+	python -m build --wheel --no-isolation
+}
+
+do_install() {
+	python -m installer --destdir=${DESTDIR} dist/*.whl
+
+	vinstall README.md 644 usr/share/doc/${pkgname}
+	# Add license/notice symlinks if available in dist-info
+	local distinfo_dir=$(find ${DESTDIR}/usr/lib/python*/site-packages -type d -name "${pkgname}-${version}.dist-info" | head -n1)
+	if [ -d "$distinfo_dir/licenses" ]; then
+		vmkdir usr/share/licenses/${pkgname}
+		ln -sf ${distinfo_dir}/licenses/LICENSE ${DESTDIR}/usr/share/licenses/${pkgname}/LICENSE
+		[ -f ${distinfo_dir}/licenses/NOTICE ] && \
+		ln -sf ${distinfo_dir}/licenses/NOTICE ${DESTDIR}/usr/share/licenses/${pkgname}/NOTICE
+	fi
+}

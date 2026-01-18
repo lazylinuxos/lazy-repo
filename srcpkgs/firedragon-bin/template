@@ -1,0 +1,32 @@
+# Template file for 'firedragon-bin'
+pkgname=firedragon-bin
+version=12.7.0
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="dbus dbus-glib ffmpeg gtk+3 libevent libjpeg-turbo libpulseaudio libXScrnSaver libXt libvpx libwebp mime-types nss pipewire zlib" 
+short_desc="Floorp fork build using custom branding"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MPL2"
+homepage="https://firedragon.garudalinux.org"
+distfiles="https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v${version}/downloads/firedragon-linux-x64.tar.xz"
+checksum=1ca8473ae9be532202e3fbe14de760cdf55c0b0647a66f91be788e87fadd461e
+replaces="firedragon"
+
+do_install() {
+	vmkdir usr/lib
+	vcopy ${wrksrc}/* usr/lib
+
+	vmkdir usr/share
+	vinstall ${FILESDIR}/firedragon.desktop 644 usr/share/applications/
+	
+	for i in 16 32 48 64 128; do
+		vinstall ${wrksrc}/firedragon/browser/chrome/icons/default/default$i.png 644 usr/share/icons/hicolor/${i}x${i}/apps ${pkgname}.png
+    done
+
+	# link the binary
+	vmkdir usr/bin/
+	ln -s /usr/lib/firedragon/firedragon-bin ${DESTDIR}/usr/bin/firedragon
+}

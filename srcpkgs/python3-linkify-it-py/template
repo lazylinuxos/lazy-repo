@@ -1,0 +1,26 @@
+# Template file for 'python3-linkify-it-py'
+pkgname=python3-linkify-it-py
+version=2.0.3
+revision=1
+wrksrc="linkify-it-py-${version}"
+hostmakedepends="python3 python3-setuptools python3-wheel python3-build python3-installer"
+depends="python3 python3-uc-micro-py"
+checkdepends="python3-pytest"
+short_desc="Links recognition library with full unicode support"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/tsutsu3/linkify-it-py"
+distfiles="https://github.com/tsutsu3/linkify-it-py/archive/refs/tags/v${version}.tar.gz"
+checksum=0e18bd044f0e31db4aa142316604fd46d344247758fc00bcea4b914a1d8749f0
+
+do_build() {
+	python3 -m build --wheel --skip-dependency-check --no-isolation
+}
+
+do_check() {
+	python3 -m pytest
+}
+
+do_install() {
+	python3 -m installer --destdir="${DESTDIR}" dist/*.whl
+}

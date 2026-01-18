@@ -1,0 +1,20 @@
+# Template file for 'lazy-squared-theme'
+pkgname=lazy-squared-theme
+version=0.0.1
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+short_desc="Squared theme by EliverLara"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/lazylinuxos/lazy-squared-theme"
+distfiles="https://github.com/lazylinuxos/${pkgname}/archive/refs/tags/v${version}.tar.gz"
+checksum=7b82943bbad812de48f43bcbdf8a9c01598d9c5cdc3a53d3fe8db843ad6d2b43
+
+do_install() {
+	# Install the files
+	vmkdir /usr/share/themes/Squared
+	vcopy ${pkgname}-${version}/* /usr/share/themes/Squared
+}

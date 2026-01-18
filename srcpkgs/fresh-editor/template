@@ -1,0 +1,27 @@
+# Template file for 'fresh-editor'
+pkgname=fresh-editor
+version=0.1.77
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config clang llvm"
+makedepends="oniguruma-devel"
+depends="libgcc"
+short_desc="Lightweight terminal-based text editor with LSP support and TypeScript plugins"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://sinelaw.github.io/fresh/"
+distfiles="https://github.com/sinelaw/fresh/releases/download/v${version}/fresh-editor-${version}-source.tar.gz"
+checksum=69c7b21cc5726bdc32f606fdb06fc85cbd91d7074001fe59ea35b39185b33521
+
+export CC=clang
+
+do_install() {
+	vbin target/${RUST_TARGET}/release/fresh
+
+	vmkdir usr/share/${pkgname}
+	vcopy plugins usr/share/${pkgname}/
+	vcopy keymaps usr/share/${pkgname}/
+
+	vmkdir usr/share/doc/${pkgname}
+	vinstall README.md 644 usr/share/doc/${pkgname}
+}

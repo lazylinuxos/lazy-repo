@@ -1,0 +1,11 @@
+--- a/lib/fzf.hpp
++++ b/lib/fzf.hpp
+@@ -129,7 +129,7 @@
+   int fuzzy_match_v2_score_query(std::string_view text, std::string_view query,
+                                  bool case_sensitive = false) const {
+     std::initializer_list<WeightedString> lst{{text, 1.0f}};
+-    return fuzzy_match_v2_score_query(std::views::concat(lst), query, case_sensitive);
++    return fuzzy_match_v2_score_query(std::views::join(std::array{lst}), query, case_sensitive);
+   }
+ 
+   Result fuzzy_match_v2(std::string_view text, std::string_view pattern, bool case_sensitive = false,

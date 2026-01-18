@@ -1,0 +1,39 @@
+# Template file for 'waterfox-bin'
+pkgname=waterfox-bin
+_pkgname=waterfox
+version=6.6.7
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="ffmpeg hicolor-icon-theme startup-notification libnotify libXt mime-types"
+short_desc="Fast and private web browser"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MPL-2.0"
+homepage="https://www.waterfox.net"
+changelog="${homepage}/docs/releases/${version}/"
+# https://cdn.waterfox.com/waterfox/releases/6.6.7/Linux_x86_64/waterfox-6.6.7.tar.bz2
+distfiles="https://cdn1.waterfox.net/${_pkgname}/releases/${version}/Linux_x86_64/${_pkgname}-${version}.tar.bz2"
+checksum=fd1dab42460f27c6e80bf8472b7f54b8890ac801e3696fadeece5a6966584d32
+replaces="waterfox"
+
+do_install() {
+	vmkdir "opt"
+	vcopy ${wrksrc}/* "opt"
+
+	vmkdir usr/bin
+	ln -rfs "${DESTDIR}/opt/${_pkgname}/${_pkgname}" "${DESTDIR}/usr/bin/"
+
+	vinstall "${FILESDIR}/${_pkgname}.desktop" 0644 "usr/share/applications"
+
+	for res in 16 32 48 64 128; do
+		vmkdir usr/share/icons/hicolor/${res}x${res}/apps
+		ln -rfs "${DESTDIR}/opt/${_pkgname}/browser/chrome/icons/default/default${res}.png" \
+			"${DESTDIR}/usr/share/icons/hicolor/${res}x${res}/apps/${_pkgname}.png"
+	done
+
+	vinstall "${FILESDIR}/vendor.js" 644 "opt/${_pkgname}/browser/defaults/preferences/"
+
+	vinstall "${FILESDIR}/policies.json" 644 "opt/${_pkgname}/distribution/"
+}

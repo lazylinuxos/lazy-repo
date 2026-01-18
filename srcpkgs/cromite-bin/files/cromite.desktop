@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Cromite Browser
+Comment=Cromite a Bromite fork with ad blocking and privacy enhancements
+Exec=/usr/bin/cromite
+Icon=cromite
+Type=Application
+Categories=Network;WebBrowser;
+StartupWMClass=chromium-browser
+StartupNotify=false
+Terminal=false
+Path=
+

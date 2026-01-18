@@ -1,0 +1,20 @@
+# Template file for 'flow-control-bin'
+pkgname=flow-control-bin
+version=0.6.0
+revision=1
+archs="x86_64"
+build_style=meta
+short_desc="A programmer's text editor (binary release)"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/neurocyte/flow"
+distfiles="https://github.com/neurocyte/flow/releases/download/v${version}/flow-v${version}-linux-x86_64.tar.gz"
+checksum="63cc364233f2b8b399a686b49a1ff38f0156db7fd1a4ac3aa55865f30b800e5a"
+conflicts="flow-control"
+
+do_install() {
+    vbin flow
+    vinstall ${FILESDIR}/LICENSE 644 "usr/share/licenses/${pkgname}"
+    vinstall ${FILESDIR}/flow-control.desktop 644 "usr/share/applications"
+    vinstall ${FILESDIR}/flow-control.png 644 "usr/share/pixmaps"
+}

@@ -1,0 +1,39 @@
+# Template file for 'python3-watchfiles'
+pkgname=python3-watchfiles
+version=1.1.0
+revision=1
+wrksrc="watchfiles-${version}"
+hostmakedepends="python3 python3-setuptools python3-wheel python3-build python3-installer maturin cargo"
+makedepends="${hostmakedepends} rust"
+depends="python3 python3-anyio"
+checkdepends="python3-dirty-equals python3-pytest python3-pytest-mock python3-pytest-timeout"
+short_desc="Simple, modern and high performance file watching and code reload in Python"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/samuelcolvin/watchfiles"
+distfiles="https://github.com/samuelcolvin/watchfiles/archive/v${version}/python-watchfiles-${version}.tar.gz"
+checksum=15051457d29f8e9a16eaa3ec1714052ff07c1134dd3a74ed46e631d4d821b770
+
+pre_build() {
+	cd "$wrksrc"
+	# Prevent test discovery from picking up the local module
+	rm -v tests/__init__.py
+}
+
+do_build() {
+	cd "$wrksrc"
+	maturin build --release --interpreter python3
+}
+
+do_check() {
+	cd "$wrksrc"
+	python3 -m venv --system-site-packages test-env
+	test-env/bin/python3 -m installer dist/*.whl
+	test-env/bin/python3 -Im pytest
+}
+
+do_install() {
+	cd "$wrksrc"
+	python3 -m installer --destdir="$DESTDIR" target/wheels/*.whl
+	install -Dm644 LICENSE "${DESTDIR}/usr/share/licenses/${pkgname}/LICENSE"
+}

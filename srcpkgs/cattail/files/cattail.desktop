@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Cattail
+Comment=An unofficial Tailscale client.
+Exec=/usr/bin/cattail
+Icon=cattail
+Type=Application
+Categories=Network;
+StartupWMClass=cattail
+SingleMainWindow=true
+X-GNOME-UsesNotifications=true

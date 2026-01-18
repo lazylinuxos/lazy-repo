@@ -1,0 +1,22 @@
+# Template file for 'yaak-bin'
+pkgname=yaak-bin
+version=2025.9.3
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+hostmakedepends="rpmextract"
+short_desc="Intuitive desktop API client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://yaak.app/"
+changelog="https://yaak.app/blog/${version}"
+distfiles="https://github.com/mountain-loop/yaak/releases/download/v${version}/yaak-${version}-${revision}.x86_64.rpm"
+checksum=2e5eb88f02432b6d307c45fd7172d0ac4d024874d3e5b704e01ee2c6f3d909d6
+nopie=yes
+replaces="yaak"
+
+do_install() {
+	# Copy files
+	vcopy "*" /
+	vlicense ${FILESDIR}/LICENSE
+}

@@ -1,0 +1,21 @@
+# Template file for 'lazy-nordic-icons'
+pkgname=lazy-nordic-icons
+version=0.0.2
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="papirus-icon-theme"
+short_desc="LazyLinux Nordic folder icons"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/lazylinuxos/lazy-nordic-icons"
+distfiles="https://github.com/lazylinuxos/${pkgname}/archive/refs/tags/v${version}.tar.gz"
+checksum=cf8e3ae5a0d0897c28ed4cab960367701c0fc46e3008a46437491c758aa3effb
+
+do_install() {
+	# Install the files
+	vmkdir /usr/share/icons/Nordic
+	vcopy ${pkgname}-${version}/Nordic/* /usr/share/icons/Nordic
+}

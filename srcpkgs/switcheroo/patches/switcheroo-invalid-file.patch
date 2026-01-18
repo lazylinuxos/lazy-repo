@@ -1,0 +1,26 @@
+From 82312be20f77689a4ba303680d58cbe753f6074e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Wed, 30 Jul 2025 16:19:12 +0200
+Subject: [PATCH] Filter out non-existent files
+
+Then opening files, check if the files are exist before trying to process
+them to avoid crash.
+---
+ src/application.rs | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/application.rs b/src/application.rs
+index 061487c..265dc30 100644
+--- a/src/application.rs
++++ b/src/application.rs
+@@ -63,6 +63,7 @@ mod imp {
+             let files: Vec<Option<InputFile>> = files
+                 .iter()
+                 .cloned()
++                .filter(|file| file.query_exists(gio::Cancellable::NONE))
+                 .map(|file| InputFile::new(&file))
+                 .collect();
+ 
+-- 
+GitLab
+

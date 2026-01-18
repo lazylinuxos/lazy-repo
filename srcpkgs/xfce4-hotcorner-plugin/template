@@ -1,0 +1,28 @@
+# Template file for 'xfce4-hotcorner-plugin'
+pkgname=xfce4-hotcorner-plugin
+version=0.0.4
+revision=1
+make_build_args="-Wno-error=deprecated-declarations"
+hostmakedepends="xfce4-dev-tools pkg-config intltool"
+makedepends="xfce4-panel-devel libwnck-devel libnotify-devel gtk+3-devel"
+depends="xfce4-panel libwnck libnotify gtk+3"
+short_desc="Allow users to set hot corner actions"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/christopherkobayashi/xfce4-hotcorner-plugin"
+distfiles="https://github.com/christopherkobayashi/xfce4-hotcorner-plugin/archive/refs/tags/${version}.tar.gz"
+checksum=00430b1480a8ebd85ddfa90f6958854ca27b93b9fcc86ab608070cc845c82ce6
+
+post_install() {
+	# update icon cache after installation
+	gtk-update-icon-cache -q -t -f /usr/share/icons/hicolor
+}
+
+do_build() {
+	./configure --prefix=/usr CFLAGS="$CFLAGS -Wno-error=deprecated-declarations"
+	make
+}
+
+do_install() {
+	make DESTDIR="${DESTDIR}" install
+}

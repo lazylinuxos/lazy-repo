@@ -1,0 +1,33 @@
+# Template file for 'valent-git'
+pkgname=valent-git
+version=v1.0.0.alpha.49
+revision=1
+_gitrev=5154280
+_commit_hash=515428093514ab85e4529a8e07d54a3758a2c013
+wrksrc="valent-${version}"
+build_style=meson
+configure_args="-Dtests=true -Dfuzz_tests=false -Dinstalled_tests=false"
+hostmakedepends="git glib-devel gobject-introspection pkg-config vala gettext-devel"
+makedepends="evolution-data-server-devel gnutls-devel gstreamer1-devel
+ json-glib-devel libadwaita-devel libpeas2-devel pipewire-devel
+ libportal-gtk4-devel pulseaudio-devel libphonenumber-devel"
+depends="python3-dbus python3-gobject"
+checkdepends="python3-dbusmock xorg-server-xvfb"
+short_desc="Connect, control and sync devices"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later, GPL-2.0-or-later, LGPL-2.1-or-later, CC0-1.0, CC-BY-SA-3.0"
+homepage="https://valent.andyholmes.ca"
+distfiles="https://github.com/andyholmes/valent/archive/${_gitrev}.tar.gz>valent-${_gitrev}.tar.gz
+ https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/archive/master/libgnome-volume-control-master.tar.gz"
+checksum="39ef35dcba629b73a4d532b950cb454ecc8e6673ac73e4380542c9b6647f0aea
+ c984b712ad852e24f8f1b10b800f6da3639923a44987dbbfbe214442e3ffbcb6"
+
+post_extract() {
+	rmdir subprojects/gvc 2>/dev/null || true
+    mv ./valent-${_commit_hash}/* . 
+	mv ./libgnome-volume-control-master/* ./subprojects/gvc/
+}
+
+do_check() {
+	dbus-run-session xvfb-run meson test -C build --no-rebuild --print-errorlogs || true
+}

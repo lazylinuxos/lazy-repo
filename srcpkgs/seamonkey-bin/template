@@ -1,0 +1,33 @@
+# Template file for 'seamonkey-bin'
+pkgname=seamonkey-bin
+version=2.53.21
+_version=2.53.21
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="desktop-file-utils mime-types" 
+short_desc="SeaMonkey internet suite"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MPL"
+homepage="https://www.seamonkey-project.org"
+distfiles="https://archive.seamonkey-project.org/releases/${_version}/linux-x86_64/en-US/seamonkey-${_version}.en-US.linux-x86_64.tar.bz2"
+checksum=19e819428dbec28e63ca197444d80e8456f106a462254521009f7ae85dae5c16
+replaces="seamonkey"
+
+do_install() {
+	vmkdir usr/lib
+	vcopy ${wrksrc}/* usr/lib
+
+	vmkdir usr/share
+	vinstall ${FILESDIR}/seamonkey.desktop 644 usr/share/applications/
+	
+	for i in 16 22 24 32 48 64 128 256; do
+		vinstall ${wrksrc}/seamonkey/chrome/icons/default/default$i.png 644 usr/share/icons/hicolor/${i}x${i}/apps ${pkgname}.png
+  	done
+
+	# link the binary
+	vmkdir usr/bin/
+	ln -s /usr/lib/seamonkey/seamonkey-bin ${DESTDIR}/usr/bin/seamonkey
+}

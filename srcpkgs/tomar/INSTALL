@@ -1,0 +1,7 @@
+case "$ACTION" in
+post)
+    # Create data directory with proper permissions
+    mkdir -p /opt/tomar/data
+    chmod 1777 /opt/tomar/data
+    ;;
+esac

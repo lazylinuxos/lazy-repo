@@ -1,0 +1,26 @@
+# Template file for 'python3-uc-micro-py'
+pkgname=python3-uc-micro-py
+version=1.0.3
+revision=1
+wrksrc="uc.micro-py-${version}"
+hostmakedepends="python3 python3-setuptools python3-wheel python3-build python3-installer"
+depends="python3"
+checkdepends="python3-pytest"
+short_desc="Micro subset of unicode data files for linkify-it-py projects"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/tsutsu3/uc.micro-py"
+distfiles="https://github.com/tsutsu3/uc.micro-py/archive/refs/tags/v${version}.tar.gz"
+checksum=e0ddcdcdbb8d834fee77cb0605535d27ba2abb3f90b21cdaee3a4eeb8bed395b
+
+do_build() {
+	python3 -m build --wheel --no-isolation
+}
+
+do_check() {
+	python3 -m pytest
+}
+
+do_install() {
+	python3 -m installer --destdir="${DESTDIR}" dist/*.whl
+}

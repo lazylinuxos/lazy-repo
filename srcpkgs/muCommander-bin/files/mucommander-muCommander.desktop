@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=muCommander
+Comment=muCommander
+Exec=/opt/mucommander/bin/muCommander
+Icon=/opt/mucommander/lib/muCommander.png
+Terminal=false
+StartupWMClass=java-lang-Thread
+Type=Application
+Categories=Unknown
+MimeType=

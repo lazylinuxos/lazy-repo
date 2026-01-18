@@ -1,0 +1,30 @@
+# Template file for 'kiorg'
+pkgname=kiorg
+version=1.4.5
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config clang llvm"
+makedepends="openssl-devel libzstd-devel oniguruma-devel fontconfig-devel lld binutils"
+short_desc="Hacker's file manager with VIM inspired keybind"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/houqp/kiorg"
+distfiles="https://github.com/houqp/kiorg/archive/refs/tags/v${version}.tar.gz"
+checksum=7c0425e0e900586b31c25de96499029d5cd7be2cb9873d40663e2aa3904becd6
+
+post_extract() {
+	cp -r ${FILESDIR}/pdf_fonts assets/
+}
+
+do_install() {
+    vbin target/${RUST_TARGET}/release/kiorg
+	vmkdir usr/share/applications
+	vinstall ${FILESDIR}/kiorg.desktop 644 usr/share/applications
+	
+	vmkdir usr/share/pixmaps
+	vinstall ${FILESDIR}/kiorg.png 644 usr/share/pixmaps
+}
+
+post_install() {
+	vlicense LICENSE
+}

@@ -1,0 +1,20 @@
+--- a/vicinae/src/services/script-command/script-command-service.cpp
++++ b/vicinae/src/services/script-command/script-command-service.cpp
+@@ -39,7 +39,7 @@
+ }
+ 
+ std::vector<std::filesystem::path> ScriptCommandService::scriptDirectories() const {
+-  return std::views::concat(m_customScriptPaths, defaultScriptDirectories()) | std::ranges::to<std::vector>();
++  return std::views::join(std::array{m_customScriptPaths, defaultScriptDirectories()}) | std::ranges::to<std::vector>();
+ }
+ 
+ const std::vector<std::shared_ptr<ScriptCommandFile>> &ScriptCommandService::scripts() const {
+@@ -57,7 +57,7 @@
+   for (const QString &dir : m_watcher->directories()) {
+     m_watcher->removePath(dir);
+   }
+-  for (const auto &path : std::views::concat(m_customScriptPaths, defaultScriptDirectories())) {
++  for (const auto &path : std::views::join(std::array{m_customScriptPaths, defaultScriptDirectories()})) {
+     m_watcher->addPath(path.c_str());
+   }
+ }

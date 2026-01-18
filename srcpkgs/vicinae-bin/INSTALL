@@ -1,0 +1,5 @@
+case "$ACTION" in
+post)
+    ln -s /usr/lib/libxml2.so.2 /usr/lib/libxml2.so.16
+    ;;
+esac

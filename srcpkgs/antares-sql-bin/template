@@ -1,0 +1,47 @@
+# Template file for 'antares-sql-bin'
+pkgname=antares-sql-bin
+_pkgname=antares
+version=0.7.35
+_electronversion=35
+revision=1
+hostmakedepends="tar xz"
+depends="electron${_electronversion}"
+short_desc="Modern, fast SQL client focused on UX (prebuilt binary, uses system electron)"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://antares-sql.app/"
+distfiles="https://github.com/antares-sql/antares/releases/download/v${version}/Antares-${version}-linux_amd64.deb"
+checksum="8939618d216d598f84e824ccab3779776513e13fc6f64ef23706354e0e178278"
+
+do_extract() {
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-bin}/g
+        s/@runname@/app.asar/g
+        s/@cfgdirname@/${_pkgname}/g
+        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+    " "${FILESDIR}/${pkgname%-bin}.sh"
+    
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/Antares-${version}-linux_amd64.deb
+	tar xf data.tar.*
+}
+
+do_install() {
+	vbin ${FILESDIR}/${pkgname%-bin}.sh ${pkgname%-bin}
+
+	vmkdir usr/lib/antares-sql
+	vcopy opt/Antares/resources/app.asar usr/lib/antares-sql/
+	cp -a opt/Antares/resources/app.asar.unpacked ${DESTDIR}/usr/lib/antares-sql/
+
+	vinstall usr/share/applications/antares.desktop 644 usr/share/applications
+	sed -i 's|/opt/Antares/antares|antares-sql|; s|Icon=antares|Icon=antares-sql|' \
+		${DESTDIR}/usr/share/applications/antares.desktop
+
+	for size in 16x16 32x32 64x64 128x128 256x256; do
+		vinstall usr/share/icons/hicolor/${size}/apps/antares.png 644 usr/share/icons/hicolor/${size}/apps
+		mv ${DESTDIR}/usr/share/icons/hicolor/${size}/apps/antares.png \
+		   ${DESTDIR}/usr/share/icons/hicolor/${size}/apps/antares-sql.png
+	done
+
+	vlicense ${FILESDIR}/LICENSE
+}

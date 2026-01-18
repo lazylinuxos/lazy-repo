@@ -1,0 +1,39 @@
+# Template file for 'zed-bin'
+pkgname=zed-bin
+version=0.218.6
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="vulkan-loader mesa-vulkan-intel intel-video-accel"
+short_desc="High-performance, multiplayer code editor"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0-or-later, Apache-2.0, GPL-3.0-or-later"
+homepage="https://zed.dev/"
+distfiles="https://github.com/zed-industries/zed/releases/download/v${version}/zed-linux-x86_64.tar.gz"
+checksum=b7543b917e8c0edef8a844518d63b4b366875a112af53523c9bc9a0e452ac4f2
+conflicts="zed"
+replaces="zed"
+noshlibprovides=yes
+
+do_install() {
+	vmkdir opt/zed/bin
+	vcopy ${wrksrc}/zed.app/bin/* opt/zed/bin
+
+	vmkdir opt/zed/lib
+	vcopy ${wrksrc}/zed.app/lib/* opt/zed/lib
+
+	vmkdir opt/zed/libexec
+	vcopy ${wrksrc}/zed.app/libexec/* opt/zed/libexec
+
+	vmkdir usr/share
+	vcopy ${wrksrc}/zed.app/share/* usr/share
+
+	vlicense ${FILESDIR}/LICENSE-AGPL
+	vinstall ${FILESDIR}/zed.desktop 644 usr/share/applications/
+
+	# link the binary
+	vmkdir usr/bin/
+	ln -s /opt/zed/bin/zed ${DESTDIR}/usr/bin/
+}
