@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Vicinae Server
-Exec=vicinae server
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-StartupNotify=false
