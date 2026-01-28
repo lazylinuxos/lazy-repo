@@ -1,7 +1,7 @@
 # Template file for 'zen-browser-bin'
 pkgname=zen-browser-bin
-version=1.17.15b
-_version=1.17.15b
+version=1.18.2b
+_version=1.18.2b
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0"
 homepage="https://www.zen-browser.app/"
 distfiles="https://github.com/zen-browser/desktop/releases/download/${_version}/zen.linux-x86_64.tar.xz"
-checksum=13ef9d59e25c61b0af9b182f89ad1a5b08eb197d9e61668f145d752dda378778
+checksum=7ff77d960ce7c8a19a7176f2c076d0f6b037f38b605fc93a72199e81eda1a5f5
 replaces="zen-browser"
 
 do_install() {

@@ -17,8 +17,29 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  prepare-runner:
+    name: Prepare runner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free disk space on runner
+        run: |
+          echo "Disk space before cleanup:"
+          df -h /
+
+          sudo rm -rf /usr/lib/jvm
+          sudo rm -rf /usr/local/lib/android 
+          sudo rm -rf /usr/share/dotnet 
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache          
+          
+          echo "Disk space after cleanup:"
+          df -h /
+          
   build:
     name: Build packages
+    needs: prepare-runner
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -91,9 +112,9 @@ jobs:
           echo XBPS_CHROOT_CMD=uchroot >> etc/conf
 
           yes | sudo -Eu builder ./xbps-src -m masterdir-${{ matrix.config.arch }} -A ${{ matrix.config.arch }} binary-bootstrap
-
+        
       # -------------------- Packages to build --------------------
-
+                    
       - name: build pkgs
         run: |
           pkgs=$(cat /tmp/templates)
