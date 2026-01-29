@@ -13,8 +13,8 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0"
 homepage="https://www.waterfox.net"
 changelog="${homepage}/docs/releases/${version}/"
-distfiles="https://cdn.waterfox.net/${_pkgname}/releases/${version}/Linux_x86_64/${_pkgname}-${version}.tar.bz2"
-checksum=0951435539c1a07d7a33657917ea51431bf9be75b00005a100a54aa2f067ff57
+distfiles="https://cdn.waterfox.com/${_pkgname}/releases/${version}/Linux_x86_64/${_pkgname}-${version}.tar.bz2"
+checksum=563f78b523f11b133297a0f68e0cfd2816478e3a665807c841e925218ced7188
 replaces="waterfox"
 
 do_install() {

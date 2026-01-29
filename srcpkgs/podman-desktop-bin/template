@@ -18,7 +18,7 @@ replaces="podman-desktop"
 do_install() {
 	# Install the files
 	vmkdir opt/podman-desktop
-	vcopy podman-desktop-${version}/* opt/podman-desktop
+	vcopy podman-desktop-${version}-x64/* opt/podman-desktop
 
 	vmkdir usr/share/applications
 	vinstall ${FILESDIR}/podman-desktop.desktop 644 usr/share/applications

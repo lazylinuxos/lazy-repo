@@ -1,6 +1,6 @@
 # Template file for 'fresh-editor'
 pkgname=fresh-editor
-version=0.1.94
+version=0.1.95
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config clang llvm"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-only"
 homepage="https://sinelaw.github.io/fresh/"
 distfiles="https://github.com/sinelaw/fresh/releases/download/v${version}/fresh-editor-${version}-source.tar.gz"
-checksum=d56553fcaf5d0ff07df3316a109f6b862e07c33b4f17bf9a2aaf62375e72e136
+checksum=cc65668e6eadcf1e7c8b1f46f4d4dbc5c6fa29831a559c6030c88921723ff56b
 
 export CC=clang
 
@@ -19,8 +19,8 @@ do_install() {
 	vbin target/${RUST_TARGET}/release/fresh
 
 	vmkdir usr/share/${pkgname}
-	vcopy plugins usr/share/${pkgname}/
-	vcopy keymaps usr/share/${pkgname}/
+	vcopy crates/fresh-editor/plugins usr/share/${pkgname}/
+	vcopy crates/fresh-editor/keymaps usr/share/${pkgname}/
 
 	vmkdir usr/share/doc/${pkgname}
 	vinstall README.md 644 usr/share/doc/${pkgname}
