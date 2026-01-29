@@ -27,16 +27,24 @@ jobs:
           df -h /
 
           sudo rm -rf /usr/lib/jvm
-          sudo rm -rf /usr/local/lib/android 
-          sudo rm -rf /usr/share/dotnet 
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet
           sudo rm -rf /usr/local/share/boost
           sudo rm -rf /usr/local/.ghcup
           sudo rm -rf /opt/ghc
-          sudo rm -rf /opt/hostedtoolcache          
-          
+          sudo rm -rf /opt/hostedtoolcache
+
           echo "Disk space after cleanup:"
           df -h /
-          
+
+      - name: Enable swap
+        run: |
+          sudo fallocate -l 8G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
+
   build:
     name: Build packages
     needs: prepare-runner
@@ -112,14 +120,15 @@ jobs:
           echo XBPS_CHROOT_CMD=uchroot >> etc/conf
 
           yes | sudo -Eu builder ./xbps-src -m masterdir-${{ matrix.config.arch }} -A ${{ matrix.config.arch }} binary-bootstrap
-        
+
       # -------------------- Packages to build --------------------
-                    
+      # -j$(nproc)
+
       - name: build pkgs
         run: |
           pkgs=$(cat /tmp/templates)
           for pkg in ${pkgs}; do
-            sudo -Eu builder ./xbps-src pkg -j$(nproc) -m masterdir-${{ matrix.config.arch }} -A ${{ matrix.config.arch }} "${pkg}" || printf "Failed building ${pkg}!\n"
+            sudo -Eu builder ./xbps-src pkg -j2 -m masterdir-${{ matrix.config.arch }} -A ${{ matrix.config.arch }} "${pkg}" || printf "Failed building ${pkg}!\n"
           done
 
       # -----------------------------------------------------------
@@ -164,7 +173,7 @@ jobs:
           name: ${{ env.SHORT_SHA }}
           tag_name: ${{ env.TAG }}
           files: |
-            ./hostdir/binpkgs/*.xbps            
+            ./hostdir/binpkgs/*.xbps
             ./hostdir/binpkgs/*.sig2
             ./hostdir/binpkgs/*repodata
 
