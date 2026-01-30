@@ -17,37 +17,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  prepare-runner:
-    name: Prepare runner
-    runs-on: ubuntu-latest
-    steps:
-      - name: Free disk space on runner
-        run: |
-          echo "Disk space before cleanup:"
-          df -h /
-
-          sudo rm -rf /usr/lib/jvm
-          sudo rm -rf /usr/local/lib/android
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /usr/local/share/boost
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /opt/ghc
-          sudo rm -rf /opt/hostedtoolcache
-
-          echo "Disk space after cleanup:"
-          df -h /
-
-      - name: Enable swap
-        run: |
-          sudo fallocate -l 8G /swapfile
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
-          free -h
-
   build:
     name: Build packages
-    needs: prepare-runner
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -56,7 +27,6 @@ jobs:
       matrix:
         config:
           - { arch: x86_64,       libc: glibc }
-          # - { arch: x86_64-musl,  libc: musl  }
     container:
       image: ghcr.io/void-linux/void-${{ matrix.config.libc }}-full:20250901R1
       options: --platform linux/amd64 --privileged
@@ -122,13 +92,12 @@ jobs:
           yes | sudo -Eu builder ./xbps-src -m masterdir-${{ matrix.config.arch }} -A ${{ matrix.config.arch }} binary-bootstrap
 
       # -------------------- Packages to build --------------------
-      # -j$(nproc)
 
       - name: build pkgs
         run: |
           pkgs=$(cat /tmp/templates)
           for pkg in ${pkgs}; do
-            sudo -Eu builder ./xbps-src pkg -j2 -m masterdir-${{ matrix.config.arch }} -A ${{ matrix.config.arch }} "${pkg}" || printf "Failed building ${pkg}!\n"
+            sudo -Eu builder ./xbps-src pkg -j$(nproc) -m masterdir-${{ matrix.config.arch }} -A ${{ matrix.config.arch }} "${pkg}" || printf "Failed building ${pkg}!\n"
           done
 
       # -----------------------------------------------------------
