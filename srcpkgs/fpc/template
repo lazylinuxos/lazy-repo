@@ -1,0 +1,99 @@
+# Template file for 'fpc'
+pkgname=fpc
+version=3.2.2
+revision=1
+archs="x86_64* i686* ppc64le ppc64 ppc"
+build_wrksrc="${pkgname}build-${version}"
+conf_files="/etc/fpc.cfg /etc/fppkg.cfg"
+makedepends="ncurses-devel zlib-devel expat-devel"
+short_desc="Free Pascal Compiler"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+homepage="http://freepascal.org/"
+distfiles="${SOURCEFORGE_SITE}/freepascal/Source/${version}/${pkgname}build-${version}.tar.gz"
+checksum=85ef993043bb83f999e2212f1bca766eb71f6f973d362e2290475dbaaf50161f
+case "$XBPS_TARGET_MACHINE" in
+x86_64*)
+	distfiles+=" ${SOURCEFORGE_SITE}/freepascal/Linux/${version}/${pkgname}-${version}-1.x86_64.rpm"
+	checksum+=" c99548926f98537debd9f63af0fa3b1b357adfb21059bef358650ecffa988328"
+	;;
+i686*)
+	distfiles+=" ${SOURCEFORGE_SITE}/freepascal/Linux/${version}/${pkgname}-${version}-1.i686.rpm"
+	checksum+=" f83e1e94b87de850d94d1902eed909bd363db1301a806ae22c75c436107bb6ff"
+	;;
+ppc64le*)
+	distfiles+=" ${SOURCEFORGE_SITE}/freepascal/Linux/${version}/${pkgname}-${version}.powerpc64le-linux.tar"
+	checksum+=" 83c57d7caecfaa69fe817f6d26750aa3a08c5436f7c64bf87dead81d62a5e38a"
+	;;
+ppc64*)
+	distfiles+=" ${SOURCEFORGE_SITE}/freepascal/Linux/${version}/${pkgname}-${version}.powerpc64-linux.tar"
+	checksum+=" 0aa0310163a48c7e3d63a314ab26669142efe47543bbac32ca6164ef4829c775"
+	;;
+ppc*)
+	distfiles+=" ${SOURCEFORGE_SITE}/freepascal/Linux/${version}/${pkgname}-${version}.powerpc-linux.tar"
+	checksum+=" 8ac0227f0e7ec74c0118991dd4b814683715a5e2dd9267c029faaf94eaf50dfe"
+	;;
+esac
+# TODO: figure out cross-build and how to unwrap the ARM .tar.
+nocross=yes
+nopie=yes
+noverifyrdeps=yes
+patch_args=-Np0
+
+post_extract() {
+	# extract recursive tar files or otherwise post-process.
+	case "$XBPS_TARGET_MACHINE" in
+	ppc*)
+		case "$XBPS_TARGET_MACHINE" in
+			ppc64*) PPC_SUFFIX="64";;
+		esac
+		mkdir ${wrksrc}/usr
+		cd ${wrksrc}/${pkgname}-${version}.powerpc${PPC_SUFFIX}-linux
+		for f in $(bsdtar -tf binary.powerpc${PPC_SUFFIX}-linux.tar)
+		do
+			bsdtar -xOf binary.powerpc${PPC_SUFFIX}-linux.tar $f | bsdtar -C ${wrksrc}/usr -xzf -
+		done
+		cd ${wrksrc}
+		ln -sf ../lib/fpc/${version}/ppcppc${PPC_SUFFIX} usr/bin
+		;;
+	x86_64*|i686*)
+		# relative links needed
+		ln -sf ../lib64/fpc/${version}/ppcx64 usr/bin
+		ln -sf ../lib/fpc/${version}/ppc386 usr/bin
+		;;
+	esac
+
+
+	# tweak PT_INTERP for musl targets
+	case "$XBPS_TARGET_MACHINE" in
+	x86_64-musl)
+		sed -i s,/lib64/ld-linux-x86-64.so.2,/lib/ld-musl-x86_64.so.1, $build_wrksrc/fpcsrc/compiler/systems/t_linux.pas
+		cd $build_wrksrc && patch -p0 < ${FILESDIR}/musl-__libc_csu.patch
+		;;
+	i686)
+		sed -i s,/lib/ld-linux.so.2,/lib/ld-musl-i386.so.1, $build_wrksrc/fpcsrc/compiler/systems/t_linux.pas
+		cd $build_wrksrc && patch -p0 < ${FILESDIR}/musl-__libc_csu.patch
+		;;		
+	i686-musl)
+		sed -i s,/lib/ld-linux.so.2,/lib/ld-musl-i386.so.1, $build_wrksrc/fpcsrc/compiler/systems/t_linux.pas
+		;;
+	esac
+}
+
+do_build() {
+	FPC=$wrksrc/usr/bin/fpc make ${makejobs} all NOGDB=1
+	# there is a conflict with package phorward in /usr/bin/plex, so we rename it
+    mv $wrksrc/usr/bin/plex $wrksrc/usr/bin/fplex
+	mv $wrksrc/usr/share/man/man1/plex.1.gz $wrksrc/usr/share/man/man1/fplex.1.gz
+}
+
+do_install() {
+	FPC=$wrksrc/usr/bin/fpc make install NOGDB=1 \
+		PREFIX=$DESTDIR/usr INSTALL_MANDIR=$DESTDIR/usr/share/man
+	ln -srf $DESTDIR/usr/lib/fpc/${version}/ppc* $DESTDIR/usr/bin
+	vmkdir etc
+	PATH=$DESTDIR/usr/bin:$PATH \
+		$DESTDIR/usr/lib/fpc/${version}/samplecfg \
+			$DESTDIR/usr/lib/fpc/${version} $DESTDIR/etc
+	sed -i "s,${DESTDIR},,g" $DESTDIR/etc/*.cfg $DESTDIR/etc/fppkg/default $DESTDIR/usr/lib/fpc/${version}/ide/text/*
+}
