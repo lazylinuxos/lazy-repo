@@ -1,5 +1,7 @@
 case "$ACTION" in
 post)
     ln -s /usr/lib/libsoup-3.0.so.0 /usr/lib/libsoup-2.4.so.1
+    ln -s /usr/lib/libwebkit2gtk-4.1.so.0 /usr/lib/libwebkit2gtk-4.0.so.37
+    ln -s /usr/lib/libjavascriptcoregtk-4.1.so.0 /usr/lib/libjavascriptcoregtk-4.0.so.18
     ;;
 esac

@@ -2,7 +2,7 @@
 pkgname=cattail
 version=1.1.0
 _version=1.1.0
-revision=3
+revision=4
 archs="x86_64"
 build_style="fetch"
 depends="libsoup3 libwebkit2gtk41 tailscale"
@@ -20,10 +20,10 @@ do_install() {
 	vmkdir usr/bin
 	vcopy cattail-linux-amd64 usr/bin/cattail
 	chmod +x ${DESTDIR}/usr/bin/cattail
-	
+
 	vmkdir usr/share/applications
 	vinstall ${FILESDIR}/cattail.desktop 644 usr/share/applications
-	
+
 	vmkdir usr/share/pixmaps
 	vinstall ${FILESDIR}/cattail.png 644 usr/share/pixmaps
 }

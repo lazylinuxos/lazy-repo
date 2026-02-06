@@ -1,0 +1,15 @@
+# Template file for 'noctalia-cli'
+pkgname=noctalia-cli
+version=0.4.0
+revision=1
+#archs="i686 x86_64"
+#build_wrksrc=
+build_style=cargo
+hostmakedepends="pkg-config openssl-devel"
+depends="openssl"
+short_desc="Cli installer for noctalia-shell"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/noctalia-dev/noctalia-cli"
+distfiles="https://github.com/noctalia-dev/${pkgname}/archive/refs/tags/v${version}.tar.gz"
+checksum=0eec6e6949c0d2434a029a432806f07a41c678ea73418f5e205ee14b09fef9b5
