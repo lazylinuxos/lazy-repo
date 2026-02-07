@@ -1,13 +1,13 @@
 # Template file for 'distrobox'
 pkgname=distrobox
-version=1.8.2.3
+version=1.8.2.4
 revision=1
 short_desc="Podman/Docker wrapper to use any linux distribution in your terminal"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://distrobox.it"
 distfiles="https://github.com/89luca89/${pkgname}/archive/${version}.tar.gz"
-checksum=b4fcc60c0b856aac93385ea0eb88fb27fdaeb00b365c75e0eed497c306069837
+checksum=83eab6ba893dce56f0523a70ebfcf2a78f7785637a6895255777ef1b72d4eb89
 
 do_install() {
 	./install --prefix "${DESTDIR}/usr"

@@ -1,6 +1,6 @@
 # Template file for 'firedragon-bin'
 pkgname=firedragon-bin
-version=12.7.0
+version=12.8.0
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL2"
 homepage="https://firedragon.garudalinux.org"
 distfiles="https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v${version}/downloads/firedragon-linux-x64.tar.xz"
-checksum=1ca8473ae9be532202e3fbe14de760cdf55c0b0647a66f91be788e87fadd461e
+checksum=b31d5600ee539333b81f987e52685f7a5c03a376bd8a2d1ed5921597ad53515a
 replaces="firedragon"
 
 do_install() {

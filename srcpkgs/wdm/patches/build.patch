@@ -1,0 +1,10 @@
+--- a/src/wdm/consolekit.c
++++ b/src/wdm/consolekit.c
+@@ -27,6 +27,7 @@
+ #include <string.h>
+ #include <pwd.h>
+ 
++#include <sys/sysmacros.h>
+ #include <sys/types.h>
+ 
+ #ifdef WITH_CONSOLE_KIT

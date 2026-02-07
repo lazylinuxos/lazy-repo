@@ -1,7 +1,7 @@
 --- a/crates/settings_ui/src/page_data.rs
 +++ b/crates/settings_ui/src/page_data.rs
-@@ -9,15 +9,15 @@
-     SettingsPageItem, SubPageLink, USER, all_language_names, sub_page_stack,
+@@ -10,10 +10,10 @@
+     pages::render_edit_prediction_setup_page,
  };
  
 -const DEFAULT_STRING: String = String::new();
@@ -11,12 +11,5 @@
 -const DEFAULT_EMPTY_STRING: Option<&String> = Some(&DEFAULT_STRING);
 +static DEFAULT_EMPTY_STRING: Option<&String> = Some(&DEFAULT_STRING);
  
--const DEFAULT_SHARED_STRING: SharedString = SharedString::new_static("");
-+static DEFAULT_SHARED_STRING: SharedString = SharedString::new_static("");
- /// A default empty string reference. Useful in `pick` functions for cases either in dynamic item fields, or when dealing with `settings::Maybe`
- /// to avoid the "NO DEFAULT" case.
--const DEFAULT_EMPTY_SHARED_STRING: Option<&SharedString> = Some(&DEFAULT_SHARED_STRING);
-+static DEFAULT_EMPTY_SHARED_STRING: Option<&SharedString> = Some(&DEFAULT_SHARED_STRING);
- 
- pub(crate) fn settings_data(cx: &App) -> Vec<SettingsPage> {
-     vec![
+ macro_rules! concat_sections {
+     (@vec, $($arr:expr),+ $(,)?) => {{
