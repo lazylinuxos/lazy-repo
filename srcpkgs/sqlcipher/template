@@ -1,0 +1,113 @@
+# Template file for 'sqlcipher'
+pkgname=sqlcipher
+version=4.13.0
+revision=1
+build_style=gnu-configure
+configure_args="
+ --with-tempstore=yes
+ --disable-static
+ --dll-basename=libsqlcipher
+ --fts3
+ --fts4
+ --fts5
+ --rtree
+"
+hostmakedepends="patchelf unzip"
+makedepends="
+ glibc-devel
+ openssl-devel
+ readline-devel
+ tcl-devel
+ zlib-devel
+"
+depends="
+ openssl
+ readline
+ tcl
+ zlib
+"
+short_desc="SQLite extension providing transparent 256-bit AES encryption"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://www.zetetic.net/sqlcipher"
+distfiles="https://www.zetetic.net/sqlcipher/verify/${version}/sqlcipher-${version}.zip"
+checksum="b2b9cb0a560005ca3090a98a8c1cc15d0a75e7d06ca8dd91846daa1a0ff5caf4"
+
+pre_configure() {
+	# Fortify fix
+	export CFLAGS="${CFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+	export CXXFLAGS="${CXXFLAGS/_FORTIFY_SOURCE=3/_FORTIFY_SOURCE=2}"
+
+	export CPPFLAGS="${CPPFLAGS} \
+	 -DSQLITE_ENABLE_COLUMN_METADATA=1 \
+	 -DSQLITE_ENABLE_UNLOCK_NOTIFY \
+	 -DSQLITE_ENABLE_DBSTAT_VTAB=1 \
+	 -DSQLITE_ENABLE_FTS3_TOKENIZER=1 \
+	 -DSQLITE_SECURE_DELETE \
+	 -DSQLITE_ENABLE_STMTVTAB \
+	 -DSQLITE_MAX_VARIABLE_NUMBER=250000 \
+	 -DSQLITE_MAX_EXPR_DEPTH=10000 \
+	 -DSQLITE_ENABLE_MATH_FUNCTIONS"
+
+	export CFLAGS="${CFLAGS} \
+	 -DSQLITE_HAS_CODEC \
+	 -DSQLITE_TEMP_STORE=2 \
+	 -DSQLCIPHER_TEST \
+	 -DSQLITE_EXTRA_INIT=sqlcipher_extra_init \
+	 -DSQLITE_EXTRA_SHUTDOWN=sqlcipher_extra_shutdown"
+
+	export LDFLAGS="${LDFLAGS} -lcrypto -Wl,-soname,libsqlcipher.so.0"
+}
+
+post_build() {
+	make testfixture
+}
+
+do_check() {
+	./testfixture test/sqlcipher.test
+}
+
+post_install() {
+	# Rename binary to avoid conflict with sqlite
+	mv "${DESTDIR}/usr/bin/sqlite3" "${DESTDIR}/usr/bin/sqlcipher"
+
+	# TCL module fixes
+	mv "${DESTDIR}/usr/lib/tcl8.6/sqlite3.51.2" \
+	   "${DESTDIR}/usr/lib/tcl8.6/sqlite3"
+	mv "${DESTDIR}/usr/lib/tcl8.6/sqlite3/libsqlite3.51.2.so" \
+	   "${DESTDIR}/usr/lib/tcl8.6/sqlite3/libtclsqlite3.so"
+
+	patchelf --set-soname libtclsqlite3.so \
+	  "${DESTDIR}/usr/lib/tcl8.6/sqlite3/libtclsqlite3.so"
+
+	# Man page
+	rm -f "${DESTDIR}/usr/share/man/man1/sqlite3.1"
+	vinstall sqlcipher.1 644 usr/share/man/man1
+
+	# License
+	vlicense LICENSE.md
+}
+
+
+sqlcipher-devel_package() {
+	short_desc+=" (development files)"
+	depends="sqlcipher-${version}_${revision}"
+	pkg_install() {
+		# Headers
+		vmkdir usr/include/sqlcipher
+		mv "${DESTDIR}/usr/include/sqlite3.h" \
+		   "${PKGDESTDIR}/usr/include/sqlcipher/"
+		mv "${DESTDIR}/usr/include/sqlite3ext.h" \
+		   "${PKGDESTDIR}/usr/include/sqlcipher/"
+
+		# pkg-config
+		vmkdir usr/lib/pkgconfig
+		mv "${DESTDIR}/usr/lib/pkgconfig/sqlite3.pc" \
+		   "${PKGDESTDIR}/usr/lib/pkgconfig/sqlcipher.pc"
+
+		sed -i \
+		 -e 's/-lsqlite3/-lsqlcipher/g' \
+		 -e 's|includedir=.*|includedir=${prefix}/include/sqlcipher|' \
+		 "${PKGDESTDIR}/usr/lib/pkgconfig/sqlcipher.pc"
+	}
+}
