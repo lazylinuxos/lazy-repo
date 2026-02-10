@@ -1,6 +1,6 @@
 # Template file for 'vicinae-bin'
 pkgname=vicinae-bin
-version=0.19.6
+version=0.19.7
 revision=1
 archs="x86_64"
 depends="
@@ -18,7 +18,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/vicinaehq/vicinae"
 distfiles="https://github.com/vicinaehq/vicinae/releases/download/v${version}/vicinae-linux-x86_64-v${version}.tar.gz"
-checksum=791deded2aef249752275bc407fe110c73221f00cad956ae4ed5c9ed55290a8e
+checksum=118ff1bc745d2baede739d1fdddc7199d3893adb885b7fcc62de980c8bb6d90a
 conflicts="vicinae"
 replaces="vicinae"
 noverifyrdeps=yes
@@ -29,8 +29,8 @@ do_install() {
 
 	vmkdir usr/share
 	vcopy share/* usr/share
-	
-	# Service doesn't work at this moment, add daemon to autostart 
+
+	# Service doesn't work at this moment, add daemon to autostart
 	vmkdir etc/xdg/autostart
 	vinstall ${FILESDIR}/vicinae-server.desktop 644 etc/xdg/autostart
 }
