@@ -1,6 +1,6 @@
 # Template file for 'dgop'
 pkgname=dgop
-version=0.1.13
+version=0.2.2
 revision=1
 archs="x86_64"
 build_style=go
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/AvengeMedia/dgop"
 distfiles="https://github.com/AvengeMedia/dgop/archive/refs/tags/v${version}.tar.gz"
-checksum=4271aba324d9d92547897990ad6325e996f7a28f25f26cfbd516fa9e7deec2ba
+checksum=2e45d94d2227bb596844681e66f948aeea4a09be3f7ee88dcbbf38938cabec32
 
 do_build() {
 	cd ${wrksrc}
@@ -22,7 +22,7 @@ do_build() {
 	export CGO_CXXFLAGS="$CXXFLAGS"
 	export CGO_LDFLAGS="$LDFLAGS"
 	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=${go_ldflags}"
-	go build -o dgop ./cmd/cli
+	go build -o dgop ./cmd/dgop
 }
 
 do_install() {
