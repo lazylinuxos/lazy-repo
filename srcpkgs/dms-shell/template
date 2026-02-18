@@ -24,7 +24,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/AvengeMedia/${_pkg1}"
 distfiles="https://github.com/AvengeMedia/${_pkg1}/archive/v${version}/${_pkg1}-${version}.tar.gz"
-checksum="47efa145d6898edd10c176e7cb2cb9fb0c760b465b3d318b4a4fa2caa963dc35"
+checksum=47efa145d6898edd10c176e7cb2cb9fb0c760b465b3d318b4a4fa2caa963dc35
 
 do_build() {
 	cd core 
