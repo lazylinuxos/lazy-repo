@@ -1,7 +1,7 @@
 # Template file for 'dms-shell'
 pkgname=dms-shell
 _pkg1=DankMaterialShell
-version=1.4.1
+version=1.4.2
 revision=1
 archs="x86_64"
 build_style=go
@@ -24,10 +24,10 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/AvengeMedia/${_pkg1}"
 distfiles="https://github.com/AvengeMedia/${_pkg1}/archive/v${version}/${_pkg1}-${version}.tar.gz"
-checksum=47efa145d6898edd10c176e7cb2cb9fb0c760b465b3d318b4a4fa2caa963dc35
+checksum=dd091679572d59db2d1d858dd5eb296028cebbd3ab14c15d6b35b7ceecfb67d8
 
 do_build() {
-	cd core 
+	cd core
 	export CGO_CPPFLAGS="$CPPFLAGS"
 	export CGO_CFLAGS="$CFLAGS"
 	export CGO_CXXFLAGS="$CXXFLAGS"
@@ -53,7 +53,7 @@ dms-shell-niri_package() {
 	pkg_install() {
 		vmkdir usr/share/doc/dms-shell-niri
 		vcopy ${DESTDIR}/usr/share/doc/dms-shell/* usr/share/doc/dms-shell-niri/
-	}	
+	}
 }
 
 # dms-shell-hyprland_package() {
