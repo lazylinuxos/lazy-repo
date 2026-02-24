@@ -22,4 +22,4 @@ rm ./${VERSION}.tar.gz
 
 envsubst '${SHA256} ${VERSION}' < ${__dir}/.template > ${__dir}/template
 
-printf "dms-shell template updated\n"
+printf "dms-greeter template updated\n"

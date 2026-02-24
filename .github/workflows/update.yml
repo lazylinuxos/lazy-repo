@@ -19,7 +19,11 @@ jobs:
         fetch-depth: 0
         token: ${{ secrets.PULL_PUSH }}
     - run: sudo apt update -y && sudo apt install -y jq git curl
+    - run: bash ./srcpkgs/dgop/update.sh
+    - run: bash ./srcpkgs/dinox/update.sh
+    - run: bash ./srcpkgs/dms-greeter/update.sh
     - run: bash ./srcpkgs/dms-shell/update.sh
+    - run: bash ./srcpkgs/dsearch/update.sh
     - name: Check for updates
       id: check-updates
       run: |
