@@ -1,7 +1,7 @@
 # Template file for 'greeter'
 pkgname=dms-greeter
 _pkg1=DankMaterialShell
-version=1.4.2
+version=1.4.3
 revision=1
 archs="x86_64"
 build_style=meta
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/AvengeMedia/${_pkg1}"
 distfiles="https://github.com/AvengeMedia/${_pkg1}/archive/v${version}/${_pkg1}-${version}.tar.gz"
-checksum=dd091679572d59db2d1d858dd5eb296028cebbd3ab14c15d6b35b7ceecfb67d8
+checksum=2be47d1192fd0b6212ab224a5a1c2a83d08ec5374fbbf307721d6e455eb9895d
 
 do_install() {
 	vbin quickshell/Modules/Greetd/assets/${pkgname}
