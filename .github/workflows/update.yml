@@ -7,28 +7,37 @@ on:
   workflow_dispatch:
 
 jobs:
+  discover-packages:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.pkgs.outputs.list }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: pkgs
+        run: |
+          list=$(find srcpkgs -mindepth 2 -maxdepth 2 -type f -name update.sh \
+            | sed 's|srcpkgs/\([^/]*\)/update.sh|"\1"|' \
+            | paste -sd, -)
+          echo "list=[$list]" >> "$GITHUB_OUTPUT"
+
   update-versions:
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: discover-packages
+    if: ${{ github.ref == 'refs/heads/master' }}
     env:
       GH_TOKEN: ${{ github.token }}
+    strategy:
+      matrix:
+        pkg: ${{ fromJson(needs.discover-packages.outputs.packages) }}           
     steps:
     - uses: actions/checkout@v4
       with:
         persist-credentials: false
         fetch-depth: 0
         token: ${{ secrets.PULL_PUSH }}
-    - run: sudo apt update -y && sudo apt install -y jq git curl
-    - run: bash ./srcpkgs/dgop/update.sh
-    - run: bash ./srcpkgs/dinox/update.sh
-    - run: bash ./srcpkgs/dms-greeter/update.sh
-    - run: bash ./srcpkgs/dms-shell/update.sh
-    - run: bash ./srcpkgs/dsearch/update.sh
-    - run: bash ./srcpkgs/fresh-editor/update.sh
-    - run: bash ./srcpkgs/kiorg/update.sh
-    - run: bash ./srcpkgs/noctalia-shell/update.sh
-    - run: bash ./srcpkgs/wayscriber/update.sh
-    - run: bash ./srcpkgs/wayscriber-configurator/update.sh
+    - uses: dcarbone/install-jq-action@v3.2.0    
+    - name: Run update
+      run: bash srcpkgs/${{ matrix.pkg }}/update.sh
     - name: Check for updates
       id: check-updates
       run: |

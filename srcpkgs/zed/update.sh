@@ -5,9 +5,9 @@ printf "Checking latest version\n"
 
 __dir="$(dirname "${BASH_SOURCE[0]}")"
 
-GH_REPO="xapp-project/fingwit"
+GH_REPO="zed-industries/zed"
 
-LATEST_VERSION=$(gh api repos/${GH_REPO}/tags --jq '.[0].name')
+LATEST_VERSION=$(gh release list --repo ${GH_REPO} --json name,tagName,isLatest --jq '.[] | select(.isLatest)|.tagName')
 export VERSION=${LATEST_VERSION#"v"}
 CURRENT_VERSION=$(grep -E '^version=' ${__dir}/template | cut -d= -f2)
 
@@ -22,4 +22,4 @@ rm ./${VERSION}.tar.gz
 
 envsubst '${SHA256} ${VERSION}' < ${__dir}/.template > ${__dir}/template
 
-printf "fingwit template updated\n"
+printf "zed template updated\n"

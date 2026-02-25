@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - master
     paths:
       - srcpkgs/**
 
@@ -37,7 +37,7 @@ jobs:
         XBPS_TARGET_ARCH: ${{ matrix.arch }}
         REPO_OWNER: "${{ github.repository_owner }}"
         REPO_NAME: "${{ github.event.repository.name }}"
-    if: ${{ github.ref == 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/master' }}
 
     steps:
       - name: Prep container
@@ -60,7 +60,7 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global --add safe.directory "*"
           git remote add -f lazy-repo https://github.com/lazylinuxos/lazy-repo.git
-          git merge --no-commit --strategy-option=theirs --allow-unrelated-histories -Xignore-space-change lazy-repo/main
+          git merge --no-commit --strategy-option=theirs --allow-unrelated-histories -Xignore-space-change lazy-repo/master
           mkdir -p hostdir/binpkgs
           gh release download --pattern "*${ARCH}*" --dir hostdir/binpkgs --repo lazylinuxos/lazy-repo || true
           if [ "$ARCH" = x86_64 ]; then
@@ -73,7 +73,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           latest_name=$(gh release view --json tagName --jq '.tagName' --repo lazylinuxos/lazy-repo || echo "Initial Commit")
-          latest_sha=$(git rev-list --max-count=1 ${latest_name} 2>/dev/null || git rev-list --max-parents=0 lazy-repo/main)
+          latest_sha=$(git rev-list --max-count=1 ${latest_name} 2>/dev/null || git rev-list --max-parents=0 lazy-repo/master)
           echo "Latest Tag Name: ${latest_name}"
           echo "Latest Tag SHA: ${latest_sha}"
 
