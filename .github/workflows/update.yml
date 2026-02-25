@@ -24,6 +24,11 @@ jobs:
     - run: bash ./srcpkgs/dms-greeter/update.sh
     - run: bash ./srcpkgs/dms-shell/update.sh
     - run: bash ./srcpkgs/dsearch/update.sh
+    - run: bash ./srcpkgs/fresh-editor/update.sh
+    - run: bash ./srcpkgs/kiorg/update.sh
+    - run: bash ./srcpkgs/noctalia-shell/update.sh
+    - run: bash ./srcpkgs/wayscriber/update.sh
+    - run: bash ./srcpkgs/wayscriber-configurator/update.sh
     - name: Check for updates
       id: check-updates
       run: |
