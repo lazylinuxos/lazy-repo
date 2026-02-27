@@ -1,6 +1,6 @@
 # Template for deltachat-rpc-server
 pkgname=deltachat-rpc-server
-version=2.43.0
+version=2.44.0
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config sqlcipher-devel openssl-devel"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0"
 homepage="https://github.com/chatmail/core/tree/main/deltachat-rpc-server"
 distfiles="https://github.com/chatmail/core/archive/refs/tags/v${version}.tar.gz"
-checksum=2ec80964bb7c4df9062dc7eab4bb4a11d66534845393fefc42632c2b016d5ac6
+checksum=061104da72a60f37ad09b7b441b5e523036af3389ff1941d3a1979040ee66348
 cargo_pkg="${pkgname}"
 
 do_build() {
