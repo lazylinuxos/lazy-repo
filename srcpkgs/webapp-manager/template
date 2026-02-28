@@ -1,6 +1,6 @@
 # Template file for 'webapp-manager'
 pkgname=webapp-manager
-version=1.4.5
+version=master.lmde7
 revision=1
 hostmakedepends="gettext"
 depends="dconf python3-BeautifulSoup4 python3-configobj python3-gobject
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/linuxmint/webapp-manager"
 distfiles="https://github.com/linuxmint/${pkgname}/archive/refs/tags/${version}.tar.gz"
-checksum=4f1cd0d1dc7c79140d3a7b0c589d8acf91315c72428f56e37fadf0618286e32d
+checksum=68a206bb1a3400ac6b91cddd0998f1ace585972df6b3fe1ef1e249d258264ba7
 
 pre_build() {
 	# Fix browser names
