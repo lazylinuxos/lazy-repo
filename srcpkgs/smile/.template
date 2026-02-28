@@ -1,0 +1,29 @@
+# Template file for 'smile'
+pkgname=smile
+version=${VERSION}
+revision=2
+build_style=meson
+hostmakedepends="pkg-config desktop-file-utils appstream-glib"
+makedepends="gtk4-devel libadwaita-devel python3-dbus python3-gobject"
+depends="gtk4 libadwaita noto-fonts-emoji python3 python3-dbus python3-gobject 
+ xdotool wl-clipboard"
+short_desc="An emoji picker with custom tags support"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://mijorus.it/projects/smile/"
+distfiles="https://github.com/mijorus/smile/archive/refs/tags/${version}.tar.gz"
+checksum=${SHA256}
+
+post_extract() {
+	sed -i 's|flatpak run {self.application_id}|/usr/bin/smile|g' src/Settings.py
+	desktop-file-edit \
+		--set-key=Exec --set-value="$pkgname --start-hidden" \
+		--set-icon="it.mijorus.smile" \
+		"src/assets/$pkgname.autostart.desktop"
+}
+
+post_install() {
+	rm -v ${DESTDIR}/usr/share/icons/hicolor/scalable/actions/meson.build || true
+	rm -v ${DESTDIR}/usr/share/${pkgname}/assets/meson.build || true
+	rm -v ${DESTDIR}/usr/share/${pkgname}/${pkgname}/meson.build || true
+}

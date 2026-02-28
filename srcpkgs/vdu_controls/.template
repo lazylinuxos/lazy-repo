@@ -1,0 +1,30 @@
+# Template file for 'vdu_controls'
+pkgname=vdu_controls
+version=${VERSION}
+revision=1
+hostmakedepends="python3"
+depends="ddcutil hicolor-icon-theme noto-fonts-ttf python3-pyqt6 python3-pyqt6-svg qt6-svg"
+short_desc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/digitaltrails/vdu_controls"
+distfiles="https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+do_install() {
+    cd "${wrksrc}"
+
+    vbin vdu_controls.py vdu_controls
+
+	vmkdir usr/share
+
+    vcopy translations usr/share/vdu_controls/
+    vcopy sample-scripts usr/share/vdu_controls/
+    vcopy icons usr/share/vdu_controls/
+
+	vmkdir usr/share/man/man1/
+    vcopy docs/_build/man/vdu_controls.1 usr/share/man/man1/
+
+    vinstall vdu_controls.png 644 usr/share/icons/hicolor/256x256/apps/
+    vinstall vdu_controls.desktop 644 usr/share/applications/
+}

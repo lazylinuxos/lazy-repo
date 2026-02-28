@@ -3,7 +3,7 @@ pkgname=noctalia-shell
 version=${VERSION}
 revision=1
 depends="
- quickshell
+ noctalia-qs
  ImageMagick
  brightnessctl
  ffmpeg

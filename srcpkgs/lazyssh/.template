@@ -1,0 +1,28 @@
+# Template file for 'lazyssh'
+pkgname=lazyssh
+version=${VERSION}
+revision=1
+build_style=go
+go_package="./cmd"
+go_import_path="github.com/Adembc/lazyssh"
+short_desc="Terminal-based SSH manager inspired by lazydocker and k9s"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/Adembc/lazyssh"
+distfiles="https://github.com/Adembc/lazyssh/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+pre_build() {
+	export CGO_ENABLED=0
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+}
+
+post_install() {
+	mv ${DESTDIR}/usr/bin/cmd ${DESTDIR}/usr/bin/lazyssh
+	vlicense LICENSE
+	vdoc README.md
+}

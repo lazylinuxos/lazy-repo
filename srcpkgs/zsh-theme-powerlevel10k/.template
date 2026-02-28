@@ -1,0 +1,23 @@
+# Template file for 'zsh-theme-powerlevel10k'
+pkgname=zsh-theme-powerlevel10k
+version=${VERSION}
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="glibc zsh"
+short_desc="Powerlevel10k theme for Zsh"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/romkatv/powerlevel10k"
+distfiles="https://github.com/romkatv/powerlevel10k/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+do_install() {
+	# Install the files
+	vmkdir /usr/share/zsh-theme-powerlevel10k
+	vcopy powerlevel10k-${version}/* /usr/share/zsh-theme-powerlevel10k
+
+	vlicense powerlevel10k-${version}/LICENSE
+}

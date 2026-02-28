@@ -1,0 +1,32 @@
+# Template file for 'sshpilot'
+pkgname=sshpilot
+version=${VERSION}
+revision=1
+wrksrc="${pkgname}-${version}"
+hostmakedepends="python3 python3-packaging-bootstrap"
+depends="python3 python3-gobject python3-cairo python3-paramiko python3-cryptography 
+ python3-SecretStorage python3-matplotlib libadwaita vte3-gtk4-devel"
+short_desc="SSH connection manager with integrated terminal,"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/mfat/sshpilot"
+distfiles="https://github.com/mfat/sshpilot/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+python_version=3
+
+do_install() {
+	local site_packages="$(python3 -c "import site; print(site.getsitepackages()[0])")"
+	
+	vbin run.py usr/bin/sshpilot
+	
+	vmkdir "${site_packages}/sshpilot"
+	vcopy "sshpilot/*.py" "${site_packages}/sshpilot/"
+	vmkdir "${site_packages}/sshpilot/resources"
+	vmkdir "${site_packages}/sshpilot/ui"
+	vcopy "sshpilot/resources/*" "${site_packages}/sshpilot/resources/"
+	
+	sed -i '/^Categories=/a StartupWMClass=python3' io.github.mfat.sshpilot.desktop
+	vinstall io.github.mfat.sshpilot.desktop 644 usr/share/applications
+	vinstall sshpilot/resources/sshpilot.svg 644 usr/share/pixmaps io.github.mfat.sshpilot.svg
+	vinstall io.github.mfat.sshpilot.metainfo.xml 644 usr/share/metainfo
+}

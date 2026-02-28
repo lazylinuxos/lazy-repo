@@ -61,11 +61,11 @@ methods.
 <a name="quick-start"></a>
 ### Quick start
 
-Clone the `lazy-pkgs` git repository and install the bootstrap packages:
+Clone the `lazy-repo` git repository and install the bootstrap packages:
 
 ```
-$ git clone https://github.com/lazylinuxos/lazy-pkgs.git
-$ cd lazy-pkgs
+$ git clone https://github.com/lazylinuxos/lazy-repo.git
+$ cd lazy-repo
 $ ./xbps-src binary-bootstrap
 ```
 
@@ -138,7 +138,7 @@ the `xbuilder` group.
 
 To enable it:
 
-    $ cd lazy-pkgs
+    $ cd lazy-repo
     $ echo XBPS_CHROOT_CMD=uchroot >> etc/conf
 
 If for some reason it's erroring out as `ERROR clone (Operation not permitted)`, check that
@@ -208,7 +208,7 @@ and edit it accordingly to your needs.
 
 The following directory hierarchy is used with a default configuration file:
 
-         /lazy-pkgs
+         /lazy-repo
             |- common
             |- etc
             |- srcpkgs
@@ -226,7 +226,7 @@ The following directory hierarchy is used with a default configuration file:
             |  |- builddir -> ...
             |  |- destdir -> ...
             |  |- host -> bind mounted from <hostdir>
-            |  |- lazy-pkgs -> bind mounted from <lazy-pkgs>
+            |  |- lazy-repo -> bind mounted from <lazy-repo>
 
 
 The description of these directories is as follows:
@@ -246,7 +246,7 @@ The description of these directories is as follows:
 The simplest form of building package is accomplished by running the `pkg` target in `xbps-src`:
 
 ```
-$ cd lazy-pkgs
+$ cd lazy-repo
 $ ./xbps-src pkg <pkgname>
 ```
 
@@ -387,7 +387,7 @@ Install distcc on the host (machine that executes xbps-src) as well.
 Unless you want to use the host as worker from other machines, there is no need
 to modify the configuration.
 
-On the host you can now enable distcc in the `lazy-pkgs/etc/conf` file:
+On the host you can now enable distcc in the `lazy-repo/etc/conf` file:
 
     XBPS_DISTCC=yes
     XBPS_DISTCC_HOSTS="localhost/2 --localslots_cpp=24 192.168.2.101/9 192.168.2.102/2"
@@ -451,15 +451,15 @@ To use xbps-src in your Linux distribution use the following instructions. Let's
 If `xbps-uunshare` does not work because of lack of `user_namespaces(7)` support,
 try other [chroot methods](#chroot-methods).
 
-Clone the `lazy-pkgs` git repository:
+Clone the `lazy-repo` git repository:
 
-    $ git clone https://github.com/lazylinuxos/lazy-pkgs.git
+    $ git clone https://github.com/lazylinuxos/lazy-repo.git
 
 and `xbps-src` should be fully functional; just start the `bootstrap` process, i.e:
 
     $ ./xbps-src binary-bootstrap
 
-The default masterdir is created in the current working directory, i.e. `lazy-pkgs/masterdir-<arch>`, where `<arch>` for the default masterdir is is the native xbps architecture.
+The default masterdir is created in the current working directory, i.e. `lazy-repo/masterdir-<arch>`, where `<arch>` for the default masterdir is is the native xbps architecture.
 
 <a name="remaking-masterdir"></a>
 ### Remaking the masterdir

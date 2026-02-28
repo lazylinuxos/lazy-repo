@@ -1,0 +1,16 @@
+# Template file for 'glaze'
+pkgname=glaze
+version=${VERSION}
+revision=1
+build_style=cmake
+configure_args="
+ -DBUILD_TESTING=OFF
+"
+hostmakedepends=libsanitizer-devel
+short_desc="Extremely fast in-memory JSON and interface library for modern C++"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/stephenberry/glaze"
+distfiles="https://github.com/stephenberry/glaze/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+

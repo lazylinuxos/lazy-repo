@@ -1,0 +1,30 @@
+# Template file for 'nebula-gtk'
+pkgname=nebula-gtk
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config desktop-file-utils appstream-glib glib-devel libadwaita-devel gtk4-devel"
+makedepends="gtk4-devel libadwaita-devel"
+short_desc="GTK frontend for Void Linux's XBPS tooling"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/Letdown2491/nebula-gtk"
+distfiles="https://github.com/Letdown2491/nebula-gtk/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	sed -i 's|/usr/libexec/nebula-gtk|/usr/bin/nebula-gtk|' \
+		assets/applications/tech.geektoshi.Nebula.desktop
+		
+	vinstall assets/applications/tech.geektoshi.Nebula.desktop 644 usr/share/applications
+
+	for size in 128 256 512; do
+		vinstall assets/icons/hicolor/${size}x${size}/apps/nebula.png \
+			644 usr/share/icons/hicolor/${size}x${size}/apps
+	done
+	
+	vinstall data/category_overrides.toml 644 usr/share/nebula
+	vinstall data/generated/category_suggestions.json 644 usr/share/nebula
+	
+	vlicense LICENSE
+}

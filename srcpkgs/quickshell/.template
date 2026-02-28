@@ -1,6 +1,6 @@
 # Template file for 'quickshell'
 pkgname=quickshell
-version=0.2.1
+version=${VERSION}
 revision=2
 build_style=cmake
 configure_args="-DDISTRIBUTOR=Void -DDISTRIBUTOR_DEBUGINFO_AVAILABLE=YES
@@ -15,4 +15,4 @@ license="LGPL-3.0-only"
 homepage="https://quickshell.org"
 #https://git.outfoxxed.me/quickshell/quickshell/archive/v${version}.tar.gz
 distfiles="https://github.com/quickshell-mirror/quickshell/archive/refs/tags/v${version}.tar.gz"
-checksum=a7e0a1029ff69d0f3b5788e042463735bacafd5fc369b1382143ffbd9d497964
+checksum=${SHA256}

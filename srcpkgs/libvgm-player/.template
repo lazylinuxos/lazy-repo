@@ -1,0 +1,17 @@
+# Template file for 'libvgm-player'
+pkgname=libvgm-player
+version=${VERSION}
+revision=1
+wrksrc="libvgm"
+build_style=cmake
+configure_args="-DCMAKE_SKIP_BUILD_RPATH=ON -DLIBRARY_TYPE=SHARED"
+hostmakedepends="cmake tar"
+makedepends="alsa-lib zlib-devel libpulseaudio libao"
+depends="gcc glibc alsa-lib zlib-devel libpulseaudio libao"
+short_desc="Library for decoding and playing VGM files"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LicenseRef-Unknown"
+homepage="https://github.com/ValleyBell/libvgm"
+distfiles="https://github.com/lazylinuxos/libvgm/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+patches="0001-rename-player-to-vgmplayer.patch"

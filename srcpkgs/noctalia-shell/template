@@ -1,9 +1,9 @@
 # Template file for 'noctalia-shell'
 pkgname=noctalia-shell
-version=4.5.0
+version=4.6.0
 revision=1
 depends="
- quickshell
+ noctalia-qs
  ImageMagick
  brightnessctl
  ffmpeg
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/noctalia-dev/noctalia-shell"
 distfiles="https://github.com/noctalia-dev/noctalia-shell/archive/refs/tags/v${version}.tar.gz"
-checksum=d5f77c484476b35e1d2a9f85a25a32cf8e7bc601daa1dbb278a4706e892b5772
+checksum=18ecc5e1a49b35fe2557eb1178377db2b88c3d575f19b418f60da627fd13b618
 
 do_install() {
 	vmkdir etc/xdg/quickshell/noctalia-shell

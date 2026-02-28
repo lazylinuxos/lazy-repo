@@ -1,0 +1,56 @@
+# Template file for 'wdm'
+pkgname=wdm
+version=${VERSION}
+revision=1
+build_style=gnu-configure
+configure_args="
+ --prefix=/usr
+ --sysconfdir=/etc/wdm
+ --localedir=/usr/share/locale
+ --mandir=/usr/share/man
+ --with-wdmdir=/etc/wdm
+ --with-fakehome=/var/empty
+ --enable-aafont
+ --enable-exitlogin
+"
+hostmakedepends="autoconf automake libtool gettext-devel pkg-config"
+makedepends=" libX11-devel libXau-devel libXdmcp-devel libXinerama-devel
+ libXmu-devel libXpm-devel WindowMaker-devel libXft-devel pam-devel dbus-devel
+"
+depends="WindowMaker pam-base dbus"
+short_desc="WINGs Display Manager"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2"
+homepage="https://github.com/lazylinuxos/wdm"
+distfiles="https://github.com/lazylinuxos/${pkgname}/archive/refs/tags/${version}.tar.gz"
+checksum=${SHA256}
+
+pre_configure() {
+	autoreconf -fiv
+}
+
+do_install() {
+	make DESTDIR=${DESTDIR} install
+
+	# Extra utilities not installed by default
+	vbin bin/TestLogin
+	vbin bin/wdmChooser 
+	vbin bin/wdmPrefs
+
+	# PAM configuration (Void standard)
+	vmkdir etc/pam.d
+	cat > ${DESTDIR}/etc/pam.d/wdm << 'EOF'
+auth       include      system-login
+account    include      system-login
+password   include      system-login
+session    include      system-login
+EOF
+
+	# Runtime dirs expected by wdm
+	# vmkdir etc/wdm/authdir
+	# vmkdir var/empty
+
+	chmod 0644 ${DESTDIR}/etc/wdm/wdm-config
+
+	vsv wdm
+}
