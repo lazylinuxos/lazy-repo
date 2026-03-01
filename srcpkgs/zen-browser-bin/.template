@@ -1,7 +1,7 @@
 # Template file for 'zen-browser-bin'
 pkgname=zen-browser-bin
 version=${VERSION}
-_version=${VERSION}
+_version=${_VERSION}
 revision=1
 archs="x86_64"
 create_wrksrc=yes

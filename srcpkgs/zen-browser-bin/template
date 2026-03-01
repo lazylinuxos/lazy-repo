@@ -1,6 +1,6 @@
 # Template file for 'zen-browser-bin'
 pkgname=zen-browser-bin
-version=1.19b
+version=1.19.0b
 _version=1.19b
 revision=1
 archs="x86_64"
