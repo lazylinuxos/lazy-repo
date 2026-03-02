@@ -1,6 +1,6 @@
 # Template file for 'yaak-bin'
 pkgname=yaak-bin
-version=2026.2.4
+version=${VERSION}
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -11,7 +11,7 @@ license="MIT"
 homepage="https://yaak.app/"
 changelog="https://yaak.app/blog/${version}"
 distfiles="https://github.com/mountain-loop/yaak/releases/download/v${version}/yaak-${version}-${revision}.x86_64.rpm"
-checksum=2a11dafe47cc2cd91a10452ff12e7167d41af39e71c91716fff0ee26685ba5fe
+checksum=${SHA256}
 nopie=yes
 replaces="yaak"
 
