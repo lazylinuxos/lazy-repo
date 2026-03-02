@@ -1,6 +1,6 @@
 # Template file for 'fresh-editor'
 pkgname=fresh-editor
-version=0.2.9
+version=0.2.11
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config clang llvm"
@@ -12,7 +12,7 @@ license="GPL-2.0-only"
 homepage="https://sinelaw.github.io/fresh/"
 #distfiles="https://github.com/sinelaw/fresh/releases/download/v${version}/fresh-editor-${version}-source.tar.gz"
 distfiles="https://github.com/sinelaw/fresh/archive/refs/tags/v${version}.tar.gz"
-checksum=c38bc42152f88e96e557ed26d3d5ba43947e4170760cb85b6b9c72b640e5bf36
+checksum=b18f18b1eb8feace2df827b23ee9943f723c00fe141ace3d2b41e20b63fc0e25
 
 export CC=clang
 
