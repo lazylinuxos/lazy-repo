@@ -1,6 +1,6 @@
 # Template file for 'dinox'
 pkgname=dinox
-version=1.1.5.4
+version=1.1.5.5
 revision=1
 build_style=meson
 hostmakedepends="pkg-config vala cmake ninja gettext glib-devel"
@@ -17,4 +17,4 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/rallep71/dinox"
 distfiles="https://github.com/rallep71/dinox/archive/refs/tags/v${version}.tar.gz"
-checksum=8a3ea55976da7e09c481f23786679e03b101c3c3034d81359b7d708ffa67e533
+checksum=9ebc37e7c0100454bf61e83fc4124790d1d66687861ed6b8e00d32726f36cb1a
