@@ -4,7 +4,7 @@ version=1.0.0
 revision=1
 build_style=cargo
 build_helper=rust
-hostmakedepends="rust cargo-about clang cmake protobuf pkg-config"
+hostmakedepends="rust cargo-about clang cmake protobuf pkg-config gettext"
 makedepends="alsa-lib-devel libcurl-devel fontconfig-devel libxcb-devel protobuf-devel
  libxkbcommon-devel libX11-devel openssl-devel sqlite-devel Vulkan-Headers
  vulkan-loader-devel wayland-devel zlib-devel libzstd-devel libgit2-1.9-devel"
@@ -16,27 +16,36 @@ homepage="https://codeberg.org/GramEditor/gram"
 distfiles="https://codeberg.org/GramEditor/gram/archive/${version}.tar.gz"
 checksum=27ff4148d5d191cd9ce36c5f8c2284898e0de9ad0cab04e3ad6fe5d1247f9bbb
 nocross=yes
-
-export RELEASE_VERSION="$version"
-export GRAM_BUNDLE=false
-export PROTOC=/usr/bin/protoc
-export PROTOC_INCLUDE=/usr/include
+_appid=se.ziran.Gram
 
 pre_build() {
-	cargo fetch --locked
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
+
+	export DO_STARTUP_NOTIFY="true"
+	export APP_ICON="${pkgname}"
+	export APP_NAME="Gram"
+	export APP_CLI="${pkgname}"
+	export APP_ID="${_appid}"
+	export APP_ARGS="%U"
+	envsubst < "crates/gram/resources/gram.desktop.in" > ${_appid}.desktop
+
+	./script/generate-licenses
 }
 
 do_build() {
-    cargo build --release --frozen --package gram --package cli
+	CFLAGS+=' -ffat-lto-objects'
+	CXXFLAGS+=' -ffat-lto-objects'
+	RUSTFLAGS+=" --remap-path-prefix ${PWD}=/"
+	export CARGO_TARGET_DIR=target
+	export RELEASE_VERSION="$version"
+	export PROTOC=/usr/bin/protoc
+	export PROTOC_INCLUDE=/usr/include	
+	cargo build --release --frozen --package gram --package cli
 }
 
 do_install() {
     vbin target/release/cli gram
-
     vinstall target/release/gram 0755 usr/lib/gram/ gram-editor
-
-    vinstall crates/gram/resources/app-icon.png 644 \
-        usr/share/icons/hicolor/512x512/apps/ gram.png
-
-    vinstall ${FILESDIR}/gram.desktop 644 usr/share/applications/
+    vinstall ${_appid}.desktop 644 usr/share/applications/
+    vinstall crates/gram/resources/app-icon.png 644 usr/share/icons/
 }

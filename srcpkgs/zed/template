@@ -4,7 +4,7 @@ version=0.226.5
 revision=1
 build_style=cargo
 build_helper=rust
-hostmakedepends="rust cargo-about clang cmake protobuf pkg-config"
+hostmakedepends="rust cargo-about clang cmake protobuf pkg-config gettext"
 makedepends="alsa-lib-devel libcurl-devel fontconfig-devel libxcb-devel protobuf-devel
  libxkbcommon-devel libX11-devel openssl-devel sqlite-devel Vulkan-Headers
  vulkan-loader-devel wayland-devel zlib-devel libzstd-devel libgit2-1.9-devel"
@@ -17,24 +17,37 @@ distfiles="https://github.com/zed-industries/zed/archive/refs/tags/v${version}.t
 checksum=b5f67ed5c460c8396fced640a014926009e3e541d553de50f314a3c937bd7165
 conflicts="zed-bin"
 replaces="zed-bin"
-
-export CARGO_TARGET_DIR=target
-export ZED_UPDATE_EXPLANATION='Updates are handled by xbps'
-export RELEASE_VERSION="$version"
-export PROTOC=/usr/bin/protoc
-export PROTOC_INCLUDE=/usr/include
+_appid=dev.zed.Zed
 
 pre_build() {
-	cargo fetch --locked
+	cargo fetch --locked --target "$(rustc --print host-tuple)"
+
+	export DO_STARTUP_NOTIFY="true"
+	export APP_ICON="${pkgname}"
+	export APP_NAME="Zed"
+	export APP_CLI="${pkgname}"
+	export APP_ID="${_appid}"
+	export APP_ARGS="%U"
+	envsubst < "crates/zed/resources/zed.desktop.in" > ${_appid}.desktop
+
+	./script/generate-licenses
 }
 
 do_build() {
-    cargo build --release --frozen --package zed --package cli
+	CFLAGS+=' -ffat-lto-objects'
+	CXXFLAGS+=' -ffat-lto-objects'
+	RUSTFLAGS+=" --remap-path-prefix ${PWD}=/"
+	export CARGO_TARGET_DIR=target
+	export ZED_UPDATE_EXPLANATION='Updates are handled by xbps'
+	export RELEASE_VERSION="$version"
+	export PROTOC=/usr/bin/protoc
+	export PROTOC_INCLUDE=/usr/include	
+	cargo build --release --frozen --package zed --package cli
 }
 
 do_install() {
     vbin target/release/cli zed
     vinstall target/release/zed 0755 usr/lib/zed/ zed-editor
+    vinstall ${_appid}.desktop 644 usr/share/applications/
     vinstall crates/zed/resources/app-icon.png 644 usr/share/icons/
-    vinstall ${FILESDIR}/zed.desktop 644 usr/share/applications/ 
 }
