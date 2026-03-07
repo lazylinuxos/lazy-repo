@@ -1,0 +1,17 @@
+# Template file for 'fluux-messenger-bin'
+pkgname=fluux-messenger-bin
+version=${VERSION}
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+hostmakedepends="rpmextract"
+short_desc="Browser that rethinks the web"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0"
+homepage="https://github.com/processone/fluux-messenger"
+distfiles="https://github.com/processone/fluux-messenger/releases/download/v${version}/Fluux-Messenger_${version}_Linux_x64.rpm"
+checksum=${SHA256}
+
+do_install() {
+	vcopy "*" /
+}

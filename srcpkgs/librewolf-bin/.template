@@ -1,0 +1,25 @@
+# Template file for 'librewolf-bin'
+pkgname=librewolf-bin
+_pkgname=librewolf
+version=${VERSION}
+_version=${_VERSION}
+revision=1
+archs="x86_64"
+build_style="fetch"
+short_desc="Firefox fork focused on privacy"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MPL-2.0"
+homepage="https://gitlab.com/librewolf-community"
+distfiles="https://gitlab.com/api/v4/projects/44042130/packages/generic/${_pkgname}/${_version}/${_pkgname}-${_version}-linux-x86_64-deb.deb"
+checksum=${SHA256}
+replaces="librewolf"
+
+do_install() {
+	vextract -C ${DESTDIR} ${_pkgname}-${_version}-linux-x86_64-deb.deb
+
+	mv ${DESTDIR}/usr/share/${_pkgname} ${DESTDIR}/usr/lib
+
+	ln -frs ${DESTDIR}/usr/lib/${_pkgname}/${_pkgname} ${DESTDIR}/usr/bin
+
+	vsed -i 's|usr/share|usr/lib|g' ${DESTDIR}/usr/share/applications/${_pkgname}.desktop
+}

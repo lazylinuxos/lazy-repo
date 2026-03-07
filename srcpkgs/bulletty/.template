@@ -1,0 +1,17 @@
+# Template file for 'bulletty'
+pkgname=bulletty
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="oniguruma-devel openssl-devel"
+short_desc="Pretty feed reader for the terminal that stores the articles as Markdown"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/CrociDB/bulletty"
+distfiles="https://github.com/CrociDB/${pkgname}/archive/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	vlicense LICENSE
+}
