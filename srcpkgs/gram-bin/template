@@ -1,0 +1,39 @@
+# Template file for 'gram-bin'
+pkgname=gram-bin
+version=1.0.0
+revision=1
+archs="x86_64"
+create_wrksrc=yes
+build_style=meta
+hostmakedepends="tar"
+depends="vulkan-loader mesa-vulkan-intel intel-video-accel"
+short_desc="Code editor for humanoid apes and grumpy toads"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0-or-later, Apache-2.0, GPL-3.0-or-later"
+homepage="https://gram.liten.app"
+distfiles="https://codeberg.org/GramEditor/gram/releases/download/${version}/gram-linux-x86_64-${version}.tar.gz"
+checksum=12b945739396312d9af27b1866d5b05ac6caf78415027798f5a68c1282bec331
+conflicts="gram"
+replaces="gram"
+noshlibprovides=yes
+
+do_install() {
+	vmkdir opt/gram/bin
+	vcopy ${wrksrc}/gram.app/bin/* opt/gram/bin
+
+	vmkdir opt/gram/lib
+	vcopy ${wrksrc}/gram.app/lib/* opt/gram/lib
+
+	vmkdir opt/gram/libexec
+	vcopy ${wrksrc}/gram.app/libexec/* opt/gram/libexec
+
+	vmkdir usr/share
+	vcopy ${wrksrc}/gram.app/share/* usr/share
+
+	vlicense ${FILESDIR}/LICENSE-AGPL
+	vinstall ${FILESDIR}/gram.desktop 644 usr/share/applications/
+
+	# link the binary
+	vmkdir usr/bin/
+	ln -s /opt/gram/bin/gram ${DESTDIR}/usr/bin/
+}

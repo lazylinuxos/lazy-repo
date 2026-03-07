@@ -1,0 +1,7 @@
+case "$ACTION" in
+post)
+    # Writable cache dir used by felix
+    mkdir -p /opt/mucommander/felix-cache
+    chmod 1777 /opt/mucommander/felix-cache
+    ;;
+esac
