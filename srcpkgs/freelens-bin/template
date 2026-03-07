@@ -1,6 +1,6 @@
 # Template file for 'freelens-bin'
 pkgname=freelens-bin
-version=1.8.0
+version=1.8.1
 revision=1
 archs="x86_64"
 wrksrc="freelens-bin-${version}"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://freelens.app/"
 distfiles="https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.AppImage"
-checksum=b206ec194a7f4ca41984f6603296c8272ee7f815b4506929e798c51cb3b94fcb
+checksum=1a87bf78099e7cbfb88ad1eb1a64230465566a5939e7d90683f3a0035c8a29d9
 python_version=3
 nocross=yes
 nopie=yes
