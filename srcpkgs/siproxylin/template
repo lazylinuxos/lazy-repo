@@ -9,7 +9,9 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/confund0/siproxylin"
 distfiles="https://github.com/confund0/siproxylin/archive/refs/tags/v${version}.tar.gz"
-checksum=SKIP
+checksum=36814fce3804b7403b526488e3a158f56f3af29347d349c3855824618c68113b
+noverifyrdeps=yes
+disable_shlib_provides=yes
 
 do_install() {
     local _prefix="usr"
@@ -24,8 +26,9 @@ do_install() {
     vcopy main.py "${_prefix}/share/${pkgname}/"
     vcopy version.sh "${_prefix}/share/${pkgname}/"
 
-    [ -f "siproxylin.svg" ] && vinstall siproxylin.svg "${_prefix}/share/icons/hicolor/scalable/apps/"
-    [ -f "siproxylin.desktop" ] && vinstall siproxylin.desktop "${_prefix}/share/applications/"
+    [ -f "siproxylin/resources/icons/siproxylin.svg" ] && \
+    	vinstall siproxylin/resources/icons/siproxylin.svg 644 "${_prefix}/share/icons/hicolor/scalable/apps/"
+    [ -f "siproxylin.desktop" ] && vinstall siproxylin.desktop 644 "${_prefix}/share/applications/"
 
     python3 -m pip install --ignore-installed \
         --root="${DESTDIR}" \
@@ -33,8 +36,6 @@ do_install() {
         -r requirements.txt \
         --no-warn-script-location \
         --quiet
-}
-
-post_install() {
-    find "${DESTDIR}/${_prefix}/share/${pkgname}" -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null
+        
+    vbin ${FILESDIR}/siproxylin.sh siproxylin
 }

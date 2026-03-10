@@ -20,5 +20,7 @@ do_build() {
 }
 
 do_install() {
+    vbin drunk_call_service/bin/drunk-call-service-linux
     vbin drunk_call_service/bin/drunk-call-service-linux drunk-call-service
+    
 }
