@@ -1,6 +1,6 @@
 # Template file for 'glaze'
 pkgname=glaze
-version=7.1.1
+version=7.2.0
 revision=1
 build_style=cmake
 configure_args="
@@ -12,5 +12,5 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/stephenberry/glaze"
 distfiles="https://github.com/stephenberry/glaze/archive/refs/tags/v${version}.tar.gz"
-checksum=48ce4b1f38d7a14f4bc4dc19e40a4cf22bbb53d938dd4c0551555eaa5b51708d
+checksum=17dba19ae63ae48f94994f00d49d5cb3c8f1306db1046c534c4828662490b7d4
 
