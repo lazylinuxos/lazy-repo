@@ -1,0 +1,50 @@
+# Template file for 'kaidan'
+pkgname=kaidan
+version=0.15.0
+revision=1
+build_style=cmake
+configure_args="-DCMAKE_BUILD_TYPE=None"
+hostmakedepends="
+ extra-cmake-modules
+ qt6-tools
+ pkg-config
+"
+makedepends="
+ glibc-devel
+ gstreamer1-devel
+ gst-plugins-base1-devel
+ icu-devel
+ kf6-kcoreaddons-devel
+ kf6-kcrash-devel
+ kf6-kio-devel
+ kf6-kirigami-devel
+ kirigami-addons-devel
+ kf6-knotifications-devel
+ kquickimageeditor-devel
+ kf6-kwindowsystem-devel
+ libomemo-c-devel
+ kf6-prison-devel
+ kf6-qqc2-desktop-style-devel
+ qt6-base-devel
+ qt6-base-private-devel
+ qt6-declarative-devel
+ qt6-location-devel
+ qt6-multimedia-devel
+ qt6-position-devel
+ qt6-svg-devel
+ qtkeychain-qt6-devel
+ qt6-qxmpp-devel
+ KDSingleApplication
+"
+short_desc="User-friendly XMPP client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later, MIT"
+homepage="https://www.kaidan.im/"
+distfiles="https://download.kde.org/unstable/${pkgname}/${version}/${pkgname}-${version}.tar.xz"
+checksum=cdc2d6afa8f8ed4572e2421224219cfc7fdfab6da4fb77eb4ff099285da4e485
+
+post_install() {
+	for f in ${wrksrc}/LICENSES/*; do
+		vlicense "$f"
+	done
+}
