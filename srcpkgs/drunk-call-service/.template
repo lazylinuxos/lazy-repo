@@ -1,6 +1,6 @@
 # Template file for 'drunk-call-service'
 pkgname=drunk-call-service
-version=0.0.25
+version=${VERSION}
 revision=1
 hostmakedepends="cmake patchelf pkg-config protobuf"
 makedepends="gstreamer1-devel gst-plugins-base1-devel gst-plugins-bad1-devel gst-plugins-good1 
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/confund0/siproxylin"
 distfiles="https://github.com/confund0/siproxylin/archive/refs/tags/v${version}.tar.gz"
-checksum=ac6c4bd26841444fdc5a073204795601109ea416cb7a31eb0aadb5f6820707db
+checksum=${SHA256}
 
 do_build() {
     cd drunk_call_service

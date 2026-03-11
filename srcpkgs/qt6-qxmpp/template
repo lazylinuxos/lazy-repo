@@ -15,6 +15,7 @@ distfiles="https://invent.kde.org/libraries/qxmpp/-/archive/v${version}/qxmpp-v$
 checksum=22dffcff941a449fedb531cd979e32ca22bf50b6aec4f86d255d173fcd10176b
 conflicts="qxmpp"
 replaces="qxmpp"
+provides="qxmpp-1.14.3_1"
 
 qt6-qxmpp-devel_package() {
 	short_desc+=" - development files"

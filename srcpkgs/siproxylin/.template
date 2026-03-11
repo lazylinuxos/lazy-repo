@@ -1,6 +1,6 @@
 # Template file for 'siproxylin'
 pkgname=siproxylin
-version=0.0.25
+version=${VERSION}
 revision=1
 hostmakedepends="python3 python3-pip patchelf file wget"
 depends="python3 drunk-call-service"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/confund0/siproxylin"
 distfiles="https://github.com/confund0/siproxylin/archive/refs/tags/v${version}.tar.gz"
-checksum=ac6c4bd26841444fdc5a073204795601109ea416cb7a31eb0aadb5f6820707db
+checksum=${SHA256}
 noverifyrdeps=yes
 disable_shlib_provides=yes
 
