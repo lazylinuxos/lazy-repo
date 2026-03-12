@@ -6,7 +6,7 @@ build_style=cargo
 build_helper=rust
 hostmakedepends="rust cargo-about clang cmake protobuf pkg-config gettext"
 makedepends="alsa-lib-devel libcurl-devel fontconfig-devel libxcb-devel protobuf-devel
- libxkbcommon-devel libX11-devel openssl-devel sqlite-devel Vulkan-Headers
+ glib-devel libxkbcommon-devel libX11-devel openssl-devel sqlite-devel Vulkan-Headers
  vulkan-loader-devel wayland-devel zlib-devel libzstd-devel libgit2-1.9-devel"
 depends="nodejs netcat Vulkan-Tools"
 short_desc="High-performance, multiplayer code editor from creators of Atom and Tree-sitter"

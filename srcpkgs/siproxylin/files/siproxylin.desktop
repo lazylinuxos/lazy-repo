@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Siproxylin
+Comment=Privacy-focused XMPP desktop client
+Exec=siproxylin
+Icon=siproxylin
+Categories=Network;InstantMessaging;
+Terminal=false
+StartupWMClass=Siproxylin
