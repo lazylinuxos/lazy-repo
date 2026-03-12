@@ -1,6 +1,6 @@
 # Template file for 'noctalia-qs'
 pkgname=noctalia-qs
-version=0.0.7
+version=0.0.8
 revision=1
 build_style=cmake
 configure_args="
@@ -44,7 +44,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-3.0-only"
 homepage="https://github.com/noctalia-dev/noctalia-qs"
 distfiles="https://github.com/noctalia-dev/noctalia-qs/archive/v${version}.tar.gz"
-checksum=17da91b89ce62f48f0a7d6734b28d5d400357a580a3fa746450402c39d5a60a4
+checksum=5b5cd150ec5c194828d29cd72ea0004cb070fb93e79ff5edcef9567b145fa3ee
 conflicts="quickshell"
 
 post_install() {
