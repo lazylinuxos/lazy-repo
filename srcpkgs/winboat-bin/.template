@@ -1,0 +1,27 @@
+# Template file for 'winboat-bin'
+pkgname=winboat-bin
+version=${VERSION}
+revision=1
+archs="x86_64"
+hostmakedepends="tar xz"
+depends="freerdp3 gtk+3 glibc alsa-lib nss"
+short_desc="Run Windows apps on Linux with seamless integration"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://www.winboat.app"
+distfiles="https://github.com/TibixDev/winboat/releases/download/v${version}/winboat-${version}-amd64.deb"
+checksum=${SHA256}
+provides="winboat-${version}_1"
+noverifyrdeps=yes
+disable_shlib_provides=yes
+
+do_extract() {
+	mkdir -p ${DESTDIR}
+    ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/winboat-${version}-amd64.deb
+    tar -xf data.tar.xz -C ${DESTDIR}
+}
+
+do_install() {
+	vmkdir usr/bin/
+	ln -s /opt/winboat/winboat ${DESTDIR}/usr/bin/
+}
