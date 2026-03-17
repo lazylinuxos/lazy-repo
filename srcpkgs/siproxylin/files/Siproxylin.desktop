@@ -2,8 +2,8 @@
 Type=Application
 Name=Siproxylin
 Comment=Privacy-focused XMPP desktop client
-Exec=siproxylin
+Exec=/usr/bin/siproxylin %U
 Icon=siproxylin
 Categories=Network;InstantMessaging;
 Terminal=false
-StartupWMClass=Siproxylin
+StartupNotify=false

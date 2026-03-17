@@ -27,7 +27,7 @@ do_install() {
     vcopy version.sh "${_prefix}/share/${pkgname}/"
 
     vinstall siproxylin/resources/icons/siproxylin.svg 644 "${_prefix}/share/icons/hicolor/scalable/apps/"
-    vinstall ${FILESDIR}/siproxylin.desktop 644 "${_prefix}/share/applications/"
+    vinstall ${FILESDIR}/Siproxylin.desktop 644 "${_prefix}/share/applications/"
 
     python3 -m pip install --ignore-installed \
         --root="${DESTDIR}" \
