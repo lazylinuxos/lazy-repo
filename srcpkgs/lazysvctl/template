@@ -1,0 +1,16 @@
+# Template file for 'lazysvctl'
+pkgname=lazysvctl
+version=1.0.0
+revision=1
+depends=""
+short_desc="Wrapper around runit's sv"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/lazylinuxos/lazysvctl"
+distfiles="https://github.com/lazylinuxos/lazysvctl/archive/refs/tags/${version}.tar.gz"
+checksum=5ccc475a81184ea7f360998c00738ece35d1d2860071ab240b035c6536321e7f
+
+do_install() {
+    vbin lazysvctl
+    vlicense LICENSE
+}

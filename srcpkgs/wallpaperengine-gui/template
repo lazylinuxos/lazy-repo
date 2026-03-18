@@ -1,0 +1,14 @@
+# Template file for 'wallpaperengine-gui'
+pkgname=wallpaperengine-gui
+version=0.1.0
+revision=1
+build_style=cmake
+hostmakedepends="pkg-config qt6-base qt6-base-devel"
+makedepends="qt6-base-devel qt6-webengine-devel qt6-multimedia-devel"
+depends="qt6-base qt6-webengine qt6-multimedia wallpaperengine"
+short_desc="GUI frontend for linux-wallpaperengine"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/MikiDevLog/wallpaperengine-gui"
+distfiles="https://github.com/MikiDevLog/wallpaperengine-gui/archive/refs/heads/main.tar.gz"
+checksum=e5718736fe5e341df27a2ea727b97a68095edbfd110fa6942d0f378bcf524326
