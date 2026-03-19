@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Glide Browser
+Comment=Glide Browser
+Exec=/usr/bin/glide-browser %u
+Terminal=false
+Type=Application
+Icon=glide-browser
+Categories=Network;WebBrowser;
+StartupWMClass=glide-glide

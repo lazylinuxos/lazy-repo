@@ -1,0 +1,29 @@
+# Template file for 'glide-browser-bin'
+pkgname=glide-browser-bin
+_pkgname=glide-browser
+version=${VERSION}
+revision=1
+archs="x86_64"
+depends="libnotify libavcodec xdg-utils desktop-file-utils hicolor-icon-theme"
+short_desc="Extensible and keyboard-focused web browser"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MPL-2.0"
+homepage="https://glide-browser.app"
+distfiles="https://github.com/glide-browser/glide/releases/download/${version}/glide.linux-x86_64.tar.xz"
+checksum=${SHA256}
+
+do_install() {
+	vmkdir opt/${_pkgname}
+	vcopy * opt/${_pkgname}
+
+	vmkdir usr/share/applications
+	vinstall ${FILESDIR}/glide-browser.desktop 644 usr/share/applications/
+
+	for size in 16 32 48 64 128; do
+		vmkdir usr/share/icons/hicolor/${size}x${size}/apps
+		vinstall browser/chrome/icons/default/default${size}.png 644 usr/share/icons/hicolor/${size}x${size}/apps ${_pkgname}.png
+	done
+
+	vmkdir usr/bin
+	ln -s /opt/${_pkgname}/glide ${DESTDIR}/usr/bin/glide-browser
+}
