@@ -2,7 +2,7 @@
 pkgname=lazysvctl
 version=1.0.0
 revision=1
-depends=""
+depends="socklog-void"
 short_desc="Wrapper around runit's sv"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
