@@ -1,12 +1,18 @@
 ## The LazyLinux XBPS source packages collection
-
-To use, create a file called /etc/xbps.d/99-repository-lazy.conf and add this line to it:
-```
-repository=https://github.com/lazylinuxos/lazy-repo/releases/latest/download/
-```
  
 This repository contains the XBPS source packages collection to build binary packages
 for the LazyLinux distribution.
+
+> [!NOTE]
+>>  _To use it type in the terminal_
+
+```
+sudo mkdir -p /etc/xbps.d
+```
+
+```
+printf "repository=https://github.com/lazylinuxos/lazy-repo/releases/latest/download/\n" | sudo tee /etc/xbps.d/99-repository-lazy.conf
+```
 
 The included `xbps-src` script will fetch and compile the sources, and install its
 files into a `fake destdir` to generate XBPS binary packages that can be installed
