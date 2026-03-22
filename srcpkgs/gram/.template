@@ -47,5 +47,5 @@ do_install() {
     vbin target/release/cli gram
     vinstall target/release/gram 0755 usr/lib/gram/ gram-editor
     vinstall ${_appid}.desktop 644 usr/share/applications/
-    vinstall crates/gram/resources/app-icon.png 644 usr/share/icons/
+    vinstall crates/gram/resources/app-icon.png 644 usr/share/pixmaps gram.png
 }

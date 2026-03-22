@@ -13,8 +13,8 @@ license="AGPL-3.0-or-later, Apache-2.0, GPL-3.0-or-later"
 homepage="https://gram.liten.app"
 distfiles="https://codeberg.org/GramEditor/gram/releases/download/${version}/gram-linux-x86_64-${version}.tar.gz"
 checksum=${SHA256}
-conflicts="gram"
-replaces="gram"
+conflicts="gram>=0"
+replaces="gram>=0"
 noshlibprovides=yes
 
 do_install() {
@@ -29,9 +29,6 @@ do_install() {
 
 	vmkdir usr/share
 	vcopy ${wrksrc}/gram.app/share/* usr/share
-
-	vlicense ${FILESDIR}/LICENSE-AGPL
-	vinstall ${FILESDIR}/gram.desktop 644 usr/share/applications/
 
 	# link the binary
 	vmkdir usr/bin/

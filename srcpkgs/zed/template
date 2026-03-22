@@ -49,5 +49,5 @@ do_install() {
     vbin target/release/cli zed
     vinstall target/release/zed 0755 usr/lib/zed/ zed-editor
     vinstall ${_appid}.desktop 644 usr/share/applications/
-    vinstall crates/zed/resources/app-icon.png 644 usr/share/icons/
+    vinstall crates/zed/resources/app-icon.png 644 usr/share/pixmaps zed.png
 }
