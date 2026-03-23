@@ -1,7 +1,7 @@
 # Template file for 'glide-browser-bin'
 pkgname=glide-browser-bin
 _pkgname=glide-browser
-version=0.1.60a
+version=0.1.59a
 revision=1
 archs="x86_64"
 depends="libnotify libavcodec xdg-utils desktop-file-utils hicolor-icon-theme"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0"
 homepage="https://glide-browser.app"
 distfiles="https://github.com/glide-browser/glide/releases/download/${version}/glide.linux-x86_64.tar.xz"
-checksum=dffaaf153511972f724d4cef19a6897c8186af7ac4e1828da0fc187bcae0d6c2
+checksum=9041925a3a658e3ca8b333032f97a47b0d48b0183c3e12f6e2c72a8d876581fa
 
 do_install() {
 	vmkdir opt/${_pkgname}
@@ -18,12 +18,12 @@ do_install() {
 
 	vmkdir usr/share/applications
 	vinstall ${FILESDIR}/glide-browser.desktop 644 usr/share/applications/
-	
+
 	for size in 16 32 48 64 128; do
 		vmkdir usr/share/icons/hicolor/${size}x${size}/apps
 		vinstall browser/chrome/icons/default/default${size}.png 644 usr/share/icons/hicolor/${size}x${size}/apps ${_pkgname}.png
 	done
-	
+
 	vmkdir usr/bin
-	ln -s /opt/${_pkgname}/glide ${DESTDIR}/usr/bin/glide-browser	
+	ln -s /opt/${_pkgname}/glide ${DESTDIR}/usr/bin/glide-browser
 }
