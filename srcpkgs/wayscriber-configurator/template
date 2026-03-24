@@ -1,6 +1,6 @@
 # Template file for 'wayscriber-configurator'
 pkgname=wayscriber-configurator
-version=0.9.12
+version=0.9.13
 revision=1
 build_style=cargo
 configure_args="--manifest-path configurator/Cargo.toml"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://wayscriber.com"
 distfiles="https://github.com/devmobasa/wayscriber/archive/refs/tags/v${version}.tar.gz"
-checksum=c61f7c5053afc2fc934c4316af07bd452986032392c2f1b7e1faf98398e5636c
+checksum=68e3bf3b04cc958613a7dbcbc8c55bf4d1fefa85ab4bbcf2ecdb1162bd769342
 
 do_install() {
     vbin target/${RUST_TARGET}/release/wayscriber-configurator
