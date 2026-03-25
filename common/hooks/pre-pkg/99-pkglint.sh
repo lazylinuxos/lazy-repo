@@ -10,7 +10,7 @@ hook() {
 	# Check for forbidden directories that are symlinks in void.
 	for f in lib bin sbin lib64 lib32 usr/sbin usr/lib64; do
 		[ -e "${PKGDESTDIR}/${f}" ] || continue
-		if [ "${pkgname}" = "base-files" ]; then
+		if [ "${pkgname}" = "lazy-base-files" ]; then
 			if [ -L "${PKGDESTDIR}/${f}" ]; then
 				continue
 			fi

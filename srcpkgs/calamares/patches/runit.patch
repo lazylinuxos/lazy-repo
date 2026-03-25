@@ -177,7 +177,7 @@
 +++ b/src/modules/services-runit/services-runit.conf
 @@ -0,0 +1,35 @@
 +# runit services module to manage services via symlinks in the chroot
-+# Modified for Noid Linux (no runlevel support)
++# Modified for LazyLinux (no runlevel support)
 +#
 +# Services can be added or deleted from /var/service.
 +# Handle disable with care and only use it if absolutely necessary.

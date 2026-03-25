@@ -1,0 +1,9 @@
+NAME="LazyLinux"
+ID="lazylinux"
+PRETTY_NAME="LazyLinux"
+HOME_URL="https://lazylinuxos.github.io"
+DOCUMENTATION_URL="https://docs.voidlinux.org/"
+LOGO="lazylinux"
+ANSI_COLOR="0;38;2;71;128;97"
+
+DISTRIB_ID="lazylinux"
