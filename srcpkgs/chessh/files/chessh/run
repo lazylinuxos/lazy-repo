@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export CHESSH_HOST=0.0.0.0
+export CHESSH_PORT=22
+export CHESSH_HOST_KEY_PATH=/etc/chessh/host_key
+
+exec 2>&1
+exec chpst -u _chessh:_chessh /opt/chessh/chessh

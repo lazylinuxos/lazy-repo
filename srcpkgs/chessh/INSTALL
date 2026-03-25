@@ -1,0 +1,23 @@
+if [ -t 1 ]; then
+    GREEN="\033[1;32m"
+    CYAN="\033[1;36m"
+    RESET="\033[0m"
+else
+    GREEN=""
+    CYAN=""
+    RESET=""
+fi
+
+case "${ACTION}" in
+pre)
+    ;;
+post)
+    # Generate an SSH host key
+    ssh-keygen -t ed25519 -f /etc/chessh/host_key -N ''
+    chown -R _chessh:_chessh /opt/chessh /etc/chessh
+    printf "\n"
+    printf "${GREEN}To enable chessh service, run the following command as root:${RESET}\n"
+    printf "  ${CYAN}ln -s /etc/sv/chessh /var/service/${RESET}\n"
+    printf "\n"
+    ;;
+esac

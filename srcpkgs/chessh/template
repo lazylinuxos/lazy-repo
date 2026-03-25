@@ -1,0 +1,23 @@
+# Template file for 'chessh'
+pkgname=chessh
+version=0.1.0
+revision=1
+archs="x86_64"
+build_style=go
+go_import_path="github.com/rasjonell/chessh"
+depends="openssh"
+short_desc="SSH server that drops you into a chess game"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/rasjonell/chessh"
+distfiles="https://github.com/rasjonell/chessh/archive/refs/tags/v${version}.tar.gz"
+checksum=0118d13640800a681e39d4cb3441de48ba15db78b700ba16e1a124956a23d234
+system_accounts="_chessh"
+_chessh_homedir="/var/empty"
+_chessh_descr="chessh user"
+make_dirs="/etc/chessh 0755 _chessh _chessh"
+
+post_install() {
+    vsv chessh
+    #vlicense LICENSE
+}
