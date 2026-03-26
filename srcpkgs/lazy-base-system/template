@@ -1,0 +1,28 @@
+# Template file for 'lazy-base-system'
+pkgname=lazy-base-system
+version=0.114
+revision=3
+metapackage=yes
+short_desc="LazyLinux base system meta package"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Public Domain"
+homepage="https://lazylinuxos.github.io"
+conflicts="base-system>=0"
+replaces="base-system>=0"
+
+depends="
+ lazy-base-files ncurses coreutils findutils diffutils libgcc
+ dash bash grep gzip file sed gawk less util-linux which tar man-pages
+ mdocml>=1.13.3 shadow e2fsprogs btrfs-progs xfsprogs f2fs-tools dosfstools
+ procps-ng tzdata pciutils usbutils iana-etc openssh dhcpcd
+ kbd iproute2 iputils iw wpa_supplicant xbps nvi sudo wifi-firmware
+ void-artwork traceroute ethtool kmod acpid eudev lazy-runit removed-packages"
+
+case "$XBPS_TARGET_MACHINE" in
+	*-musl) depends+=" musl";;
+	*) depends+=" glibc-locales";;
+esac
+
+case "$XBPS_TARGET_MACHINE" in
+	i686*|x86_64*|ppc*) depends+=" linux";;
+esac

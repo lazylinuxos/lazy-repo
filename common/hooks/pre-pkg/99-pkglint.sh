@@ -63,9 +63,13 @@ hook() {
 		esac
 	done
 
-	# Forbid empty packages unless build_style=meta or it is 32bit devel package
-	if [ "$build_style" != meta ] && [ "$emptypkg" != no ] && [[ ${pkgname} != *-devel-32bit ]]; then
-		msg_red "${pkgver}: PKGDESTDIR is empty and build_style != meta\n"
+	# Forbid empty packages unless metapackage=yes or it is 32bit devel package
+	if [ "$metapackage" != yes ] && [ "$emptypkg" != no ] && [[ ${pkgname} != *-devel-32bit ]]; then
+		msg_red "${pkgver}: PKGDESTDIR is empty and metapackage != yes\n"
+		error=1
+	fi
+	if [ "$metapackage" = yes ] && [ "$emptypkg" = no ]; then
+		msg_red "${pkgver}: PKGDESTDIR of meta package is not empty\n"
 		error=1
 	fi
 
@@ -102,6 +106,14 @@ hook() {
 	if [ -d ${PKGDESTDIR}/etc/bash_completion.d ]; then
 		msg_red "${pkgver}: /etc/bash_completion.d is forbidden. Use /usr/share/bash-completion/completions.\n"
 		error=1
+	fi
+
+	if [ -d ${PKGDESTDIR}/usr/share/zsh/vendor-functions ]; then
+		msg_red "${pkgver}: /usr/share/zsh/vendor-functions is forbidden. Use /usr/share/zsh/site-functions.\n"
+	fi
+
+	if [ -d ${PKGDESTDIR}/usr/share/zsh/vendor-completions ]; then
+		msg_red "${pkgver}: /usr/share/zsh/vendor-completions is forbidden. Use /usr/share/zsh/site-functions.\n"
 	fi
 
 	# Prevent packages from installing to these paths in etc, they should use
