@@ -1,13 +1,14 @@
 # Template file for 'lazy-base-files'
 pkgname=lazy-base-files
 version=0.146
-revision=2
+revision=4
 bootstrap=yes
 depends="xbps-triggers"
 short_desc="LazyLinux base system files"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="Public Domain"
 homepage="https://lazylinuxos.github.io"
+conflicts="base-files<=1.0"
 conf_files="
 	/etc/inputrc
 	/etc/profile
@@ -27,10 +28,9 @@ conf_files="
 	/etc/crypttab
 	/etc/nsswitch.conf"
 
+replaces="base-directories>=0"
 # New system groups
 system_groups="kvm:24 plugdev:26 usbmon:27 sgx:28"
-conflicts="base-files>=0"
-replaces="base-directories>=0 base-files>=0"
 
 do_install() {
 	# Create bin and lib dirs and symlinks.
@@ -99,8 +99,14 @@ do_install() {
 	# udev rules
 	vmkdir usr/lib/udev/rules.d
 	install -m644 ${FILESDIR}/*.rules ${DESTDIR}/usr/lib/udev/rules.d
-
+	
 	# os-release in the expected places
 	vinstall ${FILESDIR}/os-release 644 /usr/lib/
 	ln -s ../usr/lib/os-release ${DESTDIR}/etc/os-release
+}
+
+base-files_package() {
+	metapackage=yes
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - transitional dummy package"
 }
