@@ -1,7 +1,7 @@
 # Template file for 'siproxylin'
 pkgname=siproxylin
-version=0.0.27
-revision=2
+version=0.0.28
+revision=1
 hostmakedepends="python3 python3-pip patchelf file wget"
 depends="python3 drunk-call-service"
 short_desc="Encrypted self-hosted messaging app with VoIP and XMPP"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/confund0/siproxylin"
 distfiles="https://github.com/confund0/siproxylin/archive/refs/tags/v${version}.tar.gz"
-checksum=fce29b4dbe4273b71afdab8509ac8ee2430edbbfd80ac5fc8ac4282dbc082034
+checksum=61a908fda39e30c077e1944f8fdc729d6bf8de44a9a369c98537410d045db776
 noverifyrdeps=yes
 disable_shlib_provides=yes
 
