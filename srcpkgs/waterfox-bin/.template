@@ -5,7 +5,7 @@ version=${VERSION}
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-build_style=meta
+
 hostmakedepends="tar"
 depends="ffmpeg hicolor-icon-theme startup-notification libnotify libXt mime-types"
 short_desc="Fast and private web browser"

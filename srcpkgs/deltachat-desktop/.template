@@ -2,7 +2,7 @@
 pkgname=deltachat-desktop
 version=${VERSION}
 revision=1
-build_style=meta
+
 _electronversion=35
 hostmakedepends="nodejs pnpm inkscape deltachat-rpc-server"
 makedepends="electron${_electronversion}"

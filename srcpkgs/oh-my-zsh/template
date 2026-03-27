@@ -4,7 +4,7 @@ version=0.0.1
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-build_style=meta
+
 hostmakedepends="tar"
 depends="zsh"
 short_desc="Zsh configuration manager"

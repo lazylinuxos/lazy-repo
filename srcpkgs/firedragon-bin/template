@@ -4,7 +4,7 @@ version=12.8.0
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-build_style=meta
+
 hostmakedepends="tar"
 depends="dbus dbus-glib ffmpeg gtk+3 libevent libjpeg-turbo libpulseaudio libXScrnSaver libXt libvpx libwebp mime-types nss pipewire zlib" 
 short_desc="Floorp fork build using custom branding"

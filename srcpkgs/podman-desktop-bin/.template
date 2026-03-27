@@ -4,7 +4,7 @@ version=${VERSION}
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-build_style=meta
+
 hostmakedepends="tar"
 short_desc="Graphical tool for developing on containers and Kubernetes"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

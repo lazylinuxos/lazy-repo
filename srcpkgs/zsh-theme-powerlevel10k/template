@@ -4,7 +4,7 @@ version=1.20.0
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-build_style=meta
+
 hostmakedepends="tar"
 depends="glibc zsh"
 short_desc="Powerlevel10k theme for Zsh"

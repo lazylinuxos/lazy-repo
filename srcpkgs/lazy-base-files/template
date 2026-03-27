@@ -106,7 +106,7 @@ do_install() {
 }
 
 base-files_package() {
-	metapackage=yes
+	
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - transitional dummy package"
 }

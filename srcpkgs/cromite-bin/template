@@ -5,7 +5,7 @@ _cromite_commit=2ba21150282e277cdab0f534cb57978d9a9ac398
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-build_style=meta
+
 hostmakedepends="tar xz"
 depends="gtk+3 libXScrnSaver nss alsa-lib"
 short_desc="Cromite a Bromite fork with ad blocking"

@@ -2,7 +2,7 @@
 pkgname=lazy-base-system
 version=0.114
 revision=3
-metapackage=yes
+
 short_desc="LazyLinux base system meta package"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="Public Domain"

@@ -4,7 +4,7 @@ version=0.0.2
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-build_style=meta
+
 hostmakedepends="tar"
 depends="papirus-icon-theme"
 short_desc="LazyLinux Nordic folder icons"
