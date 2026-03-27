@@ -1,0 +1,22 @@
+# Template file for 'nwm'
+pkgname=nwm
+version=1.1
+revision=1
+build_style=gnu-makefile
+makedepends="libX11-devel"
+depends="libX11"
+short_desc="Minimalistic X11 tiling window manager"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/tinyopsec/nwm"
+distfiles="https://github.com/tinyopsec/nwm/archive/refs/tags/v${version}.tar.gz"
+checksum=72d0f440733fbec23e8ecef1fabf923375dc738097cab03d53f41b17b9a4b1bd
+ 
+ do_build() {
+     make
+ }
+ 
+ do_install() {
+     make PREFIX=/usr DESTDIR=${DESTDIR} install
+ }
+ 
