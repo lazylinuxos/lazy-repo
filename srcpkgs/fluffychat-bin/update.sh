@@ -20,6 +20,11 @@ export SHA256=$(gh release view "$LATEST_VERSION" \
   --json assets \
   --jq ".assets[] | select(.name == \"$ASSET\") | .digest | sub(\"^sha256:\"; \"\")" )
 
+if [[ -z "$SHA256" ]]; then
+  printf "Asset '%s' not found in release %s, skipping update\n" "$ASSET" "$LATEST_VERSION"
+  exit 0
+fi
+
 [[ ! ${SHA256} =~ ^[a-z0-9]+$ ]] && printf "got junk instead of sha256\n" && exit 1
 
 envsubst '${SHA256} ${VERSION}' < ${__dir}/.template > ${__dir}/template
