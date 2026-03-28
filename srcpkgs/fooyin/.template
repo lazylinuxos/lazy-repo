@@ -5,7 +5,7 @@ revision=1
 wrksrc="fooyin-${version}"
 build_style=cmake
 configure_args="-DBUILD_PCH=ON -DBUILD_WERROR=OFF -DINSTALL_HEADERS=ON -DCMAKE_BUILD_TYPE=None"
-hostmakedepends="cmake gcc ninja pkgconf tar"
+hostmakedepends="cmake gcc ninja pkgconf tar git"
 makedepends="qt6-base-devel qt6-svg-devel qt6-tools alsa-lib-devel taglib-devel ffmpeg-devel KDSingleApplication libvgm-player libpipewire icu-devel libopenmpt-devel libsndfile-devel libebur128-devel libarchive-devel libgme-devel"
 depends="qt6-base qt6-svg qt6-tools alsa-lib taglib ffmpeg KDSingleApplication libvgm-player"
 short_desc="A customisable music player"
