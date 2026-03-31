@@ -1,0 +1,22 @@
+# Template file for 'readest-bin'
+pkgname=readest-bin
+version=0.10.1
+revision=1
+hostmakedepends="tar xz"
+depends="cairo desktop-file-utils libgcc fontconfig gdk-pixbuf glib gtk+3
+ hicolor-icon-theme libsoup3 openssl pango libwebkit2gtk41 gst-plugins-good1"
+short_desc="Modern, feature-rich ebook reader"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0-or-later"
+homepage="https://github.com/readest/readest"
+distfiles="https://github.com/readest/readest/releases/download/v${version}/Readest_${version}_amd64.deb"
+checksum="90c107f8768bcc2d76a4343ee0df5d32bc98d39a271fae72822be9936a49039b"
+
+do_extract() {
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/Readest_${version}_amd64.deb
+}
+
+do_install() {
+	tar -xf data.tar.* -C ${DESTDIR}
+}
