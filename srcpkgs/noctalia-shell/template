@@ -1,6 +1,6 @@
 # Template file for 'noctalia-shell'
 pkgname=noctalia-shell
-version=4.7.1
+version=4.7.2
 revision=1
 depends="
  noctalia-qs
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/noctalia-dev/noctalia-shell"
 distfiles="https://github.com/noctalia-dev/noctalia-shell/archive/refs/tags/v${version}.tar.gz"
-checksum=1c0944947abd01f76dd575e7d86200a4b4e0e1037d940a1f79c8342405fd60da
+checksum=4211ef57749df14ab505f06751d313e146e9a905444f46f065ccc55497f010c1
 
 do_install() {
 	vmkdir etc/xdg/quickshell/noctalia-shell
