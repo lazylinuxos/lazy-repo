@@ -2,14 +2,7 @@
 pkgname=lazy-base-system
 version=0.114
 revision=3
-
-short_desc="LazyLinux base system meta package"
-maintainer="nerdyslacker <karyan40024@gmail.com>"
-license="Public Domain"
-homepage="https://lazylinuxos.github.io"
-conflicts="base-system>=0"
-replaces="base-system>=0"
-
+metapackage=yes
 depends="
  lazy-base-files ncurses coreutils findutils diffutils libgcc
  dash bash grep gzip file sed gawk less util-linux which tar man-pages
@@ -17,6 +10,12 @@ depends="
  procps-ng tzdata pciutils usbutils iana-etc openssh dhcpcd
  kbd iproute2 iputils iw wpa_supplicant xbps nvi sudo wifi-firmware
  void-artwork traceroute ethtool kmod acpid eudev lazy-runit removed-packages"
+short_desc="LazyLinux base system meta package"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Public Domain"
+homepage="https://lazylinuxos.github.io"
+conflicts="base-system>=0"
+replaces="base-system>=0"
 
 case "$XBPS_TARGET_MACHINE" in
 	*-musl) depends+=" musl";;
