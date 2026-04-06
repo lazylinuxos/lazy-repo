@@ -1,0 +1,33 @@
+# Template file for 'oxwm'
+pkgname=oxwm
+version=0.11.4
+revision=1
+build_style=zig-build
+hostmakedepends="pkg-config"
+makedepends="freetype-devel libX11-devel libXft-devel libXinerama-devel fontconfig-devel lua-devel"
+depends="freetype libX11 libXft libXinerama fontconfig lua"
+short_desc="X11 Window Manager Inspired by DWM, but with better sane defaults"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://ox-docs.vercel.app/"
+distfiles="https://github.com/tonybanters/oxwm/archive/refs/tags/${version}.tar.gz"
+checksum=9d6fbde0cfd73706319c294c140c7d15faf4128b7c1a040fe3c4528778477035
+nopie=yes
+
+_include_cflags="-I/usr/include/freetype2"
+
+do_build() {
+    zig build -Doptimize=ReleaseSmall -- ${_include_cflags}
+}
+
+do_check() {
+    zig build test -Doptimize=ReleaseSmall -- ${_include_cflags}
+}
+
+do_install() {
+    vbin zig-out/bin/oxwm
+    vlicense LICENSE
+    vinstall resources/oxwm.desktop 644 usr/share/xsessions
+    vman resources/oxwm.1
+    vinstall templates/oxwm.lua 644 usr/share/oxwm
+}
