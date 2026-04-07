@@ -1,22 +1,24 @@
 # Template file for 'nwm'
 pkgname=nwm
-version=1.1
+version=1.1.1
 revision=1
 build_style=gnu-makefile
-makedepends="libX11-devel"
-depends="libX11"
-short_desc="Minimalistic X11 tiling window manager"
+make_build_args="CXXFLAGS+=-I/usr/include/freetype2"
+hostmakedepends="pkg-config"
+makedepends="base-devel libX11-devel libXft-devel freetype-devel fontconfig-devel
+ libXrender-devel libXrandr-devel libXinerama-devel"
+depends="libX11 libXft freetype fontconfig libXrender"
+short_desc="Scrollable tiling X11 window manager"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
-homepage="https://github.com/tinyopsec/nwm"
-distfiles="https://github.com/tinyopsec/nwm/archive/refs/tags/v${version}.tar.gz"
-checksum=72d0f440733fbec23e8ecef1fabf923375dc738097cab03d53f41b17b9a4b1bd
+homepage="https://github.com/xsoder/nwm"
+distfiles="https://github.com/xsoder/nwm/archive/refs/tags/v${version}.tar.gz"
+checksum=5984e905b73b559c705cca6d36994eefb72a988446247fdc6a8f1916e4168eb7
  
- do_build() {
-     make
- }
+do_build() {
+    make
+}
  
- do_install() {
-     make PREFIX=/usr DESTDIR=${DESTDIR} install
- }
- 
+do_install() {
+    make PREFIX=${DESTDIR}/usr install
+}

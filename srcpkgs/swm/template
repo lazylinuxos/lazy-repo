@@ -1,0 +1,22 @@
+# Template file for 'swm'
+pkgname=swm
+version=1.3
+revision=1
+build_style=gnu-makefile
+makedepends="libX11-devel"
+depends="libX11"
+short_desc="Minimal POSIX X11 window manager"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/tinyopsec/swm"
+distfiles="https://github.com/tinyopsec/swm/archive/refs/tags/v${version}.tar.gz"
+checksum=aa8f12af228fad028e07c37782011f77a910ca7ff044ea10418bc06a6ed3575e
+ 
+ do_build() {
+     make
+ }
+ 
+ do_install() {
+     make PREFIX=/usr DESTDIR=${DESTDIR} install
+ }
+ 
