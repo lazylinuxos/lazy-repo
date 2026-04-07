@@ -1,0 +1,11 @@
+--- a/Makefile
++++ b/Makefile
+@@ -7,7 +7,7 @@
+ LDFLAGS  = $(shell pkg-config --cflags freetype2 fontconfig xft x11 xrandr xinerama)
+ LDLIBS   = $(shell pkg-config --libs freetype2 fontconfig xft x11 xrandr xinerama) -lXrender -lm
+ 
+-GIT_VERSION = "$(shell git rev-parse HEAD)"
++GIT_VERSION ?= "$(shell git rev-parse HEAD 2>/dev/null || echo unknown)"
+ 
+ PREFIX   ?= /usr/local
+ BINDIR   ?= $(PREFIX)/bin

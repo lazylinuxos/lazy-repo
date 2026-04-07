@@ -1,6 +1,6 @@
 # Template file for 'pika-backup'
 pkgname=pika-backup
-version=0.8.0
+version=0.8.1
 revision=1
 only_for_archs="x86_64"
 build_style=meson
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://apps.gnome.org/PikaBackup/"
 distfiles="https://gitlab.gnome.org/World/pika-backup/-/archive/${version}/pika-backup-${version}.tar.gz"
-checksum=c65051e0f6145cf9399f1fe0c17982c0900f5985844e86881d86d73badbf8c93
+checksum=e78b76a10b7993fb2a4d06f200e4190d20942876b0f945e8ecb368fc07102049
 nostrip=yes
 
 post_install() {
