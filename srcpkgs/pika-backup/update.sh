@@ -21,7 +21,7 @@ if [[ "${CURRENT_VERSION}" = "${VERSION}" ]]; then
     exit 0
 fi
 
-ARCHIVE="pika-backup-v${VERSION}.tar.gz"
+ARCHIVE="pika-backup-${VERSION}.tar.gz"
 URL="https://gitlab.gnome.org/World/pika-backup/-/archive/${LATEST_TAG}/${ARCHIVE}"
 
 printf "Downloading %s\n" "${URL}"
