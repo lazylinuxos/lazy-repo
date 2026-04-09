@@ -1,0 +1,21 @@
+# Template file for 'purple'
+pkgname=purple
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="openssl-devel"
+depends="openssh"
+short_desc="TUI to search, connect and manage SSH servers"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/erickochen/purple"
+distfiles="https://github.com/erickochen/purple/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+nopie=yes
+
+CFLAGS+=" -fPIC"
+
+post_install() {
+	vlicense LICENSE
+}
