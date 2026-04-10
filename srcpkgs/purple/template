@@ -1,6 +1,6 @@
 # Template file for 'purple'
 pkgname=purple
-version=2.30.1
+version=2.31.0
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/erickochen/purple"
 distfiles="https://github.com/erickochen/purple/archive/refs/tags/v${version}.tar.gz"
-checksum=49f529538e9e38232ab5dd5f904001cf90eb989a2b84009ec1c0254be29ed2f4
+checksum=7df297aa9a21fbb3afe9ac42464b8acc288dd954e06964594fd544fc963867de
 nopie=yes
 
 CFLAGS+=" -fPIC"
