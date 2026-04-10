@@ -9,14 +9,14 @@ makedepends="alsa-lib-devel libcurl-devel fontconfig-devel libxcb-devel protobuf
  glib-devel libxkbcommon-devel libX11-devel openssl-devel sqlite-devel Vulkan-Headers
  vulkan-loader-devel wayland-devel zlib-devel libzstd-devel libgit2-1.9-devel"
 depends="nodejs netcat Vulkan-Tools"
-short_desc="High-performance, multiplayer code editor from creators of Atom and Tree-sitter"
+short_desc="High-performance, multiplayer code editor"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later, AGPL-3.0-or-later, Apache-2.0"
 homepage="https://zed.dev"
 distfiles="https://github.com/zed-industries/zed/archive/refs/tags/v${version}.tar.gz"
 checksum=${SHA256}
-conflicts="zed-bin"
-replaces="zed-bin"
+conflicts="zed-bin>=0"
+replaces="zed-bin>=0"
 _appid=dev.zed.Zed
 
 pre_build() {
@@ -41,13 +41,16 @@ do_build() {
 	export ZED_UPDATE_EXPLANATION='Updates are handled by xbps'
 	export RELEASE_VERSION="$version"
 	export PROTOC=/usr/bin/protoc
-	export PROTOC_INCLUDE=/usr/include	
+	export PROTOC_INCLUDE=/usr/include
 	cargo build --release --frozen --package zed --package cli
 }
 
 do_install() {
-    vbin target/release/cli zed
-    vinstall target/release/zed 0755 usr/lib/zed/ zed-editor
-    vinstall ${_appid}.desktop 644 usr/share/applications/
-    vinstall crates/zed/resources/app-icon.png 644 usr/share/pixmaps zed.png
+	vbin target/release/cli zed
+	vinstall target/release/zed 0755 usr/lib/zed/ zed-editor
+	vinstall ${_appid}.desktop 644 usr/share/applications/
+	vinstall crates/zed/resources/app-icon.png 644 usr/share/pixmaps zed.png
+	vlicense LICENSE-GPL
+	vlicense LICENSE-APACHE
+	vlicense LICENSE-AGPL
 }

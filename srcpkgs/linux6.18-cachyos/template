@@ -37,7 +37,7 @@ preserve=yes
 
 # Build options
 build_options="clang lto o3 preemptfull tickfull thp_always bbr3 per_gov"
-build_options_default=""
+# build_options_default=""
 
 desc_option_clang="Build with Clang/LLVM toolchain"
 desc_option_lto="Enable Link Time Optimization (thin LTO)"
@@ -51,13 +51,13 @@ desc_option_per_gov="Set performance governor as default"
 # CachyOS configuration variables
 _cachy_config=yes
 _cpusched=cachyos  # cachyos, bore, bmq, eevdf, rt, rt-bore
-_processor_opt=
-_cc_harder=
-_per_gov=
-_tcp_bbr3=
+# _processor_opt=
+# _cc_harder=
+# _per_gov=
+# _tcp_bbr3=
 _HZ_ticks=1000
-_tickrate=full    # full, idle, perodic
-_preempt=full     # full, voluntary, none
+_tickrate=full	# full, idle, perodic
+_preempt=full	 # full, voluntary, none
 _hugepage=always  # always, madvise
 _use_llvm_lto=none  # none, thin, full
 _use_kcfi=no
@@ -67,8 +67,8 @@ hostmakedepends="tar xz bc bison elfutils-devel flex gmp-devel kmod libmpc-devel
 
 # Add LLVM/Clang if the user wants to build with it
 if [ -n "$build_option_clang" ]; then
-    hostmakedepends+=" clang lld llvm"
-    _use_llvm_lto=thin
+	hostmakedepends+=" clang lld llvm"
+	_use_llvm_lto=thin
 fi
 
 # Set variables based on build options
@@ -119,23 +119,22 @@ export KBUILD_BUILD_USER=voidlinux
 export KBUILD_BUILD_HOST=voidlinux
 
 _apply_patch() {
-    local p="$1"
-    msg_normal "Applying CachyOS patch: $p"
-    patch -Np1 < "../$(basename "$p")"
+	local p="$1"
+	msg_normal "Applying CachyOS patch: $p"
+	patch -Np1 < "../$(basename "$p")"
 }
 
 pre_patch() {
-    cd "linux-${version%.*}"
+	cd "linux-${version%.*}"
 
 	if [ ! -f $XBPS_SRCDISTDIR/$pkgname-$version/patch-${version}.xz ]; then
 		return
 	fi
-	xzcat $XBPS_SRCDISTDIR/$pkgname-$version/patch-${version}.xz |
-		patch -sNp1 -F0
+	xzcat $XBPS_SRCDISTDIR/$pkgname-$version/patch-${version}.xz | patch -sNp1 -F0
 }
 
 post_patch() {
-    cd "linux-${version%.*}"
+	cd "linux-${version%.*}"
 
 	# Apply CachyOS base and BORE patches
 	_apply_patch "${_kpatchbase}/all/0001-cachyos-base-all.patch"
@@ -157,7 +156,7 @@ post_patch() {
 }
 
 do_configure() {
-    cd "linux-${version%.*}"
+	cd "linux-${version%.*}"
 
 	if [ -f "${FILESDIR}/config" ]; then
 		msg_normal "Using provided .config\n"
@@ -165,150 +164,150 @@ do_configure() {
 	fi
 
 	# Select CPU optimization
-    if [ -n "$_processor_opt" ]; then
-        MARCH="${_processor_opt^^}"
+	if [ -n "$_processor_opt" ]; then
+		MARCH="${_processor_opt^^}"
 
-        if [ "$MARCH" != "GENERIC" ]; then
-            if [[ "$MARCH" =~ GENERIC_V[1-4] ]]; then
-                X86_64_LEVEL="${MARCH//GENERIC_V}"
-                ./scripts/config --set-val X86_64_VERSION "${X86_64_LEVEL}"
-            else
-                ./scripts/config -k -d CONFIG_GENERIC_CPU
-                ./scripts/config -k -e "CONFIG_M${MARCH}"
-            fi
-        fi
-    fi
+		if [ "$MARCH" != "GENERIC" ]; then
+			if [[ "$MARCH" =~ GENERIC_V[1-4] ]]; then
+				X86_64_LEVEL="${MARCH//GENERIC_V}"
+				./scripts/config --set-val X86_64_VERSION "${X86_64_LEVEL}"
+			else
+				./scripts/config -k -d CONFIG_GENERIC_CPU
+				./scripts/config -k -e "CONFIG_M${MARCH}"
+			fi
+		fi
+	fi
 
-    # Enable the CACHY config switch used by CachyOS
-    if [ "${_cachy_config}" = "yes" ]; then
-        echo "Enabling CachyOS config..."
-        ./scripts/config -e CACHY
-    fi
+	# Enable the CACHY config switch used by CachyOS
+	if [ "${_cachy_config}" = "yes" ]; then
+		echo "Enabling CachyOS config..."
+		./scripts/config -e CACHY
+	fi
 
-    # Select CPU scheduler
-    case "$_cpusched" in
-        cachyos|bore) ./scripts/config -e SCHED_BORE;;
-        bmq) ./scripts/config -e SCHED_ALT -e SCHED_BMQ;;
-        eevdf) ;;  # Default scheduler
-        rt) ./scripts/config -d PREEMPT -d PREEMPT_DYNAMIC -e PREEMPT_RT;;
-        rt-bore) ./scripts/config -e SCHED_BORE -d PREEMPT -d PREEMPT_DYNAMIC -e PREEMPT_RT;;
-    esac
+	# Select CPU scheduler
+	case "$_cpusched" in
+		cachyos|bore) ./scripts/config -e SCHED_BORE;;
+		bmq) ./scripts/config -e SCHED_ALT -e SCHED_BMQ;;
+		eevdf) ;;  # Default scheduler
+		rt) ./scripts/config -d PREEMPT -d PREEMPT_DYNAMIC -e PREEMPT_RT;;
+		rt-bore) ./scripts/config -e SCHED_BORE -d PREEMPT -d PREEMPT_DYNAMIC -e PREEMPT_RT;;
+	esac
 
-    # Ensure alternatives are disabled for BORE
-    if [[ "$_cpusched" = "cachyos" || "$_cpusched" = "bore" ]]; then
-        ./scripts/config -d SCHED_ALT -d SCHED_BMQ
-    fi
+	# Ensure alternatives are disabled for BORE
+	if [[ "$_cpusched" = "cachyos" || "$_cpusched" = "bore" ]]; then
+		./scripts/config -d SCHED_ALT -d SCHED_BMQ
+	fi
 
-    # LLVM LTO configuration
-    case "$_use_llvm_lto" in
-        thin) ./scripts/config -e LTO -e LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG_THIN -d LTO_NONE -e HAS_LTO_CLANG -d LTO_CLANG_FULL -e LTO_CLANG_THIN -e HAVE_GCC_PLUGINS;;
-        full) ./scripts/config -e LTO -e LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG_THIN -d LTO_NONE -e HAS_LTO_CLANG -e LTO_CLANG_FULL -d LTO_CLANG_THIN -e HAVE_GCC_PLUGINS;;
-        none) ./scripts/config -e LTO_NONE;;
-    esac
+	# LLVM LTO configuration
+	case "$_use_llvm_lto" in
+		thin) ./scripts/config -e LTO -e LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG_THIN -d LTO_NONE -e HAS_LTO_CLANG -d LTO_CLANG_FULL -e LTO_CLANG_THIN -e HAVE_GCC_PLUGINS;;
+		full) ./scripts/config -e LTO -e LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG -e ARCH_SUPPORTS_LTO_CLANG_THIN -d LTO_NONE -e HAS_LTO_CLANG -e LTO_CLANG_FULL -d LTO_CLANG_THIN -e HAVE_GCC_PLUGINS;;
+		none) ./scripts/config -e LTO_NONE;;
+	esac
 
-    # KCFI support
-    if [ "$_use_kcfi" = "yes" ]; then
-        ./scripts/config -e ARCH_SUPPORTS_CFI_CLANG -e CFI_CLANG -e CFI_AUTO_DEFAULT
-    fi
+	# KCFI support
+	if [ "$_use_kcfi" = "yes" ]; then
+		./scripts/config -e ARCH_SUPPORTS_CFI_CLANG -e CFI_CLANG -e CFI_AUTO_DEFAULT
+	fi
 
-    # Tick rate configuration
-    case "$_HZ_ticks" in
-        100|250|500|600|750|1000)
-            ./scripts/config -d HZ_300 -e "HZ_${_HZ_ticks}" --set-val HZ "${_HZ_ticks}";;
-        300)
-            ./scripts/config -e HZ_300 --set-val HZ 300;;
-    esac
+	# Tick rate configuration
+	case "$_HZ_ticks" in
+		100|250|500|600|750|1000)
+			./scripts/config -d HZ_300 -e "HZ_${_HZ_ticks}" --set-val HZ "${_HZ_ticks}";;
+		300)
+			./scripts/config -e HZ_300 --set-val HZ 300;;
+	esac
 
-    # Tick type
-    case "$_tickrate" in
-        perodic) ./scripts/config -d NO_HZ_IDLE -d NO_HZ_FULL -d NO_HZ -d NO_HZ_COMMON -e HZ_PERIODIC;;
-        idle) ./scripts/config -d HZ_PERIODIC -d NO_HZ_FULL -e NO_HZ_IDLE -e NO_HZ -e NO_HZ_COMMON;;
-        full) ./scripts/config -d HZ_PERIODIC -d NO_HZ_IDLE -d CONTEXT_TRACKING_FORCE -e NO_HZ_FULL_NODEF -e NO_HZ_FULL -e NO_HZ -e NO_HZ_COMMON -e CONTEXT_TRACKING;;
-    esac
+	# Tick type
+	case "$_tickrate" in
+		perodic) ./scripts/config -d NO_HZ_IDLE -d NO_HZ_FULL -d NO_HZ -d NO_HZ_COMMON -e HZ_PERIODIC;;
+		idle) ./scripts/config -d HZ_PERIODIC -d NO_HZ_FULL -e NO_HZ_IDLE -e NO_HZ -e NO_HZ_COMMON;;
+		full) ./scripts/config -d HZ_PERIODIC -d NO_HZ_IDLE -d CONTEXT_TRACKING_FORCE -e NO_HZ_FULL_NODEF -e NO_HZ_FULL -e NO_HZ -e NO_HZ_COMMON -e CONTEXT_TRACKING;;
+	esac
 
-    # Preemption (skip for RT kernels)
-    if [[ "$_cpusched" != "rt" && "$_cpusched" != "rt-bore" ]]; then
-        case "$_preempt" in
-            full) ./scripts/config -e PREEMPT_DYNAMIC -e PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_LAZY -d PREEMPT_NONE;;
-            voluntary) ./scripts/config -d PREEMPT_DYNAMIC -d PREEMPT -e PREEMPT_VOLUNTARY -d PREEMPT_LAZY -d PREEMPT_NONE;;
-            none) ./scripts/config -d PREEMPT_DYNAMIC -d PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_LAZY -e PREEMPT_NONE;;
-        esac
-    fi
+	# Preemption (skip for RT kernels)
+	if [[ "$_cpusched" != "rt" && "$_cpusched" != "rt-bore" ]]; then
+		case "$_preempt" in
+			full) ./scripts/config -e PREEMPT_DYNAMIC -e PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_LAZY -d PREEMPT_NONE;;
+			voluntary) ./scripts/config -d PREEMPT_DYNAMIC -d PREEMPT -e PREEMPT_VOLUNTARY -d PREEMPT_LAZY -d PREEMPT_NONE;;
+			none) ./scripts/config -d PREEMPT_DYNAMIC -d PREEMPT -d PREEMPT_VOLUNTARY -d PREEMPT_LAZY -e PREEMPT_NONE;;
+		esac
+	fi
 
-    # Performance governor
-    if [ "$_per_gov" = "yes" ]; then
-        ./scripts/config -d CPU_FREQ_DEFAULT_GOV_SCHEDUTIL -e CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-    fi
+	# Performance governor
+	if [ "$_per_gov" = "yes" ]; then
+		./scripts/config -d CPU_FREQ_DEFAULT_GOV_SCHEDUTIL -e CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+	fi
 
-    # O3 optimization
-    if [ "$_cc_harder" = "yes" ]; then
-        ./scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE -e CC_OPTIMIZE_FOR_PERFORMANCE_O3
-    fi
+	# O3 optimization
+	if [ "$_cc_harder" = "yes" ]; then
+		./scripts/config -d CC_OPTIMIZE_FOR_PERFORMANCE -e CC_OPTIMIZE_FOR_PERFORMANCE_O3
+	fi
 
-    # BBR3 TCP congestion control
-    if [ "$_tcp_bbr3" = "yes" ]; then
-        ./scripts/config -m TCP_CONG_CUBIC -d DEFAULT_CUBIC -e TCP_CONG_BBR -e DEFAULT_BBR \
-            --set-str DEFAULT_TCP_CONG bbr -m NET_SCH_FQ_CODEL -e NET_SCH_FQ \
-            -d CONFIG_DEFAULT_FQ_CODEL -e CONFIG_DEFAULT_FQ
-    fi
+	# BBR3 TCP congestion control
+	if [ "$_tcp_bbr3" = "yes" ]; then
+		./scripts/config -m TCP_CONG_CUBIC -d DEFAULT_CUBIC -e TCP_CONG_BBR -e DEFAULT_BBR \
+			--set-str DEFAULT_TCP_CONG bbr -m NET_SCH_FQ_CODEL -e NET_SCH_FQ \
+			-d CONFIG_DEFAULT_FQ_CODEL -e CONFIG_DEFAULT_FQ
+	fi
 
-    # Transparent Huge Pages
-    case "$_hugepage" in
-        always) ./scripts/config -d TRANSPARENT_HUGEPAGE_MADVISE -e TRANSPARENT_HUGEPAGE_ALWAYS;;
-        madvise) ./scripts/config -d TRANSPARENT_HUGEPAGE_ALWAYS -e TRANSPARENT_HUGEPAGE_MADVISE;;
-    esac
+	# Transparent Huge Pages
+	case "$_hugepage" in
+		always) ./scripts/config -d TRANSPARENT_HUGEPAGE_MADVISE -e TRANSPARENT_HUGEPAGE_ALWAYS;;
+		madvise) ./scripts/config -d TRANSPARENT_HUGEPAGE_ALWAYS -e TRANSPARENT_HUGEPAGE_MADVISE;;
+	esac
 
-    # Size optimizations
-    # ./scripts/config -e MODULE_COMPRESS_ZSTD -d MODULE_COMPRESS_GZIP -d MODULE_COMPRESS_XZ
+	# Size optimizations
+	# ./scripts/config -e MODULE_COMPRESS_ZSTD -d MODULE_COMPRESS_GZIP -d MODULE_COMPRESS_XZ
 
-    # Debug configuration
-    ./scripts/config -d DEBUG_INFO -d DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT -e DEBUG_INFO_NONE
-    ./scripts/config -d KALLSYMS_ALL
+	# Debug configuration
+	./scripts/config -d DEBUG_INFO -d DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT -e DEBUG_INFO_NONE
+	./scripts/config -d KALLSYMS_ALL
 
-    # Enable USER_NS
-    ./scripts/config -e USER_NS
+	# Enable USER_NS
+	./scripts/config -e USER_NS
 
-    # Recompute defaults for any new symbols
-    make ${makejobs} ARCH=x86_64 oldconfig
+	# Recompute defaults for any new symbols
+	make ${makejobs} ARCH=x86_64 oldconfig
 
 	# Always use our revision to CONFIG_LOCALVERSION to match our pkg version.
 	sed -i -e "s|^\(CONFIG_LOCALVERSION=\).*|\1\"-cachyos_${revision}\"|" .config
 }
 
 do_build() {
-    cd "linux-${version%.*}"
+	cd "linux-${version%.*}"
 	export LDFLAGS=
-    # Choose toolchain based on build_option_clang (no LTO by default)
-    if [ -n "$build_option_clang" ]; then
-        export CC=clang
-        export LLVM=1
-        export LLVM_IAS=1
-        export LD=ld.lld
-    fi
+	# Choose toolchain based on build_option_clang (no LTO by default)
+	if [ -n "$build_option_clang" ]; then
+		export CC=clang
+		export LLVM=1
+		export LLVM_IAS=1
+		export LD=ld.lld
+	fi
 	make ARCH=x86_64 ${makejobs} prepare
 	make ARCH=x86_64 ${makejobs} bzImage modules
 }
 
 do_install() {
-    cd "linux-${version%.*}"
+	cd "linux-${version%.*}"
 
-    local hdrdest
+	local hdrdest
 
-    # Run depmod after compressing modules - makes depmod.sh a noop
+	# Run depmod after compressing modules - makes depmod.sh a noop
 	sed -i '2iexit 0' scripts/depmod.sh
 	vmkdir usr/lib
 	ln -s usr/lib/ ${DESTDIR}
 
-    # Install kernel, firmware and modules
-    make ${makejobs} ARCH=x86_64 INSTALL_MOD_PATH=${DESTDIR} modules_install
+	# Install kernel, firmware and modules
+	make ${makejobs} ARCH=x86_64 INSTALL_MOD_PATH=${DESTDIR} modules_install
 
-    hdrdest=${DESTDIR}/usr/src/kernel-headers-${_kernver}
+	hdrdest=${DESTDIR}/usr/src/kernel-headers-${_kernver}
 
 	vinstall .config 644 boot config-${_kernver}
 	vinstall System.map 644 boot System.map-${_kernver}
 	vinstall arch/x86/boot/bzImage 644 boot vmlinuz-${_kernver}
 
-    # Switch to /usr.
+	# Switch to /usr.
 	vmkdir usr
 
 	# mv ${DESTDIR}/usr/lib/modules/${version}_${revision} ${DESTDIR}/usr/lib/modules/${_kernver}
@@ -341,14 +340,14 @@ do_install() {
 		fi
 	done
 
-    cd "${wrksrc}/linux-${version%.*}"
+	cd "${wrksrc}/linux-${version%.*}"
 	mkdir -p ${hdrdest}/arch/x86
 	cp -a arch/x86/include ${hdrdest}/arch/x86
 
-    # needed for mv-debug
-    cp scripts/sign-file "${XBPS_WRAPPERDIR}"
+	# needed for mv-debug
+	cp scripts/sign-file "${XBPS_WRAPPERDIR}"
 
-    # Copy files necessary for later builds, like nvidia and vmware
+	# Copy files necessary for later builds, like nvidia and vmware
 	cp Module.symvers ${hdrdest}
 	cp -a scripts ${hdrdest}
 	mkdir -p ${hdrdest}/security/selinux
@@ -421,7 +420,7 @@ do_install() {
 	mkdir -p ${hdrdest}/tools/objtool
 	cp tools/objtool/objtool ${hdrdest}/tools/objtool
 
-    # Extract debugging symbols and compress modules
+	# Extract debugging symbols and compress modules
 	msg_normal "$pkgver: extracting debug info and compressing modules, please wait...\n"
 	install -Dm644 vmlinux ${DESTDIR}/usr/lib/debug/boot/vmlinux-${_kernver}
 	(

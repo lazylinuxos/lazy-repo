@@ -28,4 +28,5 @@ do_check() {
 
 do_install() {
 	vbin lazysql
+	vlicense LICENSE.txt
 }

@@ -13,7 +13,3 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/MikiDevLog/wallpaper_not-engine_linux"
 distfiles="https://github.com/MikiDevLog/wallpaper_not-engine_linux/archive/refs/tags/v${version}.tar.gz"
 checksum=156a0ce48c00654a562590a0de21f1879a431b190c53326f7007ed2f8928ce3b
-
-post_install() {
-	vlicense LICENSE
-}

@@ -7,27 +7,27 @@ hostmakedepends="lazarus fpc"
 makedepends="gtk+-devel"
 short_desc="Minimalist Pascal RSS reader"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
-license="custom:none"
+license="Public Domain"
 homepage="https://github.com/norayr/tomar"
-distfiles="https://github.com/norayr/tomar/archive/refs/heads/main.zip"
-checksum=bd6cb1dfdb26170419f00ec66b8c261910ba49b8d2edb8db83a53303f8c6171b
+distfiles="https://github.com/norayr/tomar/archive/refs/heads/main.tar.gz"
+checksum=ad1a3c844b7eef785ad18507a1cd5680ef88af2d547ec81725ff713a15cd9555
 nopie=yes
 
 do_build() {
-    lazbuild --lazarusdir="/usr/lib/lazarus" rssreader.lpi
+	lazbuild --lazarusdir="/usr/lib/lazarus" rssreader.lpi
 }
 
 do_install() {
 	vmkdir opt/tomar
 	vcopy * opt/tomar
-    
+
 	# Pre-create data dir
-    vmkdir opt/tomar/data
-	vinstall /dev/null 644 opt/tomar/data .ignore    
-    
+	vmkdir opt/tomar/data
+	vinstall /dev/null 644 opt/tomar/data .ignore
+
 	vmkdir usr/share/applications
 	vinstall ${FILESDIR}/tomar.desktop 644 usr/share/applications
-	
+
 	vmkdir usr/bin
 	ln -s /opt/tomar/rssreader ${DESTDIR}/usr/bin/tomar
 }

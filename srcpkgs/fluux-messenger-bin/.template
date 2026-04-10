@@ -7,11 +7,12 @@ create_wrksrc=yes
 hostmakedepends="rpmextract"
 short_desc="Browser that rethinks the web"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
-license="AGPL-3.0"
+license="AGPL-3.0-only"
 homepage="https://github.com/processone/fluux-messenger"
 distfiles="https://github.com/processone/fluux-messenger/releases/download/v${version}/Fluux-Messenger_${version}_Linux_x64.rpm"
 checksum=${SHA256}
 
 do_install() {
 	vcopy "*" /
+	vlicense ${FILESDIR}/LICENSE
 }

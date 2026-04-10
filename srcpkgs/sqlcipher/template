@@ -13,19 +13,8 @@ configure_args="
  --rtree
 "
 hostmakedepends="patchelf unzip"
-makedepends="
- glibc-devel
- openssl-devel
- readline-devel
- tcl-devel
- zlib-devel
-"
-depends="
- openssl
- readline
- tcl
- zlib
-"
+makedepends="glibc-devel openssl-devel readline-devel tcl-devel zlib-devel"
+depends="openssl readline tcl zlib"
 short_desc="SQLite extension providing transparent 256-bit AES encryption"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-3-Clause"
@@ -82,7 +71,7 @@ post_install() {
 
 	# Man page
 	rm -f "${DESTDIR}/usr/share/man/man1/sqlite3.1"
-	vinstall sqlcipher.1 644 usr/share/man/man1
+	vman sqlcipher.1
 
 	# License
 	vlicense LICENSE.md

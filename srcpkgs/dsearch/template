@@ -13,13 +13,13 @@ distfiles="https://github.com/AvengeMedia/danksearch/archive/refs/tags/v${versio
 checksum=e2c263a233e45661e55bd841ee1395b9241132091f1b1e3d98caebb26d455727
 
 do_build() {
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-    go build -o dsearch ./cmd/dsearch
+	go build -o dsearch ./cmd/dsearch
 }
 
 do_install() {

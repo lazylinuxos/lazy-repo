@@ -12,7 +12,7 @@ homepage="https://floorp.app/en"
 distfiles="https://github.com/Floorp-Projects/Floorp/releases/download/v${version}/${_pkgname}-linux-x86_64.tar.xz"
 checksum=${SHA256}
 nopie=yes
-replaces="floorp"
+replaces="floorp>=0"
 
 do_install() {
 	vmkdir usr/lib/${_pkgname}

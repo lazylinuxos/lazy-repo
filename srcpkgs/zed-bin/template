@@ -4,7 +4,6 @@ version=0.231.2
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-
 hostmakedepends="tar"
 depends="vulkan-loader mesa-vulkan-intel intel-video-accel"
 short_desc="High-performance, multiplayer code editor"
@@ -13,8 +12,8 @@ license="AGPL-3.0-or-later, Apache-2.0, GPL-3.0-or-later"
 homepage="https://zed.dev/"
 distfiles="https://github.com/zed-industries/zed/releases/download/v${version}/zed-linux-x86_64.tar.gz"
 checksum=9206513e38b8a37cf27e874bff3dfc65e6dd1ab1f4ae0fbe5fe12af7465dc3dc
-conflicts="zed"
-replaces="zed"
+conflicts="zed>=0"
+replaces="zed>=0"
 noshlibprovides=yes
 
 do_install() {
@@ -33,4 +32,7 @@ do_install() {
 	# link the binary
 	vmkdir usr/bin/
 	ln -s /opt/zed/bin/zed ${DESTDIR}/usr/bin/
+	vlicense LICENSE-GPL
+	vlicense LICENSE-APACHE
+	vlicense LICENSE-AGPL
 }

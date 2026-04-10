@@ -66,19 +66,19 @@ CXXFLAGS+=" -ffat-lto-objects -Wno-builtin-macro-redefined"
 export CEF_ROOT=${wrksrc}/build/cef
 
 post_extract() {
-    for archive in $skip_extraction; do
-        case "$archive" in
-            cef_binary_*.tar.bz2)
-                vsrcextract -C "${wrksrc}/build/cef" "$archive"
-                ;;
-            *.zip)
-                target="${archive%.zip}"
-                vsrcextract -C "${wrksrc}/src/External/$target" "$archive"
-                ;;
-        esac
-    done
+	for archive in $skip_extraction; do
+		case "$archive" in
+			cef_binary_*.tar.bz2)
+				vsrcextract -C "${wrksrc}/build/cef" "$archive"
+				;;
+			*.zip)
+				target="${archive%.zip}"
+				vsrcextract -C "${wrksrc}/src/External/$target" "$archive"
+				;;
+		esac
+	done
 }
 
 post_install() {
-    vbin ${FILESDIR}/linux-wallpaperengine.sh linux-wallpaperengine
+	vbin ${FILESDIR}/linux-wallpaperengine.sh linux-wallpaperengine
 }

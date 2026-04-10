@@ -5,7 +5,6 @@ version=6.6.11
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-
 hostmakedepends="tar"
 depends="ffmpeg hicolor-icon-theme startup-notification libnotify libXt mime-types"
 short_desc="Fast and private web browser"
@@ -15,7 +14,7 @@ homepage="https://www.waterfox.net"
 changelog="${homepage}/docs/releases/${version}/"
 distfiles="https://cdn.waterfox.com/${_pkgname}/releases/${version}/Linux_x86_64/${_pkgname}-${version}.tar.bz2"
 checksum=d8d7d46902df25bc37e7a7b69ae07477547059cb8bb25dd600154b860cca7621
-replaces="waterfox"
+replaces="waterfox>=0"
 
 do_install() {
 	vmkdir "opt"

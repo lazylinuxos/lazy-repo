@@ -1,11 +1,10 @@
 # Template file for 'cromite-bin'
 pkgname=cromite-bin
 version=144.0.7559.97
-_cromite_commit=2ba21150282e277cdab0f534cb57978d9a9ac398
 revision=1
+_cromite_commit=2ba21150282e277cdab0f534cb57978d9a9ac398
 archs="x86_64"
 create_wrksrc=yes
-
 hostmakedepends="tar xz"
 depends="gtk+3 libXScrnSaver nss alsa-lib"
 short_desc="Cromite a Bromite fork with ad blocking"
@@ -14,7 +13,7 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/uazo/cromite"
 distfiles="https://github.com/uazo/cromite/releases/download/v${version}-${_cromite_commit}/chrome-lin64.tar.gz"
 checksum=b758838452906380fa756cbb6abb98844f16572e79def2035e1a218d7cc03a45
-replaces="cromite"
+replaces="cromite>=0"
 
 do_install() {
 	# Install the files

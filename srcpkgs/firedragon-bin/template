@@ -4,16 +4,15 @@ version=12.8.0
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-
 hostmakedepends="tar"
-depends="dbus dbus-glib ffmpeg gtk+3 libevent libjpeg-turbo libpulseaudio libXScrnSaver libXt libvpx libwebp mime-types nss pipewire zlib" 
+depends="dbus dbus-glib ffmpeg gtk+3 libevent libjpeg-turbo libpulseaudio libXScrnSaver libXt libvpx libwebp mime-types nss pipewire zlib"
 short_desc="Floorp fork build using custom branding"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
-license="MPL2"
+license="MPL-2.0"
 homepage="https://firedragon.garudalinux.org"
 distfiles="https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v${version}/downloads/firedragon-linux-x64.tar.xz"
 checksum=b31d5600ee539333b81f987e52685f7a5c03a376bd8a2d1ed5921597ad53515a
-replaces="firedragon"
+replaces="firedragon>=0"
 
 do_install() {
 	vmkdir usr/lib
@@ -21,10 +20,10 @@ do_install() {
 
 	vmkdir usr/share
 	vinstall ${FILESDIR}/firedragon.desktop 644 usr/share/applications/
-	
+
 	for i in 16 32 48 64 128; do
 		vinstall ${wrksrc}/firedragon/browser/chrome/icons/default/default$i.png 644 usr/share/icons/hicolor/${i}x${i}/apps ${pkgname}.png
-    done
+	done
 
 	# link the binary
 	vmkdir usr/bin/

@@ -14,11 +14,15 @@ license="MIT"
 homepage="https://github.com/xsoder/nwm"
 distfiles="https://github.com/xsoder/nwm/archive/refs/tags/v${version}.tar.gz"
 checksum=5984e905b73b559c705cca6d36994eefb72a988446247fdc6a8f1916e4168eb7
- 
+
 do_build() {
-    make
+	make
 }
- 
+
 do_install() {
-    make PREFIX=${DESTDIR}/usr install
+	make PREFIX=${DESTDIR}/usr install
+}
+
+post_install() {
+	vlicense LICENSE
 }

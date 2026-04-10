@@ -6,23 +6,12 @@ revision=1
 archs="x86_64"
 build_style=go
 go_import_path="github.com/AvengeMedia/${_pkg1}"
-go_build_tags=""
 go_ldflags="-linkmode=external"
 depends="dgop quickshell font-inter font-fira-ttf font-firacode material-symbols-variable-ttf"
-optdepends="
- brightnessctl: laptop display brightness control
- cava: audio visualizer
- cliphist: clipboard history
- matugen: dynamic wallpaper-based theming
- NetworkManager: network management
- qt5ct: Qt5 application theming
- qt6ct: Qt6 application theming
- wl-clipboard: clipboard utilities
-"
-short_desc="A Quickshell-based desktop shell with Material 3 design principles"
+short_desc="Quickshell-based desktop shell with Material 3 design principles"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
-homepage="https://github.com/AvengeMedia/${_pkg1}"
+homepage="https://github.com/AvengeMedia/DankMaterialShell"
 distfiles="https://github.com/AvengeMedia/${_pkg1}/archive/v${version}/${_pkg1}-${version}.tar.gz"
 checksum=9a23a717eef088da3d25b355d4f13feff7499bbafe5e93c9fa379ee15e962709
 
@@ -55,12 +44,3 @@ dms-shell-niri_package() {
 		vcopy ${DESTDIR}/usr/share/doc/dms-shell/* usr/share/doc/dms-shell-niri/
 	}
 }
-
-# dms-shell-hyprland_package() {
-# 	short_desc+=" (for Hyprland)"
-# 	depends="${sourcepkg} hyprland"
-# 	pkg_install() {
-	# 	vmkdir usr/share/doc/dms-shell-hyprland
-	# 	vcopy ${DESTDIR}/usr/share/doc/dms-shell/* usr/share/doc/dms-shell-hyprland/
-	# }
-# }

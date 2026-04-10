@@ -15,16 +15,16 @@ checksum=f15c55a486f23d16146e701f43d5406927d0ec559fd3efe2adc61c0f42576b14
 post_install() {
 	sed -i 's|/usr/libexec/nebula-gtk|/usr/bin/nebula-gtk|' \
 		assets/applications/tech.geektoshi.Nebula.desktop
-		
+
 	vinstall assets/applications/tech.geektoshi.Nebula.desktop 644 usr/share/applications
 
 	for size in 128 256 512; do
 		vinstall assets/icons/hicolor/${size}x${size}/apps/nebula.png \
 			644 usr/share/icons/hicolor/${size}x${size}/apps
 	done
-	
+
 	vinstall data/category_overrides.toml 644 usr/share/nebula
 	vinstall data/generated/category_suggestions.json 644 usr/share/nebula
-	
+
 	vlicense LICENSE
 }

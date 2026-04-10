@@ -11,6 +11,6 @@ distfiles="https://github.com/lazylinuxos/lazysvctl/archive/refs/tags/${version}
 checksum=5ccc475a81184ea7f360998c00738ece35d1d2860071ab240b035c6536321e7f
 
 do_install() {
-    vbin lazysvctl
-    vlicense LICENSE
+	vbin lazysvctl
+	vlicense LICENSE
 }

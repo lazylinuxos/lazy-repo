@@ -8,7 +8,7 @@ configure_args="-DCMAKE_BUILD_TYPE=Release"
 hostmakedepends="qt6-tools"
 makedepends="qt6-base-devel qt6-tools-devel qt6-declarative-devel Vulkan-Headers"
 depends="glibc hicolor-icon-theme libgcc"
-short_desc="An infinite whiteboard tool"
+short_desc="Infinite whiteboard tool"
 maintainer="nathan marchiori <nathan.marchiori@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://invent.kde.org/graphics/drawy"
@@ -16,7 +16,7 @@ distfiles="https://invent.kde.org/graphics/drawy/-/archive/${version}-alpha/draw
 checksum=904e5b0bf14222198cefd3e2e0d5adf852b0a528ae7b0149c67ccece88ea519f
 
 do_install() {
-    vbin build/drawy
-    vinstall deploy/appimage/AppDir/usr/share/applications/drawy.desktop 644 usr/share/applications
-    vinstall deploy/appimage/AppDir/usr/share/icons/hicolor/256x256/apps/drawy.png 644 usr/share/icons/hicolor/256x256/apps
+	vbin build/drawy
+	vinstall deploy/appimage/AppDir/usr/share/applications/drawy.desktop 644 usr/share/applications
+	vinstall deploy/appimage/AppDir/usr/share/icons/hicolor/256x256/apps/drawy.png 644 usr/share/icons/hicolor/256x256/apps
 }

@@ -4,21 +4,22 @@ version=${VERSION}
 revision=1
 archs="x86_64"
 hostmakedepends="tar xz"
-depdends="libstdc++ curl xdg-utils dejavu-fonts-ttf GConf"
+depends="libstdc++ curl xdg-utils dejavu-fonts-ttf"
 short_desc="Open-source office suite pack"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
-license="AGPL-3.0"
+license="AGPL-3.0-only"
 homepage="https://www.onlyoffice.com/"
 distfiles="https://github.com/ONLYOFFICE/DesktopEditors/releases/download/v${version}/onlyoffice-desktopeditors_amd64.deb"
 checksum=${SHA256}
 nostrip=yes
-replaces="onlyoffice"
+replaces="onlyoffice>=0"
 
 do_extract() {
-        mkdir -p ${DESTDIR}
-        ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/onlyoffice-desktopeditors_amd64.deb
+	mkdir -p ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/onlyoffice-desktopeditors_amd64.deb
 }
 
 do_install() {
-        tar xf data.tar.xz -C ${DESTDIR}
+	tar xf data.tar.xz -C ${DESTDIR}
+	vlicense ${FILESDIR}/LICENSE
 }

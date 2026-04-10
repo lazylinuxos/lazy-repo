@@ -32,7 +32,7 @@ material-symbols-variable-ttf_package() {
 	pkg_install() {
 		vmkdir usr/share/fonts/material-symbols-variable-ttf
 		vcopy ${DESTDIR}/usr/share/fonts/${_pkgname}/*wght*.ttf usr/share/fonts/material-symbols-variable-ttf/
-	}	
+	}
 }
 
 material-symbols-variable-woff2_package() {
@@ -40,5 +40,5 @@ material-symbols-variable-woff2_package() {
 	pkg_install() {
 		vmkdir usr/share/fonts/material-symbols-variable-woff2
 		vcopy ${DESTDIR}/usr/share/fonts/${_pkgname}/*.woff2 usr/share/fonts/material-symbols-variable-woff2/
-	}		
+	}
 }

@@ -18,7 +18,7 @@ noshlibprovides=yes
 do_install() {
 	vmkdir usr/lib/doublecmd
 	vcopy ${wrksrc}/doublecmd/* usr/lib/doublecmd
- 
+
 	vinstall ${wrksrc}/doublecmd/doublecmd.png 644 usr/share/pixmaps
 	vinstall ${FILESDIR}/doublecmd.desktop 644 usr/share/applications
 

@@ -4,7 +4,6 @@ version=v1.0.0.alpha.49
 revision=1
 _gitrev=5154280
 _commit_hash=515428093514ab85e4529a8e07d54a3758a2c013
-wrksrc="valent-${version}"
 build_style=meson
 configure_args="-Dtests=true -Dfuzz_tests=false -Dinstalled_tests=false"
 hostmakedepends="git glib-devel gobject-introspection pkg-config vala gettext-devel"
@@ -24,7 +23,7 @@ checksum="39ef35dcba629b73a4d532b950cb454ecc8e6673ac73e4380542c9b6647f0aea
 
 post_extract() {
 	rmdir subprojects/gvc 2>/dev/null || true
-    mv ./valent-${_commit_hash}/* . 
+	mv ./valent-${_commit_hash}/* .
 	mv ./libgnome-volume-control-master/* ./subprojects/gvc/
 }
 

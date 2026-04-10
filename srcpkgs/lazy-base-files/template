@@ -99,14 +99,14 @@ do_install() {
 	# udev rules
 	vmkdir usr/lib/udev/rules.d
 	install -m644 ${FILESDIR}/*.rules ${DESTDIR}/usr/lib/udev/rules.d
-	
+
 	# os-release in the expected places
 	vinstall ${FILESDIR}/os-release 644 /usr/lib/
 	ln -s ../usr/lib/os-release ${DESTDIR}/etc/os-release
 }
 
 base-files_package() {
-	
+
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - transitional dummy package"
 }

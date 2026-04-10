@@ -5,11 +5,7 @@ revision=1
 build_style=go
 go_import_path="github.com/savedra1/clipse"
 hostmakedepends="pkg-config libX11-devel libXtst-devel"
-optdepends="
- xclip: X11 clipboard integration
- wl-clipboard: Wayland clipboard integration
-"
-short_desc="A configurable TUI clipboard manager for Unix"
+short_desc="Configurable TUI clipboard manager for Unix"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/savedra1/clipse"
@@ -17,10 +13,10 @@ distfiles="${homepage}/archive/refs/tags/v${version}.tar.gz"
 checksum=ec906744103a611cc1045a9d65f20b13b454ee046fd979abf1341a1b78fe553e
 
 post_build() {
-    # upstream uses a Makefile, but go build-style already built the binary
-    :
+	# upstream uses a Makefile, but go build-style already built the binary
+	:
 }
 
 do_install() {
-    vbin ${GOPATH}/bin/clipse
+	vbin ${GOPATH}/bin/clipse
 }

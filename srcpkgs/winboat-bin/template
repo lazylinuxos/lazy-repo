@@ -13,15 +13,16 @@ distfiles="https://github.com/TibixDev/winboat/releases/download/v${version}/win
 checksum=91d4d10d173fb572fba7c30ad49a2397374e4cde1bc5b4f807573890962afe4e
 provides="winboat-${version}_1"
 noverifyrdeps=yes
-disable_shlib_provides=yes
+noshlibprovides=yes
 
 do_extract() {
 	mkdir -p ${DESTDIR}
-    ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/winboat-${version}-amd64.deb
-    tar -xf data.tar.xz -C ${DESTDIR}
+	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/winboat-${version}-amd64.deb
+	tar -xf data.tar.xz -C ${DESTDIR}
 }
 
 do_install() {
 	vmkdir usr/bin/
 	ln -s /opt/winboat/winboat ${DESTDIR}/usr/bin/
+	vlicense ${FILESDIR}/LICENSE
 }

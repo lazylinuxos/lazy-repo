@@ -1,4 +1,4 @@
-# Template for deltachat-rpc-server
+# Template file for 'deltachat-rpc-server'
 pkgname=deltachat-rpc-server
 version=${VERSION}
 revision=1
@@ -11,14 +11,13 @@ license="MPL-2.0"
 homepage="https://github.com/chatmail/core/tree/main/deltachat-rpc-server"
 distfiles="https://github.com/chatmail/core/archive/refs/tags/v${version}.tar.gz"
 checksum=${SHA256}
-cargo_pkg="${pkgname}"
 
 do_build() {
-    CFLAGS="${CFLAGS} -ffat-lto-objects"
-    cargo build --release --package ${pkgname}
+	CFLAGS="${CFLAGS} -ffat-lto-objects"
+	cargo build --release --package ${pkgname}
 }
 
 do_install() {
 	vbin target/release/${pkgname}
-    vinstall README.md 644 usr/share/doc/${pkgname}
+	vinstall README.md 644 usr/share/doc/${pkgname}
 }

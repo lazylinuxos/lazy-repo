@@ -13,7 +13,7 @@ checksum=${SHA256}
 nopie=yes
 nostrip=yes
 noverifyrdeps=yes
-disable_shlib_provides=yes
+noshlibprovides=yes
 
 do_extract() {
 	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/tiny-rdm_${version}_linux_amd64.deb
@@ -21,11 +21,11 @@ do_extract() {
 }
 
 do_install() {
-    vbin usr/local/bin/tiny-rdm
+	vbin usr/local/bin/tiny-rdm
 
-    vinstall usr/share/applications/tiny-rdm.desktop 644 usr/share/applications
-    vinstall usr/share/icons/hicolor/512x512/apps/tiny-rdm.png 644 usr/share/icons/hicolor/512x512/apps
+	vinstall usr/share/applications/tiny-rdm.desktop 644 usr/share/applications
+	vinstall usr/share/icons/hicolor/512x512/apps/tiny-rdm.png 644 usr/share/icons/hicolor/512x512/apps
 
-    # Fix .desktop Exec path
-    vsed -i 's|/usr/local/bin/|/usr/bin/|g' ${DESTDIR}/usr/share/applications/tiny-rdm.desktop
+	# Fix .desktop Exec path
+	vsed -i 's|/usr/local/bin/|/usr/bin/|g' ${DESTDIR}/usr/share/applications/tiny-rdm.desktop
 }

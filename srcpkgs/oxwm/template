@@ -17,17 +17,16 @@ nopie=yes
 _include_cflags="-I/usr/include/freetype2"
 
 do_build() {
-    zig build -Doptimize=ReleaseSmall -- ${_include_cflags}
+	zig build -Doptimize=ReleaseSmall -- ${_include_cflags}
 }
 
 do_check() {
-    zig build test -Doptimize=ReleaseSmall -- ${_include_cflags}
+	zig build test -Doptimize=ReleaseSmall -- ${_include_cflags}
 }
 
 do_install() {
-    vbin zig-out/bin/oxwm
-    vlicense LICENSE
-    vinstall resources/oxwm.desktop 644 usr/share/xsessions
-    vman resources/oxwm.1
-    vinstall templates/oxwm.lua 644 usr/share/oxwm
+	vbin zig-out/bin/oxwm
+	vinstall resources/oxwm.desktop 644 usr/share/xsessions
+	vman resources/oxwm.1
+	vinstall templates/oxwm.lua 644 usr/share/oxwm
 }

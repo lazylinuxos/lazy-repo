@@ -14,3 +14,6 @@ homepage="https://github.com/stephenberry/glaze"
 distfiles="https://github.com/stephenberry/glaze/archive/refs/tags/v${version}.tar.gz"
 checksum=${SHA256}
 
+post_install() {
+	vlicense LICENSE
+}

@@ -12,7 +12,7 @@ license="GPL-1.0-or-later"
 homepage="https://www.mucommander.com"
 distfiles="https://github.com/mucommander/mucommander/releases/download/${version}-1/mucommander-${version}-1.x86_64.rpm"
 checksum=${SHA256}
-replaces="muCommander mucommander"
+replaces="muCommander>=0 mucommander>=0"
 
 do_install() {
 		# Install the files

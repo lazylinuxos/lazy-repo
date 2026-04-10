@@ -2,12 +2,11 @@
 pkgname=python3-watchfiles
 version=1.1.0
 revision=1
-wrksrc="watchfiles-${version}"
 hostmakedepends="python3 python3-setuptools python3-wheel python3-build python3-installer maturin cargo"
 makedepends="${hostmakedepends} rust"
 depends="python3 python3-anyio"
 checkdepends="python3-dirty-equals python3-pytest python3-pytest-mock python3-pytest-timeout"
-short_desc="Simple, modern and high performance file watching and code reload in Python"
+short_desc="Simple file watching and code reload in Python"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/samuelcolvin/watchfiles"
@@ -35,5 +34,8 @@ do_check() {
 do_install() {
 	cd "$wrksrc"
 	python3 -m installer --destdir="$DESTDIR" target/wheels/*.whl
-	install -Dm644 LICENSE "${DESTDIR}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+post_install() {
+	vlicense LICENSE
 }

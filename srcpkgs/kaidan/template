@@ -6,9 +6,9 @@ build_style=cmake
 configure_args="-DCMAKE_BUILD_TYPE=None"
 hostmakedepends="extra-cmake-modules qt6-tools pkg-config"
 makedepends="glibc-devel gstreamer1-devel gst-plugins-base1-devel icu-devel libomemo-c-devel
- kf6-kcoreaddons-devel kf6-kcrash-devel kf6-kio-devel kf6-kirigami-devel kirigami-addons-devel 
- kf6-knotifications-devel kquickimageeditor-devel kf6-kwindowsystem-devel  kf6-prison-devel 
- kf6-qqc2-desktop-style-devel qt6-base-devel qt6-base-private-devel qt6-declarative-devel 
+ kf6-kcoreaddons-devel kf6-kcrash-devel kf6-kio-devel kf6-kirigami-devel kirigami-addons-devel
+ kf6-knotifications-devel kquickimageeditor-devel kf6-kwindowsystem-devel  kf6-prison-devel
+ kf6-qqc2-desktop-style-devel qt6-base-devel qt6-base-private-devel qt6-declarative-devel
  qt6-location-devel qt6-multimedia-devel qt6-position-devel qt6-svg-devel qtkeychain-qt6-devel
  qxmpp-devel KDSingleApplication
 "

@@ -16,7 +16,6 @@ do_install() {
 	vmkdir usr/bin
 	vcopy xfce4-dynamic-workspaces-amd64 usr/bin/xfce4-dynamic-workspaces
 	chmod +x ${DESTDIR}/usr/bin/xfce4-dynamic-workspaces
-	
 	vmkdir etc/xdg/autostart
 	vinstall ${FILESDIR}/xfce4-dynamic-workspaces.desktop 644 etc/xdg/autostart
 }

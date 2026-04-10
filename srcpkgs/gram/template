@@ -39,13 +39,15 @@ do_build() {
 	export CARGO_TARGET_DIR=target
 	export RELEASE_VERSION="$version"
 	export PROTOC=/usr/bin/protoc
-	export PROTOC_INCLUDE=/usr/include	
+	export PROTOC_INCLUDE=/usr/include
 	cargo build --release --frozen --package gram --package cli
 }
 
 do_install() {
-    vbin target/release/cli gram
-    vinstall target/release/gram 0755 usr/lib/gram/ gram-editor
-    vinstall ${_appid}.desktop 644 usr/share/applications/
-    vinstall crates/gram/resources/app-icon.png 644 usr/share/pixmaps gram.png
+	vbin target/release/cli gram
+	vinstall target/release/gram 0755 usr/lib/gram/ gram-editor
+	vinstall ${_appid}.desktop 644 usr/share/applications/
+	vinstall crates/gram/resources/app-icon.png 644 usr/share/pixmaps gram.png
+	vlicense LICENSE-GPL
+	vlicense LICENSE-APACHE
 }

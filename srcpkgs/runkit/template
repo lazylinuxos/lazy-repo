@@ -13,25 +13,25 @@ distfiles="https://github.com/Letdown2491/runkit/archive/refs/tags/v${version}.t
 checksum=63c49259d086e1830baee12aa47e5f7ad7bdf1ded98e377d5b9b347bf73065cf
 
 do_build() {
-        cargo build --release
+	cargo build --release
 }
 
 do_install() {
 	vinstall target/release/runkit 755 usr/libexec
 	vinstall target/release/runkitd 755 usr/libexec
 
-    vinstall assets/applications/tech.geektoshi.Runkit.desktop 644 usr/share/applications tech.geektoshi.Runkit.desktop
+	vinstall assets/applications/tech.geektoshi.Runkit.desktop 644 usr/share/applications tech.geektoshi.Runkit.desktop
 	vinstall assets/dbus-1/services/tech.geektoshi.Runkit.service 644 usr/share/dbus-1/services tech.geektoshi.Runkit.service
 	vinstall assets/dbus-1/system-services/tech.geektoshi.Runkit1.service 644 usr/share/dbus-1/system-services tech.geektoshi.Runkit1.service
 	vinstall assets/dbus-1/system.d/tech.geektoshi.Runkit1.conf 644 usr/share/dbus-1/system.d tech.geektoshi.Runkit1.conf
-    vinstall assets/polkit-1/actions/tech.geektoshi.Runkit.policy 644 usr/share/polkit-1/actions tech.geektoshi.Runkit.policy
+	vinstall assets/polkit-1/actions/tech.geektoshi.Runkit.policy 644 usr/share/polkit-1/actions tech.geektoshi.Runkit.policy
 	vinstall assets/icons/hicolor/scalable/apps/runkit.svg 644 usr/share/icons/hicolor/scalable/apps runkit.svg
 
 	for size in 16x16 24x24 32x32 48x48 64x64 96x96 128x128 256x256 512x512; do
 		vinstall "assets/icons/hicolor/${size}/apps/runkit.png" 644 "usr/share/icons/hicolor/${size}/apps" "runkit.png"
 	done
 
-    vlicense LICENSE
+	vlicense LICENSE
 }
 
 post_install() {

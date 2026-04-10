@@ -1,13 +1,12 @@
-# Template for deltachat-desktop (Electron version)
+# Template file for 'deltachat-desktop'
 pkgname=deltachat-desktop
 version=2.48.0
 revision=1
-
 _electronversion=35
 hostmakedepends="nodejs pnpm inkscape deltachat-rpc-server"
 makedepends="electron${_electronversion}"
 depends="electron${_electronversion} hicolor-icon-theme deltachat-rpc-server"
-short_desc="Email-based instant messaging for Desktop (Electron version)"
+short_desc="Email-based instant messaging for Desktop"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/deltachat/deltachat-desktop"
@@ -16,62 +15,62 @@ checksum=5fcacf9b42099551861df0885c36d4ccde610628d26e48c672463a99828c6a41
 _resolutions="16 32 48 64 96 128 256 512 1024"
 
 pre_build() {
-    # Fix pnpm requirement
-    sed -i "s/\"pnpm\": \".*\"/\"pnpm\": \"^$(pnpm --version)\"/" package.json
+	# Fix pnpm requirement
+	sed -i "s/\"pnpm\": \".*\"/\"pnpm\": \"^$(pnpm --version)\"/" package.json
 
-    # set electron version for start script
-    sed "s/@ELECTRON@/electron$_electronversion/" ${FILESDIR}/$pkgname.sh.in > ${FILESDIR}/$pkgname.sh
+	# set electron version for start script
+	sed "s/@ELECTRON@/electron$_electronversion/" ${FILESDIR}/$pkgname.sh.in > ${FILESDIR}/$pkgname.sh
 
-    # Build icons
-    for r in ${_resolutions}; do
-        inkscape -o deltachat-desktop-${r}.png \
-            -w ${r} -h ${r} images/tray/deltachat.svg
-    done
+	# Build icons
+	for r in ${_resolutions}; do
+		inkscape -o deltachat-desktop-${r}.png \
+			-w ${r} -h ${r} images/tray/deltachat.svg
+	done
 
-    pnpm install --frozen-lockfile
+	pnpm install --frozen-lockfile
 }
 
 do_build() {
-    export NODE_ENV=production
-    export VERSION_INFO_GIT_REF="v${version}"
-    filter="@deltachat-desktop/target-electron"
+	export NODE_ENV=production
+	export VERSION_INFO_GIT_REF="v${version}"
+	filter="@deltachat-desktop/target-electron"
 
-    pnpm --filter=${filter} pack:generate_config
-    pnpm --filter=${filter} pack:patch-node-modules
+	pnpm --filter=${filter} pack:generate_config
+	pnpm --filter=${filter} pack:patch-node-modules
 
-    pnpm --filter=${filter} build
+	pnpm --filter=${filter} build
 
-    pnpm --filter=${filter} exec electron-builder \
-        --linux --dir \
-        -c.electronDist=/usr/lib/electron35 \
-        -c.electronVersion=35
+	pnpm --filter=${filter} exec electron-builder \
+		--linux --dir \
+		-c.electronDist=/usr/lib/electron35 \
+		-c.electronVersion=35
 
-    # Replace bundled stdio-rpc-server with system one
-    ln -sf /usr/bin/deltachat-rpc-server \
-        packages/target-electron/dist/linux-unpacked/resources/app.asar.unpacked/node_modules/@deltachat/stdio-rpc-server-linux-x64/deltachat-rpc-server
+	# Replace bundled stdio-rpc-server with system one
+	ln -sf /usr/bin/deltachat-rpc-server \
+		packages/target-electron/dist/linux-unpacked/resources/app.asar.unpacked/node_modules/@deltachat/stdio-rpc-server-linux-x64/deltachat-rpc-server
 }
 
 do_install() {
 	vbin ${FILESDIR}/deltachat-desktop.sh "deltachat-desktop"
 
-    # Install resources
-    vmkdir "usr/lib/deltachat-desktop"
-    vcopy packages/target-electron/dist/linux-unpacked/resources/* "usr/lib/deltachat-desktop/"
+	# Install resources
+	vmkdir "usr/lib/deltachat-desktop"
+	vcopy packages/target-electron/dist/linux-unpacked/resources/* "usr/lib/deltachat-desktop/"
 
-    # Icons
-    vinstall images/tray/deltachat.svg 644 "usr/share/icons/hicolor/scalable/apps" "deltachat-desktop.svg"
+	# Icons
+	vinstall images/tray/deltachat.svg 644 "usr/share/icons/hicolor/scalable/apps" "deltachat-desktop.svg"
 
-    for r in ${_resolutions}; do
-        vinstall "deltachat-desktop-${r}.png" 644 "usr/share/icons/hicolor/${r}x${r}/apps" "deltachat-desktop.png"
-    done
+	for r in ${_resolutions}; do
+		vinstall "deltachat-desktop-${r}.png" 644 "usr/share/icons/hicolor/${r}x${r}/apps" "deltachat-desktop.png"
+	done
 
-    # Desktop file + MIME spec
-    vinstall ${FILESDIR}/deltachat-desktop.desktop 644 "usr/share/applications"
-    vinstall ${FILESDIR}/deltachat-desktop.xml 644 "usr/share/mime/packages"
+	# Desktop file + MIME spec
+	vinstall ${FILESDIR}/deltachat-desktop.desktop 644 "usr/share/applications"
+	vinstall ${FILESDIR}/deltachat-desktop.xml 644 "usr/share/mime/packages"
 
-    # Docs
-    vinstall CHANGELOG.md 644 "usr/share/doc/${pkgname}"
-    vinstall CONTRIBUTING.md 644 "usr/share/doc/${pkgname}"
-    vinstall README.md 644 "usr/share/doc/${pkgname}"
-    vinstall SECURITY.md 644 "usr/share/doc/${pkgname}"
+	# Docs
+	vinstall CHANGELOG.md 644 "usr/share/doc/${pkgname}"
+	vinstall CONTRIBUTING.md 644 "usr/share/doc/${pkgname}"
+	vinstall README.md 644 "usr/share/doc/${pkgname}"
+	vinstall SECURITY.md 644 "usr/share/doc/${pkgname}"
 }

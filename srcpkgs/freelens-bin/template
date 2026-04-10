@@ -3,7 +3,6 @@ pkgname=freelens-bin
 version=1.8.1
 revision=1
 archs="x86_64"
-wrksrc="freelens-bin-${version}"
 hostmakedepends="xdg-utils"
 depends="gtk+3 nss"
 short_desc="Free Open Source Kubernetes IDE"
@@ -18,13 +17,13 @@ nopie=yes
 nostrip=yes
 nodebug=yes
 noverifyrdeps=yes
-disable_shlib_provides=yes
+noshlibprovides=yes
 
 do_install() {
 	vmkdir usr/lib/freelens
 	cp -a * ${DESTDIR}/usr/lib/freelens
 
-    vinstall ${wrksrc}/usr/share/icons/hicolor/512x512/apps/freelens.png 644 usr/share/icons/hicolor/512x512/apps
+	vinstall ${wrksrc}/usr/share/icons/hicolor/512x512/apps/freelens.png 644 usr/share/icons/hicolor/512x512/apps
 
 	vmkdir usr/share/applications
 	vinstall ${wrksrc}/freelens.desktop 644 usr/share/applications
@@ -33,4 +32,6 @@ do_install() {
 	ln -sf /usr/lib/freelens/freelens ${DESTDIR}/usr/bin/freelens
 
 	rm -rf ${DESTDIR}/usr/lib/freelens/{AppRun,freelens.desktop,usr}
+
+	vlicense ${FILESDIR}/LICENSE
 }

@@ -12,19 +12,19 @@ distfiles="https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v${ve
 checksum=8a692e175b530bc02ec5f8cb9f363b63483ba36f27f8ba13aea7cb3e5af6cc3e
 
 do_install() {
-    cd "${wrksrc}"
+	cd "${wrksrc}"
 
-    vbin vdu_controls.py vdu_controls
+	vbin vdu_controls.py vdu_controls
 
 	vmkdir usr/share
 
-    vcopy translations usr/share/vdu_controls/
-    vcopy sample-scripts usr/share/vdu_controls/
-    vcopy icons usr/share/vdu_controls/
+	vcopy translations usr/share/vdu_controls/
+	vcopy sample-scripts usr/share/vdu_controls/
+	vcopy icons usr/share/vdu_controls/
 
 	vmkdir usr/share/man/man1/
-    vcopy docs/_build/man/vdu_controls.1 usr/share/man/man1/
+	vcopy docs/_build/man/vdu_controls.1 usr/share/man/man1/
 
-    vinstall vdu_controls.png 644 usr/share/icons/hicolor/256x256/apps/
-    vinstall vdu_controls.desktop 644 usr/share/applications/
+	vinstall vdu_controls.png 644 usr/share/icons/hicolor/256x256/apps/
+	vinstall vdu_controls.desktop 644 usr/share/applications/
 }

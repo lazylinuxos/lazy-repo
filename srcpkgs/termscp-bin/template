@@ -11,9 +11,9 @@ license="MIT"
 homepage="https://termscp.veeso.dev"
 distfiles="https://github.com/veeso/termscp/releases/download/v${version}/${_pkgname}_${version}-${revision}_amd64.deb"
 checksum=3ecadcf08beec320a65f34bb8369fa5bc7b4c23af1e002fc6fbfe76448f3a5e1
-replaces="termscp"
+replaces="termscp>=0"
 noverifyrdeps=yes
-disable_shlib_provides=yes
+noshlibprovides=yes
 
 do_extract() {
 	mkdir -p ${DESTDIR}

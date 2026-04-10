@@ -4,7 +4,7 @@ version=2.5.0
 revision=1
 archs="x86_64"
 depends="gtk+3 jsoncpp libsecret xdg-user-dirs zenity libwebkit2gtk41"
-short_desc="The cutest instant messenger in the [matrix]"
+short_desc="Cutest instant messenger in the [matrix]"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="AGPL-3.0-only"
 homepage="https://fluffy.chat"
@@ -12,11 +12,12 @@ distfiles="https://github.com/krille-chan/fluffychat/releases/download/v${versio
 checksum=5bad47a6a1275065777a3a829eae25de78a7e1f4c51e531938411c029d4b658e
 
 do_install() {
-    vmkdir opt/fluffychat
-    vcopy * opt/fluffychat
+	vmkdir opt/fluffychat
+	vcopy * opt/fluffychat
 
-    vbin fluffychat
+	vbin fluffychat
 
-    vinstall data/flutter_assets/assets/favicon.png 644 usr/share/pixmaps fluffychat.png
-    vinstall ${FILESDIR}/fluffychat.desktop 644 usr/share/applications 
+	vinstall data/flutter_assets/assets/favicon.png 644 usr/share/pixmaps fluffychat.png
+	vinstall ${FILESDIR}/fluffychat.desktop 644 usr/share/applications
+	vlicense ${FILESDIR}/LICENSE
 }

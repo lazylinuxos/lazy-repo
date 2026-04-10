@@ -2,14 +2,7 @@
 pkgname=noctalia-shell
 version=${VERSION}
 revision=1
-depends="
- noctalia-qs
- ImageMagick
- brightnessctl
- ffmpeg
- qt6-multimedia
- python3
-"
+depends="noctalia-qs ImageMagick brightnessctl ffmpeg qt6-multimedia python3"
 short_desc="Sleek and minimal Wayland desktop shell built with Quickshell"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
@@ -21,7 +14,7 @@ do_install() {
 	vmkdir etc/xdg/quickshell/noctalia-shell
 	vcopy * etc/xdg/quickshell/noctalia-shell
 
-    vsv noctalia
+	vsv noctalia
 
- 	vlicense LICENSE
+	vlicense LICENSE
 }

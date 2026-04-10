@@ -11,30 +11,31 @@ homepage="https://github.com/confund0/siproxylin"
 distfiles="https://github.com/confund0/siproxylin/archive/refs/tags/v${version}.tar.gz"
 checksum=${SHA256}
 noverifyrdeps=yes
-disable_shlib_provides=yes
+noshlibprovides=yes
 
 do_install() {
-    local _prefix="usr"
+	local _prefix="usr"
 
-    vmkdir "${_prefix}/share/${pkgname}"
-    vmkdir "${_prefix}/share/icons/hicolor/scalable/apps"
-    vmkdir "${_prefix}/share/applications"
+	vmkdir "${_prefix}/share/${pkgname}"
+	vmkdir "${_prefix}/share/icons/hicolor/scalable/apps"
+	vmkdir "${_prefix}/share/applications"
 
-    vcopy siproxylin "${_prefix}/share/${pkgname}/"
-    vcopy drunk_xmpp "${_prefix}/share/${pkgname}/"
-    vcopy drunk_call_hook "${_prefix}/share/${pkgname}/"
-    vcopy main.py "${_prefix}/share/${pkgname}/"
-    vcopy version.sh "${_prefix}/share/${pkgname}/"
+	vcopy siproxylin "${_prefix}/share/${pkgname}/"
+	vcopy drunk_xmpp "${_prefix}/share/${pkgname}/"
+	vcopy drunk_call_hook "${_prefix}/share/${pkgname}/"
+	vcopy main.py "${_prefix}/share/${pkgname}/"
+	vcopy version.sh "${_prefix}/share/${pkgname}/"
 
-    vinstall siproxylin/resources/icons/siproxylin.svg 644 "${_prefix}/share/icons/hicolor/scalable/apps/"
-    vinstall ${FILESDIR}/Siproxylin.desktop 644 "${_prefix}/share/applications/"
+	vinstall siproxylin/resources/icons/siproxylin.svg 644 "${_prefix}/share/icons/hicolor/scalable/apps/"
+	vinstall ${FILESDIR}/Siproxylin.desktop 644 "${_prefix}/share/applications/"
 
-    python3 -m pip install --ignore-installed \
-        --root="${DESTDIR}" \
-        --prefix="${_prefix}" \
-        -r requirements.txt \
-        --no-warn-script-location \
-        --quiet
-        
-    vbin ${FILESDIR}/siproxylin.sh siproxylin
+	python3 -m pip install --ignore-installed \
+		--root="${DESTDIR}" \
+		--prefix="${_prefix}" \
+		-r requirements.txt \
+		--no-warn-script-location \
+		--quiet
+
+	vbin ${FILESDIR}/siproxylin.sh siproxylin
+	vlicense LICENSE
 }

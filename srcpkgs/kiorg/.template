@@ -17,10 +17,10 @@ post_extract() {
 }
 
 do_install() {
-    vbin target/${RUST_TARGET}/release/kiorg
+	vbin target/${RUST_TARGET}/release/kiorg
 	vmkdir usr/share/applications
 	vinstall ${FILESDIR}/kiorg.desktop 644 usr/share/applications
-	
+
 	vmkdir usr/share/pixmaps
 	vinstall ${FILESDIR}/kiorg.png 644 usr/share/pixmaps
 }

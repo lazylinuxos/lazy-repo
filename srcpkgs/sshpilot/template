@@ -2,9 +2,8 @@
 pkgname=sshpilot
 version=4.7.9
 revision=1
-wrksrc="${pkgname}-${version}"
 hostmakedepends="python3 python3-packaging-bootstrap"
-depends="python3 python3-gobject python3-cairo python3-paramiko python3-cryptography 
+depends="python3 python3-gobject python3-cairo python3-paramiko python3-cryptography
  python3-SecretStorage python3-matplotlib libadwaita vte3-gtk4-devel"
 short_desc="SSH connection manager with integrated terminal,"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -16,15 +15,15 @@ python_version=3
 
 do_install() {
 	local site_packages="$(python3 -c "import site; print(site.getsitepackages()[0])")"
-	
+
 	vbin run.py usr/bin/sshpilot
-	
+
 	vmkdir "${site_packages}/sshpilot"
 	vcopy "sshpilot/*.py" "${site_packages}/sshpilot/"
 	vmkdir "${site_packages}/sshpilot/resources"
 	vmkdir "${site_packages}/sshpilot/ui"
 	vcopy "sshpilot/resources/*" "${site_packages}/sshpilot/resources/"
-	
+
 	sed -i '/^Categories=/a StartupWMClass=python3' io.github.mfat.sshpilot.desktop
 	vinstall io.github.mfat.sshpilot.desktop 644 usr/share/applications
 	vinstall sshpilot/resources/sshpilot.svg 644 usr/share/pixmaps io.github.mfat.sshpilot.svg

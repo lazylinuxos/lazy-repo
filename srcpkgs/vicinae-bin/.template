@@ -3,36 +3,27 @@ pkgname=vicinae-bin
 version=${VERSION}
 revision=1
 archs="x86_64"
-depends="
- nodejs
- qt6-base
- qt6-svg
- layer-shell-qt
- libqalculate
- qtkeychain-qt6
- libxml2
- minizip
-"
+depends="nodejs qt6-base qt6-svg layer-shell-qt libqalculate qtkeychain-qt6 libxml2 minizip"
 short_desc="Focused launcher for your desktop — native, fast, extensible"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/vicinaehq/vicinae"
 distfiles="https://github.com/vicinaehq/vicinae/releases/download/v${version}/vicinae-linux-x86_64-v${version}.tar.gz"
 checksum=${SHA256}
-conflicts="vicinae"
-replaces="vicinae"
+conflicts="vicinae>=0"
+replaces="vicinae>=0"
 noverifyrdeps=yes
-disable_shlib_provides=yes
+noshlibprovides=yes
 
 do_install() {
 	vmkdir usr
 	vcopy * usr
-	
+
 	vsv vicinae
-	
+
 	# Service doesn't work at this moment, add daemon to autostart 
 	vmkdir etc/xdg/autostart
 	vinstall ${FILESDIR}/vicinae-server.desktop 644 etc/xdg/autostart
-	
+
 	rm -rf ${DESTDIR}/usr/lib
 }

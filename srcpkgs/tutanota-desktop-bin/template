@@ -1,9 +1,9 @@
-# Template file for 'tutanota-desktop'
+# Template file for 'tutanota-desktop-bin'
 pkgname=tutanota-desktop-bin
 version=335.260310.0
 revision=2
 archs="x86_64"
-short_desc="The desktop client for Tutanota, the secure e-mail service."
+short_desc="Desktop client for Tutanota, the secure e-mail service"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://tuta.com/"

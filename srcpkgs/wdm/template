@@ -20,7 +20,7 @@ makedepends=" libX11-devel libXau-devel libXdmcp-devel libXinerama-devel
 depends="WindowMaker pam-base dbus"
 short_desc="WINGs Display Manager"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
-license="GPL-2"
+license="GPL-2.0-or-later"
 homepage="https://github.com/lazylinuxos/wdm"
 distfiles="https://github.com/lazylinuxos/${pkgname}/archive/refs/tags/${version}.tar.gz"
 checksum=6e9623ec1679dfcbdf6ca94945715f8ead92f8f824bfaf0f5fe5b550343caad0
@@ -34,7 +34,7 @@ do_install() {
 
 	# Extra utilities not installed by default
 	vbin bin/TestLogin
-	vbin bin/wdmChooser 
+	vbin bin/wdmChooser
 	vbin bin/wdmPrefs
 
 	# PAM configuration (Void standard)

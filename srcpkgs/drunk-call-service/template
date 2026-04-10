@@ -3,7 +3,7 @@ pkgname=drunk-call-service
 version=0.0.28
 revision=1
 hostmakedepends="cmake patchelf pkg-config protobuf"
-makedepends="gstreamer1-devel gst-plugins-base1-devel gst-plugins-bad1-devel gst-plugins-good1 
+makedepends="gstreamer1-devel gst-plugins-base1-devel gst-plugins-bad1-devel gst-plugins-good1
  libnice-devel grpc-devel spdlog libunwind-devel libsrtp-devel alsa-lib-devel protobuf-devel"
 short_desc="Siproxylin standalone C++ call service binary (VoIP)"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -13,14 +13,14 @@ distfiles="https://github.com/confund0/siproxylin/archive/refs/tags/v${version}.
 checksum=61a908fda39e30c077e1944f8fdc729d6bf8de44a9a369c98537410d045db776
 
 do_build() {
-    cd drunk_call_service
-    export CXXFLAGS+=" -DSPDLOG_FMT_EXTERNAL"
-    make clean
-    make release
+	cd drunk_call_service
+	export CXXFLAGS+=" -DSPDLOG_FMT_EXTERNAL"
+	make clean
+	make release
 }
 
 do_install() {
-    vbin drunk_call_service/bin/drunk-call-service-linux
-    vbin drunk_call_service/bin/drunk-call-service-linux drunk-call-service
-    
+	vbin drunk_call_service/bin/drunk-call-service-linux
+	vbin drunk_call_service/bin/drunk-call-service-linux drunk-call-service
+	vlicense LICENSE
 }

@@ -2,11 +2,11 @@
 pkgname=antares-sql-bin
 _pkgname=antares
 version=0.7.35
-_electronversion=35
 revision=1
+_electronversion=35
 hostmakedepends="tar xz"
 depends="electron${_electronversion}"
-short_desc="Modern, fast SQL client focused on UX (prebuilt binary, uses system electron)"
+short_desc="Modern, fast SQL client focused on UX"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://antares-sql.app/"
@@ -14,14 +14,14 @@ distfiles="https://github.com/antares-sql/antares/releases/download/v${version}/
 checksum="8939618d216d598f84e824ccab3779776513e13fc6f64ef23706354e0e178278"
 
 do_extract() {
-    sed -i -e "
-        s/@electronversion@/${_electronversion}/g
-        s/@appname@/${pkgname%-bin}/g
-        s/@runname@/app.asar/g
-        s/@cfgdirname@/${_pkgname}/g
-        s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
-    " "${FILESDIR}/${pkgname%-bin}.sh"
-    
+	sed -i -e "
+		s/@electronversion@/${_electronversion}/g
+		s/@appname@/${pkgname%-bin}/g
+		s/@runname@/app.asar/g
+		s/@cfgdirname@/${_pkgname}/g
+		s/@options@/env ELECTRON_OZONE_PLATFORM_HINT=auto/g
+	" "${FILESDIR}/${pkgname%-bin}.sh"
+
 	ar x ${XBPS_SRCDISTDIR}/${pkgname}-${version}/Antares-${version}-linux_amd64.deb
 	tar xf data.tar.*
 }

@@ -14,3 +14,6 @@ homepage="https://github.com/stephenberry/glaze"
 distfiles="https://github.com/stephenberry/glaze/archive/refs/tags/v${version}.tar.gz"
 checksum=4c8ee3039768eb67cee5335e052deafee4791bab87e3d4a965cce90e5c5c9f55
 
+post_install() {
+	vlicense LICENSE
+}

@@ -13,7 +13,7 @@ changelog="https://yaak.app/blog/${version}"
 distfiles="https://github.com/mountain-loop/yaak/releases/download/v${version}/yaak-${version}-${revision}.x86_64.rpm"
 checksum=192f659cb80f84a9b9095887ba38fb7fcb1a40f21df804a7f92e4cea57daa4c5
 nopie=yes
-replaces="yaak"
+replaces="yaak>=0"
 
 do_install() {
 	# Copy files
