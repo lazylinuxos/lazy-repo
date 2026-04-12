@@ -1,6 +1,6 @@
 # Template file for 'helium-bin'
 pkgname=helium-bin
-version=0.10.9.1
+version=0.11.1.1
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://helium.computer"
 distfiles="https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-x86_64_linux.tar.xz"
-checksum=a1bd62484fb822bb07b61129132a604a466cd8b4f81f66179278c3d452a7dec7
+checksum=d72ea775519ea9aeb52a9991bfd76e91f7e90b176b3b2f7b8cc790732981d1b7
 
 do_install() {
 	# Install the files
