@@ -1,0 +1,16 @@
+# Template file for 'xlibre-repo'
+pkgname=xlibre-repo
+version=1
+revision=1
+metapackage=yes
+short_desc="Void Linux drop-in file for the xlibre repository"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Public Domain"
+homepage="https://sofijacom.github.io/xlibre.html"
+
+do_install() {
+	vmkdir usr/share/xbps.d
+
+	echo "repository=https://github.com/xlibre-void/xlibre/releases/latest/download/" > \
+		${DESTDIR}/usr/share/xbps.d/99-repository-xlibre.conf
+}
