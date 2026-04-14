@@ -1,7 +1,7 @@
 # Template file for 'floorp-bin'
 pkgname=floorp-bin
 _pkgname=floorp
-version=12.12.0
+version=12.12.1
 revision=1
 archs="x86_64"
 depends="gtk+3 desktop-file-utils hicolor-icon-theme"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0, GPL-2.0-or-later, LGPL-2.1-or-later"
 homepage="https://floorp.app/en"
 distfiles="https://github.com/Floorp-Projects/Floorp/releases/download/v${version}/${_pkgname}-linux-x86_64.tar.xz"
-checksum=a6f61ad904e8229ca4e709a30d38f2a0e6926dc3f82ddbe24efb8e0c1ba51910
+checksum=7f50d5d805e3acd401b933aa039d01712237d975c5d8306d46006ae2363d3080
 nopie=yes
 replaces="floorp>=0"
 
