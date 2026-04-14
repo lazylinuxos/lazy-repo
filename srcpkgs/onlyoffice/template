@@ -1,0 +1,176 @@
+# Template file for 'onlyoffice'
+pkgname=onlyoffice
+version=9.3.1
+revision=1
+_tag=9.3.1.9
+_core_version=7043b3609328e917a4791aec8f3e8fca3225120f
+_desktop_apps_version=bc46371aa062a7718cd90268e94c3d2b10ce3c51
+_desktop_sdk_version=6bd2051287a496ac1504214caca69a5729625696
+_dictionaries_version=d3223bbb777883db66ac3cd249f71c6ebdc992c7
+_sdkjs_version=aa78926242b3da023255d9c7e9180e5a3294167b
+_web_apps_version=1c8ca9987876bada73c0bde21367da09c0e1ed83
+_depot_tools_version=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773
+_v8_version=9.0.257.43
+_icu_version=74-2
+hostmakedepends="git tar xz curl python3 dos2unix nasm nodejs yarn cmake ninja openjdk11 p7zip pkg-config which qt5-qmake" #grunt-cli
+makedepends="libcurl-devel gtk+3-devel alsa-lib-devel pulseaudio-devel gst-plugins-base1-devel gst-plugins-bad1-devel libXScrnSaver-devel 
+ nss-devel nspr-devel qt5-devel qt5-multimedia-devel qt5-svg-devel qt5-x11extras-devel libnotify-devel libheif-devel libxml2-devel
+ boost-devel freetype-devel harfbuzz-devel hunspell-devel hyphen-devel libopenjpeg-devel gumbo-parser-devel 
+"
+short_desc="Desktop office suite for documents, spreadsheets, and presentations"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0-only"
+homepage="https://www.onlyoffice.com/"
+distfiles="
+ https://github.com/ONLYOFFICE/DesktopEditors/archive/refs/tags/v${version}.tar.gz
+ https://github.com/ONLYOFFICE/core/archive/${_core_version}.tar.gz>core.tar.gz
+ https://github.com/ONLYOFFICE/desktop-apps/archive/${_desktop_apps_version}.tar.gz>desktop-apps.tar.gz
+ https://github.com/ONLYOFFICE/desktop-sdk/archive/${_desktop_sdk_version}.tar.gz>desktop-sdk.tar.gz
+ https://github.com/ONLYOFFICE/dictionaries/archive/${_dictionaries_version}.tar.gz>dictionaries.tar.gz
+ https://github.com/ONLYOFFICE/sdkjs/archive/${_sdkjs_version}.tar.gz>sdkjs.tar.gz
+ https://github.com/ONLYOFFICE/web-apps/archive/${_web_apps_version}.tar.gz>web-apps.tar.gz
+ https://github.com/ONLYOFFICE/sdkjs-forms/archive/refs/tags/v${_tag}.tar.gz>sdkjs-forms.tar.gz
+ https://github.com/ONLYOFFICE/build_tools/archive/refs/tags/v${_tag}.tar.gz>build_tools.tar.gz
+ https://github.com/ONLYOFFICE/core-fonts/archive/refs/tags/v${_tag}.tar.gz>core-fonts.tar.gz
+ https://github.com/ONLYOFFICE/document-templates/archive/refs/tags/v${_tag}.tar.gz>document-templates.tar.gz
+ https://chromium.googlesource.com/chromium/tools/depot_tools/+archive/${_depot_tools_version}.tar.gz>depot_tools.tar.gz
+ https://github.com/v8/v8/archive/refs/tags/${_v8_version}.tar.gz>v8.tar.gz
+ https://github.com/unicode-org/icu/archive/refs/tags/release-${_icu_version}.tar.gz>icu.tar.gz
+"
+checksum="
+ 74554cb70a960317fc4a471cd905a16ed248ea34882c3f8b812cce7d0d7a3935
+ 9f144ff0d058a32b9419408992d64c29040622d0cc6d2653b6176768bd913c13
+ 7a60bbab115fc645d36477984677467a5af2349826eb70d2e0bfe07ddd04ab31
+ 360e88130c660d0f5db22c5922e35b005b0e4307e493e790433a207c49c2f0cb
+ 8f51803f9749e26a6501d2bc6b9f2e84c52877c3221872f25d471eaa9359c5e5
+ 19279c93d1b06477e1ed9635f8504515ca2f8675942b0b6a0adfec39e0a957b5
+ d2fe1c424f0d222c6271e2d643ed937e02f8daabbd784710862174b8a916a0f3
+ ae14b844b5e38456fc0a10142ad1410ed29423ec649c84ab96fe051dbbd934ef
+ 4b2a72895737ce61c85d0b8835f1e41abdb3f62c8ba580e29e5977a7594c750b
+ f6a887839711c4a08a0e291c884e6cf33910358d267fa33138fe0aa4b332649f
+ 00a9203b73fc21b28b29a7fbea3a01173564c551384815c8a6f7b9e01e421a65
+ 72bc48778bc2115c589a1bfcc0bc1e6b0f87aba8c160fcf6d448042d6f08c8f9
+ 419af827235853cf37e3969875a3eb0d6ea752e489ff36b7ad246eed0c04b1e7
+ 27b8650a94df6f945cb3b686be3be320c2a32edf3ece2981672bf98bb3baa9e1
+"
+nocross=yes
+nopie=yes
+skip_extraction="
+ core.tar.gz
+ desktop-apps.tar.gz
+ desktop-sdk.tar.gz
+ dictionaries.tar.gz
+ sdkjs.tar.gz
+ web-apps.tar.gz
+ sdkjs-forms.tar.gz
+ build_tools.tar.gz
+ core-fonts.tar.gz
+ document-templates.tar.gz 
+ depot_tools.tar.gz
+ v8.tar.gz
+ icu.tar.gz
+"
+
+post_extract() {
+    for _module in core desktop-{apps,sdk} dictionaries sdkjs{,-forms} web-apps build_tools document-templates core-fonts
+    do
+        vsrcextract -C "${wrksrc}/$_module" "$_module.tar.gz"
+    done    
+    vsrcextract -C "${wrksrc}/core/Common/3dParty/icu/icu" "icu.tar.gz"
+    vsrcextract -C "${wrksrc}/core/Common/3dParty/v8_89/depot_tools" "depot_tools.tar.gz"
+    vsrcextract -C "${wrksrc}/core/Common/3dParty/v8_89/v8" "v8.tar.gz"
+}
+
+pre_configure() {
+	export CFLAGS+=" -fPIC"
+	export CXXFLAGS+=" -std=gnu++11"
+	export CMAKE_POLICY_VERSION_MINIMUM=3.5
+
+	mkdir -p build_tools/tools/linux/system_qt/gcc_64
+	ln -sf /usr/bin build_tools/tools/linux/system_qt/gcc_64/bin
+	ln -sf /usr/lib build_tools/tools/linux/system_qt/gcc_64/lib
+	ln -sf /usr/lib/qt5/plugins build_tools/tools/linux/system_qt/gcc_64/plugins
+
+	touch build_tools/tools/linux/packages_complete
+
+    dos2unix core/Common/OfficeFileFormatChecker2.cpp
+
+	sed -Ei '/pragma (end)?region/d' core/MsBinaryFile/XlsFile/Format/Logic/Biff_structures/StringPtgParser.cpp
+	sed -i '1s/^/#include <unistd.h>\n/' core/OfficeUtils/src/zlib-1.2.11/gzwrite.c
+	sed -i '1s/^/#include <unistd.h>\n/' core/OfficeUtils/src/zlib-1.2.11/gzread.c
+	sed -i '1s/^/#include <unistd.h>\n/' core/OfficeUtils/src/zlib-1.2.11/gzlib.c
+    sed -i '1s/^/#include<cmath>\n/' desktop-sdk/ChromiumBasedEditors/videoplayerlib/src/qtimelabel.cpp
+    sed -i '1s/^/#include<cmath>\n/' desktop-sdk/ChromiumBasedEditors/videoplayerlib/src/qvideoslider.cpp
+    sed -i '1s/^/#include<cmath>\n/' desktop-sdk/ChromiumBasedEditors/videoplayerlib/src/qvideoplaylist.cpp
+    sed -i '1s/^/#include<QPainterPath>\n/' desktop-apps/win-linux/src/windows/platform_linux/cwindowplatform.cpp
+	sed -i 's|http://|https://|' build_tools/scripts/core_common/modules/cef.py
+
+    cd "${wrksrc}/build_tools"
+	./configure.py --module desktop --update 0 --qt-dir "$(realpath tools/linux/system_qt)"
+    ./make.py --update-only
+
+	if [ -d "${wrksrc}/core/Common/3dParty/v8_89" ]; then
+		cd "${wrksrc}/core/Common/3dParty/v8_89"
+		echo -n "v8_version_1" > v8.data
+		cat > .gclient << EOF
+solutions = [
+  {
+    "name": "v8",
+    "url": "file://${XBPS_BUILDDIR}/v8@local",
+    "deps_file": "DEPS",
+    "managed": False,
+    "custom_deps": {},
+    "custom_vars": {},
+  },
+]
+EOF
+
+		export PATH="$(pwd)/depot_tools:${PATH}"
+		export DEPOT_TOOLS_UPDATE=0
+
+		if command -v gclient >/dev/null; then
+			gclient sync --force
+		fi
+
+		mkdir -p v8/third_party/llvm-build/Release+Asserts/lib
+		ln -sf /usr/lib/libstdc++.so.6 v8/third_party/llvm-build/Release+Asserts/lib/libstdc++.so.6
+	fi
+
+    # cd "${wrksrc}/build_tools"
+    # ./make.py --update-third-party-only
+}
+
+do_build() {
+	cd build_tools
+
+	export QT_VERSION="$(qmake  -query QT_VERSION)"
+
+	export CFLAGS="${CFLAGS/-O2/}"
+	export CXXFLAGS="${CXXFLAGS/-O2/}"
+	export CXXFLAGS="${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS/}"
+
+	python3 make.py --no-third-party-update
+}
+
+do_install() {
+	cd build_tools
+
+	python3 make_package.py	-P linux_x86_64	-T desktop -V "${version}" -B "${revision}"
+
+	cd ../desktop-apps/package/tar
+
+	tar xf onlyoffice-desktopeditors-"${version}"-"${revision}"-x86_64.tar.xz
+
+	vmkdir usr
+	vcopy usr /
+	vcopy opt /
+
+	ln -sf /usr/bin/onlyoffice-desktopeditors ${DESTDIR}/usr/bin/desktopeditors
+
+	rm -f ${DESTDIR}/opt/onlyoffice/desktopeditors/libQt5*
+	rm -f ${DESTDIR}/opt/onlyoffice/desktopeditors/libicu*
+}
+
+post_install() {
+    vlicense LICENSE
+}
