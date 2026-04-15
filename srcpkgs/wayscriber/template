@@ -1,6 +1,6 @@
 # Template file for 'wayscriber'
 pkgname=wayscriber
-version=0.9.13
+version=0.9.16
 revision=1
 build_style=cargo
 make_build_args="--workspace --bin wayscriber --bin wayscriber-configurator"
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://wayscriber.com"
 distfiles="https://github.com/devmobasa/${pkgname}/archive/refs/tags/v${version}.tar.gz"
-checksum=68e3bf3b04cc958613a7dbcbc8c55bf4d1fefa85ab4bbcf2ecdb1162bd769342
+checksum=5b91f15861084a092533fc06b683f0daae17650bc5985a1ee71e7bb067c07428
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/wayscriber
@@ -36,7 +36,7 @@ do_install() {
 		vinstall packaging/icons/wayscriber-configurator-${sz}.png  644 \
 			usr/share/icons/hicolor/${sz}x${sz}/apps wayscriber-configurator.png
 	done
-
+	
 	vsconf config.example.toml
 	vdoc README.md
 	[ -f LICENSE ] && vlicense LICENSE

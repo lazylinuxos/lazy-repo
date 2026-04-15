@@ -16,7 +16,7 @@ distfiles="https://github.com/devmobasa/${pkgname}/archive/refs/tags/v${version}
 checksum=${SHA256}
 
 do_install() {
-    vbin target/${RUST_TARGET}/release/wayscriber
+	vbin target/${RUST_TARGET}/release/wayscriber
 	vbin target/${RUST_TARGET}/release/wayscriber-configurator
 
 	vinstall packaging/wayscriber.desktop 644 usr/share/applications
@@ -37,11 +37,11 @@ do_install() {
 			usr/share/icons/hicolor/${sz}x${sz}/apps wayscriber-configurator.png
 	done
 	
-    vsconf config.example.toml
-    vdoc README.md
-    [ -f LICENSE ] && vlicense LICENSE
+	vsconf config.example.toml
+	vdoc README.md
+	[ -f LICENSE ] && vlicense LICENSE
 
-    vsv wayscriber
+	vsv wayscriber
 }
 
 wayscriber-configurator_package() {
