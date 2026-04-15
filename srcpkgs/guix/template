@@ -1,0 +1,15 @@
+# Template file for 'guix'
+pkgname=guix
+version=1.5.0
+revision=1
+build_style=gnu-configure
+hostmakedepends="pkg-config texinfo"
+makedepends="guile-devel gnutls-devel guile-gnutls guile-git"
+depends="guile guile-gnutls"
+short_desc="Functional package manager for the GNU system"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://guix.gnu.org"
+changelog="https://guix.gnu.org/en/blog/tags/releases"
+distfiles="${GNU_SITE}/guix/guix-${version}.tar.gz"
+checksum=df2102eed00aff0b17275654a42f094c8a1117ec065884eb1ff76005e47415c5
