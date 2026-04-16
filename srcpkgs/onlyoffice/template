@@ -12,7 +12,7 @@ _web_apps_version=1c8ca9987876bada73c0bde21367da09c0e1ed83
 _depot_tools_version=8dde9800ee2b8326ab11a87abd67d3bd9f8c8773
 _v8_version=9.0.257.43
 _icu_version=74-2
-hostmakedepends="git tar xz curl python3 dos2unix nasm nodejs yarn cmake ninja openjdk11 p7zip pkg-config which qt5-qmake" #grunt-cli
+hostmakedepends="git tar xz curl python3 dos2unix nasm nodejs yarn cmake ninja openjdk11 p7zip pkg-config which qt5-qmake"
 makedepends="libcurl-devel gtk+3-devel alsa-lib-devel pulseaudio-devel gst-plugins-base1-devel gst-plugins-bad1-devel libXScrnSaver-devel
  nss-devel nspr-devel qt5-devel qt5-multimedia-devel qt5-svg-devel qt5-x11extras-devel libnotify-devel libheif-devel libxml2-devel
  boost-devel freetype-devel harfbuzz-devel hunspell-devel hyphen-devel libopenjpeg-devel gumbo-parser-devel
@@ -143,7 +143,7 @@ EOF
 do_build() {
 	cd build_tools
 
-	export QT_VERSION="$(qmake  -query QT_VERSION)"
+	export QT_VERSION="$(qmake -query QT_VERSION)"
 
 	export CFLAGS="${CFLAGS/-O2/}"
 	export CXXFLAGS="${CXXFLAGS/-O2/}"

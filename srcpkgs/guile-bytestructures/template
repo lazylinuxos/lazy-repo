@@ -3,8 +3,14 @@ pkgname=guile-bytestructures
 version=2.0.2
 revision=1
 build_style=gnu-configure
-configure_args="--prefix=/usr"
-hostmakedepends="autoconf automake libtool pkg-config"
+configure_args="
+ --prefix=${XBPS_CROSS_BASE}/usr
+ --sysconfdir=${XBPS_CROSS_BASE}/etc
+ --localstatedir=${XBPS_CROSS_BASE}/var
+ --with-guile-site-dir=${XBPS_CROSS_BASE}/usr/share/guile/site/3.0
+ --with-guile-site-ccache-dir=${XBPS_CROSS_BASE}/usr/lib/guile/3.0/site-ccache
+"
+hostmakedepends="autoconf automake libtool pkg-config texinfo"
 makedepends="guile-devel"
 depends="guile"
 short_desc="Structured access to bytevector contents for Guile"
@@ -16,5 +22,5 @@ distfiles="https://github.com/TaylanUB/scheme-bytestructures/archive/refs/tags/v
 checksum=b0681daa006c80efd2fce5dc174ac439d44be8a9c2e70938e497efad08cd5659
 
 pre_configure() {
-	autoreconf -fi
+	autoreconf -vfi
 }
