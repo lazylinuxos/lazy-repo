@@ -32,7 +32,7 @@ do_install() {
 	# link the binary
 	vmkdir usr/bin/
 	ln -s /opt/zed/bin/zed ${DESTDIR}/usr/bin/
-	vlicense LICENSE-GPL
-	vlicense LICENSE-APACHE
-	vlicense LICENSE-AGPL
+	vlicense ${FILESDIR}/LICENSE-GPL
+	vlicense ${FILESDIR}/LICENSE-APACHE
+	vlicense ${FILESDIR}/LICENSE-AGPL
 }
