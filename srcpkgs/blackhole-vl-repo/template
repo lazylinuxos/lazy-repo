@@ -1,0 +1,16 @@
+# Template file for 'blackhole-vl-repo'
+pkgname=blackhole-vl-repo
+version=1
+revision=1
+metapackage=yes
+short_desc="Extra packages, optimized builds and tools for Void Linux"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Public Domain"
+homepage="https://event-horizon-vl.github.io"
+
+do_install() {
+	vmkdir usr/share/xbps.d
+
+	echo "repository=https://raw.githubusercontent.com/Event-Horizon-VL/blackhole-vl/repository-x86_64/" > \
+		${DESTDIR}/usr/share/xbps.d/99-repository-blackhole.conf
+}
