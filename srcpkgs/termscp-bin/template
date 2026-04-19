@@ -1,7 +1,7 @@
 # Template file for 'termscp-bin'
 pkgname=termscp-bin
 _pkgname=termscp
-version=0.19.1
+version=1.0.0
 revision=1
 hostmakedepends="tar xz"
 depends="dbus-glib libsmbclient pkg-config"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://termscp.veeso.dev"
 distfiles="https://github.com/veeso/termscp/releases/download/v${version}/${_pkgname}_${version}-${revision}_amd64.deb"
-checksum=3ecadcf08beec320a65f34bb8369fa5bc7b4c23af1e002fc6fbfe76448f3a5e1
+checksum=1991454c02b82555389fe0eec6f21a732ce5148c8df133a7200ae70a0ccd92a1
 replaces="termscp>=0"
 noverifyrdeps=yes
 noshlibprovides=yes
