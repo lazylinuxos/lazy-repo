@@ -1,6 +1,6 @@
 # Template file for 'smile'
 pkgname=smile
-version=2.12.2
+version=2.12.3
 revision=2
 build_style=meson
 hostmakedepends="pkg-config desktop-file-utils appstream-glib"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://mijorus.it/projects/smile/"
 distfiles="https://github.com/mijorus/smile/archive/refs/tags/${version}.tar.gz"
-checksum=7ad25b956c11cd24fac14c34032d47b2b9b5f2cef401d0e9f5b7b4f004e79c01
+checksum=531932d68aafab37c573f394489dae3ca2449c22b05fa6fc7be1eac44af0447c
 
 post_extract() {
 	sed -i 's|flatpak run {self.application_id}|/usr/bin/smile|g' src/Settings.py
