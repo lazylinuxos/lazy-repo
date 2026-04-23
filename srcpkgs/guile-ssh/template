@@ -1,0 +1,24 @@
+# Template file for 'guile-ssh'
+pkgname=guile-ssh
+version=1.0.0
+revision=1
+build_style=gnu-configure
+configure_args="
+ --prefix=${XBPS_CROSS_BASE}/usr
+ --disable-rpath
+ --with-guile-site-dir=${XBPS_CROSS_BASE}/usr/share/guile/site/3.0
+ --with-guile-site-ccache-dir=${XBPS_CROSS_BASE}/usr/lib/guile/3.0/site-ccache
+"
+hostmakedepends="autoconf automake libtool pkg-config texinfo"
+makedepends="guile-devel libssh-devel"
+depends="guile libssh"
+short_desc="SSH module for Guile based on libssh"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/artyom-poptsov/guile-ssh"
+distfiles="https://github.com/artyom-poptsov/guile-ssh/archive/v${version}.tar.gz"
+checksum=9be26290cdd65ffe812d1e69d4bb87a2d41d2ee72ff8db65dee817fc315f153c
+
+pre_configure() {
+	autoreconf -fi
+}
