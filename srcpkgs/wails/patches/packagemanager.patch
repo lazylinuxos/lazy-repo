@@ -1,0 +1,19 @@
+--- a/v2/internal/system/packagemanager/packagemanager.go	2026-04-24 22:21:40.486971073 +0400
++++ b/v2/internal/system/packagemanager/packagemanager.go	2026-04-24 22:21:27.093815572 +0400
+@@ -19,6 +19,7 @@
+ 	"emerge",
+ 	"zypper",
+ 	"nix-env",
++	"xbps-install",
+ }
+ 
+ // Find will attempt to find the system package manager
+@@ -49,6 +50,8 @@
+ 		return NewZypper(osid)
+ 	case "nix-env":
+ 		return NewNixpkgs(osid)
++	case "xbps-install":
++		return NewXbps(osid)		
+ 	}
+ 	return nil
+ }
