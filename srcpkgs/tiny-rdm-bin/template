@@ -1,6 +1,6 @@
 # Template file for 'tiny-rdm-bin'
 pkgname=tiny-rdm-bin
-version=1.2.6
+version=1.2.7
 revision=1
 hostmakedepends="tar xz"
 depends="glibc hicolor-icon-theme gtk+3 glib libwebkit2gtk41 gdk-pixbuf"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/tiny-craft/tiny-rdm"
 distfiles="https://github.com/tiny-craft/tiny-rdm/releases/download/v${version}/tiny-rdm_${version}_linux_amd64.deb"
-checksum=bc32789de168256c5b81438799d7c3df52ba66149f203a6ab886982fc2df7e5f
+checksum=bb1f67589ad8b8f43b0f6e32331eebe4fdfb308051aa1cd1810d006cdbab63e9
 nopie=yes
 nostrip=yes
 noverifyrdeps=yes
