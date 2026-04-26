@@ -1,0 +1,31 @@
+# Template file for 'chimerautils'
+pkgname=chimerautils
+version=15.0.3
+revision=1
+build_style=meson
+hostmakedepends="bison flex ninja pkg-config"
+makedepends="acl-devel bzip2-devel libedit-devel libxo-devel ncurses-devel openssl-devel
+ zlib-devel libzstd-devel linux-headers libbsd-devel liblzma-devel"
+short_desc="Chimera's core userland, based on FreeBSD"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://github.com/chimera-linux/chimerautils"
+distfiles="https://github.com/chimera-linux/chimerautils/archive/refs/tags/v${version}.tar.gz"
+checksum=183ad94242316cad014b54668e0b117ba4d8f6978b1229cde3fc5cd913020751
+
+do_configure() {
+	meson setup \
+		--auto-features=disabled \
+		--prefix=/usr \
+		--bindir=/usr/lib/chimerautils/bin \
+		--sbindir=/usr/lib/chimerautils/sbin \
+		--libexecdir=/usr/lib/chimerautils \
+		-Dinstall-lib=false \
+		build
+}
+
+post_install() {
+	vlicense LICENSE
+	# Conflicts with other packages
+	rm -rf ${DESTDIR}/usr/share/man
+}
