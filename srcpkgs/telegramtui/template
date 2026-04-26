@@ -1,0 +1,24 @@
+# Template file for 'telegramtui'
+pkgname=telegramtui
+version=1.0.0
+revision=1
+hostmakedepends="apache-maven"
+makedepends="openjdk21"
+depends="openjdk21-jre libtd-devel"
+short_desc="Terminal-based Telegram client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/k4dy/telegramtui"
+distfiles="https://github.com/k4dy/telegramtui/archive/refs/tags/v${version}.tar.gz"
+checksum=bfc1ba6a9cdef362229831b6a1cd615b26821a6ff29a2e0e774ac31169dc5ecc
+
+do_build() {
+	mvn package -DskipTests
+}
+
+do_install() {
+	vbin ${FILESDIR}/telegramtui
+	vinstall target/telegramtui-${version}.jar 644 usr/lib/${pkgname}/ ${pkgname}.jar
+	vlicense LICENSE
+	vdoc README.md
+}
