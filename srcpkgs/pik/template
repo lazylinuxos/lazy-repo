@@ -1,0 +1,17 @@
+# Template file for 'pik'
+pkgname=pik
+version=1.0.0
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+short_desc="Process Interactive Kill"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/jacek-kurlit/pik"
+distfiles="https://github.com/jacek-kurlit/pik/archive/refs/tags/${version}.tar.gz"
+checksum=21e28654db899d1543608cbc34b1dfc01bd861d21308e179f64a13b36b43c7f1
+
+post_install() {
+	vdoc README.md
+	vlicense LICENSE
+}
