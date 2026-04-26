@@ -1,0 +1,27 @@
+# Template file for 'tgt-client'
+pkgname=tgt-client
+version=1.0.0
+revision=1
+build_style=cargo
+hostmakedepends="autoconf automake libtool m4 pkg-config"
+makedepends="libtd-devel libcxx-devel libcxxabi-devel libunwind-devel libzstd-devel alsa-lib-devel"
+short_desc="Simple TUI for Telegram"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT, Apache-2.0"
+homepage="https://github.com/FedericoBruzzone/tgt"
+distfiles="https://github.com/FedericoBruzzone/tgt/archive/refs/heads/main.tar.gz"
+checksum=c2eae49c9040f7f528db4f2e3c12e660d17c08255f878bc419623521919c29e0
+
+pre_build() {
+	if [ ! -f /usr/lib/libunwind.so.1 ] && [ -f /usr/lib/libunwind.so.8 ]; then
+		ln -sf /usr/lib/libunwind.so.8 ${wrksrc}/libunwind.so.1
+		export LD_LIBRARY_PATH="${wrksrc}"
+	fi
+}
+
+post_install() {
+	vlicense LICENSE-MIT
+	vlicense LICENSE-APACHE
+	vdoc README.md
+	vdoc CHANGELOG.md
+}
