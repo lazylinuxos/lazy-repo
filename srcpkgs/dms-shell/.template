@@ -44,3 +44,17 @@ dms-shell-niri_package() {
 		vcopy ${DESTDIR}/usr/share/doc/dms-shell/* usr/share/doc/dms-shell-niri/
 	}
 }
+
+dms-greeter_package() {
+	short_desc="DankMaterialShell greeter for greetd"
+	depends="${sourcepkg} greetd"
+	pkg_install() {
+		vbin quickshell/Modules/Greetd/assets/${pkgname}
+
+		vmkdir usr/share/quickshell/${pkgname}
+		vcopy quickshell/* usr/share/quickshell/${pkgname}/
+
+		vmkdir usr/share/doc/${pkgname}
+		vinstall quickshell/Modules/Greetd/README.md 644 usr/share/doc/${pkgname}/
+	}
+}
