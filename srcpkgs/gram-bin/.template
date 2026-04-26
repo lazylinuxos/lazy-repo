@@ -33,6 +33,6 @@ do_install() {
 	# link the binary
 	vmkdir usr/bin/
 	ln -s /opt/gram/bin/gram ${DESTDIR}/usr/bin/
-	vlicense LICENSE-GPL
-	vlicense LICENSE-APACHE
+	vlicense ${FILESDIR}/LICENSE-GPL
+	vlicense ${FILESDIR}/LICENSE-APACHE
 }
