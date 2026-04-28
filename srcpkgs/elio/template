@@ -1,0 +1,19 @@
+# Template file for 'elio'
+pkgname=elio
+version=1.2.0
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="oniguruma-devel sqlite-devel"
+short_desc="Batteries-included terminal file manager with previews and trash support"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/elio-fm/elio"
+changelog="https://github.com/elio-fm/elio/blob/main/CHANGELOG.md"
+distfiles="https://github.com/elio-fm/elio/archive/refs/tags/v${version}.tar.gz"
+checksum=8b6840919a95b6f81c9d2982e10fcd0db736dbe28468784352c0f5a381f7fa79
+
+post_install() {
+	vdoc README.md
+	vlicense LICENSE-MIT
+}

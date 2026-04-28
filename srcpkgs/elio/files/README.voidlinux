@@ -1,0 +1,9 @@
+Optional dependencies:
+
+* `poppler-utils` for PDF metadata and rendered page preview support
+* `ffmpeg` for media metadata, album art, thumbnails, and wider image format support
+* `resvg` for SVG inline preview support
+* `p7zip` for comic book archives, fallback archive listings, and broader archive support
+* `wl-clipboard` for clipboard support on Wayland
+* `xclip` for clipboard support on X11
+* `xsel` for clipboard support on X11
