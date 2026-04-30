@@ -1,0 +1,36 @@
+# Template file for 'wlmaker'
+pkgname=wlmaker
+version=0.7.1
+revision=1
+build_style=cmake
+configure_args="
+ -DCMAKE_BUILD_TYPE=None
+ -Dconfig_DEBUG=OFF
+ -Dconfig_OPTIM=OFF
+ -Wno-dev
+"
+hostmakedepends="doxygen git pkg-config flex"
+makedepends="wayland-protocols cairo-devel libxkbcommon-devel libxdg-basedir-devel wlroots0.19-devel xorg-server-xwayland ncurses-devel"
+depends="bash"
+short_desc="Wayland compositor inspired by WindowMaker"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/phkaeser/wlmaker"
+distfiles="https://github.com/phkaeser/wlmaker/releases/download/v${version}/wlmaker-${version}.tar.gz"
+checksum=2dc025300d9e51599c35bf6f4133a14275dce2f7081c7bd04b5eb89ac442e791
+
+post_extract() {
+	for i in "${wrksrc}"/CMakeLists.txt \
+	         "${wrksrc}"/submodules/libbase/CMakeLists.txt; do
+		msg_normal "Patching: $i\n"
+		sed -i -e 's/^\s*ELSE\s*(config_OPTIM)$/  ELSEIF (config_DEBUG)/' "$i"
+	done
+}
+
+post_install() {
+	vmkdir usr/share/doc/${pkgname}
+	vcopy etc/*.plist usr/share/doc/${pkgname}
+
+	# Remove Debian-specific wrapper
+	rm -f ${DESTDIR}/usr/bin/wrap-wlmaker.sh
+}
