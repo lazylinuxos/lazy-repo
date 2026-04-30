@@ -4578,3 +4578,4 @@ libQt6WaylandCompositorIviapplication.so.6 qt6-wayland-6.10.2_1
 libQt6WaylandCompositorXdgShell.so.6 qt6-wayland-6.10.2_1
 libQt6WaylandCompositorPresentationTime.so.6 qt6-wayland-6.10.2_1
 libmysqlclient.so.21 libmariadbclient-devel-11.1.2_2
+libchibi-scheme.so.0 chibi-scheme-0.12_1
