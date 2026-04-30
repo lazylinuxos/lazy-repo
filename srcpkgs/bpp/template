@@ -1,0 +1,39 @@
+# Template file for 'bpp'
+pkgname=bpp
+version=0.8.9
+revision=1
+build_style=gnu-makefile
+make_build_target=all
+make_build_args="CXXFLAGS='-std=gnu++23'"
+make_check_target=test
+hostmakedepends="flex bison"
+makedepends="utfcpp json-c++ frozen"
+checkdepends="bash"
+short_desc="Bash++ compiler and language server"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://bpp.sh"
+changelog="https://raw.githubusercontent.com/rail5/bashpp/refs/heads/main/debian/changelog"
+distfiles="https://github.com/rail5/bashpp/archive/refs/tags/v${version}.tar.gz"
+checksum=3fb1080ae68a3f410ec0a684a0e7c78b450eb6a6ff4627f5b11c0400c5786d15
+
+do_install() {
+	vbin bin/bpp
+}
+
+bpp-lsp_package() {
+	short_desc="Bash++ LSP server"
+ 
+	pkg_install() {
+		vbin bin/bpp-lsp
+	}
+}
+
+bpp-stdlib_package() {
+	short_desc="Bash++ standard library"
+ 
+	pkg_install() {
+		vmkdir usr/lib/bpp
+		vcopy stdlib usr/lib/bpp/
+	}
+}
