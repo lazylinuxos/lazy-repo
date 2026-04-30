@@ -5,7 +5,7 @@ printf "Checking latest version\n"
 
 __dir="$(dirname "${BASH_SOURCE[0]}")"
 
-GH_REPO="wailsapp/wails"
+GH_REPO="MikiDevLog/wallpaperengine-gui"
 
 LATEST_VERSION=$(gh release list --exclude-pre-releases --repo ${GH_REPO} --json name,tagName,isLatest --jq '.[] | select(.isLatest)|.tagName')
 export VERSION=${LATEST_VERSION#"v"}
@@ -22,4 +22,4 @@ rm ./${VERSION}.tar.gz
 
 envsubst '${SHA256} ${VERSION}' < ${__dir}/.template > ${__dir}/template
 
-printf "wails template updated\n"
+printf "wallpaperengine-gui template updated\n"
