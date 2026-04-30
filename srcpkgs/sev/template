@@ -1,0 +1,43 @@
+# Template file for 'sev'
+pkgname=sev
+version=r454.eee0cea
+revision=1
+_tree_sitter_version=0.26.8
+_tree_sitter_scheme_version=0.24.7-1
+build_style=cmake
+configure_args="-DUSE_VENDORED=OFF"
+hostmakedepends="pkg-config"
+makedepends="libglvnd-devel SDL3-devel SDL3_image-devel SDL3_ttf-devel chibi-scheme-devel" # tree-sitter-devel tree-sitter-scheme
+short_desc="Graphical Emacs-like text editor"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/dylancobb/sev"
+distfiles="https://github.com/dylancobb/sev/archive/eee0cea.tar.gz
+ https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v${_tree_sitter_version}.tar.gz>tree-sitter.tar.gz
+ https://github.com/6cdh/tree-sitter-scheme/archive/refs/tags/v${_tree_sitter_scheme_version}.tar.gz>tree-sitter-scheme.tar.gz"
+checksum="5530668efd8b6bd98b71baa6c5424fce86ef221600d99a3fddc71307380e7717
+ e6826b7533ec3a885aba598377a6d20b5a6321ff3db76968e960c2352d3a5077
+ 64a549fae70004794ea75a08dd7d678e3971235813adf290b66f1cb6cb6d282f"
+skip_extraction="
+ tree-sitter.tar.gz
+ tree-sitter-scheme.tar.gz"
+
+post_extract() {
+	vsrcextract -C "${wrksrc}/vendored/tree-sitter" "tree-sitter.tar.gz"
+	vsrcextract -C "${wrksrc}/vendored/tree-sitter-scheme" "tree-sitter-scheme.tar.gz"
+}
+
+do_install() {
+	vmkdir usr/lib/sev
+	vcopy build/resources usr/lib/sev/
+	vcopy build/scheme usr/lib/sev/
+	vcopy build/app usr/lib/sev/
+
+	vinstall build/resources/icon.png 644 usr/share/pixmaps sev.png
+	vinstall ${FILESDIR}/sev.desktop 644 usr/share/applications
+
+	vmkdir usr/bin/
+	ln -s /usr/lib/sev/app ${DESTDIR}/usr/bin/sev 
+
+	vlicense LICENSE
+}
