@@ -1,7 +1,7 @@
 # Template file for 'drawy'
 pkgname=drawy
 version=1.0.0
-revision=1
+revision=2
 build_style=cmake
 build_helper="qmake6"
 configure_args="-DCMAKE_BUILD_TYPE=Release"
@@ -9,11 +9,11 @@ hostmakedepends="qt6-tools"
 makedepends="qt6-base-devel qt6-tools-devel qt6-declarative-devel Vulkan-Headers"
 depends="glibc hicolor-icon-theme libgcc"
 short_desc="Infinite whiteboard tool"
-maintainer="nathan marchiori <nathan.marchiori@gmail.com>"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://invent.kde.org/graphics/drawy"
-distfiles="https://invent.kde.org/graphics/drawy/-/archive/${version}-alpha/drawy-${version}-alpha.tar.gz"
-checksum=904e5b0bf14222198cefd3e2e0d5adf852b0a528ae7b0149c67ccece88ea519f
+distfiles="https://invent.kde.org/graphics/drawy/-/archive/v${version}/drawy-v${version}.tar.gz"
+checksum=c942e1d76aca2f00289a8f711f47ed9b793a6a896579e6a8ba78f95422893e7d
 
 do_install() {
 	vbin build/drawy
