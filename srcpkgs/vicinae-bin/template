@@ -1,6 +1,6 @@
 # Template file for 'vicinae-bin'
 pkgname=vicinae-bin
-version=0.20.14
+version=0.20.15
 revision=1
 archs="x86_64"
 depends="nodejs qt6-base qt6-svg layer-shell-qt libqalculate qtkeychain-qt6 libxml2 minizip"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/vicinaehq/vicinae"
 distfiles="https://github.com/vicinaehq/vicinae/releases/download/v${version}/vicinae-linux-x86_64-v${version}.tar.gz"
-checksum=5e5a75e7c226fde4d410d8d09dd697faec2203e275d614b32b8af14146ff6a65
+checksum=d5dd92f600c456f6780b96bf7d437275c8166b7219aec20ac2025d850286b7e2
 conflicts="vicinae>=0"
 replaces="vicinae>=0"
 noverifyrdeps=yes
