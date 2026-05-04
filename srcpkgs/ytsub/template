@@ -1,0 +1,14 @@
+# Template file for 'ytsub'
+pkgname=ytsub
+version=0.9.0
+revision=1
+build_style=cargo
+hostmakedepends=""
+makedepends="sqlite-devel"
+short_desc="Subscriptions only TUI YouTube client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/sarowish/ytsub"
+changelog="https://raw.githubusercontent.com/sarowish/ytsub/refs/heads/master/CHANGELOG.md"
+distfiles="https://github.com/sarowish/ytsub/archive/refs/tags/v${version}.tar.gz"
+checksum=e13dfa6d9c5629cf5f534e1be03396272b8bcce41d65b03561083efc9af6d77f
