@@ -1,0 +1,14 @@
+# Template file for 'mezzaluna'
+pkgname=mezzaluna
+version=4.5.22
+revision=1
+build_style=zig-build
+hostmakedepends="pkg-config"
+makedepends="wlroots0.20-devel pixman-devel libxkbcommon-devel libevdev-devel"
+short_desc="Wayland compositor written in Zig"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/MezzalunaWM/Mezzaluna"
+distfiles="https://github.com/MezzalunaWM/Mezzaluna/archive/refs/heads/dev.tar.gz"
+checksum=bfbb3b8b7477673d28082f25ea132399d92b7d71739e40589f35cb601f70d6b7
+nopie=yes
