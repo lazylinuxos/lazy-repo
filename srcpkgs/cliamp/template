@@ -1,0 +1,22 @@
+# Template file for 'cliamp'
+pkgname=cliamp
+version=1.44.1
+revision=1
+build_style=go
+go_import_path=cliamp
+hostmakedepends="pkg-config"
+makedepends="alsa-lib-devel libflac-devel libvorbis-devel libogg-devel ffmpeg-devel"
+depends="yt-dlp"
+short_desc="Retro terminal music player inspired by Winamp 2.x"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/bjarneo/cliamp"
+distfiles="https://github.com/bjarneo/cliamp/archive/refs/tags/v${version}.tar.gz"
+checksum=6afaae94e076c78d1be9300f870d4b67f16fa68a14575aeabd257c75c5987f63
+
+post_install() {
+	vinstall cliamp.desktop 644 usr/share/applications
+	vinstall Cliamp.png 644 usr/share/icons/hicolor/512x512/apps cliamp.png
+	vinstall Cliamp.png 644 usr/share/pixmaps cliamp.png
+	vlicense LICENSE
+}
