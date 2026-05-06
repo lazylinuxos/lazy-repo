@@ -1,7 +1,7 @@
 # Template file for 'drawy'
 pkgname=drawy
-version=1.0.0
-revision=2
+version=1.0.1
+revision=1
 build_style=cmake
 build_helper="qmake6"
 configure_args="-DCMAKE_BUILD_TYPE=Release"
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://invent.kde.org/graphics/drawy"
 distfiles="https://invent.kde.org/graphics/drawy/-/archive/v${version}/drawy-v${version}.tar.gz"
-checksum=c942e1d76aca2f00289a8f711f47ed9b793a6a896579e6a8ba78f95422893e7d
+checksum=87e7e3cb8392116a13f8395988d4641cb228f4e856f871b0ef6a8413aa70641d
 
 do_install() {
 	vbin build/drawy
