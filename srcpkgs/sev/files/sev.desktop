@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Sev
+GenericName=Sev Editor
+Comment=Graphical Emacs-like text editor
+Exec=/usr/bin/sev
+Icon=sev
+Terminal=false
+StartupWMClass=app
+Type=Application
+Categories=Development;

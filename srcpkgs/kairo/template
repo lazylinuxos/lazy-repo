@@ -1,6 +1,6 @@
 # Template file for 'kairo'
 pkgname=kairo
-version=1.4.1
+version=1.6.2
 revision=1
 build_style="go"
 go_import_path="github.com/programmersd21/kairo"
@@ -11,7 +11,7 @@ license="MIT"
 homepage="https://github.com/programmersd21/kairo"
 changelog="https://raw.githubusercontent.com/programmersd21/kairo/refs/heads/main/CHANGELOG.md"
 distfiles="https://github.com/programmersd21/kairo/archive/refs/tags/${version}.tar.gz"
-checksum=11fcddf5bb28082f7ba9245166006cfdc240c8ccdb6e75bc73ca15d1a38187eb
+checksum=47fd0015ec68b0d0d66e119dc1e738c7f5f1b0fd3166d5cda53c6b03ff3d904a
 
 post_install() {
 	vlicense LICENSE
