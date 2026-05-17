@@ -1,0 +1,113 @@
+# Template file for 'waterfox'
+pkgname=waterfox
+version=6.6.12
+revision=1
+build_helper="rust"
+hostmakedepends="unzip zip pkg-config perl python3 yasm nasm rust cargo llvm21 clang21 lld21
+ nodejs cbindgen which tar xz wasi-sdk gawk"
+makedepends="nss-devel libjpeg-turbo-devel gtk+3-devel pixman-devel libevent-devel
+ libnotify-devel libvpx-devel libwebp-devel rust-std libSM-devel freetype-devel
+ libXrender-devel libXcomposite-devel libXt-devel libXdamage-devel
+ alsa-lib-devel jack-devel dbus dbus-glib-devel pulseaudio-devel gawk curl"
+depends="nss>=3.72 nspr>=4.32 desktop-file-utils hicolor-icon-theme pciutils"
+short_desc="Privacy-focused, performance-oriented browser based on Firefox"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MPL-2.0"
+homepage="https://www.waterfox.com/"
+changelog="https://www.waterfox.com/releases/"
+distfiles="https://github.com/BrowserWorks/waterfox/archive/refs/tags/${version}.tar.gz"
+checksum=04621a7c3fd4e0737f182ab0f8f8cfcf23d6b7a63005ec8548cc8f6495b0e4a5
+lib32disabled=yes
+
+case $XBPS_TARGET_MACHINE in
+	armv[56]*) broken="required NEON extensions are not supported on armv6" ;;
+	ppc64*) ;;
+	ppc*) broken="xptcall bitrot" ;;
+esac
+
+post_extract() {
+	cp "${FILESDIR}/mozconfig" .mozconfig
+
+	cp "${FILESDIR}/mozilla-api-key" $wrksrc
+
+	curl -Lo l10n.zip https://github.com/BrowserWorks/l10n/archive/refs/heads/main.zip
+	unzip l10n.zip
+	cp -r l10n-main/. waterfox/browser/locales
+}
+
+do_configure() {
+	echo $version > browser/config/version_display.txt
+
+	echo ac_add_options --with-mozilla-api-keyfile="${wrksrc}/mozilla-api-key" >> .mozconfig
+	echo ac_add_options --with-l10n-base="${wrksrc}/waterfox/browser/locales" >> .mozconfig
+	echo ac_add_options --host=${XBPS_TRIPLET} >> .mozconfig
+	echo ac_add_options --target=${XBPS_CROSS_TRIPLET:-${XBPS_TRIPLET}} >> .mozconfig
+	
+	case "$XBPS_TARGET_MACHINE" in
+		*-musl)
+			cp "${FILESDIR}/stab.h" toolkit/crashreporter/google-breakpad/src/
+			;;
+	esac
+
+	case "$XBPS_TARGET_MACHINE" in
+		armv7l*)
+			echo "ac_add_options --disable-webrtc" >> .mozconfig
+			;;
+	esac
+
+	if [ "$XBPS_TARGET_ENDIAN" = "be" ]; then
+		echo "ac_add_options --disable-webrtc" >> .mozconfig
+	fi
+}
+
+do_build() {
+	# Clang related
+	export CC=clang
+	export CXX=clang++
+	export AR=llvm-ar
+	export NM=llvm-nm
+	export HOST_CC=clang
+	export HOST_CXX=clang++
+
+	export AS="${CC}"
+	export LDFLAGS="-Wl,-rpath=/usr/lib/waterfox"
+	export CFLAGS="-O2 -w"
+	export CXXFLAGS="-O2 -w"
+
+	# work around large debug symbols on 32-bit hosts
+	if [ "$XBPS_WORDSIZE" = "32" ]; then
+		export LDFLAGS+=" -Wl,--no-keep-memory"
+	fi
+
+	export MOZ_MAKE_FLAGS="${makejobs}"
+
+	./mach build
+	./mach package-multi-locale --locales ar cs da de el en-GB en-US es-ES es-MX fr hu id it ja ko lt nl nn-NO pl pt-BR pt-PT ru sv-SE th vi zh-CN zh-TW
+}
+
+do_install() {
+	export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+	export MOZBUILD_STATE_PATH="${wrksrc}/mozbuild"
+	DESTDIR="$DESTDIR" ./mach install
+
+	vinstall "${FILESDIR}/vendor.js" 644 usr/lib/waterfox/browser/defaults/preferences
+	vinstall "${FILESDIR}/waterfox.desktop" 644 usr/share/applications
+
+	for size in 16 22 24 32 48 64 128 256; do
+		src=${wrksrc}/waterfox/browser/branding/default${size}.png
+		vinstall $src 644 /usr/share/icon/hicolor/${size}/apps waterfox.png
+	done
+
+	# We don't want the development stuff
+	rm -rf ${DESTDIR}/usr/{include,lib/waterfox-devel,share/idl}
+
+	# https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+	ln -sf waterfox ${DESTDIR}/usr/lib/waterfox/waterfox-bin
+
+	# backwards compatibility with old firefox-wayland wrapper
+	ln -sf waterfox "${DESTDIR}/usr/bin/waterfox-wayland"
+}
+
+post_install() {
+	vlicense LICENSE
+}

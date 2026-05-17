@@ -1,0 +1,68 @@
+mk_add_options MOZ_OBJDIR="obj"
+mk_add_options MOZ_APP_REMOTINGNAME=waterfox
+mk_add_options MOZ_TELEMETRY_REPORTING=
+mk_add_options MOZ_DATA_REPORTING=
+mk_add_options MOZ_REQUIRE_SIGNING=
+mk_add_options MOZ_NOSPAM=1
+mk_add_options MOZBUILD_STATE_PATH=mozbuild
+mk_add_options MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+ac_add_options --prefix=/usr
+ac_add_options --libdir=/usr/lib
+ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
+ac_add_options --enable-application=browser
+ac_add_options --enable-optimize="-O2 -w"
+
+# Branding
+ac_add_options --with-app-name=waterfox
+ac_add_options --with-app-basename=Waterfox
+ac_add_options --with-branding=waterfox/browser/branding
+ac_add_options --with-unsigned-addon-scopes=app,system
+ac_add_options --with-distribution-id=net.waterfox
+
+# Waterfox defaults
+ac_add_options --enable-update-channel=release
+ac_add_options --enable-release
+ac_add_options --disable-crashreporter
+ac_add_options --disable-debug
+ac_add_options --disable-dmd
+ac_add_options --disable-geckodriver
+ac_add_options --disable-profiling
+ac_add_options --disable-tests
+
+# From Void Linux Firefox template
+ac_add_options --allow-addon-sideload
+ac_add_options --enable-hardening
+ac_add_options --enable-path-remapping=c,rust
+ac_add_options --enable-packed-relative-relocs
+ac_add_options --disable-install-strip
+ac_add_options --disable-strip
+ac_add_options --disable-updater
+ac_add_options --disable-profiling
+ac_add_options --disable-bootstrap
+ac_add_options --disable-cargo-incremental
+
+# Clang related
+ac_add_options --enable-linker=lld
+ac_add_options --with-libclang-path=/usr/lib
+
+# media and audio
+ac_add_options --with-system-webp
+ac_add_options --with-system-jpeg
+ac_add_options --enable-jxl
+ac_add_options --enable-alsa
+ac_add_options --enable-pulseaudio
+## system's libpng doesn't have APNG support
+ac_add_options --without-system-png
+
+# Idk
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+ac_add_options --enable-dbus
+ac_add_options --enable-system-pixman
+ac_add_options --with-system-ffi
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
+ac_add_options --with-system-nspr
+ac_add_options --with-system-nss
+ac_add_options --with-system-zlib
+ac_add_options --enable-rust-simd
+ac_add_options --disable-elf-hack
