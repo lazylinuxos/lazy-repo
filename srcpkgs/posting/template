@@ -1,6 +1,6 @@
 # Template file for 'posting'
 pkgname=posting
-version=2.9.2
+version=2.10.0
 revision=1
 hostmakedepends="python3-build hatchling python3-installer"
 depends="python3 python3-click python3-dotenv python3-httpx python3-click-default-group
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/darrenburns/posting"
 distfiles="${homepage}/archive/refs/tags/${version}.tar.gz"
-checksum=72f5931fae361ddd164a12a62f9678752e3c8f207b1d29070d00b8ff53eb79c1
+checksum=4dab923cc9bd374f5b3d54a9f4d4d9e712c3854df6be192d407e34b77da99653
 
 do_build() {
 	python -m build --wheel --no-isolation

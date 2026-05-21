@@ -1,6 +1,6 @@
 # Template file for 'wlmaker'
 pkgname=wlmaker
-version=0.7.1
+version=0.8
 revision=1
 build_style=cmake
 configure_args="
@@ -17,7 +17,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="Apache-2.0"
 homepage="https://github.com/phkaeser/wlmaker"
 distfiles="https://github.com/phkaeser/wlmaker/releases/download/v${version}/wlmaker-${version}.tar.gz"
-checksum=2dc025300d9e51599c35bf6f4133a14275dce2f7081c7bd04b5eb89ac442e791
+checksum=db1aa75e3588700a5e1d33aa967300c033ccdb5a785921997f49f48e4b1a3416
 
 post_extract() {
 	for i in "${wrksrc}"/CMakeLists.txt \
