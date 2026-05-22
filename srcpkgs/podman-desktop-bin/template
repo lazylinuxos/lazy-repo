@@ -1,6 +1,6 @@
 # Template file for 'podman-desktop-bin'
 pkgname=podman-desktop-bin
-version=1.27.1
+version=1.27.2
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="Apache-2.0"
 homepage="https://podman-desktop.io/"
 distfiles="https://github.com/podman-desktop/podman-desktop/releases/download/v${version}/podman-desktop-${version}-x64.tar.gz"
-checksum=34ba5b5e6123127313942ae359cb22a4d322b9aebd30a21f50ff750fb436197b
+checksum=d94d65369b8b7860a3d50eba29a7ccd1ad7bd984ea9c90d2a4ca84ce55457682
 nopie=yes
 replaces="podman-desktop>=0"
 
