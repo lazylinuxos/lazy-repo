@@ -1,0 +1,38 @@
+# Template file for 'superproductivity'
+pkgname=superproductivity
+version=18.6.0
+revision=1
+_electronver=35
+_electron="electron${_electronver}"
+_electron_dist=/usr/lib/${_electron}
+hostmakedepends="nodejs cargo pkg-config ${_electron}"
+depends="${_electron}"
+short_desc="Advanced todo list app with timeboxing and time tracking"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://super-productivity.com"
+distfiles="https://github.com/super-productivity/super-productivity/archive/v${version}.tar.gz"
+checksum=ba3fd2c85fb49f3e3ac9c5ecac0808f5827173fd1c96910db6ca8aa9a2aad57e
+
+do_build() {
+	_electron_ver=$(cat ${_electron_dist}/version)
+	npm install
+	npm run build
+	npx electron-builder --linux dir --config.electronDist=${_electron_dist} --config.electronVersion=${_electron_ver}
+}
+
+do_install() {
+	vmkdir usr/lib/superproductivity
+	vinstall .tmp/app-builds/linux-unpacked/resources/app.asar 644 usr/lib/superproductivity
+
+	vbin ${FILESDIR}/superproductivity.sh superproductivity
+	sed -i "s/@@ELECTRON@@/${_electron}/g" ${DESTDIR}/usr/bin/superproductivity
+
+	for i in 16 32 48 64 128 256 512 1024; do
+		vinstall build/icons/${i}x${i}.png 644 usr/share/icons/hicolor/${i}x${i}/apps superproductivity.png
+	done
+
+	vinstall ${FILESDIR}/superproductivity.desktop 644 usr/share/applications
+
+	vlicense LICENSE
+}
