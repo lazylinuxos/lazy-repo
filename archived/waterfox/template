@@ -1,10 +1,10 @@
 # Template file for 'waterfox'
 pkgname=waterfox
-version=6.6.12
+version=6.6.13
 revision=1
 build_helper="rust"
 hostmakedepends="unzip zip pkg-config perl python3 yasm nasm rust cargo llvm21 clang21 lld21
- nodejs cbindgen which tar xz wasi-sdk gawk"
+ nodejs cbindgen which tar xz wasi-sdk gawk wasm-component-ld"
 makedepends="nss-devel libjpeg-turbo-devel gtk+3-devel pixman-devel libevent-devel
  libnotify-devel libvpx-devel libwebp-devel rust-std libSM-devel freetype-devel
  libXrender-devel libXcomposite-devel libXt-devel libXdamage-devel
@@ -16,7 +16,7 @@ license="MPL-2.0"
 homepage="https://www.waterfox.com/"
 changelog="https://www.waterfox.com/releases/"
 distfiles="https://github.com/BrowserWorks/waterfox/archive/refs/tags/${version}.tar.gz"
-checksum=04621a7c3fd4e0737f182ab0f8f8cfcf23d6b7a63005ec8548cc8f6495b0e4a5
+checksum=1e2863d4c533af73995f66e1b517416b501573956eec1619e8854c6b4ecf3f77
 lib32disabled=yes
 
 case $XBPS_TARGET_MACHINE in
