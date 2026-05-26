@@ -1,28 +1,27 @@
 # Template file for 'cattail'
 pkgname=cattail
-version=1.1.0
-revision=4
+version=1.2.0
+revision=1
 archs="x86_64"
-build_style="fetch"
-depends="libsoup3 libwebkit2gtk41 tailscale"
+hostmakedepends="go wails nodejs pkg-config"
+makedepends="libsoup3-devel libwebkit2gtk41-devel"
+depends="tailscale openssh"
 short_desc="Unofficial Tailscale client"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/nerdyslacker/cattail"
-distfiles="https://github.com/nerdyslacker/cattail/releases/download/v${version}/cattail-linux-amd64"
-checksum=7060edb2462e34a262ccdf1d777312f451377071228541531050fff475fb5b79
+distfiles="https://github.com/nerdyslacker/cattail/archive/refs/tags/v${version}.tar.gz"
+checksum=5b169f22db16ca25d541ade229359530fc12ea64cd9a2adf03c3266c94b4bbd3
 nopie=yes
 noverifyrdeps=yes
 noshlibprovides=yes
 
+do_build() {
+	wails build -tags webkit2_41,linux,production
+}
+
 do_install() {
-	vmkdir usr/bin
-	vcopy cattail-linux-amd64 usr/bin/cattail
-	chmod +x ${DESTDIR}/usr/bin/cattail
-
-	vmkdir usr/share/applications
+	vbin build/bin/cattail
 	vinstall ${FILESDIR}/cattail.desktop 644 usr/share/applications
-
-	vmkdir usr/share/pixmaps
 	vinstall ${FILESDIR}/cattail.png 644 usr/share/pixmaps
 }
