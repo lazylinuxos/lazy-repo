@@ -1,0 +1,11 @@
+case "$ACTION" in
+post)
+    if command -v openvpn3-admin >/dev/null 2>&1; then
+        openvpn3-admin init-config --write-configs || true
+    fi
+
+    if [ -x /etc/sv/dbus ] && command -v sv >/dev/null 2>&1; then
+        sv restart dbus || true
+    fi
+    ;;
+esac
