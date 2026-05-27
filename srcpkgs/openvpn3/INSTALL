@@ -1,0 +1,24 @@
+if [ -t 1 ]; then
+    GREEN="\033[1;32m"
+    CYAN="\033[1;36m"
+    RESET="\033[0m"
+else
+    GREEN=""
+    CYAN=""
+    RESET=""
+fi
+
+case "${ACTION}" in
+pre)
+    ;;
+post)
+    printf "\n"
+    printf "${GREEN}OpenVPN 3 requires initial configuration setup.${RESET}\n"
+    printf "${GREEN}Run the following command as root after installation:${RESET}\n"
+    printf "\n"
+    printf "  ${CYAN}openvpn3-admin init-config --write-configs${RESET}\n"
+    printf "\n"
+    printf "${GREEN}You may also need to restart the D-Bus service if already running.${RESET}\n"
+    printf "\n"
+    ;;
+esac

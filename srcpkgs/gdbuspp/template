@@ -1,0 +1,15 @@
+# Template file for 'gdbuspp'
+pkgname=gdbuspp
+version=3
+revision=1
+build_style=meson
+hostmakedepends="pkg-config python3"
+makedepends="glib-devel"
+depends="python3-xmltodict"
+short_desc="glib2 D-Bus C++ interface"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0-only"
+homepage="https://codeberg.org/OpenVPN/gdbuspp"
+distfiles="https://codeberg.org/OpenVPN/gdbuspp/archive/v${version}.tar.gz"
+checksum=84df64f3c89a171646afae027781a0f53ad758276f223f21d965cdb52451d88b
+make_check=no
