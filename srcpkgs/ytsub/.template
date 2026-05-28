@@ -1,6 +1,6 @@
 # Template file for 'ytsub'
 pkgname=ytsub
-version=0.10.0
+version=${VERSION}
 revision=1
 build_style=cargo
 hostmakedepends=""
@@ -11,4 +11,4 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/sarowish/ytsub"
 changelog="https://raw.githubusercontent.com/sarowish/ytsub/refs/heads/master/CHANGELOG.md"
 distfiles="https://github.com/sarowish/ytsub/archive/refs/tags/v${version}.tar.gz"
-checksum=f6583bd0befccebdf05625414af3c114417e297483f7b2dd186d50e1fb844ec8
+checksum=${SHA256}

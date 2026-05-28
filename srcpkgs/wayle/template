@@ -1,6 +1,6 @@
 # Template file for 'wayle'
 pkgname=wayle
-version=0.4.1
+version=0.5.0
 revision=1
 build_style=cargo
 make_build_args="--bin wayle --bin wayle-settings"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/wayle-rs/wayle"
 distfiles="https://github.com/wayle-rs/wayle/archive/refs/tags/v${version}.tar.gz"
-checksum=b64ada6c750a78a1194e86167b607ac69e8df45a405bd3636a067057e15b14cd
+checksum=56ba3a56da88de9a63e25f7bab7dd8e90d32ab969b5469eba1ad1f9d5cf63474
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/wayle
