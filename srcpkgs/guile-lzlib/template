@@ -3,16 +3,10 @@ pkgname=guile-lzlib
 version=0.3.0
 revision=1
 build_style=gnu-configure
-configure_args="
- --prefix=${XBPS_CROSS_BASE}/usr
- --sysconfdir=${XBPS_CROSS_BASE}/etc
- --localstatedir=${XBPS_CROSS_BASE}/var
- --with-guile-site-dir=${XBPS_CROSS_BASE}/usr/share/guile/site/3.0
- --with-guile-site-ccache-dir=${XBPS_CROSS_BASE}/usr/lib/guile/3.0/site-ccache
-"
-hostmakedepends="autoconf automake libtool pkg-config"
+configure_args="--with-guile-site-dir=no"
+hostmakedepends="autoconf automake libtool pkg-config guile-devel"
 makedepends="guile-devel lzlib-devel"
-depends="guile lzlib-devel"
+depends="lzlib-devel"
 short_desc="Guile bindings for lzlib"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"

@@ -3,15 +3,10 @@ pkgname=guile-avahi
 version=0.4.1
 revision=1
 build_style=gnu-configure
-configure_args="
- --prefix=${XBPS_CROSS_BASE}/usr
- --disable-rpath
- --with-guile-site-dir=${XBPS_CROSS_BASE}/usr/share/guile/site/3.0
- --with-guile-site-ccache-dir=${XBPS_CROSS_BASE}/usr/lib/guile/3.0/site-ccache
-"
-hostmakedepends="pkg-config"
+configure_args="--with-guile-site-dir=no"
+hostmakedepends="pkg-config guile-devel"
 makedepends="guile-devel avahi-libs-devel gmp-devel"
-depends="guile avahi-libs gmp"
+depends="avahi-libs"
 short_desc="Avahi bindings for GNU Guile"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-3.0-or-later"

@@ -3,16 +3,9 @@ pkgname=guile-lib
 version=0.2.8.1
 revision=1
 build_style=gnu-configure
-configure_args="
- --prefix=${XBPS_CROSS_BASE}/usr
- --enable-silent-rules
- --with-guile-site
- --with-guile-site-dir=${XBPS_CROSS_BASE}/usr/share/guile/site/3.0
- --with-guile-site-ccache-dir=${XBPS_CROSS_BASE}/usr/lib/guile/3.0/site-ccache
-"
-hostmakedepends="pkg-config"
+configure_args="--with-guile-site-dir=no"
+hostmakedepends="guile-devel pkg-config"
 makedepends="guile-devel texinfo"
-depends="guile"
 short_desc="Repository of useful code written in Guile Scheme"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later AND LGPL-3.0-or-later"
