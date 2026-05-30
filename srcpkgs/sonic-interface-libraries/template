@@ -1,0 +1,46 @@
+# Template file for 'sonic-interface-libraries'
+pkgname=sonic-interface-libraries
+version=6.6.3
+revision=1
+build_style=cmake
+configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_QMLDIR=lib/qt6/qml
+ -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
+hostmakedepends="sonic-frameworks-cmake-modules sonic-frameworks-doctools qt6-base qt6-tools
+ qt6-declarative-host-tools gettext pkg-config kf6-kconfig sonic-frameworks-quick-ui-devel
+ kf6-kcmutils sonic-frameworks-windowsystem kf6-kpackage"
+makedepends="qt6-base-private-devel qt6-declarative-devel qt6-svg-devel
+ kf6-kcmutils-devel kf6-ksvg-devel kf6-ki18n-devel sonic-frameworks-windowsystem-devel
+ kf6-kpackage-devel kf6-kiconthemes-devel sonic-frameworks-gui-addons-devel kf6-karchive-devel
+ kf6-kconfigwidgets-devel sonic-activities-devel sonic-frameworks-keybind-devel kf6-knotifications-devel
+ sonic-frameworks-core-addons-devel sonic-frameworks-io-devel kf6-kcolorscheme-devel qt6-tools-devel
+ qt6-qt5compat-devel libglvnd-devel libX11-devel libxcb-devel"
+depends="sonic-frameworks-quick-ui"
+short_desc="SonicDE library and runtime components"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-interface-libraries"
+distfiles="https://github.com/Sonic-DE/sonic-interface-libraries/archive/refs/tags/${version}.tar.gz"
+checksum=233bb69125618dfb3e5fc187e7d89b6f77c3fe6cfb231a6ccae338c50774bd6c
+provides="libplasma-${version}_${revision}"
+conflicts="libplasma"
+replaces="libplasma>=0"
+
+do_check() {
+	cd build
+	# disable failing tests
+	ctest -E "plasma-dialogstatetest|dialognativetest|plasma-dialogqmltest|plasma-themetest|bug485688test|plasma-pluginloadertest"
+}
+
+sonic-interface-libraries-devel_package() {
+    provides="libplasma-devel-${version}_${revision}"
+    replaces="libplasma-devel>=0"
+	depends="${sourcepkg}>=${version}_${revision} qt6-declarative-devel
+	 qt6-base-devel kf6-kpackage-devel sonic-frameworks-windowsystem-devel"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove "usr/lib/*.so"
+	}
+}

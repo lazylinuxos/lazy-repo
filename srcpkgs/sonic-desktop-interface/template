@@ -1,0 +1,43 @@
+# Template file for 'sonic-desktop-interface'
+pkgname=sonic-desktop-interface
+version=6.6.3
+revision=1
+build_style=cmake
+configure_args="-DBUILD_TESTING=OFF
+ -DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_QMLDIR=lib/qt6/qml -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
+hostmakedepends="sonic-frameworks-cmake-modules pkg-config gettext qt6-base qt6-shadertools
+ qt6-tools wayland-protocols plasma-wayland-protocols sonic-frameworks-doctools
+ kf6-kconfig kf6-kcmutils kf6-kpackage sonic-frameworks-auth-tools wayland-devel
+ qt6-declarative-host-tools intltool"
+makedepends="sonic-frameworks-auth-devel kf6-kcrash-devel sonic-frameworks-doctools-devel
+ kf6-ki18n-devel kf6-kcmutils-devel kf6-knewstuff-devel sonic-frameworks-io-devel
+ kf6-knotifications-devel kf6-knotifyconfig-devel sonic-frameworks-open-collab-devel
+ sonic-frameworks-runner-devel sonic-frameworks-keybind-devel kf6-kdbusaddons-devel
+ sonic-frameworks-core-addons-devel sonic-frameworks-gui-addons-devel
+ kf6-kconfig-devel kf6-kwidgetsaddons-devel kf6-kcodecs-devel kf6-sonnet-devel
+ kf6-kpackage-devel kf6-kiconthemes-devel kf6-kxmlgui-devel kf6-ksvg-devel
+ sonic-frameworks-quick-ui-devel kirigami-addons-devel kf6-qqc2-desktop-style-devel
+ plasma5support-devel sonic-interface-libraries-devel sonic-activities-devel
+ plasma-activities-stats-devel kf6-kaccounts-integration-devel
+ libaccounts-qt6-devel signon-plugin-oauth2 SDL2-devel sonic-workspace-devel
+ ibus-devel libXcursor-devel libXi-devel libxkbfile-devel libxkbcommon-devel
+ xf86-input-evdev-devel xf86-input-libinput-devel qt6-base-private-devel
+ qt6-shadertools-devel qt6-declarative-devel qt6-svg-devel
+ libksysguard-devel kf6-kded-devel kf6-baloo-devel libX11-devel
+ libcanberra-devel eudev-libudev-devel libxcb-devel xcb-util-image-devel
+ xorg-server-devel libglib-devel sonic-win-devel alsa-lib-devel
+ sonic-screenlocker-devel libwacom-devel qt6-qt5compat-devel"
+depends="kmenuedit polkit-kde-agent powerdevil systemsettings kf6-qqc2-desktop-style
+ plasma5support accountsservice ksystemstats xdg-user-dirs noto-fonts-emoji"
+short_desc="Sonic Desktop Interface"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-desktop-interface"
+distfiles="https://github.com/Sonic-DE/${pkgname}/archive/refs/tags/${version}.tar.gz"
+checksum=6ff49cbc2b7c146250c66cf70667ad2161119169fb6eaba51b3f750ada88ae82
+provides="plasma-desktop-${version}_${revision}"
+conflicts="plasma-desktop"
+replaces="plasma-desktop>=0"
+python_version=3

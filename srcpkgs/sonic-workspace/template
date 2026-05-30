@@ -1,0 +1,86 @@
+# Template file for 'sonic-workspace'
+pkgname=sonic-workspace
+version=6.6.3
+revision=1
+build_style=cmake
+configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QMLDIR=lib/qt6/qml
+ -DWaylandScanner_EXECUTABLE=/usr/bin/wayland-scanner
+ -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins -DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_LIBEXECDIR=libexec" 
+hostmakedepends="sonic-frameworks-cmake-modules iso-codes pkg-config gettext
+ qt6-base qt6-tools SPIRV-Tools qt6-shadertools kf6-kcmutils kf6-kconfig
+ qt6-declarative-host-tools sonic-frameworks-doctools sonic-frameworks-windowsystem
+ kf6-kpackage sonic-frameworks-auth-tools"
+makedepends="qt6-declarative-devel libplasma-devel qt6-base-private-devel
+ sonic-frameworks-runner-devel kf6-knotifyconfig-devel kf6-kdesu-devel
+ kf6-knewstuff-devel kf6-kcmutils-devel kf6-kidletime-devel libksysguard-devel
+ kf6-baloo-devel kf6-ktexteditor-devel sonic-win-devel libxcb-devel libXtst-devel
+ libqalculate-devel kf6-prison-devel kf6-kholidays-devel kf6-solid-devel
+ kf6-kpeople-devel kf6-kunitconversion-devel kf6-kstatusnotifieritem-devel
+ libXft-devel sonic-screen-library-devel plasma5support-devel kf6-kitemmodels-devel
+ plasma-activities-stats-devel kf6-kwallet-devel sonic-activities-devel
+ kf6-kded-devel kf6-networkmanager-qt-devel sonic-frameworks-quick-ui-devel
+ kf6-ksvg-devel kf6-kdeclarative-devel kf6-kwayland-devel qt6-location-devel
+ sonic-screenlocker-devel plasma-wayland-protocols qt6-position-devel
+ kf6-kuserfeedback-devel phonon-devel polkit-qt6-devel qt6-base-private-devel
+ kpipewire-devel kirigami-addons-devel libkexiv2-devel qcoro-qt6-devel
+ layer-shell-qt-devel kf6-karchive-devel sonic-frameworks-auth-devel
+ sonic-frameworks-core-addons-devel kf6-kcrash-devel kf6-kdbusaddons-devel
+ sonic-frameworks-keybind-devel sonic-frameworks-gui-addons-devel
+ kf6-ki18n-devel kf6-kiconthemes-devel sonic-frameworks-io-devel
+ kf6-knotifications-devel kf6-kpackage-devel kf6-kparts-devel
+ kf6-ktextwidgets-devel kf6-kcolorscheme-devel sonic-frameworks-doctools-devel
+ sonic-night-light-devel AppStream-qt-devel eudev-libudev-devel
+ wayland-devel icu-devel zlib-devel libcanberra-devel elogind-devel
+ libqalculate-devel kf6-kquickcharts-devel NetworkManager-devel
+ libglib-devel fontconfig-devel libxcb-devel xcb-util-devel
+ xcb-util-cursor-devel xcb-util-image-devel qt6-shadertools-devel
+ qt6-qt5compat-devel qt6-declarative-private-devel libgomp-devel"
+depends="kactivitymanagerd iso-codes milou plasma-integration kpipewire xorg-server-xwayland
+ qt6-tools kf6-kquickcharts kirigami-addons xcb-util xcb-util-cursor xcb-util-image xdg-user-dirs"
+short_desc="Sonic Plasma Workspace (X11-focused)"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-workspace"
+distfiles="https://github.com/Sonic-DE/sonic-workspace/archive/refs/tags/${version}.tar.gz"
+checksum=15fbcbcf649020be073d9a9ab77d459d8fea720ffe11aeeb7a7fe34188d60615
+provides="plasma-workspace-${version}_${revision}"
+conflicts="plasma-workspace"
+replaces="plasma-workspace>=0"
+
+if [ "$XBPS_TARGET_LIBC" = "glibc" ]; then
+	makedepends+=" libxcrypt-devel"
+fi
+
+sonic-workspace-library_package() {
+	short_desc="Sonic Workspace Library for KF6"
+	pkg_install() {
+		vmove "usr/lib/libkworkspace6.so.6*"
+	}
+}
+
+sonic-workspace-x11_package() {
+	short_desc+=" - X11 Session"
+	depends="sonic-workspace"
+	provides="plasma-workspace-x11-${version}_${revision}"
+	conflicts="plasma-workspace-x11"
+	replaces="plasma-workspace-x11>=0"
+	pkg_install() {
+		vmkdir usr/share/xsessions
+		vinstall build/login-sessions/plasmax11.desktop 644 usr/share/xsessions
+	}
+}
+
+sonic-workspace-devel_package() {
+	provides="plasma-workspace-devel-${version}_${revision}"
+	conflicts="plasma-workspace-devel"
+	replaces="plasma-workspace-devel>=0"	
+	short_desc+=" - development files"
+	depends="sonic-workspace-library>=${version}_${revision} qt6-base-devel
+	 qt6-declarative-devel kf6-kitemmodels-devel
+	 ${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+	}
+}

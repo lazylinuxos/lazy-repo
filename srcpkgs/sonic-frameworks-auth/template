@@ -1,0 +1,50 @@
+# Template file for 'sonic-frameworks-auth'
+pkgname=sonic-frameworks-auth
+version=6.25.0
+revision=1
+build_style=cmake
+configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
+ -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
+hostmakedepends="doxygen qt6-tools qt6-base sonic-frameworks-cmake-modules"
+makedepends="polkit-qt6-devel sonic-frameworks-core-addons-devel sonic-frameworks-windowsystem-devel"
+checkdepends="dbus"
+depends="libstdc++"
+short_desc="Authentication and policy abstraction layer for SonicDE frameworks (kauth replacement)"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.0-only, LGPL-3.0-only"
+homepage="https://github.com/Sonic-DE/sonic-frameworks-auth"
+distfiles="https://github.com/Sonic-DE/sonic-frameworks-auth/archive/refs/tags/${version}.tar.gz"
+checksum=d71cb79ac9430b9bd7f89ee8ee97a8b6b12adebfdc2b774a49157716f90346bb
+subpackages="sonic-frameworks-auth-tools sonic-frameworks-auth-devel"
+provides="kf6-kauth-${version}_${revision}"
+conflicts="kf6-kauth"
+replaces="kf6-kauth>=0"
+
+do_check() {
+	cd build
+	dbus-run-session ctest
+}
+
+sonic-frameworks-auth-tools_package() {
+	provides="kf6-kauth-tools-${version}_${revision}"
+	replaces="kf6-kauth-tools>=0"	
+	short_desc+=" - tools"
+	pkg_install() {
+		vmove usr/libexec
+		vmove "usr/lib/cmake/KF6Auth/*Tools*"
+	}
+}
+
+sonic-frameworks-auth-devel_package() {
+	provides="kf6-kauth-devel-${version}_${revision}"
+	replaces="kf6-kauth-devel>=0"		
+	depends="$makedepends sonic-frameworks-auth-tools>=${version}_${revision}
+	 ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove "usr/lib/*.so"
+	}
+}
