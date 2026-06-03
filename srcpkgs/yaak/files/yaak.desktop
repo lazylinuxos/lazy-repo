@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Yaak
+GenericName=API Client
+Exec=yaak
+Icon=yaak
+Terminal=false
+Type=Application
+Categories=Development;Network;

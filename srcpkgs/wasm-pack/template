@@ -1,0 +1,23 @@
+# Template file for 'wasm-pack'
+pkgname=wasm-pack
+version=0.15.0
+revision=1
+build_style=cargo
+hostmakedepends="cmake pkg-config"
+makedepends="libzstd-devel"
+depends="bzip2 curl"
+short_desc="Your favorite rust - wasm workflow tool"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/rustwasm/wasm-pack"
+distfiles="https://github.com/rustwasm/wasm-pack/archive/refs/tags/v${version}.tar.gz"
+checksum=04530d7c215a46cc5468796de3c69fd6620fd78612578545d57f9806aa0c64a4
+# Upstream integration tests require a user environment ($USER)
+# and the wasm32-unknown-unknown Rust target, neither of which
+# are available in Void build workers.
+make_check=no
+
+post_install() {
+	vdoc README.md
+	vlicense LICENSE-MIT
+}

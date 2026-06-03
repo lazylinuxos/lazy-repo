@@ -1,0 +1,43 @@
+# Template file for 'yaak'
+pkgname=yaak
+version=2026.3.1
+revision=1
+hostmakedepends="cargo nodejs pkg-config protobuf rust-wasm wasm-pack"
+makedepends="bzip2-devel cairo-devel dbus-devel fontconfig-devel gdk-pixbuf-devel glib-devel gtk+3-devel
+ libsoup3-devel pango-devel libwebkit2gtk41-devel librsvg-devel libayatana-appindicator-devel"
+depends="hicolor-icon-theme xz zlib"
+short_desc="Fast, offline and Git-friendly API client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://yaak.app/"
+distfiles="https://github.com/mountain-loop/yaak/archive/refs/tags/v${version}.tar.gz"
+checksum=93a05eeffdc99907459e97e0541b654071ffe6cdc126784fbfaba4bbb03b09aa
+nopie=yes
+nostrip=yes
+
+do_configure() {
+	export YAAK_VERSION="${version}"
+	export TAURI_APP_PATH="${wrksrc}/crates-tauri/"
+	export CI=true
+
+	npm ci
+	npm run replace-version
+}
+
+do_build() {
+	npm run tauri build -- --no-bundle
+}
+
+do_install() {
+	vbin target/${RUST_TARGET}/release/yaak
+
+	if [ -f crates-tauri/icons/icon.png ]; then
+		for size in 32 64 128; do
+			vinstall crates-tauri/yaak-app-client/icons/release/${size}x${size}.png 644 \
+				usr/share/icons/hicolor/${size}x${size}/apps yaak.png
+		done
+	fi
+
+	vinstall ${FILESDIR}/yaak.desktop 644 usr/share/applications
+	vlicense LICENSE
+}
