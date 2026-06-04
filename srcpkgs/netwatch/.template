@@ -1,0 +1,19 @@
+# Template file for 'netwatch'
+pkgname=netwatch
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="libpcap-devel"
+short_desc="Real-time network diagnostics in your terminal"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://www.netwatchlabs.com"
+changelog="https://raw.githubusercontent.com/matthart1983/netwatch/refs/heads/main/CHANGELOG.md"
+distfiles="https://github.com/matthart1983/netwatch/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	vdoc README.md
+	vlicense LICENSE
+}

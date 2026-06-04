@@ -1,6 +1,9 @@
 #!/bin/sh
+
 # Wait for graphical session
 while ! pgrep -x "Xorg\|Wayland" > /dev/null 2>&1; do
     sleep 2
 done
+
+exec 2>&1
 exec qs -c noctalia-shell

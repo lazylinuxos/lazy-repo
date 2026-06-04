@@ -1,0 +1,98 @@
+# Template file for 'dart'
+pkgname=dart
+version=3.12.1
+revision=1
+_bootstrap=3.11.6
+_devtools_version=2.59.0
+create_wrksrc=yes
+hostmakedepends="git gn ninja python3 unzip curl"
+short_desc="Dart programming language SDK"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://dart.dev/"
+# Should be updated with latest commit on origin/main when new version of Dart are released.
+_depotver='0cd0ed2e67f0507e0740da64926d80da9476aea9'  # As of 2026-05-19.
+distfiles="https://github.com/dart-lang/sdk/archive/refs/tags/${version}.tar.gz
+ https://chromium.googlesource.com/chromium/tools/depot_tools/+archive/${_depotver}.tar.gz>depot_tools.tar.gz
+ https://storage.googleapis.com/dart-archive/channels/stable/release/${_bootstrap}/sdk/dartsdk-linux-x64-release.zip
+ https://github.com/flutter/devtools/archive/refs/tags/v${_devtools_version}.tar.gz>flutter-devtools.tar.gz"
+checksum="75aeca0e067865646636ffc8cfd4f1763b29bc75692ae6ed5ee69de8ec674e22
+ 8dee81f0269f0a44e3c4249fd41c8bdebd4d54195a095f995543357a6e020e59
+ ea0ff2396ea5af402ba3598a9139a0f4b1b3471d9d7e834882d1559622760add
+ e825cd99b9d4fea15abb96ecdfe11dea40a7d764313c209e34b6b6fa611c4206"
+skip_extraction="depot_tools.tar.gz
+ dartsdk-linux-x64-release.zip
+ flutter-devtools.tar.gz"
+
+post_extract() {
+	vsrcextract --no-strip-components -C "${wrksrc}/depot_tools" "depot_tools.tar.gz"
+	mv ${wrksrc}/sdk-${version} ${wrksrc}/sdk
+
+	vsrcextract --no-strip-components -C "${wrksrc}/bootstrap" "dartsdk-linux-x64-release.zip"
+	vsrcextract --no-strip-components -C "${wrksrc}/flutter" "flutter-devtools.tar.gz"
+	cp -r "${wrksrc}/flutter/devtools-${_devtools_version}/packages/devtools_shared" "${wrksrc}/sdk/third_party/devtools/"
+	cp -r "${wrksrc}/flutter/devtools-${_devtools_version}/packages/devtools_app/web" "${wrksrc}/sdk/third_party/devtools/"
+	rm -rf "${wrksrc}/flutter"
+}
+
+pre_configure() {
+# 	cat > ${wrksrc}/.gclient <<EOF
+# solutions = [
+# 	{
+# 		"name": "sdk",
+# 		"url": "file://${wrksrc}/sdk",
+# 		"deps_file": "DEPS",
+# 		"managed": False,
+# 		"custom_deps": {},
+# 		"custom_vars": {},
+# 	},
+# ]
+# EOF
+
+	export PATH="${wrksrc}/bootstrap/dart-sdk/bin:${wrksrc}/depot_tools:${PATH}"
+	export DEPOT_TOOLS_UPDATE=0
+
+	cd ${wrksrc}/sdk
+
+#	gclient config file://${wrksrc}/sdk
+#   gclient sync -D --nohooks --no-history --shallow
+
+	dart tools/generate_package_config.dart
+	python3 tools/generate_sdk_version_file.py
+
+	sed -i 's|prefix = "x86_64-linux-gnu-"|prefix = ""|g' build/toolchain/linux/BUILD.gn
+}
+
+do_configure() {
+	cd ${wrksrc}/sdk
+
+	gn gen -qv out --args='
+		target_cpu = "x64"
+		is_debug = false
+		is_release = true
+		is_clang = false
+		dart_platform_sdk = false
+		verify_sdk_hash = false
+	'
+}
+
+do_build() {
+	cd ${wrksrc}/sdk
+	ninja -C out create_sdk -v
+}
+
+do_install() {
+	cd ${wrksrc}/sdk/out
+
+	vmkdir opt/dart-sdk
+	vcopy dart-sdk/* opt/dart-sdk/
+
+	vmkdir usr/bin
+
+	for f in dart dartaotruntime; do
+		ln -sf /opt/dart-sdk/bin/$f	${DESTDIR}/usr/bin/$f
+	done
+
+	vdoc ${DESTDIR}/opt/dart-sdk/README
+	vlicense ${wrksrc}/sdk/LICENSE
+}

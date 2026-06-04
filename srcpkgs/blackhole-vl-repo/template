@@ -11,6 +11,6 @@ homepage="https://event-horizon-vl.github.io"
 do_install() {
 	vmkdir usr/share/xbps.d
 
-	echo "repository=https://raw.githubusercontent.com/Event-Horizon-VL/blackhole-vl/repository-x86_64/" > \
+	echo "repository=https://mirror.black-hole.dev/x86_64/" > \
 		${DESTDIR}/usr/share/xbps.d/99-repository-blackhole.conf
 }

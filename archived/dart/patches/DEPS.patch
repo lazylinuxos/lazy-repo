@@ -1,0 +1,161 @@
+diff --git a/sdk/DEPS b/sdk/DEPS
+index 138e03125e4..00771d95651 100644
+--- a/sdk/DEPS
++++ b/sdk/DEPS
+@@ -81,7 +81,7 @@ vars = {
+   "gn_version": "git_revision:40aac3f15d34b3469e80b0c086a37bd069af2d6e",
+ 
+   "reclient_version": "re_client_version:28341fc74c68f05a5c8be35160ada940c4edb969",
+-  "download_reclient": True,
++  "download_reclient": False,
+ 
+   # Update from https://chrome-infra-packages.appspot.com/p/fuchsia/sdk/core
+   "fuchsia_sdk_version": "version:30.20260102.4.1",
+@@ -401,78 +401,6 @@ deps = {
+   Var("dart_root") + "/third_party/pkg/web":
+       Var("dart_git") + "web.git" + "@" + Var("web_rev"),
+ 
+-  Var("dart_root") + "/buildtools/sysroot/linux": {
+-      "packages": [
+-          {
+-              "package": "fuchsia/third_party/sysroot/linux",
+-              "version": "git_revision:fa7a5a9710540f30ff98ae48b62f2cdf72ed2acd",
+-          },
+-      ],
+-      "condition": "host_os == linux",
+-      "dep_type": "cipd",
+-  },
+-  Var("dart_root") + "/buildtools/sysroot/focal": {
+-      "packages": [
+-          {
+-              "package": "fuchsia/third_party/sysroot/focal",
+-              "version": "git_revision:fa7a5a9710540f30ff98ae48b62f2cdf72ed2acd",
+-          },
+-      ],
+-      "condition": "host_os == linux",
+-      "dep_type": "cipd",
+-  },
+-
+-  # Keep consistent with pkg/test_runner/lib/src/options.dart.
+-  Var("dart_root") + "/buildtools/linux-x64/clang": {
+-      "packages": [
+-          {
+-              "package": "fuchsia/third_party/clang/linux-amd64",
+-              "version": Var("clang_version"),
+-          },
+-      ],
+-      "dep_type": "cipd",
+-  },
+-  Var("dart_root") + "/buildtools/mac-x64/clang": {
+-      "packages": [
+-          {
+-              "package": "fuchsia/third_party/clang/mac-amd64",
+-              "version": Var("clang_version"),
+-          },
+-      ],
+-      "condition": "host_os == mac", # On ARM64 Macs too because Goma doesn't support the host-arm64 toolchain.
+-      "dep_type": "cipd",
+-  },
+-  Var("dart_root") + "/buildtools/win-x64/clang": {
+-      "packages": [
+-          {
+-              "package": "fuchsia/third_party/clang/windows-amd64",
+-              "version": Var("clang_version"),
+-          },
+-      ],
+-      "condition": "host_os == win", # On ARM64 Windows too because Fuchsia doesn't provide the host-arm64 toolchain.
+-      "dep_type": "cipd",
+-  },
+-  Var("dart_root") + "/buildtools/linux-arm64/clang": {
+-      "packages": [
+-          {
+-              "package": "fuchsia/third_party/clang/linux-arm64",
+-              "version": Var("clang_version"),
+-          },
+-      ],
+-      "condition": "host_os == 'linux' and host_cpu == 'arm64'",
+-      "dep_type": "cipd",
+-  },
+-  Var("dart_root") + "/buildtools/mac-arm64/clang": {
+-      "packages": [
+-          {
+-              "package": "fuchsia/third_party/clang/mac-arm64",
+-              "version": Var("clang_version"),
+-          },
+-      ],
+-      "condition": "host_os == 'mac' and host_cpu == 'arm64'",
+-      "dep_type": "cipd",
+-  },
+-
+   Var("dart_root") + '/buildtools/reclient': {
+     'packages': [
+       {
+@@ -524,17 +452,6 @@ deps = {
+     "dep_type": "cipd",
+   },
+ 
+-  Var("dart_root") + "/buildtools": {
+-      "packages": [
+-          {
+-              "package": "gn/gn/${{platform}}",
+-              "version": Var("gn_version"),
+-          },
+-      ],
+-      "condition": "host_os != 'win'",
+-      "dep_type": "cipd",
+-  },
+-
+   # windows-arm64 package is not available, use the windows-x64 package and
+   # rely on transparent emulation.
+   Var("dart_root") + "/buildtools/win": {
+@@ -548,14 +465,6 @@ deps = {
+       "dep_type": "cipd",
+   },
+ 
+-  Var("dart_root") + "/buildtools/ninja": {
+-      "packages": [{
+-          "package": "infra/3pp/tools/ninja/${{platform}}",
+-          "version": Var("ninja_tag"),
+-      }],
+-      "dep_type": "cipd",
+-  },
+-
+   Var("dart_root") + "/third_party/android_tools": {
+      "packages": [
+        {
+@@ -610,35 +519,6 @@ deps = {
+     "dep_type": "cipd",
+   },
+ 
+-  # TODO(37531): Remove these cipd packages and build with sdk instead when
+-  # benchmark runner gets support for that.
+-  Var("dart_root") + "/benchmarks/FfiBoringssl/native/out/": {
+-      "packages": [
+-          {
+-              "package": "dart/benchmarks/ffiboringssl",
+-              "version": "commit:a86c69888b9a416f5249aacb4690a765be064969",
+-          },
+-      ],
+-      "dep_type": "cipd",
+-  },
+-  Var("dart_root") + "/benchmarks/FfiCall/native/out/": {
+-      "packages": [
+-          {
+-              "package": "dart/benchmarks/fficall",
+-              "version": "ebF5aRXKDananlaN4Y8b0bbCNHT1MnkGbWqfpCpiND4C",
+-          },
+-      ],
+-          "dep_type": "cipd",
+-  },
+-  Var("dart_root") + "/benchmarks/NativeCall/native/out/": {
+-      "packages": [
+-          {
+-              "package": "dart/benchmarks/nativecall",
+-              "version": "w1JKzCIHSfDNIjqnioMUPq0moCXKwX67aUfhyrvw4E0C",
+-          },
+-      ],
+-          "dep_type": "cipd",
+-  },
+   Var("dart_root") + "/third_party/browsers/chrome": {
+       "packages": [
+           {

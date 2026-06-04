@@ -16,7 +16,7 @@ checksum=183ad94242316cad014b54668e0b117ba4d8f6978b1229cde3fc5cd913020751
 do_configure() {
 	meson setup \
 		--auto-features=disabled \
-	    --prefix=/usr \
+		--prefix=/usr \
 		--bindir=/usr/lib/chimerautils/bin \
 		--sbindir=/usr/lib/chimerautils/sbin \
 		--libexecdir=/usr/lib/chimerautils \

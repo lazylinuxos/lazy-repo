@@ -1,7 +1,7 @@
 # Template file for 'bruno-bin'
 pkgname=bruno-bin
 _pkgname=bruno
-version=3.3.0
+version=3.4.2
 revision=1
 hostmakedepends="tar xz"
 short_desc="Opensource IDE For Exploring and Testing Api's"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://www.usebruno.com"
 distfiles="https://github.com/usebruno/bruno/releases/download/v${version}/${_pkgname}_${version}_amd64_linux.deb"
-checksum=d318c2b1adad00cd2e40e4255391f64b0564cc32b46b98c909c845e97d6762b8
+checksum=801a05d9caf5c1329705515e93a43b411117d9eb04f87cb7878080ced11da47a
 nostrip=yes
 replaces="bruno>=0"
 

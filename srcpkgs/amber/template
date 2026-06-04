@@ -1,0 +1,19 @@
+# Template file for 'amber'
+pkgname=amber
+version=0.6.0.alpha
+revision=1
+build_style=cargo
+make_check_args="
+ --skip bash_error_exit_code
+ --skip download
+ --skip test_stdlib_src_tests_stdlib_text_replace_regex_ext_ab
+"
+hostmakedepends="pkg-config"
+makedepends="libgit2-1.9-devel"
+depends="bc bash coreutils"
+short_desc="Programming language compiled to bash"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://amber-lang.com"
+distfiles="https://github.com/Ph0enixKM/Amber/archive/refs/tags/${version/.a/-a}.tar.gz"
+checksum=a9294e863f46b94624be768859210703cb664e381d2281d71c35314487eebee4

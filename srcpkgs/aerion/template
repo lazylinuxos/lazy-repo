@@ -1,0 +1,25 @@
+# Template file for 'aerion'
+pkgname=aerion
+version=0.2.5
+revision=1
+archs="x86_64"
+hostmakedepends="go wails nodejs pkg-config"
+makedepends="glib-devel gtk+3-devel libwebkit2gtk41-devel"
+short_desc="Open Source Lightweight E-Mail Client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/hkdb/aerion"
+changelog="https://raw.githubusercontent.com/hkdb/aerion/refs/heads/main/CHANGELOG.md"
+distfiles="https://github.com/hkdb/aerion/archive/refs/tags/v${version}.tar.gz"
+checksum=315a30b852580f36f32e46a8453585a9739d491a391545d652a7614dcb43f1bc
+nopie=yes
+
+do_build() {
+	wails build -tags webkit2_41,linux,production
+}
+
+do_install() {
+	vbin build/bin/aerion
+	vinstall build/linux/aerion.png 644 usr/share/pixmaps io.github.hkdb.Aerion.png
+	vinstall build/linux/aerion.desktop 644 usr/share/applications
+}

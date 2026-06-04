@@ -1,0 +1,15 @@
+# Template file for 'wallpaper_not-engine'
+pkgname=wallpaper_not-engine
+version=${VERSION}
+revision=1
+build_style=cmake
+hostmakedepends="pkg-config"
+makedepends="mpv-devel MesaLib-devel wayland-devel wayland-protocols
+ libX11-devel libXrandr-devel pulseaudio-devel wallpaperengine-gui"
+depends="mpv mesa wayland libX11 libXrandr libpulseaudio"
+short_desc="Lightweight Wallpaper Engine alternative for Linux"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/MikiDevLog/wallpaper_not-engine_linux"
+distfiles="https://github.com/MikiDevLog/wallpaper_not-engine_linux/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}

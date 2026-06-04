@@ -1,0 +1,17 @@
+# Template file for 'sesh'
+pkgname=sesh
+version=2.26.2
+revision=1
+build_style=go
+go_import_path="github.com/joshmedeski/sesh/v2"
+depends="tmux zoxide"
+short_desc="Smart tmux session manager"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/joshmedeski/sesh"
+distfiles="https://github.com/joshmedeski/sesh/archive/refs/tags/v${version}.tar.gz"
+checksum=f6bbfd1513332bd5abd4dc5e0b135b8aeac375abb8601f2d7bb9ffe25174f006
+
+post_install() {
+	vlicense LICENSE
+}

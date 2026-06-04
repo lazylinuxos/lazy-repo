@@ -1,0 +1,9 @@
+Optional dependencies:
+
+* `upower` battery module
+* `NetworkManager` network module
+* `bluez` bluetooth module
+* `power-profiles-daemon` power profiles module
+* `swww` wallpaper rendering
+* `matugen` Material You color extraction
+* `pywal` color extraction

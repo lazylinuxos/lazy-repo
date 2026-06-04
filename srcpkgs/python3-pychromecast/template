@@ -1,0 +1,17 @@
+# Template file for 'python3-pychromecast'
+pkgname=python3-pychromecast
+version=14.0.10
+revision=1
+build_style=python3-pep517
+hostmakedepends="python3-build python3-installer python3-setuptools python3-wheel"
+depends="python3-casttube python3-protobuf python3-zeroconf"
+short_desc="Python library to communicate with Google Chromecast"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/home-assistant-libs/pychromecast"
+distfiles="https://github.com/home-assistant-libs/pychromecast/archive/refs/tags/${version}.tar.gz"
+checksum=ce9f966c4d555165a1b30e6c5879794760248535e31498a190ca20111d40a4d8
+
+pre_build() {
+	sed -i 's/wheel>=0\.37\.1,<0\.47\.0/wheel>=0.37.1,<0.48.0/'	pyproject.toml
+}

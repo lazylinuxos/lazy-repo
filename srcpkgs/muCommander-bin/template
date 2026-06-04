@@ -1,7 +1,7 @@
 # Template file for 'muCommander-bin'
 # Repackages the official rpm package.
 pkgname=muCommander-bin
-version=1.6.1
+version=1.6.2
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-1.0-or-later"
 homepage="https://www.mucommander.com"
 distfiles="https://github.com/mucommander/mucommander/releases/download/${version}-1/mucommander-${version}-1.x86_64.rpm"
-checksum=cee60081c6398cb8f8d953aada77babd123bf6fbfabdbe4e9ce5e6d1d8969501
+checksum=5f47c93262ecad2a4d92f10015cf30c139856ce60e644483d357c45e3d07afc0
 replaces="muCommander>=0 mucommander>=0"
 
 do_install() {
