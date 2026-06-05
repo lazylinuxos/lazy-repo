@@ -1,6 +1,6 @@
 # Template file for 'rura'
 pkgname=rura
-version=1.4.0
+version=1.5.0
 revision=1
 build_style=cargo
 short_desc="Interactive TUI scratchpad for building shell pipelines"
@@ -9,7 +9,7 @@ license="MIT"
 homepage="https://github.com/tlipinski/rura"
 changelog="https://raw.githubusercontent.com/tlipinski/rura/refs/heads/master/CHANGELOG.md"
 distfiles="https://github.com/tlipinski/rura/archive/refs/tags/v${version}.tar.gz"
-checksum=7c6bc6ddcfc32840b673f8918c1f24c2c854c55ddb48cac20dd77d8a101446b3
+checksum=796e8c41f1dcfc5687a9b832e8b675c9ecd1a3de8282ad27df1ba56c46db058f
 
 post_install() {
 	vlicense LICENSE
