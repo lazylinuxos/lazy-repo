@@ -1,6 +1,6 @@
 # Template file for 'zed'
 pkgname=zed
-version=1.5.3
+version=1.5.4
 revision=1
 build_style=cargo
 build_helper=rust
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later, AGPL-3.0-or-later, Apache-2.0"
 homepage="https://zed.dev"
 distfiles="https://github.com/zed-industries/zed/archive/refs/tags/v${version}.tar.gz"
-checksum=7c5e5b7445f9fb02155275efe5c8f86d0b7b2f833a0a4a470b344fa44ddef640
+checksum=06a3cb94e2f44126d9f2ac6c9f122e833ce922c806129ae7f4a505d25ba09147
 conflicts="zed-bin>=0"
 replaces="zed-bin>=0"
 _appid=dev.zed.Zed
