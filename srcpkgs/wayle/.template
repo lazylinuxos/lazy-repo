@@ -1,13 +1,15 @@
 # Template file for 'wayle'
 pkgname=wayle
-version=${VERSION}
+version=0.6.0
 revision=1
 build_style=cargo
+build_helper=qemu
+_llvmver=22
 make_build_args="--bin wayle --bin wayle-settings"
-hostmakedepends="pkg-config clang llvm"
+hostmakedepends="pkg-config clang${_llvmver}"
 makedepends="gtk4-devel gtk4-layer-shell-devel gtksourceview5-devel
  pulseaudio-devel fftw-devel pipewire-devel eudev-libudev-devel"
-short_desc="GTK4-based Wayland desktop panel and widgets"
+depends="cava pulseaudio upower bluez"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/wayle-rs/wayle"
@@ -22,7 +24,7 @@ do_install() {
 	vinstall resources/wayle-settings.svg 644 usr/share/icons/hicolor/scalable/apps
 
 	vmkdir usr/share/wayle/icons
-	vcopy resources/icons/* usr/share/wayle/icons/
+	vcopy resources/icons/hicolor usr/share/wayle/icons/
 
 	target/${RUST_TARGET}/release/wayle completions bash > wayle.bash
 	target/${RUST_TARGET}/release/wayle completions zsh > _wayle
