@@ -1,6 +1,6 @@
 # Template file for 'sshpilot'
 pkgname=sshpilot
-version=5.2.4
+version=5.2.6
 revision=1
 hostmakedepends="python3 python3-packaging-bootstrap"
 depends="python3 python3-gobject python3-cairo python3-paramiko python3-cryptography
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/mfat/sshpilot"
 distfiles="https://github.com/mfat/sshpilot/archive/refs/tags/v${version}.tar.gz"
-checksum=53e5dd6cf5173dc3c0b9a9e605d1b4a7b3f0dc14462b804feba9f23f7bbc8f6f
+checksum=6f46014f8ed7867762bcdcfc05dd7703bce641c8afb454681c66f700fa36eca5
 python_version=3
 
 do_install() {
