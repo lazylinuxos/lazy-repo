@@ -1,6 +1,6 @@
 # Template file for 'zed'
 pkgname=zed
-version=1.5.5
+version=1.6.3
 revision=1
 build_style=cargo
 build_helper=rust
@@ -11,10 +11,10 @@ makedepends="alsa-lib-devel libcurl-devel fontconfig-devel libxcb-devel protobuf
 depends="nodejs netcat Vulkan-Tools"
 short_desc="High-performance, multiplayer code editor"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
-license="GPL-3.0-or-later, AGPL-3.0-or-later, Apache-2.0"
+license="GPL-3.0-or-later OR Apache-2.0"
 homepage="https://zed.dev"
 distfiles="https://github.com/zed-industries/zed/archive/refs/tags/v${version}.tar.gz"
-checksum=1c0f431c98370b83a9bf504cbb22659100dd4986ca28122654d5ad0854cc05ec
+checksum=092802148973c75716d3ccdc7ad0d3297c4a519ad6f2c9ec3937a394fe6777b2
 conflicts="zed-bin>=0"
 replaces="zed-bin>=0"
 _appid=dev.zed.Zed
@@ -50,7 +50,5 @@ do_install() {
 	vinstall target/release/zed 0755 usr/lib/zed/ zed-editor
 	vinstall ${_appid}.desktop 644 usr/share/applications/
 	vinstall crates/zed/resources/app-icon.png 644 usr/share/pixmaps zed.png
-	vlicense LICENSE-GPL
 	vlicense LICENSE-APACHE
-	vlicense LICENSE-AGPL
 }
