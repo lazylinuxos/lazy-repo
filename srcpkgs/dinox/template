@@ -1,6 +1,6 @@
 # Template file for 'dinox'
 pkgname=dinox
-version=2.1.1
+version=2.1.2
 revision=1
 build_style=meson
 configure_args="
@@ -26,4 +26,4 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://dinox.im"
 distfiles="https://git.dinox.im/dinoxim/dinox/archive/v${version}.tar.gz"
-checksum=69e2902a0a02c260aadff4d026a1818e3911ec47f5a645b44b903c1d8356eeb0
+checksum=09e59cd642643da675a2690c5cd3360d708b46192e591b25726bb320c13582f9
