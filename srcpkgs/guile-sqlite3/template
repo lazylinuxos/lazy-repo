@@ -10,10 +10,8 @@ depends="sqlite-devel"
 short_desc="Guile bindings for SQLite"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-3.0-or-later"
-homepage="https://notabug.org/guile-sqlite3/guile-sqlite3"
-# Using the archive from debian pool as the original source has issues currently
-# distfiles="https://notabug.org/guile-sqlite3/guile-sqlite3/archive/v${version}.tar.gz"
-distfiles="http://deb.debian.org/debian/pool/main/g/guile-sqlite3/guile-sqlite3_${version}.orig.tar.gz"
+homepage="https://codeberg.org/guile-sqlite3/guile-sqlite3"
+distfiles="https://codeberg.org/guile-sqlite3/guile-sqlite3/archive/v${version}.tar.gz"
 checksum=158cb82958c6329319f911412999ea125980f327f54185bf0dad271d6f8f45c2
 
 pre_configure() {

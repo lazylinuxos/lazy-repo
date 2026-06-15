@@ -2,6 +2,7 @@
 pkgname=guix
 version=1.5.0
 revision=1
+# Guix currently requires a glibc-based host system.
 archs="x86_64 aarch64"
 build_style=gnu-configure
 configure_args="
