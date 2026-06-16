@@ -4,7 +4,7 @@ version=0.11.0
 revision=1
 build_style=gnu-configure
 configure_args="--with-guile-site-dir=no"
-hostmakedepends="autoconf automake libtool pkg-config texinfo guile-devel guile-bytestructures"
+hostmakedepends="autoconf automake libtool pkgconf texinfo guile-devel guile-bytestructures"
 makedepends="guile-devel libgit2-1.9-devel zlib-devel"
 checkdepends="tar git openssh"
 depends="guile-bytestructures libgit2-1.9-devel"
