@@ -1,6 +1,6 @@
 # Template file for 'elio'
 pkgname=elio
-version=1.8.0
+version=1.9.0
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
@@ -11,7 +11,7 @@ license="MIT"
 homepage="https://github.com/elio-fm/elio"
 changelog="https://github.com/elio-fm/elio/blob/main/CHANGELOG.md"
 distfiles="https://github.com/elio-fm/elio/archive/refs/tags/v${version}.tar.gz"
-checksum=e6fcdf85556b21048ea07f42057947f34af3ee7eb84136f1f0e322074d3af19c
+checksum=c8a43ff0fd8ffcbbf48296b6d26ad02a123e882cbfb832a0a9c2e3c00576109b
 
 post_install() {
 	vdoc README.md

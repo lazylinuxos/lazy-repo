@@ -5,7 +5,7 @@ revision=1
 archs="x86_64 aarch64"
 build_style=gnu-configure
 configure_args="--with-guile-site-dir=no"
-hostmakedepends="autoconf automake libtool pkg-config texinfo guile-devel"
+hostmakedepends="autoconf automake libtool pkgconf texinfo guile-devel"
 makedepends="guile-devel libssh-devel"
 short_desc="SSH module for Guile based on libssh"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

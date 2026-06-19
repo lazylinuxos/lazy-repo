@@ -4,7 +4,7 @@ version=5.0.1
 revision=1
 build_style=gnu-configure
 configure_args="--with-guile-site-dir=no"
-hostmakedepends="guile-devel autoconf automake libtool texinfo pkg-config"
+hostmakedepends="guile-devel autoconf automake libtool texinfo pkgconf"
 makedepends="guile-devel gnutls-devel"
 short_desc="Provides Guile bindings for the GnuTLS library"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

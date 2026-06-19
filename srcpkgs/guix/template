@@ -13,7 +13,7 @@ configure_args="
  --with-bash-completion-dir=${XBPS_CROSS_BASE}/usr/share/bash-completion/completions
  --with-fish-completion-dir=${XBPS_CROSS_BASE}/usr/share/fish/vendor_completions.d
 "
-hostmakedepends="pkg-config texinfo help2man git gettext po4a guile-devel guile-gnutls guile-gcrypt guile-git guile-gnutls
+hostmakedepends="pkgconf texinfo help2man git gettext po4a guile-devel guile-gnutls guile-gcrypt guile-git guile-gnutls
  guile-json guile-lzlib guile-sqlite3 guile-lib guile-semver guile-ssh guile-zlib guile-zstd guile-avahi"
 makedepends="bzip2-devel guile-devel zlib-devel libgcrypt-devel linux-headers sqlite-devel"
 depends="guile guile-gcrypt guile-git guile-gnutls guile-json guile-lzlib guile-semver guile-zlib guile-sqlite3 guile-lib

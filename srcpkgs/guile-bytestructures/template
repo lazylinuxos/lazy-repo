@@ -4,7 +4,7 @@ version=2.0.2
 revision=1
 build_style=gnu-configure
 configure_args="--with-guile-site-dir=no"
-hostmakedepends="autoconf automake libtool pkg-config texinfo guile-devel"
+hostmakedepends="autoconf automake libtool pkgconf texinfo guile-devel"
 makedepends="guile-devel"
 short_desc="Structured access to bytevector contents for Guile"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

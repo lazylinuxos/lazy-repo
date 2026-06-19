@@ -4,7 +4,7 @@ version=0.2.2
 revision=1
 build_style=gnu-configure
 configure_args="--with-guile-site-dir=no"
-hostmakedepends="autoconf automake libtool pkg-config guile-devel"
+hostmakedepends="autoconf automake libtool pkgconf guile-devel"
 makedepends="guile-devel zlib-devel"
 depends="zlib-devel"
 short_desc="Guile bindings for zlib"

@@ -4,7 +4,7 @@ version=4.7.3
 revision=1
 build_style=gnu-configure
 configure_args="--with-guile-site-dir=no"
-hostmakedepends="guile-devel pkg-config texinfo"
+hostmakedepends="guile-devel pkgconf texinfo"
 makedepends="guile-devel"
 short_desc="JSON implementation for GNU Guile"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

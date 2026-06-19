@@ -4,7 +4,7 @@ version=0.5.0
 revision=1
 build_style=gnu-configure
 configure_args="--with-guile-site-dir=no"
-hostmakedepends="autoconf automake libtool pkg-config texinfo guile-devel"
+hostmakedepends="autoconf automake libtool pkgconf texinfo guile-devel"
 makedepends="guile-devel libgcrypt-devel"
 depends="libgcrypt-devel"
 short_desc="Guile Scheme bindings for libgcrypt"
