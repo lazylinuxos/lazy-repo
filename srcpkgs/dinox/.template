@@ -19,7 +19,7 @@ makedepends="gtk4-devel libadwaita-devel glib-devel libgee-devel
  abseil-cpp-devel cJSON-devel geoclue2-devel json-glib-devel libnotify-devel
  libmosquitto-devel readline-devel openssl-devel libunwind-devel libva-devel"
 depends="gtk4 gst-plugins-good1 gst-plugins-bad1 gst-plugins-ugly1 sqlcipher
- gst-libav gstreamer1 gstreamer-vaapi gstreamer1-pipewire webrtc-audio-processing-2
+ gst-libav gstreamer1 gstreamer1-pipewire webrtc-audio-processing-2
  mosquitto tor"
 short_desc="DinoX – fork of Dino XMPP client using GTK4/Libadwaita"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
