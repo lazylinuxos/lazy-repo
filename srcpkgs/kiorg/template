@@ -1,6 +1,6 @@
 # Template file for 'kiorg'
 pkgname=kiorg
-version=1.6.1
+version=1.6.2
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config clang llvm"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/houqp/kiorg"
 distfiles="https://github.com/houqp/kiorg/archive/refs/tags/v${version}.tar.gz"
-checksum=4568390979fd7476440bf2f2af811058f625e600c834506fed06e60bb8745582
+checksum=c5a950d1fd547539577767ee376dbf534ea704ddc9c6dbda8090cb09beadaba3
 
 post_extract() {
 	cp -r ${FILESDIR}/pdf_fonts assets/
