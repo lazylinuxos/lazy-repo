@@ -1,6 +1,6 @@
 # Template file for 'rustdesk-bin'
 pkgname=rustdesk-bin
-version=1.4.6
+version=1.4.8
 revision=1
 archs="x86_64"
 hostmakedepends="rpmextract"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="AGPL-3.0-only"
 homepage="https://github.com/rustdesk/rustdesk"
 distfiles="https://github.com/rustdesk/rustdesk/releases/download/${version}/rustdesk-${version}-0.x86_64.rpm"
-checksum="8986df89ed20401944f77be45ed389855ba5fb6611861718a00a0cfe146822d5"
+checksum="2a62c6009cada96237739f92d57579987d260b7b81011b95876cca6dce1bf616"
 nostrip=yes
 nodebug=yes
 noverifyrdeps=yes

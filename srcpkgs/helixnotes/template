@@ -1,0 +1,36 @@
+# Template file for 'helixnotes'
+pkgname=helixnotes
+version=1.3.1
+revision=6
+archs="x86_64"
+hostmakedepends="nodejs pnpm cargo rust pkg-config"
+makedepends="libayatana-appindicator-devel gtk+3-devel libsoup3-devel libwebkit2gtk41-devel openssl-devel"
+depends="librsvg"
+short_desc="Local-first Markdown note-taking app"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0-only"
+homepage="https://helixnotes.com/"
+distfiles="https://codeberg.org/ArkHost/HelixNotes/archive/v${version}.tar.gz"
+checksum=62c8e7d63fbe15a4bbbaaf67f913e8a7f23ddb82085aff13aa417a7428f1deb3
+nopie=yes
+nostrip=yes
+
+do_build() {
+    export CFLAGS="-fPIC"
+    export CXXFLAGS="-fPIC"
+	pnpm install --ignore-scripts
+	npx tauri build --no-bundle
+}
+
+do_install() {
+	vbin src-tauri/target/release/helixnotes
+
+	vlicense LICENSE
+
+	vinstall $FILESDIR/helixnotes.desktop 644 usr/share/applications/
+	vinstall $FILESDIR/io.codeberg.arkhost.helixnotes.metainfo.xml 644 usr/share/metainfo/
+
+	for i in 32 64 128; do
+		vinstall src-tauri/icons/${i}x${i}.png 644 usr/share/icons/hicolor/${i}x${i}/apps/ helixnotes.png
+	done
+}

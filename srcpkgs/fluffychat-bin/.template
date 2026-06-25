@@ -17,7 +17,7 @@ do_install() {
 
 	vbin fluffychat
 
-	vinstall data/flutter_assets/assets/favicon.png 644 usr/share/pixmaps fluffychat.png
+	vinstall data/flutter_assets/assets/logo/mini/logo_mini.png 644 usr/share/pixmaps fluffychat.png
 	vinstall ${FILESDIR}/fluffychat.desktop 644 usr/share/applications
 	vlicense ${FILESDIR}/LICENSE
 }

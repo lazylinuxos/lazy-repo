@@ -27,4 +27,4 @@ distfiles="https://github.com/Sonic-DE/sonic-network-manager/archive/refs/tags/$
 checksum=bd030602d1b9a2b189f1d1e5f6eaccebc77dd3bbe39658a75092e44458da20d5
 provides="plasma-nm-${version}_${revision}"
 conflicts="plasma-nm"
-conflicts="plasma-nm>=0"
+replaces="plasma-nm>=0"

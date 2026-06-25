@@ -53,6 +53,9 @@ if [ "$XBPS_TARGET_LIBC" = "glibc" ]; then
 fi
 
 sonic-workspace-library_package() {
+	provides="kworkspace-${version}_${revision}"
+	conflicts="kworkspace"
+	replaces="kworkspace>=0"
 	short_desc="Sonic Workspace Library for KF6"
 	pkg_install() {
 		vmove "usr/lib/libkworkspace6.so.6*"

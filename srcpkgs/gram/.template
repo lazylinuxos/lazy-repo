@@ -7,11 +7,11 @@ build_helper=rust
 hostmakedepends="rust cargo-about clang cmake protobuf pkg-config gettext"
 makedepends="alsa-lib-devel libcurl-devel fontconfig-devel libxcb-devel protobuf-devel
  glib-devel libxkbcommon-devel libX11-devel openssl-devel sqlite-devel Vulkan-Headers
- vulkan-loader-devel wayland-devel zlib-devel libzstd-devel libgit2-1.9-devel"
+ vulkan-loader-devel wayland-devel zlib-devel libzstd-devel libgit2-1.9-experimental-devel"
 depends="nodejs netcat Vulkan-Tools"
 short_desc="Code editor for humanoid apes and grumpy toads"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
-license="GPL-3.0-or-later, AGPL-3.0-or-later, Apache-2.0"
+license="GPL-3.0-or-later OR Apache-2.0"
 homepage="https://gram.liten.app"
 distfiles="https://codeberg.org/GramEditor/gram/archive/${version}.tar.gz"
 checksum=${SHA256}
@@ -48,6 +48,5 @@ do_install() {
 	vinstall target/release/gram 0755 usr/lib/gram/ gram-editor
 	vinstall ${_appid}.desktop 644 usr/share/applications/
 	vinstall crates/gram/resources/app-icon.png 644 usr/share/pixmaps gram.png
-	vlicense LICENSE-GPL
 	vlicense LICENSE-APACHE
 }
