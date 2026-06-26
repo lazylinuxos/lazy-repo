@@ -70,7 +70,7 @@ sonic-workspace-x11_package() {
 	replaces="plasma-workspace-x11>=0"
 	pkg_install() {
 		vmkdir usr/share/xsessions
-		vinstall build/login-sessions/plasmax11.desktop 644 usr/share/xsessions
+		vmove usr/share/xsessions/plasmax11.desktop
 	}
 }
 
