@@ -1,0 +1,30 @@
+# Template file for 'sonic-network-manager'
+pkgname=sonic-network-manager
+version=6.6.5
+revision=1
+build_style=cmake
+configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_QMLDIR=lib/qt6/qml -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
+ $(vopt_bool openconnect BUILD_OPENCONNECT)"
+hostmakedepends="sonic-frameworks-cmake-modules mobile-broadband-provider-info pkg-config
+ gettext qt6-declarative-host-tools qt6-base qt6-tools
+ sonic-frameworks-doctools kf6-kpackage kf6-kcmutils"
+makedepends="sonic-workspace-devel kf6-networkmanager-qt-devel qca-qt6-devel
+ kf6-modemmanager-qt-devel kf6-solid-devel sonic-frameworks-doctools-devel
+ kf6-kpackage-devel kf6-kcmutils-devel sonic-interface-libraries-devel
+ qt6-base-devel qt6-declarative-devel kf6-kcolorscheme-devel kf6-kcompletion-devel
+ sonic-frameworks-core-addons-devel kf6-kdbusaddons-devel sonic-frameworks-io-devel
+ kf6-ki18n-devel kf6-knotifications-devel kf6-kservice-devel kf6-kwallet-devel
+ kf6-kwidgetsaddons-devel sonic-frameworks-windowsystem-devel kf6-ksvg-devel
+ NetworkManager-devel qt6-base-private-devel qcoro-qt6-devel
+ $(vopt_if openconnect 'openconnect-devel qt6-webengine-devel')"
+depends="mobile-broadband-provider-info sonic-frameworks-quick-ui kf6-prison"
+short_desc="SonicDE applet written in QML for managing network connections"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-network-manager"
+distfiles="https://github.com/Sonic-DE/sonic-network-manager/archive/refs/tags/${version}.tar.gz"
+checksum=bd030602d1b9a2b189f1d1e5f6eaccebc77dd3bbe39658a75092e44458da20d5
+provides="plasma-nm-${version}_${revision}"
+conflicts="plasma-nm"
+replaces="plasma-nm>=0"

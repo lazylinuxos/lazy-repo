@@ -1,0 +1,32 @@
+# Template file for 'sonic-workspace-addons'
+pkgname=sonic-workspace-addons
+version=6.6.4
+revision=2
+build_style=cmake
+configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_QMLDIR=lib/qt6/qml -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools pkg-config gettext
+ qt6-declarative-host-tools kf6-kcmutils kf6-kpackage sonic-frameworks-auth-tools"
+makedepends="kf6-kdeclarative-devel kf6-kholidays-devel sonic-frameworks-runner-devel
+ sonic-interface-libraries-devel qt6-declarative-private-devel sonic-frameworks-keybind-devel
+ kf6-kconfig-devel sonic-frameworks-core-addons-devel kf6-kdbusaddons-devel
+ kf6-ki18n-devel kf6-kjobwidgets-devel kf6-purpose-devel kf6-sonnet-devel kf6-kunitconversion-devel
+ kf6-knewstuff-devel plasma5support-devel qt6-qt5compat-devel sonic-frameworks-io-devel
+ kf6-knotifications-devel kf6-kservice-devel kf6-kxmlgui-devel qt6-quick3d-devel icu-devel
+ sonic-frameworks-auth-devel kf6-kpackage-devel kf6-kcmutils-devel kf6-ksvg-devel
+ kf6-kitemmodels-devel sonic-frameworks-quick-ui-devel kf6-kdbusaddons-devel"
+depends="qt6-plugin-networkinformation qt6-location sonnet"
+short_desc="All kinds of addons to improve SonicDE experience"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-workspace-addons"
+distfiles="https://github.com/Sonic-DE/sonic-workspace-addons/archive/refs/tags/${version}.tar.gz"
+checksum=bcf21a8336ee029b9cc26458351a80595459c8833ced204055ffb621bf35a705
+provides="kdeplasma-addons-${version}_${revision}"
+conflicts="kdeplasma-addons"
+replaces="kdeplasma-addons>=0"
+
+if [ "$XBPS_WORDSIZE$XBPS_WORDSIZE" = "64$XBPS_TARGET_WORDSIZE" ]; then
+	makedepends+=" qt6-webengine-devel"
+fi
