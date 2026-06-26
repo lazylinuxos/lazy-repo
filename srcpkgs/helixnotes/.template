@@ -1,6 +1,6 @@
 # Template file for 'helixnotes'
 pkgname=helixnotes
-version=1.3.2
+version=${VERSION}
 revision=1
 archs="x86_64"
 hostmakedepends="nodejs pnpm cargo rust pkg-config"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="AGPL-3.0-only"
 homepage="https://helixnotes.com/"
 distfiles="https://codeberg.org/ArkHost/HelixNotes/archive/v${version}.tar.gz"
-checksum=7489101c9fc33d7c62b8283b48725951a77c1d175f507bd9593eed2d08f2f96a
+checksum=${SHA256}
 nopie=yes
 nostrip=yes
 
