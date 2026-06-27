@@ -1,7 +1,7 @@
 # Template file for 'sonic-desktop-interface'
 pkgname=sonic-desktop-interface
 version=6.6.3
-revision=1
+revision=2
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF
  -DKF6_HOST_TOOLING=/usr/lib/cmake

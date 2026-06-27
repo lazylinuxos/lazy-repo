@@ -1,0 +1,49 @@
+# Template file for 'renCal'
+pkgname=renCal
+version=0.3.0
+revision=1
+_caldir_version=0.9.1
+hostmakedepends="cargo nodejs pnpm pkg-config rust"
+makedepends="atk-devel cairo-devel gdk-pixbuf-devel glib-devel gtk+3-devel
+ harfbuzz-devel libsoup3-devel openssl-devel pango-devel libwebkit2gtk41-devel"
+depends="desktop-file-utils hicolor-icon-theme shared-mime-info"
+short_desc="Privacy-focused calendar and reminder application"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/t4t5/rencal"
+distfiles="https://github.com/t4t5/rencal/archive/refs/tags/v${version}.tar.gz
+ https://github.com/t4t5/caldir/releases/download/v${_caldir_version}/caldir-x86_64-unknown-linux-musl.tar.gz>caldir.tar.gz"
+checksum="67e5e39fe9b36acf5367d53e5e4ba88a692089b4d530f68cb0a83497bb0e343c
+ 3fb79e77785320386c07666ea75d000e5822eef11c18f12001f380d915a26157"
+skip_extraction="caldir.tar.gz"
+
+post_extract() {
+	vsrcextract -C "${wrksrc}/src-tauri/providers" "caldir.tar.gz"
+}
+
+do_configure() {
+	pnpm install --frozen-lockfile
+	vsed -i -e "s/\"version\": \".*\"/\"version\": \"${version}\"/" src-tauri/tauri.conf.json
+	vsed -i -e '0,/^version = /s/^version = .*/version = "'"${version}"'"/' src-tauri/Cargo.toml
+}
+
+do_build() {
+	pnpm run build
+
+	cargo build --release --manifest-path src-tauri/Cargo.toml
+	cargo build --release -p rencal-notifierd --manifest-path src-tauri/Cargo.toml
+}
+
+do_install() {
+	vbin src-tauri/target/release/rencal
+	vbin src-tauri/target/release/rencal-notifierd
+
+	vmkdir usr/lib/renCal/providers/
+	vcopy src-tauri/target/release/providers/* usr/lib/renCal/providers/
+
+	vinstall src-tauri/icons/128x128.png 644 usr/share/pixmaps rencal.png
+	vinstall ${FILESDIR}/renCal.desktop 644 usr/share/applications
+
+	vsv rencal
+	vlicense LICENSE
+}
