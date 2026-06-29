@@ -1,6 +1,6 @@
 # Template file for 'zapzap'
 pkgname=zapzap
-version=6.5.2.4
+version=6.5.2.5
 revision=1
 build_style=python3-pep517
 hostmakedepends="python3-build python3-installer python3-setuptools python3-wheel desktop-file-utils"
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://rtosta.com/zapzap"
 distfiles="https://github.com/rafatosta/zapzap/archive/refs/tags/${version}.tar.gz"
-checksum=3cc88d255a7ace1cc1ee2ae77a2ad74c3418e986c77639808f99f30786684322
+checksum=84e09ca25104496a64714804a7523163d4438b4740810f1ef48585fb425ce8a6
 
 post_install() {
     vinstall share/icons/com.rtosta.zapzap.svg 644 usr/share/icons/hicolor/scalable/apps/
