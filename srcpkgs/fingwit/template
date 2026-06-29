@@ -1,6 +1,6 @@
 # Template file for 'fingwit'
 pkgname=fingwit
-version=1.0.8
+version=1.0.9
 revision=1
 build_style=meson
 hostmakedepends="cmake pkg-config ninja python3 gettext pam-devel"
@@ -10,4 +10,4 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/xapp-project/fingwit"
 distfiles="https://github.com/xapp-project/fingwit/archive/refs/tags/${version}.tar.gz"
-checksum=3b4fb171ace5e22613662b10ef3891928b4c4128ec12a443233979c2e140def5
+checksum=9fd3513794464e9a1a7ff584a233a6c6b366b32c8d45d7455d18c48b3a2b01ec

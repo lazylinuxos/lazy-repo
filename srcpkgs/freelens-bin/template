@@ -1,6 +1,6 @@
 # Template file for 'freelens-bin'
 pkgname=freelens-bin
-version=1.10.1
+version=1.10.2
 revision=1
 archs="x86_64"
 hostmakedepends="xdg-utils"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://freelens.app/"
 distfiles="https://github.com/freelensapp/freelens/releases/download/v${version}/Freelens-${version}-linux-amd64.AppImage"
-checksum=1dbbb6f2f6e069212325301549f1c9ddc6467763d15347b1edd36fd30a354ab2
+checksum=97ee909e50e736cdade1ab89452d0c2f2e7dd8e7d00ddd2d0cdaa2547e712778
 python_version=3
 nocross=yes
 nopie=yes
