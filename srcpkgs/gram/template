@@ -1,6 +1,6 @@
 # Template file for 'gram'
 pkgname=gram
-version=3.0.0
+version=3.0.1
 revision=1
 build_style=cargo
 build_helper=rust
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later OR Apache-2.0"
 homepage="https://gram.liten.app"
 distfiles="https://codeberg.org/GramEditor/gram/archive/${version}.tar.gz"
-checksum=3d67a250b52d62b866f152dfe2c92cb57811fcebd93506290dfb2e086c712368
+checksum=4fc7521b417e56a990920f985656be0f72f16a957405d299cfbe6ea9c5e7fa94
 nocross=yes
 _appid=se.ziran.Gram
 
