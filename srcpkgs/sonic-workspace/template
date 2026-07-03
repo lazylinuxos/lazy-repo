@@ -6,7 +6,7 @@ build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DWaylandScanner_EXECUTABLE=/usr/bin/wayland-scanner
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins -DKF6_HOST_TOOLING=/usr/lib/cmake
- -DKDE_INSTALL_LIBEXECDIR=libexec" 
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules iso-codes pkg-config gettext
  qt6-base qt6-tools SPIRV-Tools qt6-shadertools kf6-kcmutils kf6-kconfig
  qt6-declarative-host-tools sonic-frameworks-doctools sonic-frameworks-windowsystem
@@ -77,7 +77,7 @@ sonic-workspace-x11_package() {
 sonic-workspace-devel_package() {
 	provides="plasma-workspace-devel-${version}_${revision}"
 	conflicts="plasma-workspace-devel"
-	replaces="plasma-workspace-devel>=0"	
+	replaces="plasma-workspace-devel>=0"
 	short_desc+=" - development files"
 	depends="sonic-workspace-library>=${version}_${revision} qt6-base-devel
 	 qt6-declarative-devel kf6-kitemmodels-devel

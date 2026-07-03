@@ -5,13 +5,13 @@ revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
- -DKDE_INSTALL_LIBEXECDIR=libexec" 
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt6-base qt6-tools gettext
  elogind kf6-kpackage kf6-kcmutils kf6-kconfig"
 makedepends="qt6-base-private-devel qt6-declarative-devel kf6-kcrash-devel kf6-kcmutils-devel
  sonic-frameworks-io-devel sonic-frameworks-keybind-devel kf6-ki18n-devel kf6-kidletime-devel
  kf6-knotifications-devel kf6-solid-devel sonic-frameworks-windowsystem-devel kf6-kxmlgui-devel
- kf6-ksvg-devel sonic-interface-libraries-devel libX11-devel libxcb-devel libXi-devel 
+ kf6-ksvg-devel sonic-interface-libraries-devel libX11-devel libxcb-devel libXi-devel
  xcb-util-keysyms-devel layer-shell-qt-devel pam-devel sonic-screen-library-devel"
 short_desc="Library and components for secure lock screen architecture"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -25,7 +25,7 @@ replaces="kscreenlocker>=0"
 
 sonic-screenlocker-devel_package() {
 	provides="kscreenlocker-devel-${version}_${revision}"
-	replaces="kscreenlocker-devel>=0"	
+	replaces="kscreenlocker-devel>=0"
 	short_desc+=" - development files"
 	depends="${sourcepkg}>=${version}_${revision} qt6-base-devel"
 	pkg_install() {

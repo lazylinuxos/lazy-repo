@@ -26,8 +26,8 @@ do_check() {
 }
 
 sonic-keybind-daemon-devel_package() {
-    provides="kglobalacceld-devel-${version}_${revision}"
-    replaces="kglobalacceld-devel>=0"
+	provides="kglobalacceld-devel-${version}_${revision}"
+	replaces="kglobalacceld-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

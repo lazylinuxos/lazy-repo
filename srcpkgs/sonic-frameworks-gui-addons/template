@@ -12,7 +12,7 @@ hostmakedepends="doxygen qt6-tools qt6-base sonic-frameworks-cmake-modules
 makedepends="libX11-devel qt6-declarative-devel qt6-base-private-devel
  $(vopt_if python 'libshiboken6-devel libpyside6-devel python3-devel')"
 depends="sonic-frameworks-gui-addons-geo-uri-handler"
-short_desc="GUI helper components and utilities for SonicDE frameworks (kguiaddons replacement)"
+short_desc="GUI helper components and utilities for SonicDE frameworks"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only OR LGPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-gui-addons"
@@ -29,7 +29,7 @@ export LLVM_INSTALL_DIR=/usr/lib/llvm/${_llvmver}
 
 sonic-frameworks-gui-addons-geo-uri-handler_package() {
 	provides="kf6-kguiaddons-geo-uri-handler-${version}_${revision}"
-	replaces="kf6-kguiaddons-geo-uri-handler>=0"	
+	replaces="kf6-kguiaddons-geo-uri-handler>=0"
 	short_desc+=" - Geo URI handler"
 	pkg_install() {
 		vmove usr/share/applications
@@ -39,7 +39,7 @@ sonic-frameworks-gui-addons-geo-uri-handler_package() {
 
 sonic-frameworks-gui-addons-devel_package() {
 	provides="kf6-kguiaddons-devel-${version}_${revision}"
-	replaces="kf6-kguiaddons-devel>=0"		
+	replaces="kf6-kguiaddons-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision} qt6-base-devel"
 	short_desc+=" - development files"
 	pkg_install() {

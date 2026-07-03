@@ -15,7 +15,7 @@ hostmakedepends="doxygen qt6-tools sonic-frameworks-cmake-modules
 makedepends="qt6-base-devel qt6-declarative-devel
  $(vopt_if python 'libshiboken6-devel libpyside6-devel python3-devel')"
 depends="libgcc libstdc++"
-short_desc="Core Qt functionality extensions for SonicDE frameworks (kf6-kcoreaddons replacement)"
+short_desc="Core Qt functionality extensions for SonicDE frameworks"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only OR LGPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-core-addons"
@@ -38,7 +38,7 @@ do_check() {
 
 sonic-frameworks-core-addons-devel_package() {
 	provides="kf6-kcoreaddons-devel-${version}_${revision}"
-	replaces="kf6-kcoreaddons-devel>=0"	
+	replaces="kf6-kcoreaddons-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision} qt6-base-devel"
 	short_desc+=" - development files"
 	pkg_install() {

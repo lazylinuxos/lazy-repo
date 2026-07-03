@@ -26,7 +26,6 @@ makedepends="qt6-tools-devel qt6-base-private-devel qt6-sensors-devel
  eudev-libudev-devel lcms2-devel freetype-devel fontconfig-devel libqaccessibilityclient-devel
  libdisplay-info-devel libgbm-devel libei-devel libxkbcommon-devel kf6-knotifications-devel
  elogind-devel kf6-kdbusaddons-devel"
-makedepends+=" layer-shell-qt-devel sonic-screen-library-devel"
 depends="aurorae sonic-frameworks-quick-ui"
 short_desc="KWin X11 fork with Sonic patches"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -34,13 +33,14 @@ license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-win"
 distfiles="https://github.com/Sonic-DE/sonic-win/archive/refs/tags/${version}.tar.gz"
 checksum=deb49415ebf2befb29927e367f5892c63dd7dbf9d50ca89a7864a169972653b5
+makedepends+=" layer-shell-qt-devel sonic-screen-library-devel"
 provides="kwin-x11-${version}_${revision}"
 conflicts="kwin-x11"
 replaces="kwin-x11>=0"
 
 sonic-win-devel_package() {
-    provides="kwin-x11-devel-${version}_${revision}"
-    replaces="kwin-x11-devel>=0"    
+	provides="kwin-x11-devel-${version}_${revision}"
+	replaces="kwin-x11-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

@@ -5,8 +5,7 @@ revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
- -DWITH_LIBPROXY=ON
- -DKDE_INSTALL_LIBEXECDIR=libexec" 
+ -DWITH_LIBPROXY=ON -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules sonic-frameworks-doctools sonic-frameworks-core-addons
  sonic-frameworks-io pkg-config gperf qt6-base qt6-tools gettext KDSoap kf6-kcmutils"
 makedepends="qcoro-qt6-devel kf6-karchive-devel kf6-kconfig-devel

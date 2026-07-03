@@ -7,7 +7,7 @@ build_helper=qemu
 hostmakedepends="doxygen docbook-xml docbook-xsl qt6-tools qt6-base gettext perl perl-URI sonic-frameworks-cmake-modules"
 makedepends="libxml2-devel libxslt-devel kf6-karchive-devel kf6-ki18n-devel qt6-base-devel"
 depends="docbook-xml docbook-xsl"
-short_desc="DocBook-based documentation generation tools for SonicDE frameworks (kdoctools replacement)"
+short_desc="DocBook-based documentation generation tools for SonicDE frameworks"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only OR LGPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-doctools"
@@ -26,7 +26,7 @@ post_patch() {
 
 sonic-frameworks-doctools-devel_package() {
 	provides="kf6-kdoctools-devel-${version}_${revision}"
-	replaces="kf6-kdoctools-devel>=0"	
+	replaces="kf6-kdoctools-devel>=0"
 	depends="$makedepends ${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

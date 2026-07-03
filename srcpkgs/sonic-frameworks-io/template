@@ -15,7 +15,7 @@ makedepends="kf6-karchive-devel kf6-kbookmarks-devel kf6-kcolorscheme-devel kf6-
  kf6-kded-devel kf6-solid-devel libxml2-devel libxslt-devel qt6-qt5compat-devel qt6-tools-devel acl-devel
  qt6-base-private-devel sonic-frameworks-windowsystem-devel sonic-frameworks-doctools-devel"
 depends="util-linux-libs"
-short_desc="Resource and network access abstraction layer for SonicDE (kio replacement)"
+short_desc="Resource and network access abstraction layer for SonicDE"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only OR LGPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-io"
@@ -26,8 +26,8 @@ conflicts="kf6-kio"
 replaces="kf6-kio>=0"
 
 sonic-frameworks-io-devel_package() {
-    provides="kf6-kio-devel-${version}_${revision}"
-    replaces="kf6-kio-devel>=0"
+	provides="kf6-kio-devel-${version}_${revision}"
+	replaces="kf6-kio-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision}
 	 kf6-kbookmarks-devel kf6-kcompletion-devel kf6-kitemviews-devel
 	 kf6-kjobwidgets-devel kf6-solid-devel kf6-kwidgetsaddons-devel

@@ -20,8 +20,7 @@ distfiles="https://github.com/phkaeser/wlmaker/releases/download/v${version}/wlm
 checksum=db1aa75e3588700a5e1d33aa967300c033ccdb5a785921997f49f48e4b1a3416
 
 post_extract() {
-	for i in "${wrksrc}"/CMakeLists.txt \
-	         "${wrksrc}"/submodules/libbase/CMakeLists.txt; do
+	for i in "${wrksrc}"/CMakeLists.txt "${wrksrc}"/submodules/libbase/CMakeLists.txt; do
 		msg_normal "Patching: $i\n"
 		sed -i -e 's/^\s*ELSE\s*(config_OPTIM)$/  ELSEIF (config_DEBUG)/' "$i"
 	done

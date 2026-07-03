@@ -21,8 +21,8 @@ conflicts="knighttime"
 replaces="knighttime>=0"
 
 sonic-night-light-devel_package() {
-    provides="knighttime-devel-${version}_${revision}"
-    replaces="knighttime-devel>=0"
+	provides="knighttime-devel-${version}_${revision}"
+	replaces="knighttime-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {
