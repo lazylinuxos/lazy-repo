@@ -1,20 +1,22 @@
 # Template file for 'noctalia-shell'
 pkgname=noctalia-shell
-version=5.0.0-beta1
+version=5.0.0
 revision=1
-depends="noctalia-qs ImageMagick brightnessctl ffmpeg qt6-multimedia python3"
-short_desc="Sleek and minimal Wayland desktop shell built with Quickshell"
+build_style=meson
+hostmakedepends="just ninja pkg-config"
+makedepends="sdbus-c++-devel cmake wayland-devel wayland-protocols freetype-devel fontconfig-devel cairo-devel
+ pango-devel librsvg-devel libxkbcommon-devel polkit-devel pipewire-devel wireplumber-devel libcurl-devel
+ libqalculate-devel pam-devel libepoxy-devel"
+depends="ImageMagick brightnessctl ffmpeg qt6-multimedia cliphist cava wlsunset power-profiles-daemon ddcutil"
+short_desc="Sleek and minimal desktop shell"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/noctalia-dev/noctalia-shell"
-distfiles="https://github.com/noctalia-dev/noctalia-shell/archive/refs/tags/v${version}.tar.gz"
-checksum=b3dbcc19f83e614b280f19ad4786365a6c17f979f47990ec9ef280ae076e9c79
+changelog="https://github.com/noctalia-dev/${pkgname}/releases/tag/v${version}"
+distfiles="https://github.com/noctalia-dev/${pkgname}/releases/download/v${version}-beta1/noctalia-v${version}-beta1.tar.gz"
+checksum=bdd8600d15689439edc1c7c3c3167993b7d92fbb92ba283eb522511194c0514a
+CXXFLAGS+=" -std=c++23"
 
-do_install() {
-	vmkdir etc/xdg/quickshell/noctalia-shell
-	vcopy * etc/xdg/quickshell/noctalia-shell
-
-	vsv noctalia
-
+post_install() {
 	vlicense LICENSE
 }

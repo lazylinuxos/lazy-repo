@@ -1,0 +1,44 @@
+# Template file for 'sonic-sysguard-library'
+pkgname=sonic-sysguard-library
+version=6.6.3
+revision=1
+build_style=cmake
+configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_QMLDIR=lib/qt6/qml -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
+hostmakedepends="sonic-frameworks-cmake-modules gettext pkg-config libcap-progs
+ qt6-tools qt6-base qt6-declarative-host-tools kf6-kpackage kf6-kconfig
+ sonic-frameworks-auth-tools"
+makedepends="qt6-base-devel qt6-declarative-devel qt6-webchannel-devel
+ kf6-kconfig-devel kf6-ki18n-devel kf6-kauth-devel kf6-kservice-devel
+ kf6-kpackage-devel kf6-knewstuff-devel kf6-solid-devel libpcap-devel
+ libcap-devel libnl3-devel libsensors-devel libdrm-devel zlib-devel
+ qt6-base-private-devel sonic-frameworks-core-addons-devel"
+short_desc="Library to retrieve information on the current status of computer hardware"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-sysguard-library"
+distfiles="https://github.com/Sonic-DE/sonic-sysguard-library/archive/refs/tags/${version}.tar.gz"
+checksum=97626413278f514ed641fdb3c380dcce90621567365345f3979d492feee0f9ce
+provides="libksysguard-${version}_${revision}"
+conflicts="libksysguard"
+replaces="libksysguard>=0"
+
+do_check() {
+	cd build
+	ctest -E "processdatamodeltest|cgrouptest"
+}
+
+sonic-sysguard-library-devel_package() {
+    provides="libksysguard-devel-${version}_${revision}"
+    conflicts="libksysguard-devel"
+    replaces="libksysguard-devel>=0"  
+	short_desc+=" - development"
+	depends="kf6-ki18n-devel kf6-kconfig-devel qt6-base-devel
+	 ${sourcepkg}>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove "usr/lib/*.so"
+	}
+}

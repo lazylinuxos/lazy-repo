@@ -1,14 +1,13 @@
 # Template file for 'sonic-screen-library'
 pkgname=sonic-screen-library
 version=6.6.3
-revision=1
+revision=2
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt6-base qt6-tools"
-makedepends="qt6-base-devel libxcb-devel libXrandr-devel qt6-base-private-devel
- kf6-kconfig-devel plasma-wayland-protocols"
+makedepends="qt6-base-devel libxcb-devel libXrandr-devel qt6-base-private-devel kf6-kconfig-devel"
 short_desc="Screen management library for SonicDE Workspaces"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"

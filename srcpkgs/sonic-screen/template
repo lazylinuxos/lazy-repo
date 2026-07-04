@@ -1,17 +1,19 @@
 # Template file for 'sonic-screen'
 pkgname=sonic-screen
 version=6.6.3.1
-revision=1
+revision=2
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="pkg-config sonic-frameworks-cmake-modules qt6-base qt6-tools gettext
  kf6-kcmutils kf6-kpackage qt6-declarative-host-tools"
-makedepends="kf6-kxmlgui-devel kf6-kcmutils-devel kf6-ksvg-devel kf6-kdbusaddons-devel kf6-kcrash-devel
- kf6-kpackage-devel sonic-screen-library-devel layer-shell-qt-devel sonic-interface-libraries-devel
- qt6-sensors-devel qt6-base-private-devel wayland-protocols"
-depends="hicolor-icon-theme"
+makedepends="kf6-kxmlgui-devel kf6-kcmutils-devel kf6-kconfig-devel kf6-kcrash-devel kf6-kdbusaddons-devel
+ kf6-ki18n-devel kf6-ksvg-devel kf6-kpackage-devel kf6-kitemmodels-devel libX11-devel libxcb-devel libXi-devel
+ plasma5support-devel qt6-base-private-devel qt6-declarative-devel qt6-sensors-devel layer-shell-qt-devel 
+ sonic-frameworks-core-addons-devel sonic-frameworks-quick-ui-devel sonic-frameworks-windowsystem-devel
+ sonic-screen-library-devel sonic-interface-libraries-devel"
+depends="kf6-kimageformats hicolor-icon-theme"
 short_desc="SonicDE screen management software"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
