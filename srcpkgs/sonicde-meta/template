@@ -20,4 +20,4 @@ depends+=" sonic-frameworks-auth sonic-frameworks-core-addons sonic-frameworks-d
  sonic-frameworks-gui-addons sonic-frameworks-gui-addons-geo-uri-handler sonic-frameworks-io
  sonic-frameworks-io-extras sonic-frameworks-keybind sonic-frameworks-open-collab
  sonic-frameworks-quick-ui sonic-frameworks-runner sonic-frameworks-windowsystem
- sonic-interface-libraries sonic-screenlocker"
+ sonic-interface-libraries sonic-screenlocker sonic-decoration"

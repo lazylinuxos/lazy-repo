@@ -9,7 +9,7 @@ configure_args="
 "
 hostmakedepends="sonic-frameworks-cmake-modules pkg-config gettext"
 makedepends="kf6-kcmutils-devel kf6-kcolorscheme-devel kf6-kconfig-devel sonic-frameworks-core-addons-devel
- kf6-kdecoration-devel sonic-frameworks-gui-addons-devel kf6-ki18n-devel kf6-kiconthemes-devel
+ sonic-decoration-devel sonic-frameworks-gui-addons-devel kf6-ki18n-devel kf6-kiconthemes-devel
  sonic-frameworks-quick-ui-devel kf6-kwidgetsaddons-devel sonic-frameworks-windowsystem-devel
  qt6-base-devel qt6-declarative-devel qt6-svg-devel"
 depends="breeze-icons hicolor-icon-theme frameworkintegration xdg-utils"

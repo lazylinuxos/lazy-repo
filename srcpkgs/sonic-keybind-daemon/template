@@ -1,14 +1,14 @@
 # Template file for 'sonic-keybind-daemon'
 pkgname=sonic-keybind-daemon
 version=6.6.3
-revision=1
+revision=2
 build_style=cmake
 configure_args="-DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools kf6-kconfig"
-makedepends="sonic-frameworks-keybind-devel kf6-kconfig-devel kf6-kcrash-devel
- kf6-kdbusaddons-devel sonic-frameworks-windowsystem-devel kf6-kservice-devel
- sonic-frameworks-io-devel qt6-base-private-devel libX11-devel libxcb-devel
+makedepends="kf6-kconfig-devel kf6-kcrash-devel kf6-kdbusaddons-devel kf6-kjobwidgets-devel
+ kf6-kservice-devel libX11-devel libxcb-devel qt6-base-private-devel sonic-frameworks-core-addons-devel
+ sonic-frameworks-io-devel sonic-frameworks-keybind-devel sonic-frameworks-windowsystem-devel
  xcb-util-keysyms-devel"
 short_desc="Daemon providing global keyboard shortcut functionality for SonicDE"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

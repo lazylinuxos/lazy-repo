@@ -16,18 +16,20 @@ makedepends="accountsservice-devel AppStream-qt-devel dbus-devel fontconfig-deve
  kf6-kidletime-devel kirigami-addons-devel kf6-kitemmodels-devel kf6-kjobwidgets-devel kf6-knewstuff-devel
  kf6-knotifications-devel kf6-kpackage-devel kf6-kparts-devel kpipewire-devel kf6-kquickcharts-devel
  kf6-kservice-devel kf6-kstatusnotifieritem-devel kf6-ksvg-devel kf6-ktexteditor-devel kf6-ktextwidgets-devel
- kf6-kuserfeedback-develkf6-kwallet-devel kf6-kwidgetsaddons-devel kf6-kxmlgui-devel libcanberra-devel
+ kf6-kuserfeedback-devel kf6-kwallet-devel kf6-kwidgetsaddons-devel kf6-kxmlgui-devel libcanberra-devel
  libICE-devel libkexiv2-devel libqalculate-devel libSM-devel libX11-devel libXau-devel libxcb-devel
  libxcrypt-devel libXcursor-devel libXfixes-devel libXft-devel libXtst-devel plasma-activities-stats-devel
- kf6-prison-devel qt6-qt5compat-devel qt6-base-private-develqt6-declarative-devel qt6-location-devel
- qt6-position-devel qt6-svg-devel qt6-tools-devel qt6-virtualkeyboard-devel kf6-solid-devel kf6-baloo-devel
+ kf6-prison-devel qt6-qt5compat-devel qt6-base-private-devel qt6-declarative-devel qt6-location-devel
+ qt6-position-devel qt6-svg-devel qt6-tools-devel qt6-virtualkeyboard-devel qt6-shadertools-devel
+ kf6-solid-devel kf6-baloo-devel kf6-knotifyconfig-devel kf6-kdesu-devel kf6-kunitconversion-devel
+ kf6-networkmanager-qt-devel plasma5support-devel elogind-devel NetworkManager-devel libgomp-devel
  eudev-libudev-devel sonic-activities-devel sonic-frameworks-auth-devel sonic-frameworks-core-addons-devel
  sonic-frameworks-gui-addons-devel sonic-frameworks-io-devel sonic-frameworks-keybind-devel sonic-frameworks-quick-ui-devel
  sonic-frameworks-runner-devel sonic-frameworks-windowsystem-devel sonic-interface-libraries-devel sonic-sysguard-library-devel
  sonic-win-devel sonic-night-light-devel sonic-screenlocker-devel sonic-screen-library-devel sonic-frameworks-doctools-devel
- xcb-util-devel xcb-util-cursor-devel xcb-util-image-devel zlib-devel"
+ xcb-util-devel xcb-util-cursor-devel xcb-util-image-devel zlib-devel phonon-devel polkit-qt6-devel qcoro-qt6-devel"
 depends="kactivitymanagerd kde-cli-tools kf6-kio-fuse ksystemstats iso-codes milou ocean-sound-theme
- plasma-integration xorg-server-xwayland xmessage xrdb xdg-user-dirs sonic-frameworks-io-extras"
+ plasma-integration xmessage xrdb xdg-user-dirs sonic-frameworks-io-extras"
 short_desc="Sonic Plasma Workspace (X11-focused)"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"

@@ -1,12 +1,12 @@
 # Template file for 'sonic-frameworks-quick-ui'
 pkgname=sonic-frameworks-quick-ui
 version=6.25.0
-revision=1
+revision=2
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base qt6-shadertools qt6-declarative-host-tools"
-makedepends="qt6-declarative-private-devel qt6-shadertools-devel qt6-svg-devel qt6-base-private-devel libgomp-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base qt6-shadertools qt6-declarative-host-tools doxygen"
+makedepends="qt6-declarative-private-devel qt6-shadertools-devel qt6-svg-devel qt6-base-private-devel libstdc++-devel libgomp-devel"
 short_desc="QtQuick component set for SonicDE frameworks"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only OR LGPL-3.0-only"

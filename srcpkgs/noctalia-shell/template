@@ -1,6 +1,6 @@
 # Template file for 'noctalia-shell'
 pkgname=noctalia-shell
-version=5.0.0-beta1
+version=5.0.0
 revision=1
 build_style=meson
 hostmakedepends="just ninja pkg-config"

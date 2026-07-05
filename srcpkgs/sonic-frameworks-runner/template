@@ -1,11 +1,11 @@
 # Template file for 'sonic-frameworks-runner'
 pkgname=sonic-frameworks-runner
 version=6.25.0
-revision=1
+revision=2
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules sonic-frameworks-doctools qt6-tools qt6-base
- kf6-kconfig gettext"
-makedepends="kf6-kconfig-devel kf6-ki18n-devel kf6-kitemmodels-devel
+ kf6-kconfig gettext doxygen"
+makedepends="kf6-kconfig-devel kf6-ki18n-devel kf6-kitemmodels-devel libstdc++-devel qt6-base-private-devel
  sonic-frameworks-windowsystem-devel sonic-frameworks-core-addons-devel"
 depends="sonic-frameworks-core-addons sonic-frameworks-windowsystem"
 checkdepends="dbus"

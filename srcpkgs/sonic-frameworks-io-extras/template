@@ -1,23 +1,22 @@
 # Template file for 'sonic-frameworks-io-extras'
 pkgname=sonic-frameworks-io-extras
 version=26.04.2
-revision=1
+revision=2
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  -DWITH_LIBPROXY=ON -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules sonic-frameworks-doctools sonic-frameworks-core-addons
  sonic-frameworks-io pkg-config gperf qt6-base qt6-tools gettext KDSoap kf6-kcmutils"
-makedepends="qcoro-qt6-devel kf6-karchive-devel kf6-kconfig-devel
- kf6-kconfigwidgets-devel kf6-kdbusaddons-devel kf6-kdnssd-devel
- kf6-ki18n-devel kf6-solid-devel kf6-syntax-highlighting-devel
- kf6-kcmutils-devel kf6-ktextwidgets-devel sonic-activities-devel
- plasma-activities-stats-devel phonon-devel samba-devel libssh-devel
- libmtp-devel libimobiledevice-devel libplist-devel KDSoap-devel
- libtirpc-devel libopenexr-devel taglib-devel libkexiv2-devel libnfs-devel
- libproxy-devel qt6-svg-devel qt6-base-private-devel kf6-knotifications-devel
- kdsoap-ws-discovery-client-devel qt6-qt5compat-devel sonic-frameworks-core-addons-devel
+makedepends="qcoro-qt6-devel kf6-karchive-devel kf6-kconfig-devel kf6-kconfigwidgets-devel
+ kf6-kdbusaddons-devel kf6-kdnssd-devel kf6-ki18n-devel kf6-solid-devel kf6-syntax-highlighting-devel
+ kf6-kcmutils-devel kf6-ktextwidgets-devel kf6-kservice-devel kf6-kwidgetsaddons-devel
+ plasma-activities-stats-devel phonon-devel samba-devel libssh-devel libmtp-devel libimobiledevice-devel
+ libplist-devel KDSoap-devel libtirpc-devel libopenexr-devel taglib-devel libkexiv2-devel libnfs-devel
+ libproxy-devel qt6-svg-devel qt6-base-private-devel kf6-knotifications-devel kdsoap-ws-discovery-client-devel
+ libstdc++-devel libXcursor-devel qt6-qt5compat-devel sonic-activities-devel sonic-frameworks-core-addons-devel
  sonic-frameworks-doctools-devel sonic-frameworks-io-devel sonic-frameworks-gui-addons-devel"
+depends="ripgrep-all smbclient"
 short_desc="Extended I/O components for SonicDE frameworks (kio-extras replacement)"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"

@@ -1,7 +1,7 @@
 # Template file for 'sonic-frameworks-io'
 pkgname=sonic-frameworks-io
 version=6.25.0
-revision=1
+revision=2
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKF6_HOST_TOOLING=/usr/lib/cmake
@@ -12,8 +12,9 @@ hostmakedepends="doxygen gettext qt6-tools qt6-base sonic-frameworks-cmake-modul
 makedepends="kf6-karchive-devel kf6-kbookmarks-devel kf6-kcolorscheme-devel kf6-kcompletion-devel
  kf6-kconfig-devel kf6-kcrash-devel kf6-kdbusaddons-devel kf6-ki18n-devel kf6-kiconthemes-devel
  kf6-kitemviews-devel kf6-kjobwidgets-devel kf6-kservice-devel kf6-kwallet-devel kf6-kwidgetsaddons-devel
- kf6-kded-devel kf6-solid-devel libxml2-devel libxslt-devel qt6-qt5compat-devel qt6-tools-devel acl-devel
- qt6-base-private-devel sonic-frameworks-windowsystem-devel sonic-frameworks-doctools-devel"
+ kf6-kded-devel kf6-solid-devel libstdc++-devel libxml2-devel libxslt-devel qt6-qt5compat-devel
+ qt6-tools-devel acl-devel qt6-base-private-devel sonic-frameworks-core-addons-devel
+ sonic-frameworks-gui-addons-devel sonic-frameworks-windowsystem-devel sonic-frameworks-doctools-devel"
 depends="util-linux-libs"
 short_desc="Resource and network access abstraction layer for SonicDE"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
