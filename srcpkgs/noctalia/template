@@ -1,5 +1,5 @@
-# Template file for 'noctalia-shell'
-pkgname=noctalia-shell
+# Template file for 'noctalia'
+pkgname=noctalia
 version=5.0.0
 revision=1
 build_style=meson
@@ -11,12 +11,16 @@ depends="ImageMagick brightnessctl ffmpeg qt6-multimedia cliphist cava wlsunset 
 short_desc="Sleek and minimal desktop shell"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
-homepage="https://github.com/noctalia-dev/noctalia-shell"
-changelog="https://github.com/noctalia-dev/${pkgname}/releases/tag/v${version}"
-distfiles="https://github.com/noctalia-dev/${pkgname}/releases/download/v${version}-beta1/noctalia-v${version}-beta1.tar.gz"
+homepage="https://github.com/noctalia-dev/noctalia"
+distfiles="https://github.com/noctalia-dev/noctalia/archive/v${version}-beta1.tar.gz"
 checksum=b3dbcc19f83e614b280f19ad4786365a6c17f979f47990ec9ef280ae076e9c79
 CXXFLAGS+=" -std=c++23"
 
 post_install() {
 	vlicense LICENSE
+}
+
+noctalia-shell_package() {
+	depends="${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - transitional dummy package"
 }
