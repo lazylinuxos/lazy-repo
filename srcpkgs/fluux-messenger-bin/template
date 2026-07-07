@@ -1,6 +1,6 @@
 # Template file for 'fluux-messenger-bin'
 pkgname=fluux-messenger-bin
-version=0.16.2
+version=0.17.0
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="AGPL-3.0-only"
 homepage="https://github.com/processone/fluux-messenger"
 distfiles="https://github.com/processone/fluux-messenger/releases/download/v${version}/Fluux-Messenger_${version}_Linux_x64.rpm"
-checksum=f67270ee89f2d6c742b9689fb030379431dfce430a456e7435184223f1f132ae
+checksum=6f6d2ca18a8aae0b049e1c7d46e38757fa01f39cca297664d62e895433641e0e
 
 do_install() {
 	vcopy "*" /
