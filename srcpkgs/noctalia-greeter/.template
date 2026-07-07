@@ -1,0 +1,19 @@
+# Template file for 'noctalia-greeter'
+pkgname=noctalia-greeter
+version=${VERSION}
+revision=1
+build_style=meson
+hostmakedepends="pkg-config"
+makedepends="cairo-devel fontconfig-devel freetype-devel libepoxy-devel libglvnd-devel librsvg-devel
+ libwebp-devel libxkbcommon-devel MesaLib-devel pango-devel wayland-devel wayland-protocols wlroots0.20-devel"
+depends="cage dbus greetd polkit wlr-randr"
+short_desc="Noctalia themed greeter for greetd"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/noctalia-dev/noctalia-greeter"
+distfiles="https://github.com/noctalia-dev/noctalia-greeter/archive/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	vlicense LICENSE
+}

@@ -5,7 +5,7 @@ printf "Checking latest version\n"
 
 __dir="$(dirname "${BASH_SOURCE[0]}")"
 
-GH_REPO="noctalia-dev/noctalia"
+GH_REPO="noctalia-dev/noctalia-greeter"
 
 LATEST_VERSION=$(gh release list --repo ${GH_REPO} --json name,tagName,isLatest --jq '.[] | select(.isLatest)|.tagName')
 export VERSION=${LATEST_VERSION#"v"}
@@ -22,4 +22,4 @@ rm ./${VERSION}.tar.gz
 
 envsubst '${SHA256} ${VERSION}' < ${__dir}/.template > ${__dir}/template
 
-printf "noctalia template updated\n"
+printf "noctalia-greeter template updated\n"
