@@ -1,7 +1,7 @@
 # Template file for 'sonic-frameworks-doctools'
 pkgname=sonic-frameworks-doctools
 version=6.25.0
-revision=2
+revision=3
 build_style=cmake
 build_helper=qemu
 hostmakedepends="doxygen docbook-xml docbook-xsl qt6-tools qt6-base gettext perl perl-URI sonic-frameworks-cmake-modules"

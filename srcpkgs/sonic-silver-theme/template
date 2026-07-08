@@ -1,12 +1,9 @@
 # Template file for 'sonic-silver-theme'
 pkgname=sonic-silver-theme
 version=6.6.0
-revision=1
+revision=2
 build_style=cmake
-configure_args="
- -DBUILD_TESTING=OFF
- -DBUILD_QT5=OFF
-"
+configure_args="-DBUILD_TESTING=OFF -DBUILD_QT5=OFF"
 hostmakedepends="sonic-frameworks-cmake-modules pkg-config gettext"
 makedepends="kf6-kcmutils-devel kf6-kcolorscheme-devel kf6-kconfig-devel sonic-frameworks-core-addons-devel
  sonic-decoration-devel sonic-frameworks-gui-addons-devel kf6-ki18n-devel kf6-kiconthemes-devel
