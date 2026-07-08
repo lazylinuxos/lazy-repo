@@ -1,0 +1,6 @@
+#!/bin/sh
+
+[ -r /etc/default/logbookd ] && . /etc/default/logbookd
+
+exec 2>&1
+exec /usr/sbin/logbookd -f ${LOGBOOKD_OPTS}

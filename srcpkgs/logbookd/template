@@ -1,0 +1,20 @@
+# Template file for 'logbookd'
+pkgname=logbookd
+version=0.2.4
+revision=1
+build_style=meson
+hostmakedepends="ninja pkg-config scdoc"
+makedepends="sqlite-devel libuuid-devel"
+short_desc="SQLite backed syslogd implementation"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://git.sr.ht/~martijnbraam/logbookd"
+distfiles="https://git.sr.ht/~martijnbraam/logbookd/archive/${version}.tar.gz"
+checksum=46b4752f55b4bdf3c447ed9da3f8d3578887177c067ded29beadc2024bd15875
+make_dirs="/var/log/logbookd 0755 root root"
+
+post_install() {
+	vinstall ${FILESDIR}/logbookd.conf 644 etc/default logbookd
+	vsv logbookd
+	vlicense LICENSE
+}
