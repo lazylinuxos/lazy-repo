@@ -1,7 +1,7 @@
 # Template file for 'sonic-workspace'
 pkgname=sonic-workspace
 version=6.6.3
-revision=3
+revision=4
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DGLIBC_LOCALE_GEN=OFF -DKDE_INSTALL_LIBEXECDIR=libexec
@@ -26,7 +26,7 @@ makedepends="accountsservice-devel AppStream-qt-devel dbus-devel fontconfig-deve
  eudev-libudev-devel sonic-activities-devel sonic-frameworks-auth-devel sonic-frameworks-core-addons-devel
  sonic-frameworks-gui-addons-devel sonic-frameworks-io-devel sonic-frameworks-keybind-devel sonic-frameworks-quick-ui-devel
  sonic-frameworks-runner-devel sonic-frameworks-windowsystem-devel sonic-interface-libraries-devel sonic-sysguard-library-devel
- sonic-win-devel sonic-night-light-devel sonic-screenlocker-devel sonic-screen-library-devel sonic-frameworks-doctools-devel
+ sonic-win-devel knighttime-devel sonic-screenlocker-devel sonic-screen-library-devel sonic-frameworks-doctools-devel
  xcb-util-devel xcb-util-cursor-devel xcb-util-image-devel zlib-devel phonon-devel polkit-qt6-devel qcoro-qt6-devel"
 depends="kactivitymanagerd kde-cli-tools kf6-kio-fuse ksystemstats iso-codes milou ocean-sound-theme
  plasma-integration xmessage xrdb xdg-user-dirs sonic-frameworks-io-extras"

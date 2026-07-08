@@ -1,7 +1,7 @@
 # Template file for 'sonic-frameworks-cmake-modules'
 pkgname=sonic-frameworks-cmake-modules
 version=6.26.0
-revision=1
+revision=2
 build_style=cmake
 configure_args="
  -DCMAKE_INSTALL_PREFIX=/usr

@@ -1,7 +1,7 @@
 # Template file for 'sonic-frameworks-core-addons'
 pkgname=sonic-frameworks-core-addons
 version=6.25.0
-revision=1
+revision=2
 build_style=cmake
 _llvmver=21
 configure_args="
