@@ -1,0 +1,16 @@
+# Template file for 'zkpurge'
+pkgname=zkpurge
+version=1.1.1
+revision=1
+build_style=gnu-makefile
+short_desc="Utility to purge old ZFSBootMenu executables"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://codeberg.org/plavpixel/zkpurge"
+distfiles="https://codeberg.org/plavpixel/zkpurge/archive/${version}.tar.gz"
+checksum=3498758acdb4713fb0b49546a2e113d050294f7b7d91c3be67f481dd4e220048
+
+post_install() {
+	vlicense LICENSE.md
+	vdoc README.md
+}
