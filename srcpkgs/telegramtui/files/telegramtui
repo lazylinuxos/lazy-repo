@@ -1,2 +1,0 @@
-#!/bin/sh
-exec java -jar /usr/lib/telegramtui/telegramtui.jar "$@"

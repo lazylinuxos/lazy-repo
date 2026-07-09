@@ -1,7 +1,7 @@
 # Template file for 'sonic-frameworks-auth'
 pkgname=sonic-frameworks-auth
-version=6.25.0
-revision=2
+version=6.27.0
+revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only, LGPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-auth"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-auth/archive/refs/tags/${version}.tar.gz"
-checksum=d71cb79ac9430b9bd7f89ee8ee97a8b6b12adebfdc2b774a49157716f90346bb
+checksum=f8a62517da27694733d618911a023c24bd500f8b3d3cfb17f5b92f426da7d5d9
 subpackages="sonic-frameworks-auth-tools sonic-frameworks-auth-devel"
 provides="kf6-kauth-${version}_${revision}"
 conflicts="kf6-kauth"

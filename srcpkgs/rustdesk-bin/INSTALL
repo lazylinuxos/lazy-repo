@@ -1,5 +1,0 @@
-case "$ACTION" in
-post)
-    ln -s /usr/lib/libxdo.so.4 /usr/lib/libxdo.so.3
-    ;;
-esac

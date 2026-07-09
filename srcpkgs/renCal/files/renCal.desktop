@@ -1,9 +1,0 @@
-[Desktop Entry]
-Categories=
-Comment=A modern open-source calendar
-Exec=rencal
-StartupWMClass=rencal
-Icon=rencal
-Name=renCal
-Terminal=false
-Type=Application

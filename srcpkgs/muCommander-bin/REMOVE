@@ -1,5 +1,0 @@
-case "$ACTION" in
-pre)
-    rm -rf /opt/mucommander/felix-cache/*
-    ;;
-esac

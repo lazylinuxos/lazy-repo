@@ -1,7 +1,0 @@
-case "$ACTION" in
-pre)
-    rm -rf /usr/lib/libsoup-2.4.so.1
-    rm -rf /usr/lib/libwebkit2gtk-4.0.so.37
-    rm -rf /usr/lib/libjavascriptcoregtk-4.0.so.18
-    ;;
-esac

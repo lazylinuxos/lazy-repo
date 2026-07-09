@@ -1,7 +1,7 @@
 # Template file for 'sonic-sysguard-library'
 pkgname=sonic-sysguard-library
-version=6.6.3
-revision=2
+version=6.7.2
+revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
@@ -19,7 +19,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-sysguard-library"
 distfiles="https://github.com/Sonic-DE/sonic-sysguard-library/archive/refs/tags/${version}.tar.gz"
-checksum=97626413278f514ed641fdb3c380dcce90621567365345f3979d492feee0f9ce
+checksum=bc6602dc09c7b19b0ade4883173f7d243375667f2be825e6b7363b17f2ccd643
 provides="libksysguard-${version}_${revision}"
 conflicts="libksysguard"
 replaces="libksysguard>=0"

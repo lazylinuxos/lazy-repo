@@ -1,5 +1,0 @@
-case "$ACTION" in
-pre)
-    rm -rf /usr/lib/windterm/temp
-    ;;
-esac

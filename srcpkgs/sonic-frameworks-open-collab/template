@@ -1,7 +1,7 @@
 # Template file for 'sonic-frameworks-open-collab'
 pkgname=sonic-frameworks-open-collab
-version=6.25.0
-revision=3
+version=6.27.0
+revision=1
 build_style=cmake
 hostmakedepends="qt6-base qt6-tools sonic-frameworks-cmake-modules doxygen"
 makedepends="libstdc++-devel qt6-base-devel"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only OR LGPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-open-collab"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-open-collab/archive/refs/tags/${version}.tar.gz"
-checksum=9351bfabda5ca5a2d8a1efb26ce1910bf7416d25187aabdf29999de7082e1d64
+checksum=b02f7ee69c45f2c22ed99ee47469550de47d1d6c38202e260768a27e538b8acc
 provides="kf6-attica-${version}_${revision}"
 conflicts="kf6-attica"
 replaces="kf6-attica>=0"
