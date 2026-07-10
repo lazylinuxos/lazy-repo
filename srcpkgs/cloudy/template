@@ -1,0 +1,23 @@
+# Template file for 'cloudy'
+pkgname=cloudy
+version=0.3.0
+revision=1
+build_style=meson
+configure_args="
+ --buildtype=plain
+ --wrap-mode=nodownload
+ -Dms_client_id=${MS_CLIENT_ID}
+ -Dgoogle_client_id=${GOOGLE_CLIENT_ID}
+ -Dgoogle_client_secret=${GOOGLE_CLIENT_SECRET}
+"
+hostmakedepends="AppStream blueprint-compiler desktop-file-utils gettext ninja pkg-config python3"
+makedepends="gtk4-devel libadwaita-devel libsecret-devel python3-gobject"
+depends="python3 python3-gobject python3-msal hicolor-icon-theme evolution-data-server rclone libwebkitgtk60"
+checkdepends="desktop-file-utils AppStream"
+short_desc="GNOME-native Microsoft 365 and Google desktop client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/sha5b/Cloudy"
+changelog="https://github.com/sha5b/Cloudy/releases"
+distfiles="https://github.com/sha5b/Cloudy/archive/refs/tags/v${version}.tar.gz"
+checksum=4def5400cb5f80474c7e4ed360b2a975a79319cf264104e8f6f6f37782fe1869

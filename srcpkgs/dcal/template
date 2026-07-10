@@ -1,6 +1,6 @@
 # Template file for 'dcal'
 pkgname=dcal
-version=0.2.1
+version=0.2.2
 revision=1
 build_style=gnu-makefile
 build_helper="qemu"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://danklinux.com"
 distfiles="https://github.com/AvengeMedia/dankcalendar/archive/refs/tags/v${version}.tar.gz"
-checksum=6ddf604e04bbf649e67c2069767bba03889eeda9bf76ef5e1e3a1763ca189dbc
+checksum=3c0d1b4604b179bdc46592999d98d716b322d3c3eafa32c763bfa7cf5018f656
 
 do_install() {
 	vbin core/bin/dcal
@@ -23,7 +23,7 @@ do_install() {
 	vdoc README.md
 
 	vinstall assets/com.danklinux.dankcalendar.desktop 644 usr/share/applications
-	vinstall quickshell/assets/dankcalendar.svg 644 usr/share/icons/hicolor/scalable/apps/
+	vinstall assets/dankcalendar.svg 644 usr/share/icons/hicolor/scalable/apps/
 	vlicense LICENSE
 
 	vsv dcal

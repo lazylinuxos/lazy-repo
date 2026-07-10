@@ -1,30 +1,38 @@
 # Template file for 'vdu_controls'
 pkgname=vdu_controls
-version=2.6.0
+version=2.6.5
 revision=1
-hostmakedepends="python3"
+build_style=python3-pep517
+hostmakedepends="python3-build python3-installer python3-setuptools python3-wheel desktop-file-utils"
 depends="ddcutil hicolor-icon-theme noto-fonts-ttf python3-pyqt6 python3-pyqt6-svg qt6-svg"
 short_desc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/digitaltrails/vdu_controls"
 distfiles="https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v${version}.tar.gz"
-checksum=53cde3462f43a90258f90438ab0839e7fe23f749da7fb8e936950fee4c01026a
+checksum=64c615f669236a7bb3c1f049aa1af1dffabbfeffa197420c740fc0ff87d0f41b
 
-do_install() {
-	cd "${wrksrc}"
+post_install() {
+	local pyver sitepkg
 
-	vbin vdu_controls.py vdu_controls
+	pyver=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
+	sitepkg="usr/lib/python${pyver}/site-packages"
+
+	vmkdir ${sitepkg}/vdu_controls/resources/icons/app
+	vcopy src/vdu_controls/resources/icons/app/* 	${sitepkg}/vdu_controls/resources/icons/app
+
+	vmkdir ${sitepkg}/vdu_controls/resources/docs
+	vcopy src/vdu_controls/resources/docs/help.md ${sitepkg}/vdu_controls/resources/docs
 
 	vmkdir usr/share
-
 	vcopy translations usr/share/vdu_controls/
 	vcopy sample-scripts usr/share/vdu_controls/
 	vcopy icons usr/share/vdu_controls/
 
-	vmkdir usr/share/man/man1/
-	vcopy docs/_build/man/vdu_controls.1 usr/share/man/man1/
+	vman docs/_build/man/vdu_controls.1
 
-	vinstall vdu_controls.png 644 usr/share/icons/hicolor/256x256/apps/
-	vinstall vdu_controls.desktop 644 usr/share/applications/
+	vinstall src/vdu_controls/resources/icons/app/vdu_controls.svg 644 \
+		usr/share/icons/hicolor/scalable/apps
+
+	vinstall vdu_controls.desktop 644 usr/share/applications
 }

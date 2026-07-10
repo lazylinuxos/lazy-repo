@@ -23,7 +23,7 @@ do_install() {
 	vdoc README.md
 
 	vinstall assets/com.danklinux.dankcalendar.desktop 644 usr/share/applications
-	vinstall quickshell/assets/dankcalendar.svg 644 usr/share/icons/hicolor/scalable/apps/
+	vinstall assets/dankcalendar.svg 644 usr/share/icons/hicolor/scalable/apps/
 	vlicense LICENSE
 
 	vsv dcal
