@@ -20,6 +20,7 @@ do_install() {
 	# Copy files
 	vcopy "*" /
 	# Install the icons
+	vinstall opt/brave.com/brave-origin/product_logo_128.png 644 usr/share/pixmaps brave-origin.png	
 	for size in 16 24 32 48 64 128 256; do
 		src=opt/brave.com/brave-origin/product_logo_${size}.png
 		vinstall $src 644 usr/share/icon/hicolor/${size}/apps brave-origin.png
