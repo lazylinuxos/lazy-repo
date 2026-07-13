@@ -12,9 +12,9 @@ hostmakedepends="sonic-frameworks-cmake-modules mobile-broadband-provider-info p
 makedepends="sonic-workspace-devel kf6-networkmanager-qt-devel qca-qt6-devel
  kf6-modemmanager-qt-devel kf6-solid-devel sonic-frameworks-doctools-devel
  kf6-kpackage-devel kf6-kcmutils-devel sonic-interface-libraries-devel
- qt6-base-devel qt6-declarative-devel kf6-kcolorscheme-devel kf6-kcompletion-devel
+ qt6-base-devel qt6-declarative-devel kf6-kcolorscheme-devel sonic-frameworks-autocomplete-devel
  sonic-frameworks-core-addons-devel kf6-kdbusaddons-devel sonic-frameworks-io-devel
- kf6-ki18n-devel kf6-knotifications-devel kf6-kservice-devel kf6-kwallet-devel
+ kf6-ki18n-devel kf6-knotifications-devel sonic-frameworks-app-info-devel kf6-kwallet-devel
  kf6-kwidgetsaddons-devel sonic-frameworks-windowsystem-devel kf6-ksvg-devel
  NetworkManager-devel qt6-base-private-devel qcoro-qt6-devel
  $(vopt_if openconnect 'openconnect-devel qt6-webengine-devel')"

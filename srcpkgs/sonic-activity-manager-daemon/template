@@ -1,0 +1,18 @@
+# Template file for 'sonic-activity-manager-daemon'
+pkgname=sonic-activity-manager-daemon
+version=6.7.2
+revision=1
+build_style=cmake
+configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
+hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools kf6-kconfig"
+makedepends="sonic-frameworks-io-devel sonic-frameworks-keybind-devel kf6-kxmlgui-devel
+ boost-headers qt6-base-private-devel kf6-kcrash-devel kf6-kdbusaddons-devel"
+short_desc="System service to manage user's activities, track the usage patterns"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-activity-manager-daemon"
+distfiles="https://github.com/Sonic-DE/sonic-activity-manager-daemon/archive/refs/tags/${version}.tar.gz"
+checksum=ea72ac80f32c91e16030818c5064944e88a39daddd2b14bd4a1e1506858ca135
+provides="kactivitymanagerd-${version}_${revision}"
+conflicts="kactivitymanagerd"
+replaces="kactivitymanagerd>=0"
