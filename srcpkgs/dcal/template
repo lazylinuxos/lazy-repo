@@ -1,6 +1,6 @@
 # Template file for 'dcal'
 pkgname=dcal
-version=0.2.2
+version=0.2.3
 revision=1
 build_style=gnu-makefile
 build_helper="qemu"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://danklinux.com"
 distfiles="https://github.com/AvengeMedia/dankcalendar/archive/refs/tags/v${version}.tar.gz"
-checksum=3c0d1b4604b179bdc46592999d98d716b322d3c3eafa32c763bfa7cf5018f656
+checksum=9f8e7bf67ed21f674a8d3ac49e890b129711919805411e4d0f12d1af0cf727b2
 
 do_install() {
 	vbin core/bin/dcal
