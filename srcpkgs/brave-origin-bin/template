@@ -1,7 +1,7 @@
 # Template file for 'brave-origin-bin'
 pkgname=brave-origin-bin
-version=1.92.139
-revision=2
+version=1.92.140
+revision=1
 archs="x86_64"
 create_wrksrc=yes
 hostmakedepends="rpmextract"
@@ -11,7 +11,7 @@ license="MPL-2.0"
 homepage="https://www.brave.com/"
 changelog="https://brave.com/latest/"
 distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-origin-${version}-1.x86_64.rpm"
-checksum=881c6f698526887b752437b74d58bed2770f3f7ab2c06ebebefc28894a852f53
+checksum=6d10e401533ae3f3abc6b5a8cb15c01f95eafd6d7028e9640953eee3d0fe280b
 
 do_install() {
 	# Remove cron job
@@ -20,7 +20,7 @@ do_install() {
 	# Copy files
 	vcopy "*" /
 	# Install the icons
-	vinstall opt/brave.com/brave-origin/product_logo_128.png 644 usr/share/pixmaps brave-origin.png
+	vinstall opt/brave.com/brave-origin/product_logo_128.png 644 usr/share/pixmaps brave-origin.png	
 	for size in 16 24 32 48 64 128 256; do
 		src=opt/brave.com/brave-origin/product_logo_${size}.png
 		vinstall $src 644 usr/share/icon/hicolor/${size}/apps brave-origin.png

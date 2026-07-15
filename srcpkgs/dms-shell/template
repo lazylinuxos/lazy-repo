@@ -1,7 +1,7 @@
 # Template file for 'dms-shell'
 pkgname=dms-shell
 _pkg1=DankMaterialShell
-version=1.5.0
+version=1.5.1
 revision=1
 archs="x86_64"
 build_style=go
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/AvengeMedia/DankMaterialShell"
 distfiles="https://github.com/AvengeMedia/${_pkg1}/archive/v${version}/${_pkg1}-${version}.tar.gz"
-checksum=14f2678d6a15223ba069d1b8c8a21a5564b735d190c231f62ed44fd8bf48677c
+checksum=cdd35cb5cb120e74772bdd66ae6dc646c3cc59dbe5f6ffc6b263892f33ad5fdf
 
 do_build() {
 	cd core
@@ -34,6 +34,15 @@ do_install() {
 	vmkdir usr/share/doc/${pkgname}
 	vinstall README.md 644 usr/share/doc/${pkgname}/
 	vcopy docs/* usr/share/doc/${pkgname}/
+}
+
+dms-shell-niri_package() {
+	short_desc+=" (for Niri)"
+	depends="${sourcepkg} niri"
+	pkg_install() {
+		vmkdir usr/share/doc/dms-shell-niri
+		vcopy ${DESTDIR}/usr/share/doc/dms-shell/* usr/share/doc/dms-shell-niri/
+	}
 }
 
 dms-greeter_package() {
