@@ -1,0 +1,31 @@
+# Template file for 'tauri'
+pkgname=tauri
+version=2.11.5
+revision=1
+hostmakedepends="cargo rust pkg-config"
+makedepends="openssl-devel bzip2-devel liblzma-devel libzstd-devel"
+depends="curl file wget xdotool librsvg libayatana-appindicator appmenu-gtk3-module"
+short_desc="Command line interface for building Tauri applications"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT OR Apache-2.0"
+homepage="https://github.com/tauri-apps/tauri"
+distfiles="https://github.com/tauri-apps/tauri/archive/refs/tags/tauri-v${version}.tar.gz"
+checksum=b6e7414b1e426b292cd6a765c46ed0ab8f6d88eb81409c95801714bba412190e
+
+pre_build() {
+	mkdir -p completions
+}
+
+do_build() {
+	cargo build --manifest-path crates/tauri-cli/Cargo.toml --release --locked
+	target/release/cargo-tauri completions --shell fish > completions/cargo-tauri.fish
+	target/release/cargo-tauri completions --shell zsh	> completions/_cargo-tauri
+}
+
+do_install() {
+	vbin target/release/cargo-tauri
+	vdoc crates/tauri-cli/README.md
+	vlicense crates/tauri-cli/LICENSE_MIT
+	vinstall completions/cargo-tauri.fish 644 usr/share/fish/vendor_completions.d
+	vinstall completions/_cargo-tauri 644 usr/share/zsh/site-functions
+}

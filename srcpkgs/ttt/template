@@ -1,0 +1,21 @@
+# Template file for 'ttt'
+pkgname=ttt
+version=1.0.1
+revision=1
+build_style=go
+go_import_path="github.com/eugenioenko/ttt"
+go_package="./cmd/ttt"
+depends="git ripgrep"
+short_desc="Terminal text editor IDE"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/eugenioenko/ttt"
+distfiles="https://github.com/eugenioenko/ttt/archive/refs/tags/v${version}.tar.gz"
+checksum=e2d0a2b62f86c2b6840feb13b5f54d766e558e62cf4420bd2633e12ffb3edf92
+
+post_install() {
+	vmkdir usr/share/ttt/
+	vcopy config usr/share/ttt/
+	vdoc README.md
+	vlicense LICENSE
+}
