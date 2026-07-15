@@ -14,7 +14,7 @@ printf "Latest version is: %s\nLatest built version is: %s\n" "${VERSION}" "${CU
 [ "${CURRENT_VERSION}" = "${VERSION}" ] && printf "No new version to release\n" && exit 0
 
 # No preprepped checksum files, need to download the binary and calculate it myself
-ASSET="TauonMusicBox-linux.7z"
+ASSET="TauonMusicBox-linux.zip"
 export SHA256=$(gh release view "$LATEST_VERSION" \
   --repo "$GH_REPO" \
   --json assets \
