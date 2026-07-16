@@ -18,5 +18,5 @@ do_extract() {
 
 do_install() {
 	tar xf data.tar.gz -C ${DESTDIR}
-	vlicense LICENSE
+	vlicense ${FILESDIR}/LICENSE
 }

@@ -1,19 +1,20 @@
 # Template file for 'wayscriber'
 pkgname=wayscriber
-version=0.9.21
+version=0.9.22
 revision=1
 build_style=cargo
 make_build_args="--workspace --bin wayscriber --bin wayscriber-configurator"
 hostmakedepends="pkg-config"
 makedepends="cairo-devel wayland-devel pango-devel libxkbcommon-devel
- gcc libgcc glibc-devel wl-clipboard grim slurp"
+ gcc libgcc glibc-devel wl-clipboard grim slurp gdk-pixbuf-devel gtk4-devel
+ gtk4-layer-shell-devel"
 depends="wl-clipboard grim slurp"
 short_desc="Screen annotation tool for Wayland compositors"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://wayscriber.com"
 distfiles="https://github.com/devmobasa/${pkgname}/archive/refs/tags/v${version}.tar.gz"
-checksum=ed314451c0ea5b0eb700419c5aa55d5e51d6930a8baea773ec847fb9a31a4332
+checksum=b5ac78b5c4b03d1bfbef8e6758d03862748893b84b5abeb3f9fc12325e1f30aa
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/wayscriber

@@ -36,15 +36,6 @@ do_install() {
 	vcopy docs/* usr/share/doc/${pkgname}/
 }
 
-dms-shell-niri_package() {
-	short_desc+=" (for Niri)"
-	depends="${sourcepkg} niri"
-	pkg_install() {
-		vmkdir usr/share/doc/dms-shell-niri
-		vcopy ${DESTDIR}/usr/share/doc/dms-shell/* usr/share/doc/dms-shell-niri/
-	}
-}
-
 dms-greeter_package() {
 	short_desc="DankMaterialShell greeter for greetd"
 	depends="${sourcepkg} greetd"
