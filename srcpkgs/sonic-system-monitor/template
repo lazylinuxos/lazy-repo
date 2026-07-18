@@ -5,14 +5,14 @@ revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml"
-hostmakedepends="extra-cmake-modules gettext qt6-base qt6-tools kf6-kpackage
- kf6-kconfig kf6-kcoreaddons qt6-declarative-host-tools"
-makedepends="kf6-kirigami-devel libksysguard-devel kf6-kitemmodels-devel
- kf6-knewstuff-devel kf6-kio-devel kf6-kdbusaddons-devel kf6-kconfig-devel
- kf6-kwindowsystem-devel kf6-kcrash-devel qt6-declarative-private-devel
- kf6-ki18n-devel kf6-kpackage-devel
- kf6-kservice-devel kf6-kglobalaccel-devel kirigami-addons-devel"
-depends="kf6-kirigami kf6-qqc2-desktop-style kf6-kquickcharts ksystemstats"
+hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools sonic-frameworks-package
+ sonic-frameworks-settings sonic-frameworks-core-addons qt6-declarative-host-tools"
+makedepends="sonic-frameworks-quick-ui-devel sonic-system-monitor-library-devel sonic-frameworks-data-models-devel
+ sonic-frameworks-addons-downloader-devel sonic-frameworks-io-devel sonic-frameworks-dbus-devel sonic-frameworks-settings-devel
+ sonic-frameworks-windowsystem-devel sonic-frameworks-crash-handler-devel qt6-declarative-private-devel
+ sonic-frameworks-internationalization-devel sonic-frameworks-package-devel
+ sonic-frameworks-app-info-devel sonic-frameworks-keybind-devel sonic-frameworks-quick-ui-addons-devel"
+depends="sonic-frameworks-quick-ui sonic-frameworks-quick-desktop-style sonic-frameworks-quick-charts sonic-system-stats"
 short_desc="Application for monitoring system resources"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"

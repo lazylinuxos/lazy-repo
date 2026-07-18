@@ -3,10 +3,10 @@ pkgname=sonic-frameworks-root-shell
 version=6.28.0
 revision=1
 build_style=cmake
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
- gettext kf6-kconfig"
-makedepends="kf6-kconfig-devel kf6-kcoreaddons-devel kf6-ki18n-devel
- kf6-kpty-devel qt6-base-private-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
+ gettext sonic-frameworks-settings"
+makedepends="sonic-frameworks-settings-devel sonic-frameworks-core-addons-devel sonic-frameworks-internationalization-devel
+ sonic-frameworks-pseudo-terminal-devel qt6-base-private-devel"
 short_desc="User interface for running shell commands with root privileges"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
@@ -21,7 +21,7 @@ sonic-frameworks-root-shell-devel_package() {
 	provides="kf6-kdesu-devel-${version}_${revision}"
 	conflicts="kf6-kdesu-devel"
 	replaces="kf6-kdesu-devel>=0"
-	depends="${sourcepkg}>=${version}_${revision} kf6-kpty-devel qt6-base-devel"
+	depends="${sourcepkg}>=${version}_${revision} sonic-frameworks-pseudo-terminal-devel qt6-base-devel"
 	short_desc+=" - development files"
 	pkg_install() {
 		vmove usr/include

@@ -5,13 +5,13 @@ revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules qt6-base qt6-tools gettext
- kf6-kwindowsystem kf6-kconfig kf6-kcmutils kf6-kdoctools"
-makedepends="plasma-activities-devel kf6-kcmutils-devel kf6-kdesu-devel
- qt6-svg-devel kf6-kconfig-devel kf6-kiconthemes-devel kf6-kio-devel
- kf6-kservice-devel kf6-kwindowsystem-devel kf6-kparts-devel
- kf6-kcoreaddons-devel kf6-kwidgetsaddons-devel kf6-kdoctools-devel
- plasma-workspace-devel kf6-ki18n-devel qt6-base-private-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools gettext
+ sonic-frameworks-windowsystem sonic-frameworks-settings sonic-frameworks-settings-utils sonic-frameworks-doctools"
+makedepends="sonic-activities-devel sonic-frameworks-settings-utils-devel sonic-frameworks-root-shell-devel
+ qt6-svg-devel sonic-frameworks-settings-devel sonic-frameworks-icon-themes-devel sonic-frameworks-io-devel
+ sonic-frameworks-app-info-devel sonic-frameworks-windowsystem-devel sonic-frameworks-ui-components-devel
+ sonic-frameworks-core-addons-devel sonic-frameworks-widgets-addons-devel sonic-frameworks-doctools-devel
+ sonic-workspace-devel sonic-frameworks-internationalization-devel qt6-base-private-devel"
 depends="xdg-utils"
 short_desc="Tools based on Sonic Frameworks to better interact with the system"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

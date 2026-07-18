@@ -6,7 +6,7 @@ build_style=cmake
 configure_args="-DBUILD_DESIGNERPLUGIN=ON
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base qt6-declarative-host-tools"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base qt6-declarative-host-tools"
 makedepends="qt6-declarative-devel aspell-devel hunspell-devel qt6-tools-devel"
 short_desc="Multi-language spell checker"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

@@ -3,10 +3,10 @@ pkgname=sonic-frameworks-package
 version=6.28.0
 revision=1
 build_style=cmake
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base kf6-kdoctools
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base sonic-frameworks-doctools
  gettext"
-makedepends="kf6-karchive-devel kf6-kcoreaddons-devel kf6-ki18n-devel
- kf6-kdoctools-devel"
+makedepends="sonic-frameworks-archive-devel sonic-frameworks-core-addons-devel sonic-frameworks-internationalization-devel
+ sonic-frameworks-doctools-devel"
 short_desc="Installation and loading of additional content like scripts and images as packages"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"

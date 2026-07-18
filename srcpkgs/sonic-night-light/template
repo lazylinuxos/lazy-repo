@@ -7,9 +7,9 @@ configure_args="
  -DBUILD_TESTING=OFF
  -DCMAKE_INSTALL_LIBEXECDIR=lib
 "
-hostmakedepends="pkg-config qt6-tools qt6-base sonic-frameworks-cmake-modules kf6-kconfig gettext"
-makedepends="qt6-base-devel qt6-position-devel sonic-frameworks-core-addons-devel kf6-kconfig-devel
- kf6-kdbusaddons-devel kf6-kholidays-devel kf6-ki18n-devel"
+hostmakedepends="pkg-config qt6-tools qt6-base sonic-frameworks-cmake-modules sonic-frameworks-settings gettext"
+makedepends="qt6-base-devel qt6-position-devel sonic-frameworks-core-addons-devel sonic-frameworks-settings-devel
+ sonic-frameworks-dbus-devel sonic-frameworks-holidays-devel sonic-frameworks-internationalization-devel"
 short_desc="Helpers for scheduling the dark-light cycle"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"

@@ -4,10 +4,10 @@ version=6.28.0
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
- gettext pkg-config kf6-kconfig"
-makedepends="qt6-base-devel kf6-kcodecs-devel kf6-ki18n-devel kf6-karchive-devel
- kf6-kcoreaddons-devel kf6-kconfig-devel attr-devel taglib-devel libqmobipocket6-devel
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
+ gettext pkg-config sonic-frameworks-settings"
+makedepends="qt6-base-devel sonic-frameworks-text-codec-devel sonic-frameworks-internationalization-devel sonic-frameworks-archive-devel
+ sonic-frameworks-core-addons-devel sonic-frameworks-settings-devel attr-devel taglib-devel libqmobipocket6-devel
  exiv2-devel ffmpeg6-devel ebook-tools-devel poppler-qt6-devel"
 short_desc="Library for extracting file metadata"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

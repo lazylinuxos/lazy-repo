@@ -4,10 +4,10 @@ version=6.28.0
 revision=1
 build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
- kf6-kdoctools kf6-kconfig"
-makedepends="kf6-kconfig-devel kf6-kcoreaddons-devel kf6-kcrash-devel
- kf6-kdbusaddons-devel kf6-kservice-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
+ sonic-frameworks-doctools sonic-frameworks-settings"
+makedepends="sonic-frameworks-settings-devel sonic-frameworks-core-addons-devel sonic-frameworks-crash-handler-devel
+ sonic-frameworks-dbus-devel sonic-frameworks-app-info-devel"
 short_desc="Central daemon of Sonic work spaces"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"

@@ -3,9 +3,9 @@ pkgname=sonic-frameworks-bookmarks
 version=6.28.0
 revision=1
 build_style=cmake
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base kf6-kconfig"
-makedepends="kf6-kconfig-devel qt6-base-devel kf6-kcoreaddons-devel
- kf6-kwidgetsaddons-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base sonic-frameworks-settings"
+makedepends="sonic-frameworks-settings-devel qt6-base-devel sonic-frameworks-core-addons-devel
+ sonic-frameworks-widgets-addons-devel"
 short_desc="Bookmarks management library"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
@@ -21,7 +21,7 @@ sonic-frameworks-bookmarks-devel_package() {
     conflicts="kf6-kbookmarks"
     replaces="kf6-kbookmarks>=0"    
 	depends="${sourcepkg}>=${version}_${revision}
-	 kf6-kwidgetsaddons-devel qt6-base-devel"
+	 sonic-frameworks-widgets-addons-devel qt6-base-devel"
 	short_desc+=" - development files"
 	pkg_install() {
 		vmove usr/include

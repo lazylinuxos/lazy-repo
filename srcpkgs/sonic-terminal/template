@@ -5,15 +5,15 @@ revision=1
 build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="pkg-config extra-cmake-modules qt6-base qt6-tools gettext
- kf6-kdoctools kf6-kconfig"
-makedepends="kf6-knewstuff-devel kf6-knotifyconfig-devel kf6-kcrash-devel
- kf6-kdbusaddons-devel kf6-kbookmarks-devel kf6-kconfig-devel
- kf6-kconfigwidgets-devel kf6-kcoreaddons-devel kf6-kguiaddons-devel
- kf6-ki18n-devel kf6-kiconthemes-devel kf6-kio-devel kf6-knotifications-devel
- kf6-kservice-devel kf6-kwidgetsaddons-devel kf6-kwindowsystem-devel
- kf6-kxmlgui-devel kf6-kglobalaccel-devel icu-devel kf6-kdoctools-devel
- kf6-kparts-devel kf6-kpty-devel kf6-ktextwidgets-devel qt6-multimedia-devel"
+hostmakedepends="pkg-config sonic-frameworks-cmake-modules qt6-base qt6-tools gettext
+ sonic-frameworks-doctools sonic-frameworks-settings"
+makedepends="sonic-frameworks-addons-downloader-devel sonic-frameworks-notification-settings-devel sonic-frameworks-crash-handler-devel
+ sonic-frameworks-dbus-devel sonic-frameworks-bookmarks-devel sonic-frameworks-settings-devel
+ sonic-frameworks-settings-ui-devel sonic-frameworks-core-addons-devel sonic-frameworks-gui-addons-devel
+ sonic-frameworks-internationalization-devel sonic-frameworks-icon-themes-devel sonic-frameworks-io-devel sonic-frameworks-notifications-devel
+ sonic-frameworks-app-info-devel sonic-frameworks-widgets-addons-devel sonic-frameworks-windowsystem-devel
+ sonic-frameworks-xml-gui-devel sonic-frameworks-keybind-devel icu-devel sonic-frameworks-doctools-devel
+ sonic-frameworks-ui-components-devel sonic-frameworks-pseudo-terminal-devel sonic-frameworks-text-widgets-devel qt6-multimedia-devel"
 checkdepends="which"
 short_desc="Terminal emulator for SonicDE"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

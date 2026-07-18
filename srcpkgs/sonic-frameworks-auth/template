@@ -7,7 +7,7 @@ configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="doxygen qt6-tools qt6-base sonic-frameworks-cmake-modules"
-makedepends="polkit-qt6-devel sonic-frameworks-core-addons-devel sonic-frameworks-windowsystem-devel"
+makedepends="sonic-polkit-devel sonic-frameworks-core-addons-devel sonic-frameworks-windowsystem-devel"
 depends="libstdc++"
 checkdepends="dbus"
 short_desc="Authentication and policy abstraction layer for SonicDE frameworks"

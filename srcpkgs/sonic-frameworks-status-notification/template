@@ -5,9 +5,9 @@ revision=1
 build_style=cmake
 _llvmver=21
 configure_args="$(vopt_bool python BUILD_PYTHON_BINDINGS)"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
  $(vopt_if python "python3-build python3-setuptools shiboken6 llvm${_llvmver}")"
-makedepends="kf6-kwindowsystem-devel qt6-base-devel
+makedepends="sonic-frameworks-windowsystem-devel qt6-base-devel
  $(vopt_if python 'libshiboken6-devel libpyside6-devel python3-devel')"
 short_desc="Implementation of Status Notifier Items"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -37,7 +37,7 @@ sonic-frameworks-status-notification-devel_package() {
     conflicts="kf6-kstatusnotifieritem-devel"
     replaces="kf6-kstatusnotifieritem-devel>=0"    
 	depends="${sourcepkg}>=${version}_${revision} qt6-base-devel
-	 kf6-kwindowsystem-devel"
+	 sonic-frameworks-windowsystem-devel"
 	short_desc+=" - development files"
 	pkg_install() {
 		vmove usr/include

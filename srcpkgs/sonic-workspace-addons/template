@@ -7,12 +7,12 @@ configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools pkg-config gettext
- qt6-declarative-host-tools kf6-kcmutils kf6-kpackage sonic-frameworks-auth-tools"
-makedepends="kf6-kdeclarative-devel kf6-kholidays-devel kf6-kconfig-devel kf6-kdbusaddons-devel
- kf6-ki18n-devel kf6-kjobwidgets-devel kf6-purpose-devel kf6-sonnet-devel kf6-kunitconversion-devel
- sonic-frameworks-addons-downloader-devel plasma5support-devel qt6-qt5compat-devel kf6-knotifications-devel sonic-frameworks-app-info-devel
- kf6-kxmlgui-devel qt6-declarative-private-devel qt6-quick3d-devel icu-devel kf6-kpackage-devel kf6-kcmutils-devel
- kf6-ksvg-devel kf6-kitemmodels-devel sonic-frameworks-io-devel sonic-frameworks-quick-ui-devel sonic-frameworks-runner-devel
+ qt6-declarative-host-tools sonic-frameworks-settings-utils sonic-frameworks-package sonic-frameworks-auth-tools"
+makedepends="sonic-frameworks-qml-bridge-devel sonic-frameworks-holidays-devel sonic-frameworks-settings-devel sonic-frameworks-dbus-devel
+ sonic-frameworks-internationalization-devel sonic-frameworks-progress-ui-devel sonic-frameworks-purpose-devel sonic-frameworks-spell-check-devel sonic-frameworks-unit-conversion-devel
+ sonic-frameworks-addons-downloader-devel sonic-plasma5-support-library-devel qt6-qt5compat-devel sonic-frameworks-notifications-devel sonic-frameworks-app-info-devel
+ sonic-frameworks-xml-gui-devel qt6-declarative-private-devel qt6-quick3d-devel icu-devel sonic-frameworks-package-devel sonic-frameworks-settings-utils-devel
+ sonic-frameworks-svg-devel sonic-frameworks-data-models-devel sonic-frameworks-io-devel sonic-frameworks-quick-ui-devel sonic-frameworks-runner-devel
  sonic-interface-libraries-devel sonic-frameworks-keybind-devel sonic-frameworks-auth-devel sonic-frameworks-core-addons-devel"
 depends="qt6-plugin-networkinformation qt6-location sonnet"
 short_desc="All kinds of addons to improve SonicDE experience"

@@ -7,10 +7,10 @@ configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
 hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt6-base gettext
- kf6-kpackage kf6-kcmutils qt6-declarative-host-tools"
-makedepends="kf6-kcmutils-devel kf6-kparts-devel libaccounts-qt6-devel
- kf6-kwallet-devel kf6-kdbusaddons-devel qt6-base-devel qt6-declarative-devel
- signond-devel qcoro-qt6-devel kf6-ki18n-devel sonic-frameworks-core-addons-devel"
+ sonic-frameworks-package sonic-frameworks-settings-utils qt6-declarative-host-tools"
+makedepends="sonic-frameworks-settings-utils-devel sonic-frameworks-ui-components-devel libaccounts-qt6-devel
+ sonic-frameworks-keyring-devel sonic-frameworks-dbus-devel qt6-base-devel qt6-declarative-devel
+ sonic-frameworks-sso-devel qcoro-qt6-devel sonic-frameworks-internationalization-devel sonic-frameworks-core-addons-devel"
 depends="signon-plugin-oauth2 signon-kwallet-extension"
 short_desc="Online account management system and its Sonic integration components"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -33,7 +33,7 @@ sonic-accounts-integration-devel_package() {
     replaces="kf6-kaccounts-integration-devel>=0"    
 	short_desc+=" - development files"
 	depends="${sourcepkg}>=${version}_${revision} qt6-base-devel
-	 libaccounts-qt6-devel signond-devel sonic-frameworks-core-addons-devel"
+	 libaccounts-qt6-devel sonic-frameworks-sso-devel sonic-frameworks-core-addons-devel"
 	pkg_install() {
 		vmove usr/include
 		vmove usr/lib/cmake

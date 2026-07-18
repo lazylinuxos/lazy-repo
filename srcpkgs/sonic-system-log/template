@@ -7,12 +7,12 @@ configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DECM_MKSPECS_INSTALL_DIR=/usr/lib/qt6/mkspecs/modules"
-hostmakedepends="extra-cmake-modules gettext kf6-kconfig kf6-kcoreaddons kf6-kdoctools
+hostmakedepends="sonic-frameworks-cmake-modules gettext sonic-frameworks-settings sonic-frameworks-core-addons sonic-frameworks-doctools
  pkg-config qt6-base qt6-tools"
-makedepends="kf6-kxmlgui-devel kf6-kcoreaddons-devel kf6-kwidgetsaddons-devel
- kf6-kitemviews-devel kf6-kio-devel kf6-kconfig-devel kf6-karchive-devel
- kf6-ki18n-devel kf6-kcompletion-devel kf6-ktextwidgets-devel
- kf6-kcrash-devel
+makedepends="sonic-frameworks-xml-gui-devel sonic-frameworks-core-addons-devel sonic-frameworks-widgets-addons-devel
+ sonic-frameworks-data-views-devel sonic-frameworks-io-devel sonic-frameworks-settings-devel sonic-frameworks-archive-devel
+ sonic-frameworks-internationalization-devel sonic-frameworks-autocomplete-devel sonic-frameworks-text-widgets-devel
+ sonic-frameworks-crash-handler-devel
  libaudit-devel"
 short_desc="Sonic SystemLog Viewer"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

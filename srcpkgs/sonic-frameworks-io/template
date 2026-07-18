@@ -9,10 +9,10 @@ configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="doxygen gettext qt6-tools qt6-base sonic-frameworks-cmake-modules
  sonic-frameworks-doctools sonic-frameworks-auth-tools"
-makedepends="sonic-frameworks-archive-devel kf6-kbookmarks-devel kf6-kcolorscheme-devel sonic-frameworks-autocomplete-devel
- kf6-kconfig-devel kf6-kcrash-devel kf6-kdbusaddons-devel kf6-ki18n-devel kf6-kiconthemes-devel
- kf6-kitemviews-devel kf6-kjobwidgets-devel sonic-frameworks-app-info-devel kf6-kwallet-devel kf6-kwidgetsaddons-devel
- kf6-kded-devel kf6-solid-devel libstdc++-devel libxml2-devel libxslt-devel qt6-qt5compat-devel
+makedepends="sonic-frameworks-archive-devel sonic-frameworks-bookmarks-devel sonic-frameworks-color-scheme-devel sonic-frameworks-autocomplete-devel
+ sonic-frameworks-settings-devel sonic-frameworks-crash-handler-devel sonic-frameworks-dbus-devel sonic-frameworks-internationalization-devel sonic-frameworks-icon-themes-devel
+ sonic-frameworks-data-views-devel sonic-frameworks-progress-ui-devel sonic-frameworks-app-info-devel sonic-frameworks-keyring-devel sonic-frameworks-widgets-addons-devel
+ sonic-daemon-devel sonic-frameworks-device-integration-devel libstdc++-devel libxml2-devel libxslt-devel qt6-qt5compat-devel
  qt6-tools-devel acl-devel qt6-base-private-devel sonic-frameworks-core-addons-devel
  sonic-frameworks-gui-addons-devel sonic-frameworks-windowsystem-devel sonic-frameworks-doctools-devel"
 depends="util-linux-libs"
@@ -30,8 +30,8 @@ sonic-frameworks-io-devel_package() {
 	provides="kf6-kio-devel-${version}_${revision}"
 	replaces="kf6-kio-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision}
-	 kf6-kbookmarks-devel sonic-frameworks-autocomplete-devel kf6-kitemviews-devel
-	 kf6-kjobwidgets-devel kf6-solid-devel kf6-kwidgetsaddons-devel
+	 sonic-frameworks-bookmarks-devel sonic-frameworks-autocomplete-devel sonic-frameworks-data-views-devel
+	 sonic-frameworks-progress-ui-devel sonic-frameworks-device-integration-devel sonic-frameworks-widgets-addons-devel
 	 sonic-frameworks-windowsystem-devel sonic-frameworks-app-info-devel qt6-base-devel"
 	short_desc+=" - development files"
 	pkg_install() {

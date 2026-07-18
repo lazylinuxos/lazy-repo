@@ -6,8 +6,8 @@ build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools
- qt6-declarative-host-tools kf6-kconfig"
-makedepends="qt6-base-devel qt6-declarative-devel boost-headers kf6-kconfig-devel
+ qt6-declarative-host-tools sonic-frameworks-settings"
+makedepends="qt6-base-devel qt6-declarative-devel boost-headers sonic-frameworks-settings-devel
  sonic-frameworks-core-addons-devel sonic-frameworks-windowsystem-devel"
 depends="qt6-plugin-sqlite"
 short_desc="Core activity management components for SonicDE"

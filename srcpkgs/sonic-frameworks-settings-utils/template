@@ -6,11 +6,11 @@ build_style=cmake
 build_helper=qemu
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml"
-hostmakedepends="extra-cmake-modules gettext qt6-tools qt6-base
- qt6-declarative-host-tools kf6-kconfig"
-makedepends="kf6-kconfigwidgets-devel kf6-kcoreaddons-devel kf6-kio-devel
- kf6-kxmlgui-devel kf6-kconfig-devel qt6-declarative-devel kf6-kirigami-devel"
-checkdepends="kf6-kirigami"
+hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-tools qt6-base
+ qt6-declarative-host-tools sonic-frameworks-settings"
+makedepends="sonic-frameworks-settings-ui-devel sonic-frameworks-core-addons-devel sonic-frameworks-io-devel
+ sonic-frameworks-xml-gui-devel sonic-frameworks-settings-devel qt6-declarative-devel sonic-frameworks-quick-ui-devel"
+checkdepends="sonic-frameworks-quick-ui"
 short_desc="Utilities for Sonic System Settings modules"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
@@ -26,7 +26,7 @@ sonic-frameworks-settings-utils-devel_package() {
 	conflicts="kf6-kcmutils-devel"
 	replaces="kf6-kcmutils-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision}
-	 kf6-kconfigwidgets-devel kf6-kcoreaddons-devel
+	 sonic-frameworks-settings-ui-devel sonic-frameworks-core-addons-devel
 	 qt6-declarative-devel"
 	short_desc+=" - development files"
 	pkg_install() {

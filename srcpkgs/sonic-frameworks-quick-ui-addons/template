@@ -5,16 +5,16 @@ revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DBUILD_TESTING=OFF -DBUILD_QCH=ON"
-hostmakedepends="extra-cmake-modules gettext qt6-base qt6-tools
- qt6-declarative-host-tools kf6-kconfig"
+hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools
+ qt6-declarative-host-tools sonic-frameworks-settings"
 makedepends="qt6-base-devel qt6-declarative-devel
- kf6-ki18n-devel kf6-kirigami-devel kf6-kconfig-devel
- kf6-kcoreaddons-devel kf6-kguiaddons-devel
- kf6-kcolorscheme-devel kf6-kcrash-devel
- kf6-kiconthemes-devel kf6-kglobalaccel-devel
+ sonic-frameworks-internationalization-devel sonic-frameworks-quick-ui-devel sonic-frameworks-settings-devel
+ sonic-frameworks-core-addons-devel sonic-frameworks-gui-addons-devel
+ sonic-frameworks-color-scheme-devel sonic-frameworks-crash-handler-devel
+ sonic-frameworks-icon-themes-devel sonic-frameworks-keybind-devel
  qt6-base-private-devel"
-depends="kf6-kirigami kf6-qqc2-desktop-style kf6-kconfig kf6-kcoreaddons
- kf6-kiconthemes kf6-kitemmodels kf6-sonnet"
+depends="sonic-frameworks-quick-ui sonic-frameworks-quick-desktop-style sonic-frameworks-settings sonic-frameworks-core-addons
+ sonic-frameworks-icon-themes sonic-frameworks-data-models sonic-frameworks-spell-check"
 short_desc="Add-ons for the Sonic quick ui framework"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"

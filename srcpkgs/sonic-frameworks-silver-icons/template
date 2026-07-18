@@ -4,7 +4,7 @@ version=6.28.0
 revision=1
 build_style=cmake
 configure_args="-DINSTALL_HOST_TOOLS=ON"
-hostmakedepends="extra-cmake-modules qt6-base qt6-tools python3-lxml libxml2"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools python3-lxml libxml2"
 makedepends="qt6-base-devel"
 checkdepends="fdupes"
 short_desc="Silver icon theme"

@@ -4,10 +4,10 @@ version=6.28.0
 revision=1
 build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
- gettext kf6-kconfig-devel"
-makedepends="kf6-kcodecs-devel kf6-kcolorscheme-devel kf6-kconfig-devel
- kf6-kcoreaddons-devel kf6-kwidgetsaddons-devel qt6-base-private-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
+ gettext sonic-frameworks-settings-devel"
+makedepends="sonic-frameworks-text-codec-devel sonic-frameworks-color-scheme-devel sonic-frameworks-settings-devel
+ sonic-frameworks-core-addons-devel sonic-frameworks-widgets-addons-devel qt6-base-private-devel"
 short_desc="Widgets for configuration dialogs"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
@@ -28,8 +28,8 @@ sonic-frameworks-settings-ui-devel_package() {
 	provides="kf6-kconfigwidgets-devel-${version}_${revision}"
 	conflicts="kf6-kconfigwidgets-devel"
 	replaces="kf6-kconfigwidgets-devel>=0"    
-	depends="${sourcepkg}>=${version}_${revision} kf6-kcodecs-devel
-	 kf6-kconfig-devel kf6-kwidgetsaddons-devel kf6-kcolorscheme-devel
+	depends="${sourcepkg}>=${version}_${revision} sonic-frameworks-text-codec-devel
+	 sonic-frameworks-settings-devel sonic-frameworks-widgets-addons-devel sonic-frameworks-color-scheme-devel
 	 qt6-base-devel"
 	short_desc+=" - development files"
 	pkg_install() {

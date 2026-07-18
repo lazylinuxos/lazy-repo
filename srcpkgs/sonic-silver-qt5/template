@@ -4,10 +4,10 @@ version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DBUILD_QT6=OFF -DKF5_HOST_TOOLING=/usr/lib/cmake"
-hostmakedepends="extra-cmake-modules qt5-qmake qt5-host-tools
+hostmakedepends="sonic-frameworks-cmake-modules qt5-qmake qt5-host-tools
  gettext kcmutils-devel kpackage-devel kconfig-devel kcoreaddons-devel"
 makedepends="frameworkintegration-devel kcmutils-devel fftw-devel plasma-framework-devel"
-depends="frameworkintegration breeze-qt6"
+depends="frameworkintegration sonic-silver-qt5"
 short_desc="Artwork, styles and assets for the Silver visual style of Sonic Desktop"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"

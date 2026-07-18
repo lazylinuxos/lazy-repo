@@ -6,8 +6,8 @@ build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools gettext python3
- kf6-kconfig sonic-frameworks-auth-tools kf6-kcmutils"
-makedepends="kf6-kcmutils-devel plasma5support-devel kf6-kconfig-devel
+ sonic-frameworks-settings sonic-frameworks-auth-tools sonic-frameworks-settings-utils"
+makedepends="sonic-frameworks-settings-utils-devel sonic-plasma5-support-library-devel sonic-frameworks-settings-devel
  sonic-interface-libraries-devel sonic-frameworks-auth-devel"
 short_desc="Control Panel for your system firewall"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

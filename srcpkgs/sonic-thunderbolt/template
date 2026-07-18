@@ -5,10 +5,10 @@ revision=1
 build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules gettext qt6-tools qt6-base
- kf6-kconfig kf6-kcmutils"
-makedepends="kf6-kcmutils-devel kf6-kconfig-devel kf6-kdbusaddons-devel
- qt6-declarative-devel kf6-kcoreaddons-devel kf6-ki18n-devel kf6-knotifications-devel"
+hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-tools qt6-base
+ sonic-frameworks-settings sonic-frameworks-settings-utils"
+makedepends="sonic-frameworks-settings-utils-devel sonic-frameworks-settings-devel sonic-frameworks-dbus-devel
+ qt6-declarative-devel sonic-frameworks-core-addons-devel sonic-frameworks-internationalization-devel sonic-frameworks-notifications-devel"
 depends="bolt"
 short_desc="Sonic integration for controlling Thunderbolt devices"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

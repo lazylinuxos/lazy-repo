@@ -7,7 +7,7 @@ configure_args="
  -DKATEHIGHLIGHTINGINDEXER_EXECUTABLE=/usr/libexec/kate/katehighlightingindexer
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base perl
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base perl
  qt6-declarative-host-tools"
 makedepends="qt6-base-devel qt6-declarative-devel libxerces-c-devel"
 short_desc="Syntax highlighting Engine for Structured Text and Code"

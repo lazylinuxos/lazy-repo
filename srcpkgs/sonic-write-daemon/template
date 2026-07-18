@@ -4,8 +4,8 @@ version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules gettext kcoreaddons qt6-base qt6-tools"
-makedepends="kf6-kdbusaddons-devel kf6-knotifications-devel kf6-kpty-devel"
+hostmakedepends="sonic-frameworks-cmake-modules gettext kcoreaddons qt6-base qt6-tools"
+makedepends="sonic-frameworks-dbus-devel sonic-frameworks-notifications-devel sonic-frameworks-pseudo-terminal-devel"
 short_desc="Listen to traditional system notifications"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"

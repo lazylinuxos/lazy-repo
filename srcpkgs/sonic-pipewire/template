@@ -4,10 +4,10 @@ version=6.7.2
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml"
-hostmakedepends="extra-cmake-modules gettext qt6-base qt6-tools pkg-config
+hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools pkg-config
  pipewire wayland-devel qt6-declarative-host-tools"
-makedepends="ffmpeg6-devel kf6-kcoreaddons-devel kf6-kwayland-devel
- kf6-ki18n-devel libva-devel libepoxy-devel pipewire-devel
+makedepends="ffmpeg6-devel sonic-frameworks-core-addons-devel kf6-kwayland-devel
+ sonic-frameworks-internationalization-devel libva-devel libepoxy-devel pipewire-devel
  plasma-wayland-protocols
  wayland-devel qt6-declarative-devel qt6-base-private-devel"
 depends="pipewire"

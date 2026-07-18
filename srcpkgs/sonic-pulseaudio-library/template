@@ -4,7 +4,7 @@ version=1.8.1
 revision=1
 build_style=cmake
 configure_args="-DBUILD_WITH_QT6=ON"
-hostmakedepends="extra-cmake-modules qt6-base qt6-tools
+hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools
  pkg-config AppStream"
 makedepends="qt6-declarative-devel pulseaudio-devel"
 short_desc="Qt bindings for Pulseaudio"

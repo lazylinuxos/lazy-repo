@@ -5,7 +5,7 @@ revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
  wayland-devel pkg-config"
 makedepends="plasma-wayland-protocols wayland-protocols
  libXScrnSaver-devel qt6-base-private-devel"

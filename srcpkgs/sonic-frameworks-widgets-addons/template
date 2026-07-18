@@ -6,7 +6,7 @@ _llvmver=21
 build_style=cmake
 configure_args="-DBUILD_DESIGNERPLUGIN=ON -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  $(vopt_bool python BUILD_PYTHON_BINDINGS)"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
  $(vopt_if python "python3-build python3-setuptools shiboken6 llvm${_llvmver}")"
 makedepends="qt6-base-devel qt6-tools-devel
  $(vopt_if python 'libshiboken6-devel libpyside6-devel python3-devel')"

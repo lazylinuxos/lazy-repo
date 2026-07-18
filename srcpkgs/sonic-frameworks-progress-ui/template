@@ -5,10 +5,10 @@ revision=2
 build_style=cmake
 _llvmver=21
 configure_args="$(vopt_bool python BUILD_PYTHON_BINDINGS)"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
  $(vopt_if python "python3-build python3-setuptools shiboken6 llvm${_llvmver}")"
-makedepends="kf6-kcoreaddons-devel kf6-knotifications-devel
- kf6-kwidgetsaddons-devel qt6-base-private-devel
+makedepends="sonic-frameworks-core-addons-devel sonic-frameworks-notifications-devel
+ sonic-frameworks-widgets-addons-devel qt6-base-private-devel
  $(vopt_if python 'libshiboken6-devel libpyside6-devel python3-devel')"
 short_desc="Widgets for showing progress of asynchronous jobs"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -38,7 +38,7 @@ sonic-frameworks-progress-ui-devel_package() {
 	conflicts="kf6-kjobwidgets-devel"
 	replaces="kf6-kjobwidgets-devel>=0"    
 	depends="${sourcepkg}>=${version}_${revision} qt6-base-devel
-	 kf6-kcoreaddons-devel"
+	 sonic-frameworks-core-addons-devel"
 	short_desc+=" - development files"
 	pkg_install() {
 		vmove usr/include

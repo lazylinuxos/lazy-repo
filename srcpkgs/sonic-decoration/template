@@ -5,7 +5,7 @@ revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF"
 hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools"
-makedepends="kf6-ki18n-devel sonic-frameworks-core-addons-devel"
+makedepends="sonic-frameworks-internationalization-devel sonic-frameworks-core-addons-devel"
 short_desc="Plugin based library to create window decorations"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"

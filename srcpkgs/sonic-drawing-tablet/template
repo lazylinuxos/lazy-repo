@@ -6,11 +6,11 @@ build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
 hostmakedepends="pkg-config gettext sonic-frameworks-cmake-modules qt6-base qt6-tools
- sonic-frameworks-windowsystem kf6-kcmutils kf6-kpackage kf6-kconfig sonic-frameworks-doctools"
+ sonic-frameworks-windowsystem sonic-frameworks-settings-utils sonic-frameworks-package sonic-frameworks-settings sonic-frameworks-doctools"
 makedepends="qt6-declarative-devel libwacom-devel xf86-input-wacom-devel libinput-devel
- qt6-base-private-devel libxkbcommon-devel kf6-ki18n-devel kf6-kconfig-devel kf6-kxmlgui-devel
- kf6-kwidgetsaddons-devel libX11-devel libXext-devel kf6-knotifications-devel libICE-devel
- kf6-kdbusaddons-devel plasma5support-devel libxcb-devel kf6-kcmutils-devel kf6-kpackage-devel
+ qt6-base-private-devel libxkbcommon-devel sonic-frameworks-internationalization-devel sonic-frameworks-settings-devel sonic-frameworks-xml-gui-devel
+ sonic-frameworks-widgets-addons-devel libX11-devel libXext-devel sonic-frameworks-notifications-devel libICE-devel
+ sonic-frameworks-dbus-devel sonic-plasma5-support-library-devel libxcb-devel sonic-frameworks-settings-utils-devel sonic-frameworks-package-devel
  sonic-workspace-devel sonic-frameworks-core-addons-devel sonic-interface-libraries-devel
  sonic-frameworks-keybind-devel sonic-frameworks-quick-ui-devel sonic-frameworks-io-devel
  sonic-frameworks-doctools-devel sonic-frameworks-windowsystem-devel"

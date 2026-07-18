@@ -3,11 +3,11 @@ pkgname=sonic-polkit-agent
 version=6.7.3
 revision=1
 build_style=cmake
-hostmakedepends="extra-cmake-modules qt6-base qt6-tools gettext"
-makedepends="kf6-kcrash-devel kf6-kdbusaddons-devel kf6-kiconthemes-devel
- qt6-declarative-devel qt6-base-devel kf6-ki18n-devel kf6-kcoreaddons-devel
- kf6-kcrash-devel
- kf6-kwindowsystem-devel polkit-qt6-devel kf6-knotifications-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools gettext"
+makedepends="sonic-frameworks-crash-handler-devel sonic-frameworks-dbus-devel sonic-frameworks-icon-themes-devel
+ qt6-declarative-devel qt6-base-devel sonic-frameworks-internationalization-devel sonic-frameworks-core-addons-devel
+ sonic-frameworks-crash-handler-devel
+ sonic-frameworks-windowsystem-devel sonic-polkit-devel sonic-frameworks-notifications-devel"
 short_desc="Daemon providing a Polkit authentication UI for Sonic"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"

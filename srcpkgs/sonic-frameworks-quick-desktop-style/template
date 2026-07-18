@@ -5,10 +5,10 @@ revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base pkg-config
- qt6-declarative-host-tools kf6-kconfig"
-makedepends="kf6-kcolorscheme-devel kf6-kiconthemes-devel kf6-kirigami-devel
- kf6-kconfig-devel qt6-base-devel qt6-declarative-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base pkg-config
+ qt6-declarative-host-tools sonic-frameworks-settings"
+makedepends="sonic-frameworks-color-scheme-devel sonic-frameworks-icon-themes-devel sonic-frameworks-quick-ui-devel
+ sonic-frameworks-settings-devel qt6-base-devel qt6-declarative-devel"
 short_desc="Qt Quick Controls 2: Desktop Style"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"

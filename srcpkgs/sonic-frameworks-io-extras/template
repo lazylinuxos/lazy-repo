@@ -7,13 +7,13 @@ configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  -DWITH_LIBPROXY=ON -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules sonic-frameworks-doctools sonic-frameworks-core-addons
- sonic-frameworks-io pkg-config gperf qt6-base qt6-tools gettext KDSoap kf6-kcmutils"
-makedepends="qcoro-qt6-devel sonic-frameworks-archive-devel kf6-kconfig-devel kf6-kconfigwidgets-devel
- kf6-kdbusaddons-devel kf6-kdnssd-devel kf6-ki18n-devel kf6-solid-devel kf6-syntax-highlighting-devel
- kf6-kcmutils-devel kf6-ktextwidgets-devel sonic-frameworks-app-info-devel kf6-kwidgetsaddons-devel
+ sonic-frameworks-io pkg-config gperf qt6-base qt6-tools gettext KDSoap sonic-frameworks-settings-utils"
+makedepends="qcoro-qt6-devel sonic-frameworks-archive-devel sonic-frameworks-settings-devel sonic-frameworks-settings-ui-devel
+ sonic-frameworks-dbus-devel sonic-frameworks-zeroconf-devel sonic-frameworks-internationalization-devel sonic-frameworks-device-integration-devel sonic-frameworks-syntax-highlighting-devel
+ sonic-frameworks-settings-utils-devel sonic-frameworks-text-widgets-devel sonic-frameworks-app-info-devel sonic-frameworks-widgets-addons-devel
  sonic-activities-stats-devel phonon-devel samba-devel libssh-devel libmtp-devel libimobiledevice-devel
  libplist-devel KDSoap-devel libtirpc-devel libopenexr-devel taglib-devel sonic-exiv2-library-devel libnfs-devel
- libproxy-devel qt6-svg-devel qt6-base-private-devel kf6-knotifications-devel kdsoap-ws-discovery-client-devel
+ libproxy-devel qt6-svg-devel qt6-base-private-devel sonic-frameworks-notifications-devel kdsoap-ws-discovery-client-devel
  libstdc++-devel libXcursor-devel qt6-qt5compat-devel sonic-activities-devel sonic-frameworks-core-addons-devel
  sonic-frameworks-doctools-devel sonic-frameworks-io-devel sonic-frameworks-gui-addons-devel"
 depends="ripgrep-all smbclient"

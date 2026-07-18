@@ -5,11 +5,11 @@ revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
- qt6-declarative-host-tools kf6-kconfig"
-makedepends="qt6-declarative-devel qt6-svg-devel kf6-karchive-devel
- kf6-kconfig-devel kf6-kcolorscheme-devel kf6-kcoreaddons-devel
- kf6-kirigami-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
+ qt6-declarative-host-tools sonic-frameworks-settings"
+makedepends="qt6-declarative-devel qt6-svg-devel sonic-frameworks-archive-devel
+ sonic-frameworks-settings-devel sonic-frameworks-color-scheme-devel sonic-frameworks-core-addons-devel
+ sonic-frameworks-quick-ui-devel"
 short_desc="Library for rendering SVG-based themes"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"

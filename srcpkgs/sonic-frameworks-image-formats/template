@@ -5,9 +5,9 @@ revision=1
 build_style=cmake
 configure_args="-DKIMAGEFORMATS_HEIF=ON -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
  pkg-config"
-makedepends="kf6-karchive-devel libopenexr-devel libheif-devel libraw-devel
+makedepends="sonic-frameworks-archive-devel libopenexr-devel libheif-devel libraw-devel
  libjxl-devel libavif-devel"
 short_desc="Plugins to allow QImage to support extra file formats"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

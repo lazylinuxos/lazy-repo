@@ -6,22 +6,22 @@ build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DBUILD_QT5=OFF
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
  -DKF6_HOST_TOOLING=/usr/lib/cmake"
-hostmakedepends="extra-cmake-modules pkg-config qt6-base qt6-tools gettext
- kf6-kwindowsystem kf6-kcmutils kf6-kpackage"
+hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt6-base qt6-tools gettext
+ sonic-frameworks-windowsystem sonic-frameworks-settings-utils sonic-frameworks-package"
 makedepends="qt6-base-private-devel qt6-declarative-devel
- kf6-ki18n-devel
- kf6-kirigami-devel
- kf6-kcmutils-devel
- kf6-kconfig-devel
- kf6-kcoreaddons-devel
- kf6-kguiaddons-devel
- kf6-kwidgetsaddons-devel
- kf6-kservice-devel
- kf6-kcompletion-devel
+ sonic-frameworks-internationalization-devel
+ sonic-frameworks-quick-ui-devel
+ sonic-frameworks-settings-utils-devel
+ sonic-frameworks-settings-devel
+ sonic-frameworks-core-addons-devel
+ sonic-frameworks-gui-addons-devel
+ sonic-frameworks-widgets-addons-devel
+ sonic-frameworks-app-info-devel
+ sonic-frameworks-autocomplete-devel
  kf6-frameworkintegration-devel
- kf6-kwindowsystem-devel
- kf6-kdecoration-devel
- libplasma-devel"
+ sonic-frameworks-windowsystem-devel
+ sonic-decoration-devel
+ sonic-interface-libraries-devel"
 short_desc="Classic style for Qt and Sonic applications"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"

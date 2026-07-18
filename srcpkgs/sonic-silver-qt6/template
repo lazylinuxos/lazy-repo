@@ -5,14 +5,14 @@ revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DBUILD_QT5=OFF
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="extra-cmake-modules gettext qt6-base qt6-tools
- kf6-kconfig kf6-kcmutils-devel"
-makedepends="kf6-kcoreaddons-devel kf6-kcolorscheme-devel
- kf6-kconfig-devel kf6-kguiaddons-devel kf6-ki18n-devel
- kf6-kiconthemes-devel kf6-kwindowsystem-devel kf6-kcmutils-devel
- kf6-kirigami-devel kf6-frameworkintegration-devel fftw-devel
- qt6-svg-devel kf6-kdecoration-devel"
-depends="breeze-icons kf6-frameworkintegration"
+hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools
+ sonic-frameworks-settings sonic-frameworks-settings-utils-devel"
+makedepends="sonic-frameworks-core-addons-devel sonic-frameworks-color-scheme-devel
+ sonic-frameworks-settings-devel sonic-frameworks-gui-addons-devel sonic-frameworks-internationalization-devel
+ sonic-frameworks-icon-themes-devel sonic-frameworks-windowsystem-devel sonic-frameworks-settings-utils-devel
+ sonic-frameworks-quick-ui-devel kf6-frameworkintegration-devel fftw-devel
+ qt6-svg-devel sonic-decoration-devel"
+depends="sonic-frameworks-silver-icons kf6-frameworkintegration"
 short_desc="Artwork, styles and assets for the Silver visual style of Sonic Desktop"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"

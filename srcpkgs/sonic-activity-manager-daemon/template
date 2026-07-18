@@ -4,9 +4,9 @@ version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools kf6-kconfig"
-makedepends="sonic-frameworks-io-devel sonic-frameworks-keybind-devel kf6-kxmlgui-devel
- boost-headers qt6-base-private-devel kf6-kcrash-devel kf6-kdbusaddons-devel"
+hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools sonic-frameworks-settings"
+makedepends="sonic-frameworks-io-devel sonic-frameworks-keybind-devel sonic-frameworks-xml-gui-devel
+ boost-headers qt6-base-private-devel sonic-frameworks-crash-handler-devel sonic-frameworks-dbus-devel"
 short_desc="System service to manage user's activities, track the usage patterns"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"

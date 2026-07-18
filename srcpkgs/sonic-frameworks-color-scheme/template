@@ -3,11 +3,11 @@ pkgname=sonic-frameworks-color-scheme
 version=6.28.0
 revision=1
 build_style=cmake
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
- kf6-kconfig gettext"
-makedepends="kf6-kconfig-devel kf6-kguiaddons-devel kf6-ki18n-devel
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
+ sonic-frameworks-settings gettext"
+makedepends="sonic-frameworks-settings-devel sonic-frameworks-gui-addons-devel sonic-frameworks-internationalization-devel
  qt6-base-private-devel"
-# transitive deps from kf6-kguiaddons, for build ordering
+# transitive deps from sonic-frameworks-gui-addons, for build ordering
 makedepends+=" libpyside6-devel"
 short_desc="Classes to read and interact with KColorScheme"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -24,7 +24,7 @@ sonic-frameworks-color-scheme-devel_package() {
     conflicts="kf6-kcolorscheme-devel"
     replaces="kf6-kcolorscheme-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision}
-	 kf6-kguiaddons-devel qt6-base-devel kf6-ki18n-devel"
+	 sonic-frameworks-gui-addons-devel qt6-base-devel sonic-frameworks-internationalization-devel"
 	short_desc+=" - development files"
 	pkg_install() {
 		vmove usr/include

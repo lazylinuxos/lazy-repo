@@ -4,7 +4,7 @@ version=6.28.0
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml"
-hostmakedepends="extra-cmake-modules qt6-tools qt6-base
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
  pkg-config qt6-declarative-host-tools"
 makedepends="qt6-declarative-devel NetworkManager-devel"
 short_desc="Qt wrapper for NetworkManager API"
