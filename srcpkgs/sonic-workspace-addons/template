@@ -1,6 +1,6 @@
 # Template file for 'sonic-workspace-addons'
 pkgname=sonic-workspace-addons
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
@@ -20,7 +20,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-workspace-addons"
 distfiles="https://github.com/Sonic-DE/sonic-workspace-addons/archive/refs/tags/${version}.tar.gz"
-checksum=c4375bbc803c517175eaf51269c943416b858828bfc1d45944f1df4cf2120112
+checksum=89035e42c4973e3e0b0084a198469133d19778450872dc5e476d77838b75f41b
 provides="kdeplasma-addons-${version}_${revision}"
 conflicts="kdeplasma-addons"
 replaces="kdeplasma-addons>=0"

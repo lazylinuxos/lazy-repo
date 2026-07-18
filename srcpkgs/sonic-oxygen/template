@@ -1,0 +1,10 @@
+# Template file for 'sonic-oxygen'
+pkgname=sonic-oxygen
+version=6.7.3
+revision=1
+metapackage=yes
+depends="sonic-oxygen-qt5 sonic-oxygen-qt6"
+short_desc="Classic style for Qt and Sonic applications"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Public Domain"
+homepage="https://github.com/Sonic-DE/sonic-oxygen"

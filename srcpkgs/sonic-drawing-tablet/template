@@ -1,6 +1,6 @@
 # Template file for 'sonic-drawing-tablet'
 pkgname=sonic-drawing-tablet
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
@@ -21,7 +21,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-drawing-tablet"
 distfiles="https://github.com/Sonic-DE/sonic-drawing-tablet/archive/refs/tags/${version}.tar.gz"
-checksum=59bd623eee1e87a7eb5bc46b17e9eaae5db27fe30891f6637a6b8ed03786a544
+checksum=b3e00452b2f85d2c9b9b92407c078c87ee3e1b79db8827b60bc3d0acfcf87af6
 provides="kcm-wacomtablet-${version}_${revision}"
 conflicts="kcm-wacomtablet"
 replaces="kcm-wacomtablet>=0"

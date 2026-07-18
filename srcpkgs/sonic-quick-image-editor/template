@@ -1,0 +1,37 @@
+# Template file for 'sonic-quick-image-editor'
+pkgname=sonic-quick-image-editor
+version=0.6.2.1
+revision=1
+build_style=cmake
+configure_args="-DBUILD_WITH_QT6=ON -DKDE_INSTALL_QMLDIR=lib/qt6/qml
+ -DECM_MKSPECS_INSTALL_DIR=/usr/lib/qt6/mkspecs/modules
+ -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
+hostmakedepends="extra-cmake-modules kf6-kconfig qt6-base qt6-tools
+ qt6-declarative-host-tools"
+makedepends="kf6-kconfig-devel qt6-base-devel qt6-declarative-devel"
+short_desc="QtQuick-based image editing components"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-quick-image-editor"
+distfiles="https://github.com/Sonic-DE/sonic-quick-image-editor/archive/refs/tags/${version}.tar.gz"
+checksum=30cf8aa749f87a6025436713b6a4b7d1f0d82afdeedb7c647eb418888f7223a0
+provides="kquickimageeditor-${version}_${revision}"
+conflicts="kquickimageeditor"
+replaces="kquickimageeditor>=0"
+
+post_install() {
+	vlicense LICENSES/BSD-2-Clause.txt
+}
+
+sonic-quick-image-editor-devel_package() {
+    provides="kquickimageeditor-devel-${version}_${revision}"
+    conflicts="kquickimageeditor-devel"
+    replaces="kquickimageeditor-devel>=0"
+	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove usr/lib/qt6/mkspecs
+	}
+}

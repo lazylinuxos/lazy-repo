@@ -1,0 +1,25 @@
+# Template file for 'sonic-thunderbolt'
+pkgname=sonic-thunderbolt
+version=6.7.3
+revision=1
+build_style=cmake
+configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
+hostmakedepends="extra-cmake-modules gettext qt6-tools qt6-base
+ kf6-kconfig kf6-kcmutils"
+makedepends="kf6-kcmutils-devel kf6-kconfig-devel kf6-kdbusaddons-devel
+ qt6-declarative-devel kf6-kcoreaddons-devel kf6-ki18n-devel kf6-knotifications-devel"
+depends="bolt"
+short_desc="Sonic integration for controlling Thunderbolt devices"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-thunderbolt"
+distfiles="https://github.com/Sonic-DE/sonic-thunderbolt/archive/refs/tags/${version}.tar.gz"
+checksum=af9e5c5126bbb0519f974115940583046d33a2db863b20f37b955502c339bbbb
+provides="plasma-thunderbolt-${version}_${revision}"
+conflicts="plasma-thunderbolt"
+replaces="plasma-thunderbolt>=0"
+
+do_check() {
+	: # Requires running dbus and bolt services
+}

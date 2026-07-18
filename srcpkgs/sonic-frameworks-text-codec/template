@@ -1,0 +1,29 @@
+# Template file for 'sonic-frameworks-text-codec'
+pkgname=sonic-frameworks-text-codec
+version=6.28.0
+revision=1
+build_style=cmake
+hostmakedepends="extra-cmake-modules qt6-tools qt6-base gperf"
+makedepends="qt6-base-devel"
+short_desc="Collection of methods to manipulate strings using various encodings"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-frameworks-text-codec"
+distfiles="https://github.com/Sonic-DE/sonic-frameworks-text-codec/archive/refs/tags/${version}.tar.gz"
+checksum=0bcb1d7f621196025905761de113ab4762cb20fb4a58fccf080661c46937c656
+provides="kf6-kcodecs-${version}_${revision}"
+conflicts="kf6-kcodecs"
+replaces="kf6-kcodecs>=0"
+
+sonic-frameworks-text-codec-devel_package() {
+    provides="kf6-kcodecs-devel-${version}_${revision}"
+    conflicts="kf6-kcodecs-devel"
+    replaces="kf6-kcodecs-devel>=0"    
+	depends="$makedepends ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove "usr/lib/*.so"
+	}
+}

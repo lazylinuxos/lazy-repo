@@ -1,0 +1,24 @@
+# Template file for 'sonic-oxygen-qt5'
+pkgname=sonic-oxygen-qt5
+version=6.7.3
+revision=1
+build_style=cmake
+configure_args="-DBUILD_TESTING=OFF -DBUILD_QT6=OFF"
+hostmakedepends="extra-cmake-modules pkg-config qt5-devel qt5-qmake kconfig
+ gettext kcoreaddons"
+makedepends="frameworkintegration-devel kwayland-devel kcmutils-devel kdoctools"
+# For files in /usr/share
+depends="sonic-oxygen-qt6"
+short_desc="Classic style for Qt and Sonic applications"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-oxygen"
+distfiles="https://github.com/Sonic-DE/sonic-oxygen/archive/refs/tags/${version}.tar.gz"
+checksum=368c46ecbbb25f81727ef714cf4fea27ee752ca33b8a5a47b5f0ab3b7c8a2fe7
+provides="oxygen-qt5-${version}_${revision}"
+conflicts="oxygen-qt5"
+replaces="oxygen-qt5>=0"
+
+post_install() {
+	rm -rf ${DESTDIR}/usr/share
+}

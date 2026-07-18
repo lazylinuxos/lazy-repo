@@ -1,0 +1,31 @@
+# Template file for 'sonic-polkit'
+pkgname=sonic-polkit
+version=0.201.1
+revision=1
+build_style=cmake
+configure_args="-DQT_MAJOR_VERSION=6"
+hostmakedepends="pkg-config qt6-tools qt6-base"
+makedepends="polkit-devel qt6-base-devel"
+short_desc="Qt wrapper around Polkit-1 client libraries"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-polkit"
+distfiles="https://github.com/Sonic-DE/sonic-polkit/archive/refs/tags/${version}.tar.gz"
+checksum=11355a4cda6508438edcc2c0cecd2598d1c5b99936f9d008f6522ca5f5f98bfe
+provides="polkit-qt6-${version}_${revision}"
+conflicts="polkit-qt6"
+replaces="polkit-qt6>=0"
+
+polkit-qt6-devel_package() {
+    provides="polkit-qt6-devel-${version}_${revision}"
+    conflicts="polkit-qt6-devel"
+    replaces="polkit-qt6-devel>=0"    
+	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/pkgconfig
+		vmove usr/lib/cmake
+		vmove "usr/lib/*.so"
+	}
+}

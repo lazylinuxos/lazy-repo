@@ -1,6 +1,6 @@
 # Template file for 'sonic-activity-manager-daemon'
 pkgname=sonic-activity-manager-daemon
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-activity-manager-daemon"
 distfiles="https://github.com/Sonic-DE/sonic-activity-manager-daemon/archive/refs/tags/${version}.tar.gz"
-checksum=ea72ac80f32c91e16030818c5064944e88a39daddd2b14bd4a1e1506858ca135
+checksum=68b628e7e5b0b878a47344460f505d6600f7c0dc78799c8f7b61f505def396e8
 provides="kactivitymanagerd-${version}_${revision}"
 conflicts="kactivitymanagerd"
 replaces="kactivitymanagerd>=0"

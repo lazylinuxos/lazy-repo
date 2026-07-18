@@ -1,6 +1,6 @@
 # Template file for 'sonic-network-manager'
 pkgname=sonic-network-manager
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
@@ -24,7 +24,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-network-manager"
 distfiles="https://github.com/Sonic-DE/sonic-network-manager/archive/refs/tags/${version}.tar.gz"
-checksum=2e87b45ec4e2b3323ad33042a267f726ee98ca1d7ef6f8a9da745dd2c16f39bd
+checksum=e6f65e4226a16cbb2bc338141f2d3600746e882dcbbf5248c69054e54f598bcf
 provides="plasma-nm-${version}_${revision}"
 conflicts="plasma-nm"
 replaces="plasma-nm>=0"

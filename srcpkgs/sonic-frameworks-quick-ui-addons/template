@@ -1,0 +1,39 @@
+# Template file for 'sonic-frameworks-quick-ui-addons'
+pkgname=sonic-frameworks-quick-ui-addons
+version=1.12.1
+revision=1
+build_style=cmake
+configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
+ -DBUILD_TESTING=OFF -DBUILD_QCH=ON"
+hostmakedepends="extra-cmake-modules gettext qt6-base qt6-tools
+ qt6-declarative-host-tools kf6-kconfig"
+makedepends="qt6-base-devel qt6-declarative-devel
+ kf6-ki18n-devel kf6-kirigami-devel kf6-kconfig-devel
+ kf6-kcoreaddons-devel kf6-kguiaddons-devel
+ kf6-kcolorscheme-devel kf6-kcrash-devel
+ kf6-kiconthemes-devel kf6-kglobalaccel-devel
+ qt6-base-private-devel"
+depends="kf6-kirigami kf6-qqc2-desktop-style kf6-kconfig kf6-kcoreaddons
+ kf6-kiconthemes kf6-kitemmodels kf6-sonnet"
+short_desc="Add-ons for the Sonic quick ui framework"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-frameworks-quick-ui-addons"
+distfiles="https://github.com/Sonic-DE/sonic-frameworks-quick-ui-addons/archive/refs/tags/${version}.tar.gz"
+checksum=d58bcd4f61c44d5da883bc8dbe4d1cf8c240b280bbea25f3abff19fae1dc06a9
+provides="kirigami-addons-${version}_${revision}"
+conflicts="kirigami-addons"
+replaces="kirigami-addons>=0"
+
+sonic-frameworks-quick-ui-addons-devel_package() {
+	provides="kirigami-addons-devel-${version}_${revision}"
+	conflicts="kirigami-addons-devel"
+	replaces="kirigami-addons-devel>=0"
+	depends="qt6-base-devel ${sourcepkg}-${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove "usr/lib/*.so"
+	}
+}

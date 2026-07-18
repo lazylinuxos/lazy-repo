@@ -1,0 +1,24 @@
+# Template file for 'sonic-system-monitor'
+pkgname=sonic-system-monitor
+version=6.7.3
+revision=1
+build_style=cmake
+configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_QMLDIR=lib/qt6/qml"
+hostmakedepends="extra-cmake-modules gettext qt6-base qt6-tools kf6-kpackage
+ kf6-kconfig kf6-kcoreaddons qt6-declarative-host-tools"
+makedepends="kf6-kirigami-devel libksysguard-devel kf6-kitemmodels-devel
+ kf6-knewstuff-devel kf6-kio-devel kf6-kdbusaddons-devel kf6-kconfig-devel
+ kf6-kwindowsystem-devel kf6-kcrash-devel qt6-declarative-private-devel
+ kf6-ki18n-devel kf6-kpackage-devel
+ kf6-kservice-devel kf6-kglobalaccel-devel kirigami-addons-devel"
+depends="kf6-kirigami kf6-qqc2-desktop-style kf6-kquickcharts ksystemstats"
+short_desc="Application for monitoring system resources"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-system-monitor"
+distfiles="https://github.com/Sonic-DE/sonic-system-monitor/archive/refs/tags/${version}.tar.gz"
+checksum=421e97bbb3dd949ebdd205b4b61ae9554f45fd76eebcc49d8066271f1ab15eb7
+provides="plasma-systemmonitor-${version}_${revision}"
+conflicts="plasma-systemmonitor"
+replaces="plasma-systemmonitor>=0"

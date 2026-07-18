@@ -1,6 +1,6 @@
 # Template file for 'sonic-system-info'
 pkgname=sonic-system-info
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
@@ -22,7 +22,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-system-info"
 distfiles="https://github.com/Sonic-DE/sonic-system-info/archive/refs/tags/${version}.tar.gz"
-checksum=a35bf4ab84780006bd110caf1c295ac29c2672d5f5694a9685bc1998f54b66af
+checksum=aa81c0bed3f9dbac37473c70505ea4143af1759aebfbc1ee8fa53272e8311866
 provides="kinfocenter-${version}_${revision}"
 conflicts="kinfocenter"
 replaces="kinfocenter>=0"

@@ -1,0 +1,44 @@
+# Template file for 'sonic-screenies'
+pkgname=sonic-screenies
+version=6.7.3
+revision=1
+build_style=cmake
+configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake"
+hostmakedepends="extra-cmake-modules qt6-tools qt6-base
+ qt6-declarative-host-tools gettext wayland-devel kf6-kdoctools kf6-kconfig
+ plasma-wayland-protocols"
+makedepends="qt6-base-private-devel qt6-declarative-devel qt6-multimedia-devel
+ kf6-kcoreaddons-devel
+ kf6-kwidgetsaddons-devel
+ kf6-kdbusaddons-devel
+ kf6-knotifications-devel
+ kf6-kconfig-devel
+ kf6-ki18n-devel
+ kf6-kio-devel
+ kf6-kwindowsystem-devel
+ kf6-kglobalaccel-devel
+ kf6-kxmlgui-devel
+ kf6-kguiaddons-devel
+ kf6-kirigami-devel
+ kf6-kstatusnotifieritem-devel
+ kf6-prison-devel
+ kf6-kcrash-devel
+ kquickimageeditor-devel
+ wayland-devel
+ layer-shell-qt-devel
+ kpipewire-devel
+ libopencv-devel
+ kf6-purpose-devel
+ libxcb-devel
+ xcb-util-devel
+ xcb-util-image-devel
+ xcb-util-cursor-devel"
+short_desc="Screenshot capture utility"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-screenies"
+distfiles="https://github.com/Sonic-DE/sonic-screenies/archive/refs/tags/${version}.tar.gz"
+checksum=edd66c8cd543fc6bfc20f995431f6adf1b4e20779c02a8f3a229e065bdbdca85
+provides="spectacle-${version}_${revision}"
+conflicts="spectacle"
+replaces="spectacle>=0"

@@ -26,3 +26,4 @@ etc/conf.*
 etc/virtual
 etc/xbps.d/custom
 etc/repo-keys
+srcpkgs/*.skip

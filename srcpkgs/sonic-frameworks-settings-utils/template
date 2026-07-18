@@ -1,0 +1,40 @@
+# Template file for 'sonic-frameworks-settings-utils'
+pkgname=sonic-frameworks-settings-utils
+version=6.28.0
+revision=1
+build_style=cmake
+build_helper=qemu
+configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_QMLDIR=lib/qt6/qml"
+hostmakedepends="extra-cmake-modules gettext qt6-tools qt6-base
+ qt6-declarative-host-tools kf6-kconfig"
+makedepends="kf6-kconfigwidgets-devel kf6-kcoreaddons-devel kf6-kio-devel
+ kf6-kxmlgui-devel kf6-kconfig-devel qt6-declarative-devel kf6-kirigami-devel"
+checkdepends="kf6-kirigami"
+short_desc="Utilities for Sonic System Settings modules"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-frameworks-settings-utils"
+distfiles="https://github.com/Sonic-DE/sonic-frameworks-settings-utils/archive/refs/tags/${version}.tar.gz"
+checksum=d52adb7b24b3c6aa61922fe339dbc8c774fa5c6d35e41cf2fd298d89713ffe0e
+provides="kf6-kcmutils-${version}_${revision}"
+conflicts="kf6-kcmutils"
+replaces="kf6-kcmutils>=0"
+
+sonic-frameworks-settings-utils-devel_package() {
+	provides="kf6-kcmutils-devel-${version}_${revision}"
+	conflicts="kf6-kcmutils-devel"
+	replaces="kf6-kcmutils-devel>=0"
+	depends="${sourcepkg}>=${version}_${revision}
+	 kf6-kconfigwidgets-devel kf6-kcoreaddons-devel
+	 qt6-declarative-devel"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		mkdir -p "${DESTDIR}/usr/lib/cmake/KF6KCMUtils"
+		mv ${PKGDESTDIR}/usr/lib/cmake/KF6KCMUtils/KF6KCMUtilsTool* \
+			"${DESTDIR}/usr/lib/cmake/KF6KCMUtils/"
+		vmove "usr/lib/*.so"
+	}
+}

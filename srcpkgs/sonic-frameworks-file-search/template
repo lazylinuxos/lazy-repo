@@ -1,0 +1,42 @@
+# Template file for 'sonic-frameworks-file-search'
+pkgname=sonic-frameworks-file-search
+version=6.28.0
+revision=1
+build_style=cmake
+configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
+ -DKDE_INSTALL_QMLDIR=lib/qt6/qml
+ -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
+hostmakedepends="extra-cmake-modules qt6-tools qt6-base
+ qt6-declarative-host-tools gettext kf6-kconfig-devel"
+makedepends="qt6-declarative-devel kf6-kcoreaddons-devel kf6-kconfig-devel
+ kf6-kdbusaddons-devel kf6-ki18n-devel kf6-kidletime-devel kf6-solid-devel
+ kf6-kcrash-devel kf6-kio-devel kf6-kfilemetadata-devel lmdb-devel"
+short_desc="Framework for searching and managing metadata"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-frameworks-file-search"
+distfiles="https://github.com/Sonic-DE/sonic-frameworks-file-search/archive/refs/tags/${version}.tar.gz"
+checksum=ea63f109c434975e256deb94eef0e129220f3fe7815071b484b6fcde5f3767ab
+provides="kf6-baloo-${version}_${revision}"
+conflicts="kf6-baloo"
+replaces="kf6-baloo>=0"
+
+do_check() {
+	cd build
+	# disable failing text
+	ctest -E "(filemonitortest|filewatchtest)"
+}
+
+sonic-frameworks-file-search-devel_package() {
+    provides="kf6-baloo-devel-${version}_${revision}"
+    conflicts="kf6-baloo-devel"
+    replaces="kf6-baloo-devel>=0"    
+	depends="$makedepends ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/lib/pkgconfig
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove "usr/lib/*.so"
+	}
+}

@@ -1,6 +1,6 @@
 # Template file for 'sonic-activities-stats'
 pkgname=sonic-activities-stats
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools kf6-kconfig"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-activities-stats"
 distfiles="https://github.com/Sonic-DE/sonic-activities-stats/archive/refs/tags/${version}.tar.gz"
-checksum=dad73345c63847bcd201eba499fa00d5aee2a4619884e9afe7d3c9892bfadf83
+checksum=e18c48f9c657d21bdf3c3dd1acdcefd61ebe659f32af8835a7664de51f8225b0
 provides="plasma-activities-stats-${version}_${revision}"
 conflicts="plasma-activities-stats"
 replaces="plasma-activities-stats>=0"

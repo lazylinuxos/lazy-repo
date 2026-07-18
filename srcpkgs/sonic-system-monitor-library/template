@@ -1,6 +1,6 @@
 # Template file for 'sonic-system-monitor-library'
 pkgname=sonic-system-monitor-library
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
@@ -19,7 +19,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-system-monitor-library"
 distfiles="https://github.com/Sonic-DE/sonic-system-monitor-library/archive/refs/tags/${version}.tar.gz"
-checksum=7b6c7584216d95ef5a12a8d12e6e270fe2a101f131c3fc23ab84133a8d685da9
+checksum=215d75951ff8c02a0967528ead263b10e4d592cd6ed623a6a2adc7f0d073ca46
 provides="libksysguard-${version}_${revision}"
 conflicts="libksysguard"
 replaces="libksysguard>=0"

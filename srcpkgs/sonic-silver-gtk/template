@@ -1,0 +1,17 @@
+# Template file for 'sonic-silver-gtk'
+pkgname=sonic-silver-gtk
+version=6.7.3
+revision=1
+build_style=cmake
+hostmakedepends="extra-cmake-modules sassc python3 python3-cairo
+ qt6-base qt6-tools"
+makedepends="qt6-base-devel libplasma-devel breeze-qt6"
+short_desc="Silver widget theme for GTK 2 and 3"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-silver-gtk"
+distfiles="https://github.com/Sonic-DE/sonic-silver-gtk/archive/refs/tags/${version}.tar.gz"
+checksum=52cef78915d155a3a3dc2d44b53234363718de75146c82d7d6bb602dc46cf3b2
+provides="breeze-gtk-${version}_${revision}"
+conflicts="breeze-gtk"
+replaces="breeze-gtk>=0"

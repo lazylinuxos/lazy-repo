@@ -1,6 +1,6 @@
 # Template file for 'sonic-firewall'
 pkgname=sonic-firewall
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-only OR GPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-firewall"
 distfiles="https://github.com/Sonic-DE/sonic-firewall/archive/refs/tags/${version}.tar.gz"
-checksum=469b63260d84bb5a958fdf60e00986cbe199482e83768e94ded1f7fe07c93af1
+checksum=a6b1a5b73910c53bffe8e29d74e8df460ab58b7d17fdf0a478e3081baf75d781
 provides="plasma-firewall-${version}_${revision}"
 conflicts="plasma-firewall"
 replaces="plasma-firewall>=0"

@@ -1,0 +1,19 @@
+# Template file for 'sonic-polkit-agent'
+pkgname=sonic-polkit-agent
+version=6.7.3
+revision=1
+build_style=cmake
+hostmakedepends="extra-cmake-modules qt6-base qt6-tools gettext"
+makedepends="kf6-kcrash-devel kf6-kdbusaddons-devel kf6-kiconthemes-devel
+ qt6-declarative-devel qt6-base-devel kf6-ki18n-devel kf6-kcoreaddons-devel
+ kf6-kcrash-devel
+ kf6-kwindowsystem-devel polkit-qt6-devel kf6-knotifications-devel"
+short_desc="Daemon providing a Polkit authentication UI for Sonic"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://github.com/Sonic-DE/sonic-polkit-agent"
+distfiles="https://github.com/Sonic-DE/sonic-polkit-agent/archive/refs/tags/${version}.tar.gz"
+checksum=2487f29c4a79458fa5359829587553db423a5204e8a448659bd5163734b29308
+provides="polkit-kde-agent-${version}_${revision}"
+conflicts="polkit-kde-agent"
+replaces="polkit-kde-agent>=0"

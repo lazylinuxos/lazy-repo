@@ -1,0 +1,46 @@
+# Template file for 'sonic-frameworks-unit-conversion'
+pkgname=sonic-frameworks-unit-conversion
+version=6.28.0
+revision=1
+_llvmver=21
+build_style=cmake
+configure_args="$(vopt_bool python BUILD_PYTHON_BINDINGS)"
+hostmakedepends="extra-cmake-modules qt6-tools qt6-base gettext
+ $(vopt_if python "python3-build python3-setuptools shiboken6 llvm${_llvmver}")"
+makedepends="kf6-ki18n-devel
+ $(vopt_if python 'libshiboken6-devel libpyside6-devel python3-devel')"
+short_desc="Physical units converter"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-frameworks-unit-conversion"
+distfiles="https://github.com/Sonic-DE/sonic-frameworks-unit-conversion/archive/refs/tags/${version}.tar.gz"
+checksum=fd8b20fac611dde47d0213149529ca863991878f131ec22f8c64d10ea91c7cc5
+provides="kf6-kunitconversion-${version}_${revision}"
+conflicts="kf6-kunitconversion"
+replaces="kf6-kunitconversion>=0"
+
+build_options="python"
+build_options_default="python"
+
+if [ "$CROSS_BUILD" ]; then
+	configure_args+=" -DECM_SHIBOKEN_ARCH=$XBPS_CROSS_RUST_TARGET"
+	configure_args+=" -DSYSROOT_INCLUDE_DIRS=$XBPS_CROSS_BASE/usr/include"
+fi
+export LLVM_INSTALL_DIR=/usr/lib/llvm/${_llvmver}
+
+case "$XBPS_TARGET_MACHINE" in
+	arm*) configure_args+=" -DSHIBOKEN_GENERATOR_EXTRA_FLAGS=--clang-option=-mfloat-abi=hard" ;;
+esac
+
+sonic-frameworks-unit-conversion-devel_package() {
+    provides="kf6-kunitconversion-devel-${version}_${revision}"
+    conflicts="kf6-kunitconversion-devel"
+    replaces="kf6-kunitconversion-devel>=0"    
+	depends="$makedepends ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove "usr/lib/*.so"
+	}
+}

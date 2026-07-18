@@ -1,0 +1,31 @@
+# Template file for 'sonic-frameworks-ui-components'
+pkgname=sonic-frameworks-ui-components
+version=6.28.0
+revision=1
+build_style=cmake
+hostmakedepends="extra-cmake-modules qt6-tools qt6-base
+ gettext kf6-kconfig"
+makedepends="kf6-kconfig-devel kf6-kcoreaddons-devel kf6-ki18n-devel
+ kf6-kio-devel kf6-kxmlgui-devel"
+short_desc="Plugin framework for user interface components"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-2.1-or-later"
+homepage="https://github.com/Sonic-DE/sonic-frameworks-ui-components"
+distfiles="https://github.com/Sonic-DE/sonic-frameworks-ui-components/archive/refs/tags/${version}.tar.gz"
+checksum=aa050909f8a74086c8a513ce6bcc39de2150cccf7327fde512c26dec904a6d82
+provides="kf6-kparts-${version}_${revision}"
+conflicts="kf6-kparts"
+replaces="kf6-kparts>=0"
+
+sonic-frameworks-ui-components-devel_package() {
+    provides="kf6-kparts-devel-${version}_${revision}"
+    conflicts="kf6-kparts-devel"
+    replaces="kf6-kparts-devel>=0"    
+	depends="$makedepends ${sourcepkg}>=${version}_${revision}"
+	short_desc+=" - development files"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove "usr/lib/*.so"
+	}
+}

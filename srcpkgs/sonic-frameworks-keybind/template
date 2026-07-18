@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-keybind'
 pkgname=sonic-frameworks-keybind
-version=6.27.0
+version=6.28.0
 revision=1
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base doxygen"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only OR LGPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-keybind"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-keybind/archive/refs/tags/${version}.tar.gz"
-checksum=d1edb69cee5ca8b6ca5177348f3e66c35da7f59f9bbbc8d1ee21a2d083e6680f
+checksum=c41a6da76284f26b1d6a6d855e2feadf918a3d23906c257e5b8e2f04b9e1d30b
 provides="kf6-kglobalaccel-${version}_${revision}"
 conflicts="kf6-kglobalaccel"
 replaces="kf6-kglobalaccel>=0"

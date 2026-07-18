@@ -1,0 +1,10 @@
+# Template file for 'sonic-silver'
+pkgname=sonic-silver
+version=6.7.3
+revision=1
+metapackage=yes
+depends="breeze-icons sonic-silver-qt5 sonic-silver-qt6"
+short_desc="Artwork, styles and assets for the Silver visual style of Sonic Desktop"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Public Domain"
+homepage="https://github.com/Sonic-DE/sonic-silver"

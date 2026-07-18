@@ -1,6 +1,6 @@
 # Template file for 'sonic-screen-library'
 pkgname=sonic-screen-library
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-screen-library"
 distfiles="https://github.com/Sonic-DE/sonic-screen-library/archive/refs/tags/${version}.tar.gz"
-checksum=4b843a9fde8a6bc808e3583eb90d40af8bdfb3f2481820d998093da55b1b5356
+checksum=868f0f5b18d0b56aa4e1551bc7503fcd210355890cc6f978e7fb363ef7917bf5
 conflicts="libkf6screen"
 provides="libkf6screen-${version}_${revision}"
 replaces="libkf6screen>=0"

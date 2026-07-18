@@ -1,6 +1,6 @@
 # Template file for 'sonic-keybind-daemon'
 pkgname=sonic-keybind-daemon
-version=6.7.2
+version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-globalacceld"
 distfiles="https://github.com/Sonic-DE/sonic-globalacceld/archive/refs/tags/${version}.tar.gz"
-checksum=878cc7ea1a762bf2d4fc963dcb7cb62cd7a9f39fe90754e40e132f1e0dfa8530
+checksum=10735cff2b6f7143a294888ac79bfa44a135811b320a198cc67eec90a8149632
 provides="kglobalacceld-${version}_${revision}"
 conflicts="kglobalacceld"
 replaces="kglobalacceld>=0"
