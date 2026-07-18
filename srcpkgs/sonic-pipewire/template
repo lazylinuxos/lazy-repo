@@ -5,11 +5,10 @@ revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml"
 hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools pkg-config
- pipewire wayland-devel qt6-declarative-host-tools"
-makedepends="ffmpeg6-devel sonic-frameworks-core-addons-devel kf6-kwayland-devel
- sonic-frameworks-internationalization-devel libva-devel libepoxy-devel pipewire-devel
- plasma-wayland-protocols
- wayland-devel qt6-declarative-devel qt6-base-private-devel"
+ pipewire qt6-declarative-host-tools"
+makedepends="ffmpeg6-devel libva-devel libepoxy-devel pipewire-devel
+ qt6-declarative-devel qt6-base-private-devel sonic-frameworks-core-addons-devel 
+ sonic-frameworks-internationalization-devel"
 depends="pipewire"
 short_desc="Components to use PipeWire in Qt projects"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

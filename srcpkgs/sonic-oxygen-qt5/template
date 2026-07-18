@@ -6,7 +6,7 @@ build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DBUILD_QT6=OFF"
 hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt5-devel qt5-qmake kconfig
  gettext kcoreaddons"
-makedepends="frameworkintegration-devel kwayland-devel kcmutils-devel kdoctools"
+makedepends="frameworkintegration-devel kcmutils-devel kdoctools"
 # For files in /usr/share
 depends="sonic-sonic-oxygen-qt6"
 short_desc="Classic style for Qt and Sonic applications"

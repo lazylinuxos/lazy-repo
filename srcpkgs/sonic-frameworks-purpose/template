@@ -5,9 +5,9 @@ revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base qt6-wayland-client
- qt6-declarative-host-tools gettext sonic-frameworks-settings sonic-frameworks-data-models
- accounts-qml-module sonic-frameworks-barcode sonic-frameworks-qml-bridge"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base qt6-declarative-host-tools
+ gettext accounts-qml-module sonic-frameworks-settings sonic-frameworks-data-models
+ sonic-frameworks-barcode sonic-frameworks-qml-bridge"
 makedepends="qt6-declarative-devel sonic-frameworks-core-addons-devel sonic-frameworks-internationalization-devel
  sonic-frameworks-quick-ui-devel sonic-frameworks-notifications-devel sonic-frameworks-io-devel
  sonic-accounts-integration-devel"

@@ -5,10 +5,8 @@ revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
-hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
- wayland-devel pkg-config"
-makedepends="plasma-wayland-protocols wayland-protocols
- libXScrnSaver-devel qt6-base-private-devel"
+hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base pkg-config"
+makedepends="libXScrnSaver-devel qt6-base-private-devel"
 short_desc="Framework for detection and notification of device idle time"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"

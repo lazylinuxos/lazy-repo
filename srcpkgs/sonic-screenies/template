@@ -5,8 +5,7 @@ revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
- qt6-declarative-host-tools gettext wayland-devel sonic-frameworks-doctools sonic-frameworks-settings
- plasma-wayland-protocols"
+ qt6-declarative-host-tools gettext sonic-frameworks-doctools sonic-frameworks-settings"
 makedepends="qt6-base-private-devel qt6-declarative-devel qt6-multimedia-devel
  sonic-frameworks-core-addons-devel
  sonic-frameworks-widgets-addons-devel
@@ -24,7 +23,6 @@ makedepends="qt6-base-private-devel qt6-declarative-devel qt6-multimedia-devel
  sonic-frameworks-barcode-devel
  sonic-frameworks-crash-handler-devel
  sonic-quick-image-editor-devel
- wayland-devel
  layer-shell-qt-devel
  sonic-pipewire-devel
  libopencv-devel
