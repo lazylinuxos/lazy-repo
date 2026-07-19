@@ -16,7 +16,7 @@ provides="polkit-qt6-${version}_${revision}"
 conflicts="polkit-qt6"
 replaces="polkit-qt6>=0"
 
-polkit-qt6-devel_package() {
+sonic-polkit-devel_package() {
     provides="polkit-qt6-devel-${version}_${revision}"
     conflicts="polkit-qt6-devel"
     replaces="polkit-qt6-devel>=0"    

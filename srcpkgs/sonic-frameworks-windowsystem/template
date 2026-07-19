@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-windowsystem'
 pkgname=sonic-frameworks-windowsystem
-version=6.28.0
+version=6.28.0.1
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only OR LGPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-windowsystem"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-windowsystem/archive/refs/tags/${version}.tar.gz"
-checksum=2bf3df481df6f3e2ed30c93dd1445faa7a056fc3e582297d38ddf8e7af5be288
+checksum=2e5d7fd3ade7cf5f0792cd44b0fd585230a19f23359a681bf34995ab50af0e33
 provides="kf6-kwindowsystem-${version}_${revision}"
 conflicts="kf6-kwindowsystem"
 replaces="kf6-kwindowsystem>=0"

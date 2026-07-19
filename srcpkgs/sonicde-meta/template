@@ -10,7 +10,7 @@ depends="aurorae bluedevil breeze sonic-silver-gtk flatpak-kcm sonic-activity-ma
  sonic-thunderbolt sonic-vault sonic-polkit-agent powerdevil print-manager sonic-audio-applet-pulse
  sonic-network-manager sonic-win sonic-desktop-interface sonic-screen sonic-silver-theme sddm-kcm
  sonic-silver-sddm sonic-keybind-daemon sonic-activities sonic-system-info sonic-workspace-x11 
- sonic-workspace-wallpapers sonic-screenies systemsettings xdg-desktop-portal-kde "
+ sonic-workspace-wallpapers sonic-screenies systemsettings xdg-desktop-portal-sonicde "
 # sonic-audio-applet-pulse sonic-network-manager sonic-workspace-addons sonic-login-manager
 short_desc="Meta package for Sonic Desktop Environment (X11-focused KDE fork)"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

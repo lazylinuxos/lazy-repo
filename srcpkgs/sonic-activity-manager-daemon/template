@@ -3,7 +3,8 @@ pkgname=sonic-activity-manager-daemon
 version=6.7.3
 revision=1
 build_style=cmake
-configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
+configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools sonic-frameworks-settings"
 makedepends="sonic-frameworks-io-devel sonic-frameworks-keybind-devel sonic-frameworks-xml-gui-devel
  boost-headers qt6-base-private-devel sonic-frameworks-crash-handler-devel sonic-frameworks-dbus-devel"

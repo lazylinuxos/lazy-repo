@@ -4,11 +4,12 @@ version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DBUILD_QT6=OFF"
-hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt5-devel qt5-qmake kconfig
- gettext kcoreaddons"
-makedepends="frameworkintegration-devel kcmutils-devel kdoctools"
+hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt5-devel qt5-qmake
+ sonic-frameworks-settings gettext sonic-frameworks-core-addons"
+makedepends="frameworkintegration-devel sonic-frameworks-settings-utils-devel
+ sonic-frameworks-doctools-devel"
 # For files in /usr/share
-depends="sonic-sonic-oxygen-qt6"
+depends="sonic-oxygen-qt6"
 short_desc="Classic style for Qt and Sonic applications"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
