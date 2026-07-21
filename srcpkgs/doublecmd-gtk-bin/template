@@ -1,6 +1,6 @@
 # Template file for 'doublecmd-gtk-bin'
 pkgname=doublecmd-gtk-bin
-version=1.1.32
+version=1.2.7
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="http://doublecmd.sourceforge.net/"
 distfiles="https://github.com/doublecmd/doublecmd/releases/download/v${version}/doublecmd-${version}.gtk2.x86_64.tar.xz"
-checksum="0f775dd462ac5c7aea6b8c35d61efe9851d5ee19b0d05f07cf404c11dfb3e307"
+checksum="dddaa19ea5ecd87c1ce2b0d24749c014e2a5878e4de9c33629c37cc7d1ac6a2b"
 nopie=yes
 noshlibprovides=yes
 
