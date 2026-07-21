@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-pseudo-terminal'
 pkgname=sonic-frameworks-pseudo-terminal
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 configure_args="-DUTEMPTER_EXECUTABLE=/usr/lib/utempter/utempter"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-pseudo-terminal"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-pseudo-terminal/archive/refs/tags/${version}.tar.gz"
-checksum=f62b5a214893d641e978ddadfa1f4477a30a2c7feed96abcbf56b13aed601714
+checksum=ea94c8918e764b1b0ac220c6ef3668058481724338accd143b276bb5a74b390c
 provides="kf6-kpty-${version}_${revision}"
 conflicts="kf6-kpty"
 replaces="kf6-kpty>=0"

@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-data-models'
 pkgname=sonic-frameworks-data-models
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-data-models"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-data-models/archive/refs/tags/${version}.tar.gz"
-checksum=b681bf958e7a1888098203105827ef9807fa6b71c56b5d275f2e731dec8e2f21
+checksum=efdc35fd2232ed43f59e61030f14c10592c640e01467f1a9f8d166f4cb7ef45e
 provides="kf6-kitemmodels-${version}_${revision}"
 conflicts="kf6-kitemmodels"
 replaces="kf6-kitemmodels>=0"

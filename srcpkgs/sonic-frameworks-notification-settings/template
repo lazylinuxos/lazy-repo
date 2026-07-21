@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-notification-settings'
 pkgname=sonic-frameworks-notification-settings
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-notification-settings"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-notification-settings/archive/refs/tags/${version}.tar.gz"
-checksum=add1afe3e9cb7a347c54361927dcdd4e4c1a6d5865ca5a801495e86cab34f1e2
+checksum=02635f11e7a94a03b121db750f685283692a462eba0d2a08bc5093aa09f500bb
 provides="kf6-knotifyconfig-${version}_${revision}"
 conflicts="kf6-knotifyconfig"
 replaces="kf6-knotifyconfig>=0"

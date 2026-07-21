@@ -4,7 +4,8 @@ version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
- -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
+ -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools gettext python3
  sonic-frameworks-settings sonic-frameworks-auth-tools sonic-frameworks-settings-utils"
 makedepends="sonic-frameworks-settings-utils-devel sonic-plasma5-support-library-devel sonic-frameworks-settings-devel

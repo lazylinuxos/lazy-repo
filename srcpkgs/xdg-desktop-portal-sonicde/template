@@ -3,6 +3,7 @@ pkgname=xdg-desktop-portal-sonicde
 version=6.7.3.1
 revision=1
 build_style=cmake
+configure_args="-DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools gettext
  qt6-declarative-host-tools pkg-config sonic-frameworks-settings"
 makedepends="qt6-base-devel qt6-declarative-devel sonic-frameworks-qml-bridge-devel sonic-frameworks-quick-ui-devel
@@ -11,7 +12,7 @@ makedepends="qt6-base-devel qt6-declarative-devel sonic-frameworks-qml-bridge-de
  sonic-frameworks-settings-devel sonic-frameworks-internationalization-devel sonic-frameworks-gui-addons-devel
  qt6-base-private-devel qt6-declarative-devel sonic-frameworks-io-devel sonic-frameworks-notifications-devel
  sonic-frameworks-app-info-devel sonic-frameworks-widgets-addons-devel sonic-frameworks-windowsystem-devel
- libepoxy-devel pipewire-devel libglib-devel"
+ libepoxy-devel pipewire-devel libglib-devel libgomp-devel libei-devel"
 depends="xdg-desktop-portal sonic-workspace"
 checkdepends="dbus python3-gobject"
 short_desc="Backend implementation for xdg-desktop-portal that is using Qt/Sonic"
@@ -19,7 +20,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/Sonic-DE/xdg-desktop-portal-sonicde"
 distfiles="https://github.com/Sonic-DE/xdg-desktop-portal-sonicde/archive/refs/tags/${version}.tar.gz"
-checksum=f31260bc82709e4fb5373524e471c5a23114d6d88ab98f032a6296c0ac20f278
+checksum=7b91b73fc4078a4319fe53945069fe4e278d0cda119c552a310ef224f7a735b4
 provides="xdg-desktop-portal-kde-${version}_${revision}"
 conflicts="xdg-desktop-portal-kde"
 replaces="xdg-desktop-portal-kde>=0"

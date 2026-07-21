@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-svg'
 pkgname=sonic-frameworks-svg
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-svg"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-svg/archive/refs/tags/${version}.tar.gz"
-checksum=28948fcbaf47e41002e6f169f83b338d23e4fa77b9a06b0ec458a15376782376
+checksum=de72fc758d4dd3c7047d1c62a0ed6f9923e252bbac3971b086e456f44a6cf52a
 provides="kf6-ksvg-${version}_${revision}"
 conflicts="kf6-ksvg"
 replaces="kf6-ksvg>=0"

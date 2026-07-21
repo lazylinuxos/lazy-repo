@@ -4,7 +4,8 @@ version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
- -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
+ -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools gettext pkg-config sonic-frameworks-settings"
 makedepends="sonic-frameworks-networkmanager-devel sonic-frameworks-device-integration-devel libnl3-devel
  sonic-frameworks-io-devel sonic-frameworks-dbus-devel sonic-system-monitor-library-devel libsensors-devel sonic-frameworks-crash-handler-devel"

@@ -4,7 +4,8 @@ version=6.7.3
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF
- -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
+ -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt6-tools xsettingsd
  sassc gettext sonic-frameworks-core-addons sonic-frameworks-settings qt6-base"
 makedepends="sonic-frameworks-settings-utils-devel sonic-frameworks-addons-downloader-devel gtk+3-devel

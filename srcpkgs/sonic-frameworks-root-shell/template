@@ -1,8 +1,9 @@
 # Template file for 'sonic-frameworks-root-shell'
 pkgname=sonic-frameworks-root-shell
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
+configure_args="-DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
  gettext sonic-frameworks-settings"
 makedepends="sonic-frameworks-settings-devel sonic-frameworks-core-addons-devel sonic-frameworks-internationalization-devel
@@ -12,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-root-shell"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-root-shell/archive/refs/tags/${version}.tar.gz"
-checksum=3de3c8a4a6f4cb041f364927d7539eacfa987e122083ec3f4cd4a5d17060be42
+checksum=fba2b8ba5851622505b407626a8944f2dd461d3d2e81291fd650834944c4612f
 provides="kf6-kdesu-${version}_${revision}"
 conflicts="kf6-kdesu"
 replaces="kf6-kdesu>=0"

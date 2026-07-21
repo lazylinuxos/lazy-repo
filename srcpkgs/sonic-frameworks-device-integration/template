@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-device-integration'
 pkgname=sonic-frameworks-device-integration
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base flex pkg-config"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-device-integration"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-device-integration/archive/refs/tags/${version}.tar.gz"
-checksum=038a098a2c741f95d9a1ad54528da1a7c2a2254f6122b11fb93c5d2f92466521
+checksum=5242627deca4db94c8e86c56ec3e043888d3190229ce88aca181745478d98d35
 provides="kf6-solid-${version}_${revision}"
 conflicts="kf6-solid"
 replaces="kf6-solid>=0"

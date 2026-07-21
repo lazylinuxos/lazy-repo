@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-ui-components'
 pkgname=sonic-frameworks-ui-components
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-ui-components"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-ui-components/archive/refs/tags/${version}.tar.gz"
-checksum=aa050909f8a74086c8a513ce6bcc39de2150cccf7327fde512c26dec904a6d82
+checksum=778922e02872dd0891cc04e07e3d128c1e8be3a8e68025e4cab1ed08084dc0aa
 provides="kf6-kparts-${version}_${revision}"
 conflicts="kf6-kparts"
 replaces="kf6-kparts>=0"

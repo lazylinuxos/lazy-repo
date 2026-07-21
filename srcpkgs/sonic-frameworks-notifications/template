@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-notifications'
 pkgname=sonic-frameworks-notifications
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 _llvmver=21
@@ -18,7 +18,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-notifications"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-notifications/archive/refs/tags/${version}.tar.gz"
-checksum=d5026aa79c0e87f1a63311704a51cf5850d235f31230abdff0008719412cb34b
+checksum=dddef2e2b17c23f23059abffd27f4cdfe29aae16efb1bd7d94a682b1db1efc8f
 provides="kf6-knotifications-${version}_${revision}"
 conflicts="kf6-knotifications"
 replaces="kf6-knotifications>=0"

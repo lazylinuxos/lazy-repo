@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-zeroconf'
 pkgname=sonic-frameworks-zeroconf
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base "
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-zeroconf"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-zeroconf/archive/refs/tags/${version}.tar.gz"
-checksum=9a83cd4057100bc863442825cbecfc45a0af469ba66afb05aa65c7566665844d
+checksum=4ed0f5df7ef34454220ff2bbf250e418a35d85a4136846a5da7b493fb1e2924c
 provides="kf6-kdnssd-${version}_${revision}"
 conflicts="kf6-kdnssd"
 replaces="kf6-kdnssd>=0"

@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-io'
 pkgname=sonic-frameworks-io
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
@@ -21,7 +21,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-only OR LGPL-3.0-only"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-io"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-io/archive/refs/tags/${version}.tar.gz"
-checksum=11f1485039124a4a88f07da5a52c338aeb7314e48520d9c62dfcec27d202fa3f
+checksum=0949ce55ffdedafaaaaf75485966f594b84750be1879f7d63a114b5bba129196
 provides="kf6-kio-${version}_${revision}"
 conflicts="kf6-kio"
 replaces="kf6-kio>=0"

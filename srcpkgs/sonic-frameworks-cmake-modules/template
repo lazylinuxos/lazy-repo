@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-cmake-modules'
 pkgname=sonic-frameworks-cmake-modules
-version=6.28.0
+version=6.27.0.1
 revision=1
 build_style=cmake
 configure_args="-DCMAKE_INSTALL_PREFIX=/usr -DBUILD_HTML_DOCS=ON
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-cmake-modules"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-cmake-modules/archive/refs/tags/${version}.tar.gz"
-checksum=0ca6a8123252e2865e0e6dd58079d14328e25de9b188171f8c9862b6f32d28d1
+checksum=b8e75cf07ef7b87aec78c0647d2069e7d136730451123734a3688486415fa2d6
 provides="extra-cmake-modules-${version}_${revision}"
 conflicts="extra-cmake-modules"
 replaces="extra-cmake-modules>=0"

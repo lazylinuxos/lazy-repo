@@ -10,14 +10,11 @@ hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools gettext
 makedepends="qt6-base-devel
  sonic-frameworks-io-devel sonic-frameworks-internationalization-devel
  sonic-frameworks-core-addons-devel sonic-frameworks-settings-devel
- sonic-frameworks-crash-handler-devel
- sonic-frameworks-dbus-devel
- sonic-frameworks-runner-devel
- sonic-frameworks-notifications-devel sonic-frameworks-file-metadata-devel
- sonic-frameworks-progress-ui-devel
- sonic-frameworks-app-info-devel
- sonic-frameworks-status-notification-devel sonic-frameworks-purpose-devel
- sonic-activities-devel sonic-workspace-devel"
+ sonic-frameworks-crash-handler-devel sonic-frameworks-dbus-devel
+ sonic-frameworks-runner-devel sonic-frameworks-notifications-devel
+ sonic-frameworks-file-metadata-devel sonic-frameworks-progress-ui-devel
+ sonic-frameworks-app-info-devel sonic-frameworks-status-notification-devel
+ sonic-frameworks-purpose-devel sonic-activities-devel sonic-workspace-devel"
 short_desc="Components necessary to integrate browsers into the Sonic Desktop"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"

@@ -1,5 +1,0 @@
-case "$ACTION" in
-pre)
-    rm -rf /usr/share/siproxylin/sip_dev_paths*
-    ;;
-esac

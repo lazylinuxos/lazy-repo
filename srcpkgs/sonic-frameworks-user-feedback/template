@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-user-feedback'
 pkgname=sonic-frameworks-user-feedback
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 configure_args="-DKDE_INSTALL_QMLDIR=lib/qt6/qml
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-user-feedback"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-user-feedback/archive/refs/tags/${version}.tar.gz"
-checksum=cad487827d2f045d7792c61960cd0e1bd7ab8537d6295961b8ac32c8427116e4
+checksum=82b5d06029fb6f815ddfc403c7bc849f3f751720933414d189e0000e3e8ba14a
 provides="kf6-kuserfeedback-${version}_${revision}"
 conflicts="kf6-kuserfeedback"
 replaces="kf6-kuserfeedback>=0"

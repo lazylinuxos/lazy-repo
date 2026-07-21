@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-feeds'
 pkgname=sonic-frameworks-feeds
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-feeds"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-feeds/archive/refs/tags/${version}.tar.gz"
-checksum=fd00cbbef91856cdc762fa0bb516a70ba12c599c17a526240531ed2245d805f5
+checksum=5950e4d1f1baaf2dfd97bf6a0e5d2f1cbcfd3177992a0647a6c449c3ecb255a9
 provides="kf6-syndication-${version}_${revision}"
 conflicts="kf6-syndication"
 replaces="kf6-syndication>=0"

@@ -7,8 +7,9 @@ configure_args="-DBUILD_TESTING=OFF -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DGLIBC_LOCALE_GEN=OFF -DKDE_INSTALL_LIBEXECDIR=libexec
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins -DKF6_HOST_TOOLING=/usr/lib/cmake"
 hostmakedepends="iso-codes pkg-config gettext qt6-base qt6-tools qt6-declarative-host-tools
- qt6-shadertools sonic-frameworks-settings-utils sonic-frameworks-settings sonic-frameworks-package SPIRV-Tools sonic-frameworks-cmake-modules
- sonic-frameworks-doctools sonic-frameworks-windowsystem sonic-frameworks-auth-tools"
+ qt6-shadertools sonic-frameworks-settings-utils sonic-frameworks-settings sonic-frameworks-package
+ SPIRV-Tools sonic-frameworks-cmake-modules sonic-frameworks-doctools sonic-frameworks-windowsystem
+ sonic-frameworks-auth-tools"
 makedepends="accountsservice-devel AppStream-qt-devel dbus-devel fontconfig-devel freetype-devel
  libglib-devel icu-devel sonic-frameworks-archive-devel sonic-frameworks-bookmarks-devel sonic-frameworks-settings-utils-devel sonic-frameworks-color-scheme-devel
  sonic-frameworks-autocomplete-devel sonic-frameworks-settings-devel sonic-frameworks-settings-ui-devel sonic-frameworks-crash-handler-devel sonic-frameworks-dbus-devel
@@ -28,7 +29,7 @@ makedepends="accountsservice-devel AppStream-qt-devel dbus-devel fontconfig-deve
  sonic-frameworks-runner-devel sonic-frameworks-windowsystem-devel sonic-interface-libraries-devel sonic-system-monitor-library-devel
  sonic-win-devel sonic-night-light-devel sonic-screenlocker-devel sonic-screen-library-devel sonic-frameworks-doctools-devel
  xcb-util-devel xcb-util-cursor-devel xcb-util-image-devel zlib-devel phonon-devel sonic-polkit-devel qcoro-qt6-devel"
-depends="sonic-activity-manager-daemon sonic-terminal-tools sonic-frameworks-io-fuse sonic-system-stats iso-codes milou ocean-sound-theme
+depends="sonic-activity-manager-daemon sonic-frameworks-io-fuse sonic-system-stats iso-codes milou ocean-sound-theme
  sonic-qt-theme-bridge xmessage xrdb xdg-user-dirs sonic-frameworks-io-extras"
 short_desc="Sonic Plasma Workspace (X11-focused)"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

@@ -4,14 +4,14 @@ version=6.7
 revision=1
 metapackage=yes
 depends="aurorae bluedevil breeze sonic-silver-gtk flatpak-kcm sonic-activity-manager-daemon sonic-terminal-tools
- sonic-gtk-theme-bridge sonic-launcher-menu-edit sonic-pipewire sonic-rdp sonic-ssh-password-prompt sonic-system-stats sonic-frameworks-keyring-pam sonic-write-daemon milou
- ocean-sound-theme oxygen sonic-oxygen-sounds sonic-activities-stats sonic-browser-integration
- sonic-disks sonic-firewall sonic-qt-theme-bridge plasma-keyboard sonic-system-monitor
- sonic-thunderbolt sonic-vault sonic-polkit-agent powerdevil print-manager sonic-audio-applet-pulse
- sonic-network-manager sonic-win sonic-desktop-interface sonic-screen sonic-silver-theme sddm-kcm
- sonic-silver-sddm sonic-keybind-daemon sonic-activities sonic-system-info sonic-workspace-x11 
- sonic-workspace-wallpapers sonic-screenies systemsettings xdg-desktop-portal-sonicde "
-# sonic-audio-applet-pulse sonic-network-manager sonic-workspace-addons sonic-login-manager
+ sonic-gtk-theme-bridge sonic-launcher-menu-edit sonic-pipewire sonic-rdp sonic-ssh-password-prompt sonic-system-stats
+ sonic-frameworks-keyring-pam sonic-write-daemon milou ocean-sound-theme oxygen sonic-oxygen-sounds sonic-activities-stats
+ sonic-browser-integration sonic-disks sonic-firewall sonic-qt-theme-bridge plasma-keyboard sonic-system-monitor sonic-win
+ sonic-thunderbolt sonic-vault sonic-polkit-agent powerdevil print-manager sonic-audio-applet-pulse sonic-network-manager
+ sonic-desktop-interface sonic-screen sonic-silver-theme sddm-kcm sonic-silver-sddm sonic-keybind-daemon sonic-activities
+ sonic-system-info sonic-workspace-x11 sonic-workspace-wallpapers sonic-workspace-addons spectacle systemsettings
+ xdg-desktop-portal-sonicde"
+# sonic-workspace-addons sonic-login-manager
 short_desc="Meta package for Sonic Desktop Environment (X11-focused KDE fork)"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"

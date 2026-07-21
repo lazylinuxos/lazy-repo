@@ -12,14 +12,14 @@ license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-activities-stats"
 distfiles="https://github.com/Sonic-DE/sonic-activities-stats/archive/refs/tags/${version}.tar.gz"
 checksum=e18c48f9c657d21bdf3c3dd1acdcefd61ebe659f32af8835a7664de51f8225b0
-provides="sonic-activities-stats-${version}_${revision}"
-conflicts="sonic-activities-stats"
-replaces="sonic-activities-stats>=0"
+provides="plasma-activities-stats-${version}_${revision}"
+conflicts="plasma-activities-stats"
+replaces="plasma-activities-stats>=0"
 
 sonic-activities-stats-devel_package() {
-    provides="sonic-activities-stats-devel-${version}_${revision}"
-    conflicts="sonic-activities-stats-devel"
-    replaces="sonic-activities-stats-devel>=0"    
+    provides="plasma-activities-stats-devel-${version}_${revision}"
+    conflicts="plasma-activities-stats-devel"
+    replaces="plasma-activities-stats-devel>=0"    
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-progress-ui'
 pkgname=sonic-frameworks-progress-ui
-version=6.28.0
+version=6.27.0
 revision=2
 build_style=cmake
 _llvmver=21
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-progress-ui"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-progress-ui/archive/refs/tags/${version}.tar.gz"
-checksum=94cbf5cef58ae9f1f515d58cf858f584c2b1784f278ee70eddbe9b60c6c7fdf4
+checksum=b7f792e81ee0d4d3bbe23d40d5b951915155523de4175c063383f19134d3f851
 provides="kf6-kjobwidgets-${version}_${revision}"
 conflicts="kf6-kjobwidgets"
 replaces="kf6-kjobwidgets>=0"

@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-bookmarks'
 pkgname=sonic-frameworks-bookmarks
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base sonic-frameworks-settings"
@@ -11,15 +11,15 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-bookmarks"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-bookmarks/archive/refs/tags/${version}.tar.gz"
-checksum=c4d6a8934f38ff5a325bf69e9abcbad5c6ee70b6d6e1eb3d5e468a05bd9c52cf
+checksum=a03ced4e4ed87510e00d9dc31b7abcabc6f9eb00e1d5960246d408779e5712a9
 provides="kf6-kbookmarks-${version}_${revision}"
 conflicts="kf6-kbookmarks"
 replaces="kf6-kbookmarks>=0"
 
 sonic-frameworks-bookmarks-devel_package() {
-    provides="kf6-kbookmarks-${version}_${revision}"
-    conflicts="kf6-kbookmarks"
-    replaces="kf6-kbookmarks>=0"    
+    provides="kf6-kbookmarks-devel-${version}_${revision}"
+    conflicts="kf6-kbookmarks-devel"
+    replaces="kf6-kbookmarks-devel>=0"    
 	depends="${sourcepkg}>=${version}_${revision}
 	 sonic-frameworks-widgets-addons-devel qt6-base-devel"
 	short_desc+=" - development files"

@@ -1,11 +1,12 @@
 # Template file for 'sonic-frameworks-settings-utils'
 pkgname=sonic-frameworks-settings-utils
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 build_helper=qemu
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
- -DKDE_INSTALL_QMLDIR=lib/qt6/qml"
+ -DKDE_INSTALL_QMLDIR=lib/qt6/qml
+ -DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-tools qt6-base
  qt6-declarative-host-tools sonic-frameworks-settings"
 makedepends="sonic-frameworks-settings-ui-devel sonic-frameworks-core-addons-devel sonic-frameworks-io-devel
@@ -16,7 +17,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-settings-utils"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-settings-utils/archive/refs/tags/${version}.tar.gz"
-checksum=d52adb7b24b3c6aa61922fe339dbc8c774fa5c6d35e41cf2fd298d89713ffe0e
+checksum=14ec6fc42198f76cad26cebc7bdd9b803a5bee29fdd1618454e3b94551ea3cdd
 provides="kf6-kcmutils-${version}_${revision}"
 conflicts="kf6-kcmutils"
 replaces="kf6-kcmutils>=0"

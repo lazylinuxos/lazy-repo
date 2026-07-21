@@ -6,7 +6,7 @@ build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DBUILD_QT5=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
 hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt6-base qt6-tools gettext
- sonic-frameworks-settings"
+ sonic-frameworks-settings plasma-wayland-protocols"
 makedepends="sonic-frameworks-io-devel sonic-frameworks-xml-gui-devel sonic-frameworks-status-notification-devel
  libXcursor-devel sonic-silver-qt5 qt6-base-private-devel qt6-declarative-devel sonic-frameworks-settings-devel
  sonic-frameworks-settings-ui-devel sonic-frameworks-internationalization-devel sonic-frameworks-windowsystem-devel
@@ -17,7 +17,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-qt-theme-bridge"
 distfiles="https://github.com/Sonic-DE/sonic-qt-theme-bridge/archive/refs/tags/${version}.tar.gz"
-checksum=4281ad7caa115dd19b48cc4ed335d133d9fd86173a239e04852229ddc8765fd5
+checksum=83900df065177d5ba478856384ad1c59c4cdfed613a749165f520caa8318c45b
 provides="plasma-integration-${version}_${revision}"
 conflicts="plasma-integration"
 replaces="plasma-integration>=0"

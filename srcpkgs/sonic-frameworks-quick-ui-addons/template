@@ -9,10 +9,9 @@ hostmakedepends="sonic-frameworks-cmake-modules gettext qt6-base qt6-tools
  qt6-declarative-host-tools sonic-frameworks-settings"
 makedepends="qt6-base-devel qt6-declarative-devel
  sonic-frameworks-internationalization-devel sonic-frameworks-quick-ui-devel sonic-frameworks-settings-devel
- sonic-frameworks-core-addons-devel sonic-frameworks-gui-addons-devel
- sonic-frameworks-color-scheme-devel sonic-frameworks-crash-handler-devel
- sonic-frameworks-icon-themes-devel sonic-frameworks-keybind-devel
- qt6-base-private-devel"
+ sonic-frameworks-core-addons-devel sonic-frameworks-gui-addons-devel sonic-frameworks-color-scheme-devel
+ sonic-frameworks-crash-handler-devel sonic-frameworks-icon-themes-devel sonic-frameworks-keybind-devel
+ qt6-base-private-devel libgomp-devel"
 depends="sonic-frameworks-quick-ui sonic-frameworks-quick-desktop-style sonic-frameworks-settings sonic-frameworks-core-addons
  sonic-frameworks-icon-themes sonic-frameworks-data-models sonic-frameworks-spell-check"
 short_desc="Add-ons for the Sonic quick ui framework"

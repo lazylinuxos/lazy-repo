@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-dbus'
 pkgname=sonic-frameworks-dbus
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base "
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-dbus"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-dbus/archive/refs/tags/${version}.tar.gz"
-checksum=36f8a7e0c526f0e3db32bb2025fef9efd8b78beabc0f53929a8127b86e858cbb
+checksum=e14953f1914cc1bba4fcd780ad0674e22d509ae2311ccbbb0a984fa0840b339c
 make_check_pre="dbus-run-session"
 provides="kf6-kdbusaddons-${version}_${revision}"
 conflicts="kf6-kdbusaddons"

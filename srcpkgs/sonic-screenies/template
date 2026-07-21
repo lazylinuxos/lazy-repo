@@ -1,11 +1,11 @@
 # Template file for 'sonic-screenies'
 pkgname=sonic-screenies
-version=6.7.3
+version=6.7.3.1
 revision=1
 build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DKF6_HOST_TOOLING=/usr/lib/cmake"
-hostmakedepends="sonic-frameworks-cmake-modules qt6-tools qt6-base
- qt6-declarative-host-tools gettext sonic-frameworks-doctools sonic-frameworks-settings"
+hostmakedepends="pkg-config sonic-frameworks-cmake-modules qt6-tools qt6-base qt6-declarative-host-tools
+ gettext sonic-frameworks-doctools sonic-frameworks-settings plasma-wayland-protocols"
 makedepends="qt6-base-private-devel qt6-declarative-devel qt6-multimedia-devel
  sonic-frameworks-core-addons-devel
  sonic-frameworks-widgets-addons-devel
@@ -30,13 +30,15 @@ makedepends="qt6-base-private-devel qt6-declarative-devel qt6-multimedia-devel
  libxcb-devel
  xcb-util-devel
  xcb-util-image-devel
- xcb-util-cursor-devel"
+ xcb-util-cursor-devel
+ ffmpeg-devel
+ pulseaudio-devel"
 short_desc="Screenshot capture utility"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-screenies"
 distfiles="https://github.com/Sonic-DE/sonic-screenies/archive/refs/tags/${version}.tar.gz"
-checksum=edd66c8cd543fc6bfc20f995431f6adf1b4e20779c02a8f3a229e065bdbdca85
+checksum=cab20758f780b8c7434a8d88f2d96b556f125c6797d24b81a92745f4d3bc6741
 provides="spectacle-${version}_${revision}"
 conflicts="spectacle"
 replaces="spectacle>=0"

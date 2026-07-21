@@ -13,10 +13,11 @@ makedepends="sonic-workspace-devel sonic-frameworks-networkmanager-devel sonic-c
  sonic-frameworks-modemmanager-devel sonic-frameworks-device-integration-devel sonic-frameworks-doctools-devel
  sonic-frameworks-package-devel sonic-frameworks-settings-utils-devel sonic-interface-libraries-devel
  qt6-base-devel qt6-declarative-devel sonic-frameworks-color-scheme-devel sonic-frameworks-autocomplete-devel
- sonic-frameworks-core-addons-devel sonic-frameworks-dbus-devel sonic-frameworks-io-devel
- sonic-frameworks-internationalization-devel sonic-frameworks-notifications-devel sonic-frameworks-app-info-devel sonic-frameworks-keyring-devel
- sonic-frameworks-widgets-addons-devel sonic-frameworks-windowsystem-devel sonic-frameworks-svg-devel
- NetworkManager-devel qt6-base-private-devel qcoro-qt6-devel
+ sonic-frameworks-core-addons-devel sonic-frameworks-dbus-devel sonic-frameworks-io-devel sonic-frameworks-quick-ui-devel
+ sonic-frameworks-quick-ui-addons-devel sonic-frameworks-internationalization-devel sonic-frameworks-notifications-devel
+ sonic-frameworks-app-info-devel sonic-frameworks-keyring-devel sonic-frameworks-widgets-addons-devel sonic-frameworks-svg-devel
+ sonic-frameworks-windowsystem-devel sonic-frameworks-barcode-devel sonic-frameworks-quick-charts-devel NetworkManager-devel
+ qt6-base-private-devel qcoro-qt6-devel qtkeychain-qt6-devel libgomp-devel
  $(vopt_if openconnect 'openconnect-devel qt6-webengine-devel')"
 depends="mobile-broadband-provider-info sonic-frameworks-quick-ui sonic-frameworks-barcode"
 short_desc="SonicDE applet written in QML for managing network connections"

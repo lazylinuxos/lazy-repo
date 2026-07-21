@@ -1,6 +1,6 @@
 # Template file for 'sonic-daemon'
 pkgname=sonic-daemon
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake"
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-daemon"
 distfiles="https://github.com/Sonic-DE/sonic-daemon/archive/refs/tags/${version}.tar.gz"
-checksum=7b96917d96a21a9b79aed741443ab82a12bac7b5421974ecf313db0a0ba2fd43
+checksum=a2e2c44be3de5cb2eb60500a43ae26d93234f105a8f3ab7f674220c04c993b6d
 provides="kf6-kded-${version}_${revision}"
 conflicts="kf6-kded"
 replaces="kf6-kded>=0"

@@ -5,8 +5,8 @@ revision=1
 build_style=qmake
 configure_args="LIBDIR=/usr/lib .."
 conf_files="/etc/signond.conf"
-hostmakedepends="pkg-config doxygen qt6-base"
-makedepends="qt6-base-devel"
+hostmakedepends="pkg-config doxygen qt6-base qt5-qmake qt5-host-tools"
+makedepends="qt6-base-devel qt5-devel"
 short_desc="Daemon providing SSO over D-Bus for the gSSO framework"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
@@ -18,19 +18,19 @@ conflicts="signond"
 replaces="signond>=0"
 
 post_extract() {
-	mkdir -p build-qt6
+	mkdir -p build-qt5
 }
 
 pre_configure() {
-	build_wrksrc=build-qt6
+	build_wrksrc=build-qt5
 }
 
 do_build() {
-	make -C build-qt6 ${make_jobs}
+	make -C build-qt5 ${make_jobs}
 }
 
 do_install() {
-	make -C build-qt6 install DESTDIR=${DESTDIR} PREFIX=/usr \
+	make -C build-qt5 install DESTDIR=${DESTDIR} PREFIX=/usr \
 		INSTALL_ROOT=${DESTDIR} STRIP=true
 }
 

@@ -8,7 +8,7 @@ configure_args="-DBUILD_WITH_QT6=ON -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
 hostmakedepends="sonic-frameworks-cmake-modules sonic-frameworks-settings qt6-base qt6-tools
  qt6-declarative-host-tools"
-makedepends="sonic-frameworks-settings-devel qt6-base-devel qt6-declarative-devel"
+makedepends="sonic-frameworks-settings-devel qt6-base-devel qt6-declarative-devel libopencv-devel"
 short_desc="QtQuick-based image editing components"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"

@@ -3,6 +3,7 @@ pkgname=sonic-frameworks-keyring-pam
 version=6.7.3
 revision=1
 build_style=cmake
+configure_args="-DKDE_INSTALL_LIBEXECDIR=libexec"
 hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools pkg-config"
 makedepends="libgcrypt-devel pam-devel sonic-frameworks-keyring-devel"
 depends="socat pam"

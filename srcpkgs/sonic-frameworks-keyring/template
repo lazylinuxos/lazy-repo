@@ -1,6 +1,6 @@
 # Template file for 'sonic-frameworks-keyring'
 pkgname=sonic-frameworks-keyring
-version=6.28.0
+version=6.27.0
 revision=1
 build_style=cmake
 configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake"
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-keyring"
 distfiles="https://github.com/Sonic-DE/sonic-frameworks-keyring/archive/refs/tags/${version}.tar.gz"
-checksum=f867b7f838ee4d26e7ddc761b2c2904a6c1859ea9cc7825fec501540b0d15504
+checksum=c58fc792fc8fb68e7b4f07c5eefabcb1a4f09975eeb775159267fc8ea49fd201
 provides="kf6-kwallet-${version}_${revision}"
 conflicts="kf6-kwallet"
 replaces="kf6-kwallet>=0"
