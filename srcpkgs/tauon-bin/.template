@@ -7,16 +7,11 @@ short_desc="Modern music player"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://tauonmusicbox.rocks"
-distfiles="https://github.com/Taiko2k/Tauon/releases/download/v${version}/TauonMusicBox-linux.zip"
+distfiles="https://github.com/Taiko2k/Tauon/releases/download/v${version}/TauonMusicBox-linux.7z"
 checksum=${SHA256}
 nopie=yes
 noverifyrdeps=yes
 noshlibprovides=yes
-
-post_extract() {
-	bsdtar -xf TauonMusicBox-linux.7z
-	rm TauonMusicBox-linux.7z
-}
 
 do_install() {
 	vmkdir usr/lib/tauon
