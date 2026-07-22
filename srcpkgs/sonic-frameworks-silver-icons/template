@@ -28,7 +28,7 @@ fi
 sonic-frameworks-silver-icons-library_package() {
 	provides="libbreeze-icons-${version}_${revision}"
 	conflicts="libbreeze-icons"
-	replaces="libbreeze-icons>=0"    
+	replaces="libbreeze-icons>=0"
 	pkg_install() {
 		vmove "usr/lib/*.so.*"
 	}
@@ -37,7 +37,7 @@ sonic-frameworks-silver-icons-library_package() {
 sonic-frameworks-silver-icons-library-devel_package() {
 	provides="libbreeze-icons-devel-${version}_${revision}"
 	conflicts="libbreeze-icons-devel"
-	replaces="libbreeze-icons-devel>=0"    
+	replaces="libbreeze-icons-devel>=0"
 	depends="libbreeze-icons>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

@@ -13,7 +13,7 @@ makedepends="qt6-declarative-devel sonic-frameworks-core-addons-devel sonic-fram
  sonic-frameworks-quick-ui-devel sonic-frameworks-notifications-devel sonic-frameworks-io-devel
  sonic-accounts-integration-devel libgomp-devel"
 depends="accounts-qml-module sonic-frameworks-barcode sonic-frameworks-qml-bridge sonic-frameworks-data-models"
-short_desc="Framework for providing abstractions to get the developer's purposes fulfilled"
+short_desc="Framework for providing abstractions to get the dev's purposes fulfilled"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/Sonic-DE/sonic-frameworks-purpose"
@@ -26,7 +26,7 @@ replaces="kf6-purpose>=0"
 sonic-frameworks-purpose-devel_package() {
 	provides="kf6-purpose-devel-${version}_${revision}"
 	conflicts="kf6-purpose-devel"
-	replaces="kf6-purpose-devel>=0"    
+	replaces="kf6-purpose-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision} sonic-frameworks-core-addons-devel"
 	short_desc+=" - development files"
 	pkg_install() {

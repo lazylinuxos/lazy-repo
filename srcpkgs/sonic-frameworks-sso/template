@@ -35,9 +35,9 @@ do_install() {
 }
 
 sonic-frameworks-sso-devel_package() {
-    provides="signond-devel-${version}_${revision}"
-    conflicts="signond-devel"
-    replaces="signond-devel>=0"    
+	provides="signond-devel-${version}_${revision}"
+	conflicts="signond-devel"
+	replaces="signond-devel>=0"
 	short_desc+=" - development files"
 	depends="qt6-base-devel ${sourcepkg}>=${version}_${revision}"
 	pkg_install() {

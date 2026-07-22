@@ -20,7 +20,7 @@ replaces="kf6-kpty>=0"
 sonic-frameworks-pseudo-terminal-devel_package() {
 	provides="kf6-kpty-devel-${version}_${revision}"
 	conflicts="kf6-kpty-devel"
-	replaces="kf6-kpty-devel>=0"    
+	replaces="kf6-kpty-devel>=0"
 	depends="$makedepends ${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

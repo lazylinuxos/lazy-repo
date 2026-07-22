@@ -36,7 +36,7 @@ esac
 sonic-frameworks-progress-ui-devel_package() {
 	provides="kf6-kjobwidgets-devel-${version}_${revision}"
 	conflicts="kf6-kjobwidgets-devel"
-	replaces="kf6-kjobwidgets-devel>=0"    
+	replaces="kf6-kjobwidgets-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision} qt6-base-devel
 	 sonic-frameworks-core-addons-devel"
 	short_desc+=" - development files"

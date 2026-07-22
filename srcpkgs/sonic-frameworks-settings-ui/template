@@ -27,7 +27,7 @@ do_check() {
 sonic-frameworks-settings-ui-devel_package() {
 	provides="kf6-kconfigwidgets-devel-${version}_${revision}"
 	conflicts="kf6-kconfigwidgets-devel"
-	replaces="kf6-kconfigwidgets-devel>=0"    
+	replaces="kf6-kconfigwidgets-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision} sonic-frameworks-text-codec-devel
 	 sonic-frameworks-settings-devel sonic-frameworks-widgets-addons-devel sonic-frameworks-color-scheme-devel
 	 qt6-base-devel"

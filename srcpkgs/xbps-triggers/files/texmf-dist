@@ -25,7 +25,7 @@ targets)
 	;;
 run)
 	if [ -x ${texhash} ]; then
-		echo "Updating texmf-dist hashes..." 
+		echo "Updating texmf-dist hashes..."
 		${texhash} 2>&1 >/dev/null || true # silence strange errors
 	fi
 	if [ -x ${fmtutil} ]; then

@@ -35,9 +35,9 @@ do_install() {
 }
 
 sonic-qt-accounts-library-devel_package() {
-    provides="libaccounts-qt-devel-${version}_${revision}"
-    conflicts="libaccounts-qt-devel"
-    replaces="libaccounts-qt-devel>=0"    
+	provides="libaccounts-qt-devel-${version}_${revision}"
+	conflicts="libaccounts-qt-devel"
+	replaces="libaccounts-qt-devel>=0"
 	short_desc+=" - development files"
 	depends="qt6-base-devel libaccounts-qt6>=${version}_${revision}"
 	pkg_install() {

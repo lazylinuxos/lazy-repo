@@ -22,7 +22,7 @@ replaces="kf6-kdeclarative>=0"
 sonic-frameworks-qml-bridge-devel_package() {
 	provides="kf6-kdeclarative-devel-${version}_${revision}"
 	conflicts="kf6-kdeclarative-devel"
-	replaces="kf6-kdeclarative-devel>=0"    
+	replaces="kf6-kdeclarative-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision} sonic-frameworks-settings-devel
 	 qt6-declarative-devel"
 	short_desc+=" - development files"

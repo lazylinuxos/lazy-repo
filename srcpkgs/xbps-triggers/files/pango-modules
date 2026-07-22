@@ -9,10 +9,10 @@
 # the removal of the 'pango' package
 #
 # Arguments:   $ACTION = [run/targets]
-#              $TARGET = [post-remove]
-#              $PKGNAME
-#              $VERSION
-#              $UPDATE = [yes/no]
+#			  $TARGET = [post-remove]
+#			  $PKGNAME
+#			  $VERSION
+#			  $UPDATE = [yes/no]
 #
 ACTION="$1"
 TARGET="$2"

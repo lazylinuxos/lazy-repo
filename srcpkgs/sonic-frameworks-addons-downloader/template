@@ -21,9 +21,9 @@ conflicts="kf6-knewstuff"
 replaces="kf6-knewstuff>=0"
 
 sonic-frameworks-addons-downloader-devel_package() {
-    provides="kf6-knewstuff-devel-${version}_${revision}"
-    conflicts="kf6-knewstuff-devel"
-    replaces="kf6-knewstuff-devel>=0"    
+	provides="kf6-knewstuff-devel-${version}_${revision}"
+	conflicts="kf6-knewstuff-devel"
+	replaces="kf6-knewstuff-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision} qt6-base-devel
 	 sonic-frameworks-core-addons-devel sonic-frameworks-open-collab-devel"
 	short_desc+=" - development files"

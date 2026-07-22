@@ -14,7 +14,7 @@ makedepends="qt6-base-devel qt6-declarative-devel qt6-webchannel-devel
  sonic-frameworks-package-devel sonic-frameworks-addons-downloader-devel sonic-frameworks-device-integration-devel libpcap-devel
  libcap-devel libnl3-devel libsensors-devel libdrm-devel zlib-devel
  qt6-base-private-devel sonic-frameworks-core-addons-devel"
-short_desc="Library to retrieve information on the current status of computer hardware"
+short_desc="Library to retrieve info on the current status of computer hardware"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-system-monitor-library"
@@ -30,9 +30,9 @@ do_check() {
 }
 
 sonic-system-monitor-library-devel_package() {
-    provides="libksysguard-devel-${version}_${revision}"
-    conflicts="libksysguard-devel"
-    replaces="libksysguard-devel>=0"  
+	provides="libksysguard-devel-${version}_${revision}"
+	conflicts="libksysguard-devel"
+	replaces="libksysguard-devel>=0"
 	short_desc+=" - development"
 	depends="sonic-frameworks-internationalization-devel sonic-frameworks-settings-devel qt6-base-devel
 	 ${sourcepkg}>=${version}_${revision}"

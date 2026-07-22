@@ -16,7 +16,7 @@ makedepends="qt6-declarative-devel libwacom-devel xf86-input-wacom-devel libinpu
  sonic-frameworks-doctools-devel sonic-frameworks-windowsystem-devel"
 depends="xf86-input-wacom"
 checkdepends="dbus"
-short_desc="GUI for Wacom Linux drivers that supports different button/pen layout profiles"
+short_desc="GUI for Wacom Linux drivers with different button/pen layout profiles"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-drawing-tablet"

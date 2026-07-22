@@ -18,9 +18,9 @@ conflicts="kf6-kdbusaddons"
 replaces="kf6-kdbusaddons>=0"
 
 sonic-frameworks-dbus-devel_package() {
-    provides="kf6-kdbusaddons-devel-${version}_${revision}"
-    conflicts="kf6-kdbusaddons-devel"
-    replaces="kf6-kdbusaddons-devel>=0"
+	provides="kf6-kdbusaddons-devel-${version}_${revision}"
+	conflicts="kf6-kdbusaddons-devel"
+	replaces="kf6-kdbusaddons-devel>=0"
 	depends="qt6-base-devel ${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

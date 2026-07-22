@@ -19,14 +19,10 @@ provides="kquickimageeditor-${version}_${revision}"
 conflicts="kquickimageeditor"
 replaces="kquickimageeditor>=0"
 
-post_install() {
-	vlicense LICENSES/BSD-2-Clause.txt
-}
-
 sonic-quick-image-editor-devel_package() {
-    provides="kquickimageeditor-devel-${version}_${revision}"
-    conflicts="kquickimageeditor-devel"
-    replaces="kquickimageeditor-devel>=0"
+	provides="kquickimageeditor-devel-${version}_${revision}"
+	conflicts="kquickimageeditor-devel"
+	replaces="kquickimageeditor-devel>=0"
 	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

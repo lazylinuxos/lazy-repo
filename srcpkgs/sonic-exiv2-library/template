@@ -6,7 +6,7 @@ build_style=cmake
 configure_args="-DBUILD_TESTING=OFF -DQT_MAJOR_VERSION=6"
 hostmakedepends="sonic-frameworks-cmake-modules pkg-config qt6-base qt6-tools"
 makedepends="qt6-base-devel exiv2-devel"
-short_desc="Wrapper around Exiv2 library to manipulate picture metadata as EXIF and XMP"
+short_desc="Wrapper around Exiv2 library to manipulate picture metadata"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-exiv2-library"
@@ -17,9 +17,9 @@ conflicts="libkexiv2"
 replaces="libkexiv2>=0"
 
 sonic-exiv2-library-devel_package() {
-    provides="libkexiv2-devel-${version}_${revision}"
-    conflicts="libkexiv2-devel"
-    replaces="libkexiv2-devel>=0"
+	provides="libkexiv2-devel-${version}_${revision}"
+	conflicts="libkexiv2-devel"
+	replaces="libkexiv2-devel>=0"
 	short_desc+=" - development files"
 	depends="${sourcepkg}-${version}_${revision}"
 	pkg_install() {

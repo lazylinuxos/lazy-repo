@@ -6,7 +6,7 @@
 # To change the initramfs generator, edit or create the file
 # etc/default/initramfs-regenerate and add or change the line
 #
-#     INITRAMFS_GENERATOR=<generator>
+#	 INITRAMFS_GENERATOR=<generator>
 #
 # where <generator> is one of "dracut", "mkinitcpio" or "none". By default, a
 # value of "dracut" is assumed.

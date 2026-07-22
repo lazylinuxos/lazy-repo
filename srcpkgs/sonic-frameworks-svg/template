@@ -21,9 +21,9 @@ conflicts="kf6-ksvg"
 replaces="kf6-ksvg>=0"
 
 sonic-frameworks-svg-devel_package() {
-    provides="kf6-ksvg-devel-${version}_${revision}"
-    conflicts="kf6-ksvg-devel"
-    replaces="kf6-ksvg-devel>=0"    
+	provides="kf6-ksvg-devel-${version}_${revision}"
+	conflicts="kf6-ksvg-devel"
+	replaces="kf6-ksvg-devel>=0"
 	depends="$makedepends ${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

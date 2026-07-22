@@ -8,7 +8,7 @@ hostmakedepends="sonic-frameworks-cmake-modules qt6-base qt6-tools gettext sonic
 makedepends="sonic-frameworks-keyring-devel sonic-frameworks-doctools-devel sonic-frameworks-settings-utils-devel
  sonic-frameworks-windowsystem-devel sonic-frameworks-icon-themes-devel sonic-decoration-devel
  qtkeychain-qt6-devel qt6-svg-devel"
-short_desc="ssh-add helper for QtKeychain"
+short_desc="Ssh-add helper for QtKeychain"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/Sonic-DE/sonic-silver"

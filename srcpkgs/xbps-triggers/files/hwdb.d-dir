@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Updates hardware database 
+# Updates hardware database
 #
 # Arguments:	$ACTION = [run/targets]
 #		$TARGET = [post-install/pre-remove]

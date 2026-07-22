@@ -7,7 +7,7 @@ configure_args="-DKF6_HOST_TOOLING=/usr/lib/cmake
  -DKDE_INSTALL_QMLDIR=lib/qt6/qml
  -DKDE_INSTALL_QTPLUGINDIR=lib/qt6/plugins"
 hostmakedepends="qt6-base qt6-tools qt6-declarative-host-tools gettext pkg-config sonic-frameworks-settings
- sonic-frameworks-quick-ui-devel sonic-frameworks-cmake-modules sonic-frameworks-doctools 
+ sonic-frameworks-quick-ui-devel sonic-frameworks-cmake-modules sonic-frameworks-doctools
  sonic-frameworks-windowsystem sonic-frameworks-settings-utils sonic-frameworks-package"
 makedepends="sonic-frameworks-color-scheme-devel sonic-frameworks-settings-devel sonic-frameworks-internationalization-devel sonic-frameworks-icon-themes-devel
  sonic-frameworks-notifications-devel sonic-frameworks-package-devel sonic-frameworks-svg-devel sonic-frameworks-widgets-addons-devel

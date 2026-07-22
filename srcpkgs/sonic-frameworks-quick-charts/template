@@ -21,7 +21,7 @@ replaces="kf6-kquickcharts>=0"
 sonic-frameworks-quick-charts-devel_package() {
 	provides="kf6-kquickcharts-devel-${version}_${revision}"
 	conflicts="kf6-kquickcharts-devel"
-	replaces="kf6-kquickcharts-devel>=0"     
+	replaces="kf6-kquickcharts-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision} qt6-base-devel"
 	short_desc+=" - development files"
 	pkg_install() {

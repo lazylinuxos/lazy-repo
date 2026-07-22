@@ -17,9 +17,9 @@ conflicts="plasma-activities-stats"
 replaces="plasma-activities-stats>=0"
 
 sonic-activities-stats-devel_package() {
-    provides="plasma-activities-stats-devel-${version}_${revision}"
-    conflicts="plasma-activities-stats-devel"
-    replaces="plasma-activities-stats-devel>=0"    
+	provides="plasma-activities-stats-devel-${version}_${revision}"
+	conflicts="plasma-activities-stats-devel"
+	replaces="plasma-activities-stats-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

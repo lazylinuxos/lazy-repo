@@ -19,9 +19,9 @@ conflicts="kf6-prison"
 replaces="kf6-prison>=0"
 
 sonic-frameworks-barcode-devel_package() {
-    provides="kf6-prison-devel-${version}_${revision}"
-    conflicts="kf6-prison-devel"
-    replaces="kf6-prison-devel>=0"    
+	provides="kf6-prison-devel-${version}_${revision}"
+	conflicts="kf6-prison-devel"
+	replaces="kf6-prison-devel>=0"
 	depends="$makedepends ${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

@@ -29,9 +29,9 @@ do_check() {
 }
 
 sonic-plasma5-support-library-devel_package() {
-    provides="plasma5support-devel-${version}_${revision}"
-    conflicts="plasma5support-devel"
-    replaces="plasma5support-devel>=0"    
+	provides="plasma5support-devel-${version}_${revision}"
+	conflicts="plasma5support-devel"
+	replaces="plasma5support-devel>=0"
 	depends="${sourcepkg}>=${version}_${revision}"
 	short_desc+=" - development files"
 	pkg_install() {

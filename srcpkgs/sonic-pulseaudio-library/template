@@ -18,9 +18,9 @@ conflicts="pulseaudio-qt"
 replaces="pulseaudio-qt>=0"
 
 sonic-pulseaudio-library-devel_package() {
-    provides="pulseaudio-qt-devel-${version}_${revision}"
-    conflicts="pulseaudio-qt-devel"
-    replaces="pulseaudio-qt-devel>=0"    
+	provides="pulseaudio-qt-devel-${version}_${revision}"
+	conflicts="pulseaudio-qt-devel"
+	replaces="pulseaudio-qt-devel>=0"
 	short_desc+=" - development files"
 	depends="${makedepends} ${sourcepkg}>=${version}_${revision}"
 	pkg_install() {

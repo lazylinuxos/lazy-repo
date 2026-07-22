@@ -6,11 +6,11 @@
 # and .schemas files:
 #
 #  gconf_entries - A list of .entries files to register.  When using this
-#                  variable, packages need to be fixed to not register
-#                  them and to install those files to GCONF_SCHEMAS_DIR.
+#				  variable, packages need to be fixed to not register
+#				  them and to install those files to GCONF_SCHEMAS_DIR.
 #  gconf_schemas - A list of .schemas files to register.  When using this
-#                  variable, packages need to be fixed to not register
-#                  them and to install those files to GCONF_SCHEMAS_DIR.
+#				  variable, packages need to be fixed to not register
+#				  them and to install those files to GCONF_SCHEMAS_DIR.
 #
 # Arguments:	$ACTION = [run/targets]
 #		$TARGET = [post-install/pre-remove]
