@@ -1,6 +1,6 @@
 # Template file for 'cliamp'
 pkgname=cliamp
-version=1.60.1
+version=1.61.0
 revision=1
 build_style=go
 go_import_path="github.com/bjarneo/cliamp"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/bjarneo/cliamp"
 distfiles="https://github.com/bjarneo/cliamp/archive/refs/tags/v${version}.tar.gz"
-checksum=b344c4a7355d9b04840172e74e6c5fa171c7714034085111bf8cdd80a1b9d9c9
+checksum=65ae0855eb36b353a38d77106ada45226b76777114e29a98421fd0c0274ecd9a
 
 post_install() {
 	vinstall cliamp.desktop 644 usr/share/applications
