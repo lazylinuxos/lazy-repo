@@ -1,19 +1,19 @@
 # Template file for 'noctalia'
 pkgname=noctalia
 version=5.0.0
-revision=1
+revision=3
 build_style=meson
 hostmakedepends="just ninja pkg-config"
 makedepends="sdbus-c++-devel cmake wayland-devel wayland-protocols freetype-devel fontconfig-devel cairo-devel
  pango-devel librsvg-devel libxkbcommon-devel polkit-devel pipewire-devel wireplumber-devel libcurl-devel
- libqalculate-devel pam-devel libepoxy-devel"
+ libqalculate-devel pam-devel libepoxy-devel libmd4c-devel json-c++ tomlplusplus-devel"
 depends="ImageMagick brightnessctl ffmpeg qt6-multimedia cliphist cava wlsunset power-profiles-daemon ddcutil"
 short_desc="Sleek and minimal desktop shell"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/noctalia-dev/noctalia"
-distfiles="https://github.com/noctalia-dev/noctalia/archive/v${version}-beta1.tar.gz"
-checksum=b3dbcc19f83e614b280f19ad4786365a6c17f979f47990ec9ef280ae076e9c79
+distfiles="https://github.com/noctalia-dev/noctalia/archive/v${version}-beta.3.tar.gz"
+checksum=0cd9d718acb95eec8500e6159c2981de46070f13f0fdacf7cb1e51cb2cbddb5e
 CXXFLAGS+=" -std=c++23"
 
 post_install() {
