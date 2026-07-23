@@ -2,6 +2,7 @@
 pkgname=dcal
 version=${VERSION}
 revision=1
+_dqml_commit="35c10dd"
 build_style=gnu-makefile
 build_helper="qemu"
 hostmakedepends="go pkg-config automake"
@@ -11,8 +12,15 @@ short_desc="Standalone calendar app that brings all your calendars together"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://danklinux.com"
-distfiles="https://github.com/AvengeMedia/dankcalendar/archive/refs/tags/v${version}.tar.gz"
-checksum=${SHA256}
+distfiles="https://github.com/AvengeMedia/dankcalendar/archive/refs/tags/v${version}.tar.gz
+ https://github.com/AvengeMedia/dank-qml-common/archive/${_dqml_commit}.tar.gz>dank-qml-common.tar.gz"
+checksum="${SHA256}
+ f49e50910640393f1015ffc8efd4e7dede777f46e3e35214e3c2bb6ce84873ce"
+skip_extraction="dank-qml-common.tar.gz"
+
+post_extract() {
+	vsrcextract -C "${wrksrc}/dank-qml-common" "dank-qml-common.tar.gz"
+}
 
 do_install() {
 	vbin core/bin/dcal
