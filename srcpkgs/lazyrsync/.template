@@ -1,0 +1,18 @@
+# Template file for 'lazyrsync'
+pkgname=lazyrsync
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+depends="rsync"
+short_desc="Friendly terminal UI for rsync"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/westpoint-io/lazyrsync"
+distfiles="https://github.com/westpoint-io/lazyrsync/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	vdoc README.md
+	vlicense LICENSE
+}

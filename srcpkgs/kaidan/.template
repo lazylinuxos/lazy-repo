@@ -1,18 +1,18 @@
 # Template file for 'kaidan'
 pkgname=kaidan
-version=0.16.0
+version=${VERSION}
 revision=1
 build_style=cmake
-hostmakedepends="extra-cmake-modules qt6-base qt6-tools pkg-config"
+hostmakedepends="extra-cmake-modules qt6-base pkg-config"
 makedepends="qt6-base-devel qt6-declarative-devel qt6-svg-devel qt6-multimedia-devel
  qt6-location-devel qt6-base-private-devel kf6-prison-devel kf6-kirigami-devel kf6-kio-devel
  KDSingleApplication kirigami-addons-devel qxmpp-devel qtkeychain-qt6-devel kf6-kcrash-devel
- kf6-knotifications-devel kf6-kcoreaddons-devel kf6-kitemmodels-devel kquickimageeditor-devel
- kf6-qqc2-desktop-style-devel gstreamer1-devel"
+ kf6-knotifications-devel kf6-kcoreaddons-devel kquickimageeditor-devel kf6-qqc2-desktop-style-devel
+ gstreamer1-devel"
 depends="gst-plugins-good1-qml6 qt6-location kquickimageeditor kirigami-addons"
 short_desc="User-friendly XMPP client"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://www.kaidan.im/"
 distfiles="https://invent.kde.org/network/kaidan/-/archive/v${version}/kaidan-v${version}.tar.gz"
-checksum=88afb9cbed19560efbe9300678083bb19be7c41da35756c6af9744e01f4f8776
+checksum=${SHA256}

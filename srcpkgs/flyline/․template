@@ -1,0 +1,22 @@
+# Template file for 'flyline'
+pkgname=flyline
+version=${VERSION}
+revision=1
+build_style=cargo
+depends="bash"
+short_desc="Bash plugin to replace readline for a modern line editing experience"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT OR GPL-3.0-only"
+homepage="https://github.com/HalFrgrd/flyline"
+distfiles="https://github.com/HalFrgrd/flyline/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+make_check=no
+
+do_install() {
+	vinstall target/${RUST_TARGET}/release/libflyline.so 755 usr/lib/bash
+}
+
+post_install() {
+	vlicense LICENSE-MIT
+	vdoc README.md
+}

@@ -5,8 +5,8 @@ printf "Checking latest version\n"
 
 __dir="$(dirname "${BASH_SOURCE[0]}")"
 
-REPO="ArkHost/HelixNotes"
-API="https://gitlab.com/api/v4/projects/$(printf '%s' "${REPO}" | sed 's/\//%2F/g')/releases"
+REPO="Calamares/calamares"
+API="https://codeberg.org/api/v1/repos/${REPO}/releases"
 
 # get latest release tag
 LATEST_VERSION=$(curl -s "${API}" | jq -r '.[0].tag_name')
@@ -21,7 +21,7 @@ if [[ "${CURRENT_VERSION}" == "${VERSION}" ]]; then
     exit 0
 fi
 
-ARCHIVE_URL="https://gitlab.com/${REPO}/-/archive/${LATEST_VERSION}/HelixNotes-${LATEST_VERSION}.tar.gz"
+ARCHIVE_URL="https://codeberg.org/${REPO}/releases/download/${LATEST_VERSION}/calamares-${LATEST_VERSION}.tar.gz"
 
 printf "Downloading %s\n" "${ARCHIVE_URL}"
 
@@ -35,4 +35,4 @@ rm "${VERSION}.tar.gz"
 
 envsubst '${SHA256} ${VERSION}' < "${__dir}/.template" > "${__dir}/template"
 
-printf "helixnotes template updated\n"
+printf "calamares template updated\n"

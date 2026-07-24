@@ -1,0 +1,14 @@
+# Template file for 'wlctl'
+pkgname=wlctl
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="openssl-devel"
+depends="NetworkManager"
+short_desc="TUI for managing wifi/ethernet/vpn on Linux with Network Manager"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/aashish-thapa/wlctl"
+distfiles="https://github.com/aashish-thapa/wlctl/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}

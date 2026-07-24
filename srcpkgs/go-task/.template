@@ -1,0 +1,19 @@
+# Template file for 'go-task'
+pkgname=go-task
+version=${VERSION}
+revision=1
+build_style=go
+go_import_path="github.com/go-task/task/v3"
+go_package="./cmd/task"
+go_mod_mode="readonly"
+go_ldflags="-linkmode=external"
+short_desc="Fast, cross-platform build tool inspired by Make"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://taskfile.dev"
+distfiles="https://github.com/go-task/task/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	vlicense LICENSE
+}

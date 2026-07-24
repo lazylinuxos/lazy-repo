@@ -1,6 +1,6 @@
 # Template file for 'darya'
 pkgname=darya
-version=0.1.6
+version=${VERSION}
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/mrkatebzadeh/darya"
 distfiles="https://github.com/mrkatebzadeh/darya/archive/refs/tags/v${version}.tar.gz"
-checksum=c119350a4943ee1663a680046bba06fac9c0c6971fd61e93182ab3c366dca3ab
+checksum=${SHA256}
 
 post_install() {
 	vdoc README.md
