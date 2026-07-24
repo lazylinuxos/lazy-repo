@@ -1,0 +1,16 @@
+# Template file for 'sonicde-repo'
+pkgname=sonicde-repo
+version=1
+revision=1
+metapackage=yes
+short_desc="SonicDE packages for Void Linuxy"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Public Domain"
+homepage="https://github.com/sonicde-void/sonicde-void"
+
+do_install() {
+	vmkdir usr/share/xbps.d
+
+	echo "repository=https://github.com/sonicde-void/sonicde-void/releases/latest/download/" > \
+		${DESTDIR}/usr/share/xbps.d/99-repository-sonicde.conf
+}
