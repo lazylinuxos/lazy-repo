@@ -15,20 +15,3 @@ homepage="https://github.com/mfat/sshpilot"
 distfiles="https://github.com/mfat/sshpilot/archive/refs/tags/v${version}.tar.gz"
 checksum=${SHA256}
 python_version=3
-
-do_install() {
-	local site_packages="$(python3 -c "import site; print(site.getsitepackages()[0])")"
-
-	vbin run.py usr/bin/sshpilot
-
-	vmkdir "${site_packages}/sshpilot"
-	vcopy "sshpilot/*.py" "${site_packages}/sshpilot/"
-	vmkdir "${site_packages}/sshpilot/resources"
-	vmkdir "${site_packages}/sshpilot/ui"
-	vcopy "sshpilot/resources/*" "${site_packages}/sshpilot/resources/"
-
-	sed -i '/^Categories=/a StartupWMClass=python3' io.github.mfat.sshpilot.desktop
-	vinstall io.github.mfat.sshpilot.desktop 644 usr/share/applications
-	vinstall sshpilot/resources/sshpilot.svg 644 usr/share/pixmaps io.github.mfat.sshpilot.svg
-	vinstall io.github.mfat.sshpilot.metainfo.xml 644 usr/share/metainfo
-}

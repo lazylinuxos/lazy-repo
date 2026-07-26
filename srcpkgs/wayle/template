@@ -10,12 +10,11 @@ hostmakedepends="pkg-config clang${_llvmver}"
 makedepends="gtk4-devel gtk4-layer-shell-devel gtksourceview5-devel
  pulseaudio-devel fftw-devel pipewire-devel eudev-libudev-devel"
 depends="cava pulseaudio upower bluez"
-short_desc="GTK4-based Wayland desktop panel and widgets"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/wayle-rs/wayle"
 distfiles="https://github.com/wayle-rs/wayle/archive/refs/tags/v${version}.tar.gz"
-checksum=1d887b9378d04dcf29057d4c8fb8323341f4f0e7ef094feea8ddbdcbf4dfa72e
+checksum=cbb531e25ab5cd067fb3a5696695ad3361afed266a9530beabc2462e028faefd
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/wayle
