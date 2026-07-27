@@ -9,8 +9,12 @@ __dir="$(dirname "${BASH_SOURCE[0]}")"
 REPO_URL="https://git.dinox.im/api/v1/repos/dinoxim/dinox"
 
 LATEST_VERSION=$(
-	curl -fsSL "${REPO_URL}/tags" \
-		| jq -r '.[0].name'
+	curl -fsSL "${REPO_URL}/tags" |
+		jq -r '
+			map(select(.name | test("^v[0-9]+\\.[0-9]+\\.[0-9]+$"))) |
+			sort_by(.name | sub("^v"; "") | split(".") | map(tonumber)) |
+			last.name
+		'
 )
 
 export VERSION="${LATEST_VERSION#v}"

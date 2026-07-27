@@ -1,6 +1,6 @@
 # Template file for 'openfortivpn-gui'
 pkgname=openfortivpn-gui
-version=0.3.5
+version=0.3.6
 revision=1
 build_style=go
 go_import_path="github.com/shini4i/openfortivpn-gui"
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/shini4i/openfortivpn-gui"
 distfiles="https://github.com/shini4i/openfortivpn-gui/archive/refs/tags/v${version}.tar.gz"
-checksum=6c499ee2aff8f800504a222694e5f41438c2793507e3422b133671d671b0d655
+checksum=ada875f8e5fbe9d5951c6a60668dad62120f94dbcf9b82e5b4b6eed804f25152
 system_groups="openfortivpn-gui"
 make_dirs="/run/openfortivpn-gui 0750 root openfortivpn-gui"
 
