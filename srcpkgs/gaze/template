@@ -24,6 +24,7 @@ subpackages="
 "
 
 do_install() {
+	vbin target/${RUST_TARGET}/release/gaze
 	vbin target/${RUST_TARGET}/release/gazed
 
 	vinstall target/${RUST_TARGET}/release/libpam_gaze.so 644 usr/lib/security pam_gaze.so
