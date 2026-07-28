@@ -1,0 +1,73 @@
+# Template file for 'gaze'
+pkgname=gaze
+version=0.2.7
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config clang21 llvm21"
+makedepends="cairo-devel gdk-pixbuf-devel glib-devel graphene-devel gstreamer1-devel
+ gst-plugins-base1-devel gtk4-devel libadwaita-devel v4l-utils-devel clang21-devel
+ libopencv-devel pam-devel pango-devel tpm2-tss-devel"
+short_desc="Facial authentication for Linux"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/GunduLabs/gaze"
+distfiles="https://github.com/GunduLabs/gaze/archive/refs/tags/v${version}.tar.gz"
+checksum=2170ed983fec83bcbc5195bb75e6e8f9d16fd45c150cdc036b38e7beacc0f1a6
+conf_files="/etc/dbus-1/system.d/com.gundulabs.Gaze.conf
+ /etc/gaze/config.toml"
+make_dirs="/var/lib/gaze 0700 root root
+ /var/cache/gaze 0700 root root"
+subpackages="
+ gaze-gui
+ gaze-hyprlock
+ gaze-gnome-extension
+"
+
+do_install() {
+	vbin target/${RUST_TARGET}/release/gaze
+	vbin target/${RUST_TARGET}/release/gazed
+
+	vinstall target/${RUST_TARGET}/release/libpam_gaze.so 644 usr/lib/security pam_gaze.so
+	vinstall target/${RUST_TARGET}/release/libpam_gaze_grosshack.so 644 usr/lib/security pam_gaze_grosshack.so
+
+	vinstall packaging/config/com.gundulabs.Gaze.conf 644 etc/dbus-1/system.d/
+	vinstall packaging/config/com.gundulabs.gaze.policy 644 usr/share/polkit-1/actions
+	vinstall packaging/config/config.toml 644 etc/gaze
+
+	vsv gazed
+	vlicense LICENSE
+}
+
+gaze-gui_package() {
+	short_desc="GTK GUI for gaze facial authentication"
+	depends="gaze"
+	pkg_install() {
+		vbin target/${RUST_TARGET}/release/gaze-gui
+
+		vinstall packaging/gui/com.gundulabs.Gaze.svg 644 usr/share/icons/hicolor/scalable/apps
+		vinstall packaging/gui/com.gundulabs.Gaze.desktop 644 usr/share/applications
+		vinstall packaging/gui/com.gundulabs.Gaze.metainfo.xml 644 usr/share/metainfo
+	}
+}
+
+gaze-hyprlock_package() {
+	short_desc="Hyprlock PAM integration for gaze"
+	depends="gaze"
+	pkg_install() {
+		vinstall packaging/pam/hyprlock-gaze 644 etc/pam.d
+		vinstall packaging/pam/hyprlock-gaze-simultaneous 644 etc/pam.d
+	}
+}
+
+gaze-gnome-extension_package() {
+	short_desc="GNOME Shell extension and GDM integration for gaze"
+	depends="gaze"
+	pkg_install() {
+		vinstall packaging/gdm/00-gaze-defaults 644	etc/dconf/db/gdm.d
+		vinstall packaging/gdm/profile 644 etc/dconf/profile gdm
+		vinstall packaging/config/org.gnome.shell.extensions.gaze.gschema.xml 644 usr/share/glib-2.0/schemas
+
+		vmkdir usr/share/gnome-shell/extensions/gaze@gundulabs.com
+		vcopy gnome-shell-extension/* usr/share/gnome-shell/extensions/gaze@gundulabs.com
+	}
+}
