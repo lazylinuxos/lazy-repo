@@ -24,9 +24,16 @@ homepage="https://calamares.io"
 distfiles="https://codeberg.org/Calamares/calamares/releases/download/v${version}/calamares-${version}.tar.gz"
 checksum=${SHA256}
 
+pre_configure() {
+	vsed -i 's/services-systemd/services-runit/g' settings.conf
+	vsed -i 's|Exec=sh -c "pkexec calamares"|Exec=sudo -E calamares|' calamares.desktop
+}
+
 post_install() {
 	vinstall calamares.desktop 644 usr/share/applications
 
 	vmkdir etc/polkit-1/rules.d/
 	vinstall ${FILESDIR}/49-nopasswd-calamares.rules 644 etc/polkit-1/rules.d/
+
+	vbin build/loadmodule
 }
