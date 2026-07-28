@@ -1,0 +1,26 @@
+# Template file for 'yserver'
+pkgname=yserver
+version=1.3.0
+revision=1
+build_style=cargo
+build_helper=rust
+hostmakedepends="pkg-config shaderc"
+makedepends="libinput-devel libxkbcommon-devel libxshmfence-devel
+ fontconfig-devel freetype-devel eudev-libudev-devel libseat-devel"
+depends="seatd"
+short_desc="Modern X11 server written from scratch in Rust"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/joske/yserver"
+distfiles="https://github.com/joske/yserver/archive/refs/tags/v${version}.tar.gz"
+checksum=cf95ee575ec9f0a9418b2185d150c2930e2da15bc4b2eb0d25dbe391c01468ee
+
+export CARGO_PROFILE_RELEASE_LTO=false
+export CARGO_INCREMENTAL=0
+
+do_install() {
+	vbin target/x86_64-unknown-linux-gnu/release/ynest
+	vbin target/x86_64-unknown-linux-gnu/release/yserver
+	vlicense LICENSE
+	vdoc README.md
+}

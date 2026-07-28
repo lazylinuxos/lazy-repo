@@ -1,0 +1,13 @@
+# Template file for 'resterm'
+pkgname=resterm
+version=0.48.1
+revision=1
+build_style=go
+go_import_path="github.com/unkn0wn-root/resterm"
+go_package="./cmd/resterm"
+short_desc="Terminal API client for REST, GraphQL, gRPC, WebSocket and SSE"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/unkn0wn-root/resterm"
+distfiles="https://github.com/unkn0wn-root/resterm/archive/refs/tags/v${version}.tar.gz"
+checksum=705a3a48218df4f18508361bb818b305ffb12c4305a1e5157c12f3e345760f20
