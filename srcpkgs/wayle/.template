@@ -1,6 +1,6 @@
 # Template file for 'wayle'
 pkgname=wayle
-version=0.6.0
+version=${VERSION}
 revision=1
 build_style=cargo
 build_helper=qemu
@@ -10,6 +10,7 @@ hostmakedepends="pkg-config clang${_llvmver}"
 makedepends="gtk4-devel gtk4-layer-shell-devel gtksourceview5-devel
  pulseaudio-devel fftw-devel pipewire-devel eudev-libudev-devel"
 depends="cava pulseaudio upower bluez"
+short_desc="Compositor agnostic shell with extensive customization"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/wayle-rs/wayle"
