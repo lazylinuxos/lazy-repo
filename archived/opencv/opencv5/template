@@ -1,0 +1,81 @@
+# Template file for 'opencv5'
+pkgname=opencv5
+_pkgname=opencv
+version=5.0.0
+revision=1
+create_wrksrc=yes
+build_wrksrc=${_pkgname}-${version}
+build_style=cmake
+configure_args="-DENABLE_PRECOMPILED_HEADERS=OFF -DWITH_OPENMP=ON
+ -DWITH_OPENCL=ON -DWITH_OPENGL=ON -DWITH_VULKAN=ON -DWITH_TBB=ON
+ -DWITH_EIGEN=ON -DWITH_GSTREAMER=ON -DWITH_FFMPEG=ON -DWITH_GPHOTO2=ON
+ -DWITH_JPEGXL=ON -DWITH_WEBP=ON -DOPENCV_ENABLE_NONFREE=ON -DWITH_OPENEXR=ON
+ -DOPENCV_SKIP_PYTHON_LOADER=ON -DOPENCV_PYTHON3_INSTALL_PATH=/${py3_sitelib}
+ -DOPENCV_GENERATE_PKGCONFIG=YES -DOPENCV_GENERATE_SETUPVARS=OFF
+ -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-${version}/modules
+ -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=OFF -DBUILD_EXAMPLES=OFF
+ -DBUILD_opencv_wechat_qrcode=OFF -DBUILD_opencv_rgbd=OFF
+ -DBUILD_opencv_rgbd=OFF -Dprotobuf_MODULE_COMPATIBLE=ON"
+hostmakedepends="pkg-config eigen python3-numpy python3-setuptools"
+makedepends="ffmpeg6-devel gtk+3-devel gst-plugins-base1-devel libjpeg-turbo-devel libpng-devel
+ tiff-devel jasper-devel libopenexr-devel libopenjpeg2-devel libwebp-devel freetype-devel
+ harfbuzz-devel openblas-devel lapack-devel protobuf-devel abseil-cpp-devel libgphoto2-devel
+ ocl-icd-devel vulkan-loader-devel tbb-devel libgomp-devel python3-numpy python3-devel
+ fmt-devel pugixml-devel jsoncpp-devel hdf5-devel glew-devel vtk-devel"
+short_desc="Computer vision and machine learning software library"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Apache-2.0"
+homepage="https://opencv.org"
+changelog="https://github.com/opencv/opencv/wiki/ChangeLog"
+distfiles="https://github.com/opencv/opencv/archive/${version}.tar.gz
+ https://github.com/opencv/opencv_contrib/archive/${version}.tar.gz>contrib.tar.gz"
+checksum="b0528f5a1d379d59d4701cb28c36e22214cc51cf64594e5b56f2d3e6c0233095
+ c58f6344170c39abf187c56f3843b59cab1fd3e89cf19ba2ce25dc061659b27f"
+patch_args="-Np1 -d ${build_wrksrc}"
+conflicts="opencv"
+replaces="opencv>=0"
+
+if [ "$CROSS_BUILD" ]; then
+	# Tell opencv where to find python and numpy
+	configure_args+=" -DPYTHON3_INCLUDE_PATH=${XBPS_CROSS_BASE}/${py3_inc}
+	 -DPYTHON3_NUMPY_INCLUDE_DIRS=${XBPS_CROSS_BASE}/${py3_sitelib}/numpy/_core/include"
+fi
+
+case "$XBPS_TARGET_MACHINE" in
+	ppc64*) ;;
+	ppc*) broken="grfmt_jpeg2000.cpp:380:48: error: lvalue required as unary '&' operand";;
+	x86_64)  configure_args+=" -DCPU_BASELINE_DISABLE=SSE3 -DCPU_BASELINE_REQUIRE=SSE2";;
+esac
+
+libopencv5_package() {
+	conflicts="libopencv"
+	replaces="libopencv>=0"
+	short_desc+=" - library files"
+	pkg_install() {
+		vmove usr/lib/*.so.*
+	}
+}
+
+libopencv5-devel_package() {
+	conflicts="libopencv-devel"
+	replaces="libopencv-devel>=0"
+	short_desc+=" - development files"
+	depends="libopencv5>=${version}_${revision}"
+	pkg_install() {
+		vmove usr/include
+		vmove usr/lib/cmake
+		vmove usr/lib/pkgconfig
+		vmove usr/lib/*.so
+		vmove usr/share/opencv5
+	}
+}
+
+libopencv5-python3_package() {
+	conflicts="libopencv-python3"
+	replaces="libopencv-python3>=0"
+	short_desc+=" - Python3 bindings"
+	depends="python3-numpy"
+	pkg_install() {
+		vmove ${py3_sitelib}
+	}
+}
