@@ -1,6 +1,6 @@
 # Template file for 'cli11'
 pkgname=cli11
-version=2.7.0
+version=2.7.1
 revision=1
 build_style=cmake
 configure_args="-DCLI11_BUILD_TESTS=OFF -DCLI11_BUILD_EXAMPLES=OFF"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-3-Clause"
 homepage="https://github.com/CLIUtils/CLI11"
 distfiles="https://github.com/CLIUtils/CLI11/archive/refs/tags/v${version}.tar.gz"
-checksum=7828464fabc29d361e1ccb2d8721e6e00e73ff5c5fad5135408a8c236508398a
+checksum=c02abe5c5fed9b9c9192bff3c74d2c0d19755253f9ca9e3c44484c1cf5ce6568
 
 post_install() {
 	vlicense LICENSE
