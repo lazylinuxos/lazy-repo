@@ -1,6 +1,6 @@
 # Template file for 'wayscriber'
 pkgname=wayscriber
-version=0.9.22
+version=0.9.23
 revision=1
 build_style=cargo
 make_build_args="--workspace --bin wayscriber --bin wayscriber-configurator"
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://wayscriber.com"
 distfiles="https://github.com/devmobasa/${pkgname}/archive/refs/tags/v${version}.tar.gz"
-checksum=b5ac78b5c4b03d1bfbef8e6758d03862748893b84b5abeb3f9fc12325e1f30aa
+checksum=38742cd3559bf6dea3a2a8f33eb2376abc20db4d3185c1e76248d1042f2d8cab
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/wayscriber
