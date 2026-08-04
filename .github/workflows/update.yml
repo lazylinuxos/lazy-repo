@@ -1,10 +1,18 @@
 name: update
-run-name: "Automated update of ${{ github.ref_name }} by @${{ github.actor }}"
+run-name: "Automated update of ${{ github.ref_name }} by @${{ github.repository_owner }}[bot]"
 
 on:
   schedule:
     - cron: '0 4 * * *'
   workflow_dispatch:
+  workflow_call:
+    inputs:
+      repository:
+        description: |-
+          Location of the GitHub repository containing the package descriptions
+          in the form of [HOST/]OWNER/REPO.
+        type: string
+        default: ${{ vars.PACKAGES_REPOSITORY }}
 
 jobs:
   update-all:
@@ -14,10 +22,19 @@ jobs:
       GH_TOKEN: ${{ github.token }}
 
     steps:
+      - name: Authenticate via app
+        id: app-token
+        if: ${{ vars.APP_CLIENT_ID }}
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.APP_CLIENT_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.PULL_PUSH }}
+          token: ${{ steps.app-token.outputs.token }}
 
       - uses: dcarbone/install-jq-action@v3.2.0
 
@@ -53,13 +70,13 @@ jobs:
       - name: Commit updates
         if: ${{ steps.check-updates.outputs.has_updates == 'true' }}
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]USERNAME@users.noreply.github.com"
+          git config --global user.name "${{ github.repository_owner }}[bot]"
+          git config --global user.email "${{ vars.APP_CLIENT_ID }}+${{ github.repository_owner }}[bot]@users.noreply.github.com"
           git commit --all --message "Automated update"
-          
+
       - name: Push updates
         if: ${{ steps.check-updates.outputs.has_updates == 'true' }}
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.PULL_PUSH }}
+          github_token: ${{ steps.app-token.outputs.token }}
           branch: ${{ github.ref }}
