@@ -1,0 +1,69 @@
+# Template file for 'odin'
+pkgname=odin
+version=2026.07a
+revision=1
+_tag="dev-${version//./-}"
+build_style="gnu-makefile"
+make_build_args="release"
+hostmakedepends="clang llvm which"
+makedepends="llvm21-devel"
+checkdepends="python3"
+depends="clang"
+short_desc="Fast, concise, readable, pragmatic programming language"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="zlib"
+homepage="https://odin-lang.org/"
+distfiles="https://github.com/odin-lang/Odin/archive/refs/tags/${_tag}.tar.gz"
+checksum=8f4f02fd9a3426b441cd0dfbe0aca1b95fd93c95d86940fcb4417ef6044c83cd
+skiprdeps="/usr/lib/odin/vendor/raylib/linux-arm64/libraylib.so.600"
+nostrip=yes
+
+pre_build() {
+	export LLVM_CONFIG=llvm-config
+	export CXX=clang++
+
+	find vendor \
+		\( \
+			-name windows -o \
+			-name macos -o \
+			-name macos-arm64 -o \
+			-name darwin -o \
+			-name "*.lib" -o \
+			-name "*.dll" -o \
+			-name "*.a" -o \
+			-name "*.dylib" -o \
+			-name "*.so.*" -o \
+			-name "*.so" \
+		\) \
+		-exec rm -rf {} +
+}
+
+post_build() {
+	make -C vendor/miniaudio/src
+	make -C vendor/stb/src unix
+	make -C vendor/cgltf/src unix
+}
+
+do_check() {
+	./odin check examples/all -strict-style
+	./odin test tests/benchmark -file -all-packages -define:ODIN_TEST_FANCY=false
+	./odin test tests/core/normal.odin -file -all-packages -define:ODIN_TEST_FANCY=false
+	./odin test tests/core/speed.odin -file -all-packages -o:speed -define:ODIN_TEST_FANCY=false
+	./odin test tests/vendor -all-packages -define:ODIN_TEST_FANCY=false
+}
+
+do_install() {
+	vmkdir usr/lib/odin
+	vinstall odin 755 usr/lib/odin
+
+	for d in base core shared vendor; do
+		vcopy "$d" usr/lib/odin
+	done
+
+	vmkdir usr/bin
+	ln -s /usr/lib/odin/odin ${DESTDIR}/usr/bin
+
+	vdoc README.md
+	vdoc PROPOSAL-PROCESS.md
+	vlicense LICENSE
+}
