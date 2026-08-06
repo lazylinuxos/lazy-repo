@@ -1,6 +1,6 @@
 # Template file for 'brave-origin-bin'
 pkgname=brave-origin-bin
-version=1.93.129
+version=1.93.132
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -11,7 +11,7 @@ license="MPL-2.0"
 homepage="https://www.brave.com/"
 changelog="https://brave.com/latest/"
 distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-origin-${version}-1.x86_64.rpm"
-checksum=e2e652314614ecd4232758ef6571b823a98600a392f25198aba815dc58016cc7
+checksum=2502b361d91bb0f58e9c3d43e2f0ed2700e09f8fd2ec1ac45be946b84935a449
 
 do_install() {
 	# Remove cron job

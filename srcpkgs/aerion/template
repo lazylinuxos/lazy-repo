@@ -1,6 +1,6 @@
 # Template file for 'aerion'
 pkgname=aerion
-version=0.3.2
+version=0.3.3
 revision=1
 archs="x86_64"
 hostmakedepends="go wails nodejs pkg-config"
@@ -11,7 +11,7 @@ license="Apache-2.0"
 homepage="https://github.com/hkdb/aerion"
 changelog="https://raw.githubusercontent.com/hkdb/aerion/refs/heads/main/CHANGELOG.md"
 distfiles="https://github.com/hkdb/aerion/archive/refs/tags/v${version}.tar.gz"
-checksum=a4b1c16e21561d8a46fd18af4764346672f794be51b8716982897615d30c3ddf
+checksum=31be6df533ccb03ee158b5d886acb90a67f23587ab9f49ecf58b1fca77d134f3
 nopie=yes
 
 do_build() {
