@@ -17,7 +17,7 @@ distfiles="https://github.com/dart-lang/sdk/archive/refs/tags/${version}.tar.gz
  https://storage.googleapis.com/dart-archive/channels/stable/release/${_bootstrap}/sdk/dartsdk-linux-x64-release.zip
  https://github.com/flutter/devtools/archive/refs/tags/v${_devtools_version}.tar.gz>flutter-devtools.tar.gz"
 checksum="e84861c0a725990b6efbec1ec3be7cbf38352983871f8e74c3d42bc259a0a0d8
- 8f90da43f83291b74917867049bc7a9852aef30fb6d33db3c9cf6845bbd251fb
+ 4cd228d3490b0022e94d997a3a060dd19991d54a757069e489bc89442b2683dc
  ea0ff2396ea5af402ba3598a9139a0f4b1b3471d9d7e834882d1559622760add
  403ec102bd967f23fd1867c64203d9187aa468d2bb0197c6894907ac29a52b19"
 skip_extraction="depot_tools.tar.gz
@@ -36,26 +36,26 @@ post_extract() {
 }
 
 pre_configure() {
-	cat > ${wrksrc}/.gclient <<EOF
-solutions = [
-	{
-		"name": "sdk",
-		"url": "file://${wrksrc}/sdk",
-		"deps_file": "DEPS",
-		"managed": False,
-		"custom_deps": {},
-		"custom_vars": {},
-	},
-]
-EOF
+# 	cat > ${wrksrc}/.gclient <<EOF
+# solutions = [
+# 	{
+# 		"name": "sdk",
+# 		"url": "file://${wrksrc}/sdk",
+# 		"deps_file": "DEPS",
+# 		"managed": False,
+# 		"custom_deps": {},
+# 		"custom_vars": {},
+# 	},
+# ]
+# EOF
 
 	export PATH="${wrksrc}/bootstrap/dart-sdk/bin:${wrksrc}/depot_tools:${PATH}"
 	export DEPOT_TOOLS_UPDATE=0
 
 	cd ${wrksrc}/sdk
 
-	gclient config file://${wrksrc}/sdk
-	gclient sync -D --nohooks --no-history --shallow
+	# gclient config file://${wrksrc}/sdk
+	# gclient sync -D --nohooks --no-history --shallow
 
 	dart tools/generate_package_config.dart
 	python3 tools/generate_sdk_version_file.py
