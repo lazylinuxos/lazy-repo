@@ -1,6 +1,6 @@
 # Template file for 'tomar'
 pkgname=tomar
-version=0.1.0
+version=r53.8022308
 revision=1
 archs="x86_64"
 hostmakedepends="lazarus fpc"
@@ -9,8 +9,8 @@ short_desc="Minimalist Pascal RSS reader"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="Public Domain"
 homepage="https://github.com/norayr/tomar"
-distfiles="https://github.com/norayr/tomar/archive/refs/heads/main.tar.gz"
-checksum=ad1a3c844b7eef785ad18507a1cd5680ef88af2d547ec81725ff713a15cd9555
+distfiles="https://github.com/norayr/tomar/archive/8022308.tar.gz"
+checksum=b49e19d33052188a19944f537cc0d689e8b7ed0fdff4a5bbb68bff567ae17255
 nopie=yes
 
 do_build() {
