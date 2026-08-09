@@ -1,0 +1,38 @@
+# Template file for 'heidisql-qt6'
+pkgname=heidisql-qt6
+version=12.21
+revision=1
+hostmakedepends="lazarus make fpc gettext binutils"
+makedepends="qt6pas-devel libmariadbclient-devel postgresql-libs-devel sqlite-devel freetds-devel"
+short_desc="Lightweight GUI for managing SQL databases (Qt6)"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://www.heidisql.com"
+distfiles="https://github.com/HeidiSQL/HeidiSQL/archive/refs/tags/v${version}.tar.gz"
+checksum=8e58f6f1ee9b631990f2e44cd4e24a9d56802c1c4a4d06fe040614607e7ec802
+provides="heidisql-client-${version}_${revision}"
+nopie=yes
+
+do_build() {
+	lazbuild --lazarusdir=/usr/lib/lazarus \
+		-B --bm=Release --ws=qt6 heidisql.lpi
+}
+
+do_install() {
+	vinstall out/heidisql 755 usr/libexec/heidisql-qt6
+
+	vmkdir usr/bin
+	ln -sf /usr/libexec/heidisql-qt6/heidisql ${DESTDIR}/usr/bin/heidisql-qt6
+
+	vinstall res/deb-package-icon.png 644 usr/share/pixmaps heidisql.png
+
+	vinstall package-skeleton/usr/share/applications/heidisql.desktop \
+		644 usr/share/applications heidisql-qt6.desktop
+
+	sed -i 's/^Exec=heidisql/Exec=heidisql-qt6/' \
+		${DESTDIR}/usr/share/applications/heidisql-qt6.desktop
+	sed -i 's/^TryExec=heidisql/TryExec=heidisql-qt6/' \
+		${DESTDIR}/usr/share/applications/heidisql-qt6.desktop
+	sed -i 's/^Name=HeidiSQL/Name=HeidiSQL (Qt6)/' \
+		${DESTDIR}/usr/share/applications/heidisql-qt6.desktop
+}

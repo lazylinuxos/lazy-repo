@@ -10,7 +10,7 @@ configure_args="
 hostmakedepends="pkg-config ninja hwids glslang Vulkan-Headers wayland-protocols xcb-util"
 makedepends="cairo-devel dbus-devel gdk-pixbuf-devel glib-devel libdisplay-info-devel libdrm-devel libinput-devel
  libliftoff-devel libxcb-devel libxkbcommon-devel lua51-lgi LuaJIT-devel pango-devel pixman-devel vulkan-loader-devel
- wayland-devel xcb-util-errors-devel xcb-util-renderutil-devel xcb-util-wm-devel xorg-server-xwayland wlroots0.19-devel"
+ wayland-devel xcb-util-errors-devel xcb-util-renderutil-devel xcb-util-wm-devel xorg-server-xwayland wlroots0.20-devel"
 depends="seatd"
 short_desc="Lua-scriptable, AwesomeWM compatible Wayland compositor"
 maintainer="nerdyslacker <karyan40024@gmail.com>"

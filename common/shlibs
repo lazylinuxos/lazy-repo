@@ -432,6 +432,7 @@ liba52.so.0 liba52-0.7.4_1
 libcddb.so.2 libcddb-1.3.2_1
 libiso9660.so.12 libcdio-2.2.0_1
 libudf.so.0 libcdio-0.83_1
+libwim.so.15 wimlib-1.14.5_2
 libcdio_cdda.so.2 libcdio-paranoia-10.2_1
 libcdio_paranoia.so.2 libcdio-paranoia-10.2_1
 libiso9660++.so.1 libcdio-2.2.0_1
@@ -631,7 +632,7 @@ libexempi.so.8 exempi-2.5.0_1
 libatasmart.so.4 libatasmart-0.17_1
 libsgutils2-1.45.so.2 libsgutils-1.45_1
 libcpufreq.so.0 libcpufreq-007_1
-libcpuid.so.17 libcpuid-0.7.0_1
+libcpuid.so.18 libcpuid-0.8.1_1
 libgucharmap_2_90.so.7 gucharmap-3.0.0_1
 libgphoto2.so.6 libgphoto2-2.5.7_1
 libgphoto2_port.so.12 libgphoto2-2.5.7_1
@@ -962,16 +963,16 @@ libLLVM.so.18.1 libllvm18-18.1.8_1
 libLLVM.so.19.1 libllvm19-19.1.0_1
 libLLVM.so.21.1 libllvm21-21.1.4_1
 libLLVM.so.22.1 libllvm22-22.1.1_1
-libLLVMSPIRVLib.so.18.1 SPIRV-LLVM-Translator-18.1.2_1
 libLLVMSPIRVLib.so.19.1 SPIRV-LLVM-Translator19-19.1.1_1
 libLLVMSPIRVLib.so.21.1 SPIRV-LLVM-Translator21-21.1.1_1
+libLLVMSPIRVLib.so.22.1 SPIRV-LLVM-Translator22-22.1.1_1
 libomp.so.5 libomp-17.0.6_1
 libomptarget.so.18.1 libomp-18.1.8_1
 libisofs.so.6 libisofs-0.6.24_1
 libmpack.so.0 libmpack-1.0.5_1
 libGeoIP.so.1 libgeoip-1.4.8_1
-libnilfs.so.0 libnilfs-2.1.0_1
-libnilfsgc.so.0 libnilfs-2.1.0_1
+libnilfs.so.3 libnilfs-2.3.1_1
+libnilfsgc.so.3 libnilfs-2.3.1_1
 libnilfscleaner.so.0 libnilfs-2.1.0_1
 libchicken.so.11 libchicken-5.1.0_1
 libzix-0.so.0 zix-0.4.2_1
@@ -1675,7 +1676,7 @@ libtelepathy-farstream.so.3 telepathy-farstream-0.6.0_6
 libnetpbm.so.11 libnetpbm-10.66.03_2
 libid3.so id3lib-3.8.3_7
 libid3-3.8.so.3 id3lib-3.8.3_7
-libgirara-gtk3.so.4 girara-0.4.4_1
+libgirara.so.5 girara-2026.02.04_1
 libjq.so.1 jq-1.6_2
 libcrypto.so.3 libcrypto3-3.5.4_1
 libssl.so.3 libssl3-3.5.4_1
@@ -1876,7 +1877,7 @@ libQt5TextToSpeech.so.5 qt5-speech-5.15.2_3
 libQt5Bodymovin.so.5 qt5-lottie-5.15.2_3
 libQt5WebKit.so.5 qt5-webkit-5.6.0_1
 libQt5WebKitWidgets.so.5 qt5-webkit-5.6.0_1
-libx265.so.215 x265-4.1_1
+libx265.so.216 x265-4.2_1
 libQt5Xdg.so.3 libqt5xdg-3.2.0_1
 libQt5XdgIconLoader.so.3 libqt5xdg-3.2.0_1
 libQt6Xdg.so.4 libqtxdg-4.0.0_1
@@ -1886,6 +1887,7 @@ libqwt-qt5.so.6.3 qwt-6.3.0_1
 libqwt-qt6.so.6.3 qwt-qt6-6.3.0_1
 
 # KDE6 plasma-frameworks
+KDE_Frameworks.6.28.0 kf6-base-6.28.0_1
 libKF6BreezeIcons.so.6 libbreeze-icons-6.19.0_1
 libKF6Attica.so.6 kf6-attica-6.19.0_1
 libKF6Baloo.so.6 kf6-baloo-6.19.0_1
@@ -1985,6 +1987,7 @@ libKF6Syndication.so.6 kf6-syndication-6.19.0_1
 libKF6SyntaxHighlighting.so.6 kf6-syntax-highlighting-6.19.0_1
 libKF6ThreadWeaver.so.6 kf6-threadweaver-6.19.0_1
 # KDE Plasma
+KDE_Plasma.6.7.3 kde-plasma-base-6.7.3_1
 libKQuickImageEditor.so.1 kquickimageeditor-0.6.0_1
 libKNightTime.so.0 knighttime-6.5.1_1
 libklookandfeel.so.6 plasma-workspace-6.5.1_1
@@ -1997,7 +2000,7 @@ libKGlobalAccelD.so.0 kglobalacceld-6.5.1_1
 libKScreenLocker.so.6 kscreenlocker-6.5.1_1
 libKSysGuardFormatter.so.2 libksysguard-6.5.1_1
 libKSysGuardSensorFaces.so.2 libksysguard-6.5.1_1
-libprocesscore.so.10 libksysguard-6.5.1_1
+libprocesscore.so.11 libksysguard-6.7.3_1
 libKSysGuardSystemStats.so.2 libksysguard-6.5.1_1
 libKSysGuardSensors.so.2 libksysguard-6.5.1_1
 libkworkspace6.so.6 kworkspace-6.5.1_1
@@ -2729,7 +2732,7 @@ libykneomgr.so.0 libykneomgr-0.1.8_1
 libopenshot-audio.so.10 libopenshot-audio-0.4.0_1
 libopenshot.so.27 libopenshot-0.4.0_1
 libpqxx-6.3.so libpqxx-6.3.3_1
-libndpi.so.3 ndpi-3.4_1
+libndpi.so.5 ndpi-5.0_1
 libKF5WidgetsAddons.so.5 kwidgetsaddons-5.26.0_1
 libsearpc.so.1 libsearpc-3.0.7_1
 libseafile.so.0 seafile-libclient-7.0.10_2
@@ -4595,7 +4598,7 @@ libMpvQt.so.3 mpvqt-1.2.0_1
 libtomlplusplus.so.3 tomlplusplus-3.4.0_1
 libglycin-2.so.0 glycin-2.0.7_1
 libglycin-gtk4-2.so.0 glycin-gtk4-2.0.7_1
-libresvg.so.0.46 libresvg0-0.46.0_1
+libresvg.so.0.48 libresvg0-0.48.1_1
 libgpiod.so.3 libgpiod-2.2_4
 libgpiodcxx.so.2 libgpiod-2.2_4
 libigloo.so.0 libigloo-0.9.5_1
@@ -4614,3 +4617,4 @@ libQt6WaylandCompositorPresentationTime.so.6 qt6-wayland-6.11.1_1
 libmysqlclient.so.21 libmariadbclient-devel-11.1.2_2
 libchibi-scheme.so.0 chibi-scheme-0.12_1
 libgdbuspp.so.3 gdbuspp-3_1
+libQt6Pas.so.6 qt6pas-6.2.10_1
