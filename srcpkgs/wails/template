@@ -1,6 +1,6 @@
 # Template file for 'wails'
 pkgname=wails
-version=2.13.0
+version=2.14.0
 revision=1
 build_style=go
 build_wrksrc="v2"
@@ -16,14 +16,10 @@ license="MIT"
 homepage="https://github.com/wailsapp/wails"
 changelog="https://github.com/wailsapp/wails/CHANGELOG.md"
 distfiles="https://github.com/wailsapp/wails/archive/v${version}/wails-${version}.tar.gz"
-checksum=08b8135f6dce18be6016046aa8e75607e998f4f4687154f7d9ebb1bb03666756
+checksum=57961d21f74e2752c609d0a0f63f32cf7e910d76a006309ccd1b92fc64112227
 # Void ships libwebkit2gtk41 while wails CGO directives
 # hardcode webkit2gtk-4.0, causing the test build to fail.
 make_check="no"
-
-pre_build() {
-	export GOWORK=off
-}
 
 post_install() {
 	vdoc ${wrksrc}/README.md
