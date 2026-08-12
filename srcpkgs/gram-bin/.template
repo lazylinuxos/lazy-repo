@@ -4,7 +4,6 @@ version=${VERSION}
 revision=1
 archs="x86_64"
 create_wrksrc=yes
-
 hostmakedepends="tar"
 depends="vulkan-loader mesa-vulkan-intel intel-video-accel"
 short_desc="Code editor for humanoid apes and grumpy toads"

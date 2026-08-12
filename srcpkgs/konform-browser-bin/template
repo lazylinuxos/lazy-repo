@@ -1,9 +1,9 @@
 # Template file for 'konform-browser-bin'
 pkgname=konform-browser-bin
 _pkgname=konform-browser
-version=140.13.0.101
+version=140.13.0.102
 revision=1
-_version=140.13.0-101
+_version=140.13.0-102
 archs="x86_64"
 build_style="fetch"
 short_desc="Firefox ESR fork with increased security, privacy, and customizability"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0"
 homepage="https://konform-browser.codeberg.page"
 distfiles="https://codeberg.org/api/packages/konform-browser/generic/konform-browser/${_version}/${_pkgname}-${_version}-linux-x86_64-deb.deb"
-checksum=4513f6294a5ddfdb1283207bc7502ec418626e05b7fd0851236dca8d86c69ced
+checksum=f2dbf3cbe777f07d50c33900141a4f7c01e0dc4e1fb5fb3b51c95005012f26bd
 replaces="konform-browser>=0"
 
 do_install() {
