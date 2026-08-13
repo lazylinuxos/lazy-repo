@@ -1,0 +1,17 @@
+# Template file for 'faugus-launcher'
+pkgname=faugus-launcher
+version=2.0.6
+revision=1
+build_style=meson
+makedepends="python3-gobject-devel python3-dbus-devel gtk4-devel libadwaita-devel libmanette-devel"
+depends="python3-requests python3-Pillow python3-vdf python3-psutil python3-icoextract"
+short_desc="Simple and lightweight app for running Windows games using UMU-Launcher"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/Faugus/faugus-launcher"
+distfiles="https://github.com/Faugus/${pkgname}/archive/refs/tags/${version}.tar.gz"
+checksum=5b90ec3da12feda8d9efc48b376c62231d9835c27e96825a9ac84b1f7212ee89
+
+post_install() {
+	vlicense LICENSE
+}
