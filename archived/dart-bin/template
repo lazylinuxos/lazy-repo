@@ -1,0 +1,18 @@
+# Template file for 'dart-bin'
+pkgname=dart-bin
+version=3.12.2
+revision=1
+short_desc="Dart programming language SDK"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="BSD-3-Clause"
+homepage="https://dart.dev"
+distfiles="https://storage.googleapis.com/dart-archive/channels/stable/release/${version}/sdk/dartsdk-linux-x64-release.zip"
+checksum=28e47b44cf075f36771046c068bb0d174201cf9c7608744aed1cc23204299c2d
+
+do_install() {
+	vmkdir usr/bin/
+	vmkdir usr/lib/dart/
+	vcopy * usr/lib/dart/
+	ln -sf /usr/lib/dart/bin/dart  ${DESTDIR}/usr/bin/
+	vlicense LICENSE
+}

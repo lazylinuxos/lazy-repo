@@ -7,7 +7,7 @@ make_build_args="--workspace --bin wayscriber --bin wayscriber-configurator"
 hostmakedepends="pkg-config"
 makedepends="cairo-devel wayland-devel pango-devel libxkbcommon-devel
  gcc libgcc glibc-devel wl-clipboard grim slurp gdk-pixbuf-devel gtk4-devel
- gtk4-layer-shell-devel"
+ gtk4-layer-shell-devel libadwaita-devel"
 depends="wl-clipboard grim slurp"
 short_desc="Screen annotation tool for Wayland compositors"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
