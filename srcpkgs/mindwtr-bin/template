@@ -1,6 +1,6 @@
 # Template file for 'mindwtr-bin'
 pkgname=mindwtr-bin
-version=1.2.0
+version=1.2.1
 revision=1
 hostmakedepends="tar xz"
 depends="gtk+3 libwebkit2gtk41 libayatana-appindicator"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="AGPL-3.0-only"
 homepage="https://github.com/dongdongbh/Mindwtr"
 distfiles="https://github.com/dongdongbh/Mindwtr/releases/download/v${version}/mindwtr_${version}_amd64.deb"
-checksum=e1a21d5162a0c2d5b343b402ddd8da17270a3b03c51502f930ba4e1bc6e204b5
+checksum=a287a3a7e4daa8ebac6d3c649c53d293ba6054e6f3938cf299792499328fdc74
 
 do_extract() {
 	mkdir -p ${DESTDIR}
