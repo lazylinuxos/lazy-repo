@@ -1,6 +1,6 @@
 # Template file for 'sshpilot'
 pkgname=sshpilot
-version=5.8.4
+version=5.8.6
 revision=1
 build_style=meson
 hostmakedepends="blueprint-compiler desktop-file-utils gtk-update-icon-cache
@@ -13,5 +13,5 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/mfat/sshpilot"
 distfiles="https://github.com/mfat/sshpilot/archive/refs/tags/v${version}.tar.gz"
-checksum=7c1f4ad0d90c13c69922a577c483719038420aa5fe0673f461b1a81d2cc469c9
+checksum=3c863deda6666f439702c1448a3750f06cd0bb69ea5cef3e19151ac2937934ed
 python_version=3
