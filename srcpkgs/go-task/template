@@ -1,6 +1,6 @@
 # Template file for 'go-task'
 pkgname=go-task
-version=3.52.0
+version=3.53.1
 revision=1
 build_style=go
 go_import_path="github.com/go-task/task/v3"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://taskfile.dev"
 distfiles="https://github.com/go-task/task/archive/refs/tags/v${version}.tar.gz"
-checksum=54833f32465c45d222867cc89c6bc138d07c63d2b43f0512e2cdb4b2164ad87e
+checksum=dd22395f4548ba58bc3adf83cb9ce33f1c5fad7e7c5f0a229bb2709af439fa9a
 
 post_install() {
 	vlicense LICENSE
