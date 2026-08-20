@@ -15,6 +15,7 @@ changelog="${homepage}/docs/releases/${version}/"
 distfiles="https://cdn.waterfox.com/${_pkgname}/releases/${version}/Linux_x86_64/${_pkgname}-${version}.tar.bz2"
 checksum=${SHA256}
 replaces="waterfox>=0"
+nopie=yes
 
 do_install() {
 	vmkdir "opt"

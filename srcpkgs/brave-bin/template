@@ -1,6 +1,6 @@
 # Template file for 'brave-bin'
 pkgname=brave-bin
-version=1.93.136
+version=1.93.137
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -11,7 +11,7 @@ license="MPL-2.0"
 homepage="https://www.brave.com/"
 changelog="https://brave.com/latest/"
 distfiles="https://github.com/brave/brave-browser/releases/download/v${version}/brave-browser-${version}-1.x86_64.rpm"
-checksum=4c36edca55e57cf6c963ad4b294cf221a3d5980623136ad041c35b7adfd3f2f4
+checksum=6a27f9aa1391d28415827985851fc7da999d390a8845da7cce7ef07d672de92a
 replaces="brave>=0 brave-browser>=0"
 
 do_install() {
