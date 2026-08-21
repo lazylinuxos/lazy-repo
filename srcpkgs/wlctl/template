@@ -1,6 +1,6 @@
 # Template file for 'wlctl'
 pkgname=wlctl
-version=0.1.9
+version=0.1.10
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
@@ -11,4 +11,4 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/aashish-thapa/wlctl"
 distfiles="https://github.com/aashish-thapa/wlctl/archive/refs/tags/v${version}.tar.gz"
-checksum=2119a3e616e4fd13914933b71a06c71149c6ab5c1ded98e8df5a816f9cf5d236
+checksum=b73caf3f194aafef00deecf05816b2cdf782d5151f165308c9beb96355c16ddd
