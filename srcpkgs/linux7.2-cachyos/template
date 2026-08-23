@@ -1,6 +1,6 @@
-# Template file for 'linux6.18-cachyos'
-pkgname=linux6.18-cachyos
-version=6.18.46
+# Template file for 'linux7.2-cachyos'
+pkgname=linux7.2-cachyos
+version=7.2.0
 revision=1
 short_desc="Linux kernel and modules (${version%.*} series) with CachyOS patches"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -11,7 +11,6 @@ distfiles="
  ${KERNEL_SITE}/kernel/v${version%%.*}.x/linux-${version%.*}.tar.xz
  ${_kpatchbase}/sched/0001-bore-cachy.patch
  ${_kpatchbase}/sched/0001-prjc-cachy.patch
- ${_kpatchbase}/misc/0001-hardened.patch
  ${_kpatchbase}/misc/0001-rt-i915.patch
 "
 
@@ -20,12 +19,10 @@ if [ "${version##*.}" != 0 ]; then
 	skip_extraction="patch-${version}.xz"
 fi
 
-checksum="9106a4605da9e31ff17659d958782b815f9591ab308d03b0ee21aad6c7dced4b
- 290dc779004371f71d23f275893066dd7aa8d6864ac9f5d04844379b8554ca0c
- 6ee49ee936fc19d89ffd82fc43065424f9fa8329e40d72bb5caf26873526be63
- d9e0a673ff60efdfea9bf1f6dbd5951d4d592ea18c83942c98e93a1bee8d35c8
- 37cd9aa07cc89048696df0e2b3af80563e3f8020603fb703b6d93bd2df5e1226
- b01042ee0a87ae87902abe8e1c4bb2da232a79f6fab3b8dee40e68cac1bf11db"
+checksum="f9fef3d14c0df53819026f4be74459835c2a0b0dcbf5b5bbd9ea19f0829402b3
+ 1809a4d4d6508a2a3f92cd8b3b385640583f90bd6cee46584f4bf105affd24a0
+ b9f9d818df8d33028768dc7d2c5743dcc13dad98ac41ef5230cba76705eee4e0
+ cfc0f69ca9bdf97cd269c5abebed5ff97c8b5f88402c3fd5d0b77ea5a647000b"
 
 python_version=3
 archs="x86_64*"
@@ -441,7 +438,7 @@ do_install() {
 	rm -f ${DESTDIR}/lib
 }
 
-linux6.18-cachyos-headers_package() {
+linux7.2-cachyos-headers_package() {
 	preserve=yes
 	nostrip=yes
 	noshlibprovides=yes
@@ -452,7 +449,7 @@ linux6.18-cachyos-headers_package() {
 	}
 }
 
-linux6.18-cachyos-dbg_package() {
+linux7.2-cachyos-dbg_package() {
 	preserve=yes
 	nostrip=yes
 	noverifyrdeps=yes
