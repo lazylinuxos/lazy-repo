@@ -1,6 +1,6 @@
 # Template file for 'deltachat-desktop'
 pkgname=deltachat-desktop
-version=2.59.0
+version=2.59.1
 revision=1
 _electronversion=35
 hostmakedepends="nodejs pnpm inkscape deltachat-rpc-server"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/deltachat/deltachat-desktop"
 distfiles="https://github.com/deltachat/deltachat-desktop/archive/refs/tags/v${version}.tar.gz"
-checksum=e0197c152e976793ec39a89a69d6d784f5c12e181ff82550187d1a30721d82fa
+checksum=7947fadbc11cf0621fe5b8c3b3b5084db5567d1cb7bc5de1b2d4adb303d5b5ee
 _resolutions="16 32 48 64 96 128 256 512 1024"
 
 pre_build() {
