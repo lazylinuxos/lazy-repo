@@ -1,6 +1,6 @@
 # Template file for 'tauon-bin'
 pkgname=tauon-bin
-version=11.1.1
+version=12.0.0
 revision=1
 depends="python3-pychromecast"
 short_desc="Modern music player"
@@ -8,7 +8,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://tauonmusicbox.rocks"
 distfiles="https://github.com/Taiko2k/Tauon/releases/download/v${version}/TauonMusicBox-linux.7z"
-checksum=44c717d0a03a40eb42e76ba84c9acebe7e2876eb7e6b1cec0dc6eac1871fb40a
+checksum=fcf71f54960a7439b530df30f61e3f947312df9a2994e46d090ef2bea8f2ab5b
 nopie=yes
 noverifyrdeps=yes
 noshlibprovides=yes
