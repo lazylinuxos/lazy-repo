@@ -1,7 +1,7 @@
 # Template file for 'gram'
 pkgname=gram
-version=3.2.0
-revision=2
+version=3.3.0
+revision=1
 build_style=cargo
 build_helper=rust
 hostmakedepends="rust cargo-about clang cmake protobuf pkg-config gettext"
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later OR Apache-2.0"
 homepage="https://gram.liten.app"
 distfiles="https://codeberg.org/GramEditor/gram/archive/${version}.tar.gz"
-checksum=ff455814b3ba5909a1ae359bd5716874bd072495fdaa55fafbc025ed060f1989
+checksum=eda5c167ed2c29ebd03310b236a06f3f29fd0007be3c58bd341992e52f765629
 nocross=yes
 _appid=se.ziran.Gram
 
