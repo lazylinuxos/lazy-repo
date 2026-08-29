@@ -1,0 +1,38 @@
+# Template file for 'mx-samba-config'
+pkgname=mx-samba-config
+version=26.03
+revision=1
+build_style=cmake
+configure_args="-DCMAKE_BUILD_TYPE=Release
+ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ -DPROJECT_VERSION_OVERRIDE=${version}"
+hostmakedepends="qt6-tools"
+makedepends="qt6-base-devel"
+depends="samba polkit xdg-utils"
+short_desc="Samba configuration GUI tool"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/MX-Linux/mx-samba-config"
+distfiles="https://github.com/MX-Linux/mx-samba-config/archive/refs/tags/${version}.tar.gz"
+checksum=121afbfca026dd81bd22e522a934f18ada231e44787212577c215df012b1b4c6
+
+post_install() {
+	for qm in build/*.qm; do
+		[ -f "$qm" ] || continue
+		vinstall "$qm" 644 usr/share/mx-samba-config/locale
+	done
+
+	vinstall mx-samba-config.desktop 644 usr/share/applications
+	vinstall images/mx-samba-config.svg 644 usr/share/icons/hicolor/scalable/apps
+	vinstall scripts/mx-samba-config-lib 755 usr/lib/mx-samba-config
+	vinstall scripts/mx-samba-config-list-users 755 usr/lib/mx-samba-config
+	vinstall actions/org.mxlinux.mx-samba-config-lib.policy	644 usr/share/polkit-1/actions
+	vinstall actions/org.mxlinux.mx-samba-config-list-users.policy 644 usr/share/polkit-1/actions
+
+	if [ -d docs ]; then
+		for file in docs/*; do
+			[ -f "$file" ] || continue
+			vinstall "$file" 644 usr/share/doc/mx-samba-config
+		done
+	fi
+}

@@ -1,0 +1,45 @@
+#!/bin/sh
+
+case "$ACTION" in
+post)
+	if ! getent group sambashare >/dev/null 2>&1; then
+		echo "Creating sambashare group..."
+		groupadd -r sambashare
+	fi
+
+	target_user=""
+
+	for candidate in \
+		"${SUDO_USER:-}" \
+		"${DOAS_USER:-}" \
+		"$( [ -n "${SUDO_UID:-}" ] && id -nu "${SUDO_UID}" 2>/dev/null )" \
+		"$( [ -n "${DOAS_UID:-}" ] && id -nu "${DOAS_UID}" 2>/dev/null )" \
+		"${LOGNAME:-}" \
+		"$(logname 2>/dev/null)" \
+		"${USER:-}"
+	do
+		if [ -n "$candidate" ] &&
+			[ "$candidate" != "root" ] &&
+			id -u "$candidate" >/dev/null 2>&1; then
+			target_user="$candidate"
+			break
+		fi
+	done
+
+	if [ -n "$target_user" ]; then
+		if id -nG "$target_user" | grep -qw sambashare; then
+			echo "mx-samba-config: user '$target_user' is already in sambashare group."
+		else
+			echo "mx-samba-config: adding user '$target_user' to sambashare group..."
+			if ! usermod -aG sambashare "$target_user"; then
+				echo "mx-samba-config: failed to add '$target_user' to sambashare."
+				echo "Please add the user manually with:"
+				echo "  usermod -aG sambashare $target_user"
+			fi
+		fi
+	else
+		echo "mx-samba-config: could not determine a non-root invoking user."
+		echo "The sambashare group was created, but no user was added."
+	fi
+	;;
+esac

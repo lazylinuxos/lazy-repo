@@ -1,0 +1,105 @@
+--- a/mainwindow.cpp	2026-03-08 04:14:11.000000000 +0400
++++ b/mainwindow.cpp	2026-08-29 18:02:55.598367587 +0400
+@@ -371,7 +371,8 @@
+ void MainWindow::listItemChanged(QListWidgetItem *item)
+ {
+     // Check for disabling of running locale
+-    QString localeCode = item->text().section(' ', 0, 0);
++    QString text = item->text().section(QRegularExpression(R"(\s*\t)"), 0, 0);
++    QString localeCode = text.section(QRegularExpression(R"(\s+)"), 0, 0);
+     if (item->checkState() == Qt::Unchecked
+         && (localeCode == getCurrentLang() || localeCode == getCurrentSessionLang())) {
+         const QSignalBlocker blocker(ui->listWidget);
+@@ -383,7 +384,6 @@
+         return;
+     }
+     ui->listWidget->disconnect();
+-    QString text = item->text().section(QRegularExpression(R"(\s*\t)"), 0, 0);
+     if (!isSafeLocaleGenLine(text) || !isSafeLocaleToken(localeCode)) {
+         QMessageBox::critical(this, tr("Error"), tr("Invalid locale value."));
+         connect(ui->listWidget, &QListWidget::itemChanged, this, &MainWindow::listItemChanged);
+@@ -428,27 +428,19 @@
+ {
+     countEnabled = 0;
+     ui->listWidget->clear();
+-    QStringList supportedFiles = {Paths::i18nSupported, Paths::i18nSupportedLocal};
+-    QStringList enabledLocales;
+-    if (!readEnabledLocales(Paths::localeGen, enabledLocales)) {
+-        return;
+-    }
+ 
+     hashLocale.clear();
+     processLocaleFiles(getLocaleFiles({Paths::i18nLocales, Paths::i18nLocalesLocal}));
+ 
+-    for (const QString &filePath : supportedFiles) {
+-        if (!QFile::exists(filePath)) {
+-            continue;
+-        }
+-        QFile file(filePath);
+-        if (!file.open(QIODevice::ReadOnly)) {
+-            QMessageBox::critical(this, tr("Error"), tr("Could not open %1").arg(file.fileName()));
+-            return;
+-        }
+-        readLocaleFile(file, enabledLocales);
+-        file.close();
++    QFile file(Paths::localeGen);
++    if (!file.open(QIODevice::ReadOnly)) {
++        QMessageBox::critical(this, tr("Error"), tr("Could not open %1").arg(file.fileName()));
++        return;
+     }
++
++    readLocaleFile(file);
++    file.close();
++
+     updateLocaleListUI();
+ }
+ 
+@@ -554,22 +546,37 @@
+     ui->tabWidget->setEnabled(true);
+ }
+ 
+-void MainWindow::readLocaleFile(QFile &file, const QStringList &enabledLocale)
++void MainWindow::readLocaleFile(QFile &file)
+ {
+     QTextStream in(&file);
+-    QRegularExpression localeRegex("^[a-z]{2,3}([^_]|_[A-Z]{2})");
+     while (!in.atEnd()) {
+         QString line = in.readLine().trimmed();
+-        if (localeRegex.match(line).hasMatch()) {
+-            auto item = new QListWidgetItem;
+-            item->setCheckState(enabledLocale.contains(line) ? Qt::Checked : Qt::Unchecked);
+-            if (item->checkState() == Qt::Checked) {
+-                ++countEnabled;
+-            }
+-            line = line.leftJustified(20, ' ');
+-            item->setText(line + '\t' + hashLocale.value(line.section(QRegularExpression(R"(\s|\.)"), 0, 0)));
+-            ui->listWidget->addItem(item);
++        if (line.isEmpty()) {
++            continue;
++        }
++
++        bool enabled = !line.startsWith('#');
++
++        if (!enabled) {
++            line = line.mid(1).trimmed();
+         }
++
++        QString locale = line.section(QRegularExpression(R"(\s+)"), 0, 0);
++
++        if (!isSafeLocaleGenLine(line) || !isSafeLocaleToken(locale)) {
++            continue;
++        }
++
++        auto *item = new QListWidgetItem;
++        item->setData(Qt::UserRole, locale);
++        item->setCheckState(enabled ? Qt::Checked : Qt::Unchecked);
++
++        if (item->checkState() == Qt::Checked) {
++            ++countEnabled;
++        }
++
++        item->setText(line + '\t' + hashLocale.value(locale.section(QRegularExpression(R"(\s|\.)"), 0, 0)));
++        ui->listWidget->addItem(item);
+     }
+ }
+ 

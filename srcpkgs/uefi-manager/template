@@ -1,0 +1,38 @@
+# Template file for 'uefi-manager'
+pkgname=uefi-manager
+version=26.07.1
+revision=1
+build_style=cmake
+configure_args="-DCMAKE_BUILD_TYPE=Release
+ -DHELPER_INSTALL_DIR=/usr/lib/uefi-manager
+ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ -DPROJECT_VERSION_OVERRIDE=${version}"
+hostmakedepends="qt6-tools"
+makedepends="qt6-base-devel"
+depends="efibootmgr polkit"
+short_desc="Graphical tool for managing UEFI boot entries"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://mxlinux.org"
+distfiles="https://github.com/MX-Linux/uefi-manager/archive/refs/tags/${version}.tar.gz"
+checksum=282c5a7b910f06265eecea9b5016f8c174a8689c78f02f0102680526e340f1f7
+
+pre_configure() {
+	export UEFI_MANAGER_ARCH_BUILD=1
+}
+
+post_install() {
+	for qm in build/*.qm; do
+		[ -f "$qm" ] || continue
+		vinstall "$qm" 644 usr/share/uefi-manager/locale
+	done
+
+	vinstall scripts/uefimanager-lib 755 usr/lib/uefi-manager
+	vinstall build/org.mxlinux.pkexec.mx-uefimanager-helper.policy 644 usr/share/polkit-1/actions
+	vinstall uefi-manager.desktop 644 usr/share/applications
+	vinstall uefi-manager.png 644 usr/share/icons/hicolor/64x64/apps
+	vinstall uefi-manager.png 644 usr/share/pixmaps
+	vinstall uefi-manager.svg 644 usr/share/icons/hicolor/scalable/apps
+
+	vman docs/uefi-manager.1
+}

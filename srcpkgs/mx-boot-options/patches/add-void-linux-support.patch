@@ -1,0 +1,340 @@
+diff --git a/src/helper.cpp b/src/helper.cpp
+index 74a7408..280146c 100644
+--- a/src/helper.cpp
++++ b/src/helper.cpp
+@@ -73,6 +73,8 @@ void printError(const QString &message)
+         {"cp", {"/usr/bin/cp", "/bin/cp"}},
+         {"cryptsetup", {"/usr/sbin/cryptsetup", "/sbin/cryptsetup", "/usr/bin/cryptsetup"}},
+         {"dpkg-query", {"/usr/bin/dpkg-query"}},
++        {"dmesg", {"/usr/bin/dmesg", "/bin/dmesg"}},
++        {"dracut", {"/usr/bin/dracut", "/sbin/dracut"}},
+         {"grub-editenv", {"/usr/bin/grub-editenv", "/sbin/grub-editenv", "/usr/sbin/grub-editenv"}},
+         {"grub-mkconfig", {"/usr/sbin/grub-mkconfig", "/sbin/grub-mkconfig", "/usr/bin/grub-mkconfig"}},
+         {"grub-reboot", {"/usr/sbin/grub-reboot", "/sbin/grub-reboot", "/usr/bin/grub-reboot"}},
+@@ -96,6 +98,8 @@ void printError(const QString &message)
+         {"update-grub", {"/usr/sbin/update-grub", "/sbin/update-grub", "/usr/bin/update-grub"}},
+         {"update-initramfs", {"/usr/sbin/update-initramfs", "/sbin/update-initramfs", "/usr/bin/update-initramfs"}},
+         {"update-rc.d", {"/usr/sbin/update-rc.d", "/sbin/update-rc.d", "/usr/bin/update-rc.d"}},
++        {"xbps-install", {"/usr/bin/xbps-install"}},
++        {"xbps-query", {"/usr/bin/xbps-query"}},
+     };
+     return commands;
+ }
+@@ -148,11 +152,13 @@ void printError(const QString &message)
+ 
+ [[nodiscard]] int commandTimeoutMs(const QString &command)
+ {
+-    if (command == QLatin1String("apt-get") || command == QLatin1String("pacman")) {
++    if (command == QLatin1String("apt-get") || command == QLatin1String("pacman")
++        || command == QLatin1String("xbps-install")) {
+         return -1;
+     }
+     if (command == QLatin1String("grub-mkconfig") || command == QLatin1String("update-grub")
+-        || command == QLatin1String("mkinitcpio") || command == QLatin1String("update-initramfs")) {
++        || command == QLatin1String("mkinitcpio") || command == QLatin1String("update-initramfs")
++        || command == QLatin1String("dracut")) {
+         return 10 * 60 * 1000;
+     }
+     return 60 * 1000;
+@@ -408,6 +414,22 @@ void printError(const QString &message)
+             }
+             result = runProcess(chrootBinary, {rootPath, executable, "-Q", package});
+         }
++    } else if (manager == QLatin1String("xbps")) {
++        const QString executable = resolveHostBinary(allowedCommands().value("xbps-query"), rootPath);
++        if (executable.isEmpty()) {
++            printError(QStringLiteral("xbps-query is not available"));
++            return 127;
++        }
++        if (rootPath.isEmpty()) {
++            result = runProcess(executable, {"-p", "pkgver", package});
++        } else {
++            const QString chrootBinary = resolveChrootBinary();
++            if (chrootBinary.isEmpty()) {
++                printError(QStringLiteral("Unable to find chroot executable"));
++                return 127;
++            }
++            result = runProcess(chrootBinary, {rootPath, executable, "-p", "pkgver", package});
++        }
+     } else {
+         printError(QString("Unsupported package manager: %1").arg(manager));
+         return 1;
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index 45837a1..6fa9e68 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -189,11 +189,10 @@ void MainWindow::loadPlymouthThemes()
+ {
+     ui->comboTheme->clear();
+ 
+-    const QString plymouthCmd = "/sbin/plymouth-set-default-theme";
+     const QString rootPath = targetRootPath();
+     QString output;
+     if (rootPath.isEmpty()) {
+-        output = cmd.getOut(plymouthCmd + " -l");
++        output = cmd.getOutAsRoot("plymouth-set-default-theme", {"-l"}, QuietMode::Yes);
+     } else {
+         output = cmd.getOutAsRootInTarget(rootPath, "plymouth-set-default-theme", {"-l"});
+     }
+@@ -204,8 +203,9 @@ void MainWindow::loadPlymouthThemes()
+     if (!output.isEmpty()) {
+         const QStringList themes = output.split('\n', Qt::SkipEmptyParts);
+         ui->comboTheme->addItems(themes);
+-        const QString currentTheme = rootPath.isEmpty() ? cmd.getOut(plymouthCmd).trimmed()
+-                                                        : cmd.getOutAsRootInTarget(rootPath, "plymouth-set-default-theme").trimmed();
++        const QString currentTheme
++            = rootPath.isEmpty() ? cmd.getOutAsRoot("plymouth-set-default-theme", {}, QuietMode::Yes).trimmed()
++                                 : cmd.getOutAsRootInTarget(rootPath, "plymouth-set-default-theme").trimmed();
+         if (cmd.exitCode() == 0 && !currentTheme.isEmpty()) {
+             const int index = ui->comboTheme->findText(currentTheme);
+             if (index != -1) {
+@@ -298,11 +298,10 @@ void MainWindow::setupUiElements()
+     }
+ 
+     // Configure GRUB theme related UI elements
+-    const QString grubRoot = live && !installedMode ? bootLocation : targetRootPath();
+-    const bool grubThemesExist
+-        = QFile::exists(grubRoot + "/boot/grub/theme") || QFile::exists(grubRoot + "/boot/grub/themes");
+-    ui->checkGrubTheme->setVisible(grubThemesExist);
+-    ui->pushThemeFile->setVisible(grubThemesExist);
++    // A GRUB theme can be selected from any location and does not need a pre-existing /boot/grub/themes
++    // directory. Keep the controls available on installed systems so users can select their first theme.
++    ui->checkGrubTheme->setVisible(!liveGrubMode());
++    ui->pushThemeFile->setVisible(!liveGrubMode());
+     ui->pushThemeFile->setDisabled(true);
+     ui->checkBackground->setChecked(false);
+     ui->pushBgFile->setDisabled(true);
+@@ -366,7 +365,14 @@ void MainWindow::handleLiveSystem()
+ void MainWindow::setupGrubSettings()
+ {
+     const QString grubPackage = grubPackageName();
+-    grubInstalled = (!grubPackage.isEmpty() && isInstalled(grubPackage)) || liveGrubMode();
++    const QString rootPath = targetRootPath();
++    const bool grubFilesPresent = QFile::exists(rootPath + "/etc/default/grub")
++        && (QFile::exists(rootPath + "/usr/bin/grub-mkconfig") || QFile::exists(rootPath + "/sbin/grub-mkconfig")
++            || QFile::exists(rootPath + "/usr/sbin/grub-mkconfig"));
++    // On Void, package queries can be unavailable while XBPS is reconfiguring its database. The presence of
++    // GRUB's configuration and generator is also a reliable indication that this UI can manage the system.
++    grubInstalled = (!grubPackage.isEmpty() && isInstalled(grubPackage))
++        || (detectPackageManager() == PackageManager::Xbps && grubFilesPresent) || liveGrubMode();
+     ui->groupBoxOptions->setHidden(!grubInstalled);
+     ui->groupBoxBackground->setHidden(!grubInstalled);
+ 
+@@ -1111,6 +1117,9 @@ bool MainWindow::isInstalled(const QString &package)
+     case PackageManager::Pacman:
+         return rootPath.isEmpty() ? QProcess::execute("pacman", {"-Q", package}) == 0
+                                   : cmd.isPackageInstalledAsRoot("pacman", package, rootPath, QuietMode::Yes);
++    case PackageManager::Xbps:
++        return rootPath.isEmpty() ? QProcess::execute("xbps-query", {"-p", "pkgver", package}) == 0
++                                  : cmd.isPackageInstalledAsRoot("xbps", package, rootPath, QuietMode::Yes);
+     case PackageManager::Apt: {
+         if (!rootPath.isEmpty()) {
+             return cmd.isPackageInstalledAsRoot("apt", package, rootPath, QuietMode::Yes);
+@@ -1172,6 +1181,9 @@ MainWindow::PackageManager MainWindow::detectPackageManager() const
+     if (QFile::exists(rootPath + "/usr/bin/pacman")) {
+         return PackageManager::Pacman;
+     }
++    if (QFile::exists(rootPath + "/usr/bin/xbps-query")) {
++        return PackageManager::Xbps;
++    }
+     if (QFile::exists(rootPath + "/usr/bin/apt-get")) {
+         return PackageManager::Apt;
+     }
+@@ -1182,6 +1194,7 @@ QString MainWindow::grubPackageName() const
+ {
+     switch (detectPackageManager()) {
+     case PackageManager::Pacman:
++    case PackageManager::Xbps:
+         return QStringLiteral("grub");
+     case PackageManager::Apt:
+         return QStringLiteral("grub-common");
+@@ -1195,6 +1208,9 @@ QStringList MainWindow::requiredPlymouthPackages() const
+     if (detectPackageManager() == PackageManager::Pacman) {
+         return {QStringLiteral("plymouth")};
+     }
++    if (detectPackageManager() == PackageManager::Xbps) {
++        return {QStringLiteral("plymouth"), QStringLiteral("plymouth-data")};
++    }
+     return {QStringLiteral("plymouth"), QStringLiteral("plymouth-x11"), QStringLiteral("plymouth-themes"),
+             QStringLiteral("plymouth-themes-mx")};
+ }
+@@ -1208,6 +1224,11 @@ bool MainWindow::runPackageUpdate()
+                                                    QuietMode::No, Cmd::NoTimeoutMs)
+                                   : cmd.procAsRootInTarget(rootPath, "pacman", {"-Sy", "--noconfirm"}, nullptr,
+                                                             nullptr, QuietMode::No, Cmd::NoTimeoutMs);
++    case PackageManager::Xbps:
++        return rootPath.isEmpty() ? cmd.procAsRoot("xbps-install", {"-S"}, nullptr, nullptr, QuietMode::No,
++                                                   Cmd::NoTimeoutMs)
++                                  : cmd.procAsRootInTarget(rootPath, "xbps-install", {"-S"}, nullptr, nullptr,
++                                                            QuietMode::No, Cmd::NoTimeoutMs);
+     case PackageManager::Apt:
+         return rootPath.isEmpty() ? cmd.procAsRoot("apt-get", {"update"}, nullptr, nullptr, QuietMode::No,
+                                                    Cmd::NoTimeoutMs)
+@@ -1235,6 +1256,13 @@ bool MainWindow::installPackages(const QStringList &packages)
+                                                    Cmd::NoTimeoutMs)
+                                   : cmd.procAsRootInTarget(rootPath, "pacman", packageArgs, nullptr, nullptr,
+                                                             QuietMode::No, Cmd::NoTimeoutMs);
++    case PackageManager::Xbps:
++        packageArgs = {"-y"};
++        packageArgs += packages;
++        return rootPath.isEmpty() ? cmd.procAsRoot("xbps-install", packageArgs, nullptr, nullptr, QuietMode::No,
++                                                   Cmd::NoTimeoutMs)
++                                  : cmd.procAsRootInTarget(rootPath, "xbps-install", packageArgs, nullptr, nullptr,
++                                                            QuietMode::No, Cmd::NoTimeoutMs);
+     case PackageManager::Apt:
+         packageArgs = {"install", "-y",
+                        "-o", "Dpkg::Options::=--force-confdef",
+@@ -1253,7 +1281,7 @@ bool MainWindow::installPackages(const QStringList &packages)
+ bool MainWindow::runUpdateGrub()
+ {
+     const QString rootPath = targetRootPath();
+-    if (detectPackageManager() == PackageManager::Pacman) {
++    if (detectPackageManager() == PackageManager::Pacman || detectPackageManager() == PackageManager::Xbps) {
+         return rootPath.isEmpty() ? cmd.procAsRoot("grub-mkconfig", {"-o", "/boot/grub/grub.cfg"})
+                                   : cmd.procAsRootInTarget(rootPath, "grub-mkconfig", {"-o", "/boot/grub/grub.cfg"});
+     }
+@@ -1278,6 +1306,11 @@ bool MainWindow::runUpdateInitramfs()
+         return rootPath.isEmpty() ? cmd.procAsRoot("mkinitcpio", {"-P"}) : cmd.procAsRootInTarget(rootPath, "mkinitcpio", {"-P"});
+     }
+ 
++    if (detectPackageManager() == PackageManager::Xbps && QFile::exists(rootPath + "/usr/bin/dracut")) {
++        return rootPath.isEmpty() ? cmd.procAsRoot("dracut", {"--force", "--regenerate-all"})
++                                  : cmd.procAsRootInTarget(rootPath, "dracut", {"--force", "--regenerate-all"});
++    }
++
+     if (QFile::exists(rootPath + "/usr/bin/update-initramfs") || QFile::exists(rootPath + "/sbin/update-initramfs")) {
+         return rootPath.isEmpty() ? cmd.procAsRoot("update-initramfs", {"-u", "-k", "all"})
+                                   : cmd.procAsRootInTarget(rootPath, "update-initramfs", {"-u", "-k", "all"});
+@@ -1294,7 +1327,7 @@ bool MainWindow::runUpdateInitramfs()
+ bool MainWindow::toggleBootlogd(bool enable)
+ {
+     const QString rootPath = targetRootPath();
+-    if (detectPackageManager() == PackageManager::Pacman) {
++    if (detectPackageManager() == PackageManager::Pacman || detectPackageManager() == PackageManager::Xbps) {
+         return true;
+     }
+ 
+@@ -1927,6 +1960,16 @@ void MainWindow::readGrubCfg()
+             ui->spinBoxTimeout->setValue(trimmedLine.section('=', 1).remove(QRegularExpression("[\"']")).toInt());
+         }
+ 
++        // A theme may have been generated directly into grub.cfg rather than being retained in
++        // /etc/default/grub. Recover it so the UI reflects the configuration actually in use.
++        if (!liveMode && !ui->checkGrubTheme->isChecked() && trimmedLine.startsWith("set theme=")) {
++            QString themePath = trimmedLine.section('=', 1).remove(QRegularExpression("[\"']"));
++            themePath.replace("($root)", "");
++            if (QFile::exists(themePath)) {
++                processGrubTheme("GRUB_THEME=" + themePath);
++            }
++        }
++
+         if (trimmedLine.startsWith("menuentry ") || trimmedLine.startsWith("submenu ")) {
+             menuId = trimmedLine.section("$menuentry_id_option", 1, -1).section(' ', 1, 1);
+             QString item = extractMenuEntryTitle(trimmedLine);
+@@ -1973,13 +2016,13 @@ void MainWindow::readDefaultGrub()
+             processGrubDefault(line);
+         } else if (line.startsWith("GRUB_TIMEOUT=")) {
+             ui->spinBoxTimeout->setValue(line.section('=', 1).remove(QRegularExpression("[\"']")).toInt());
+-        } else if (line.startsWith("export GRUB_MENU_PICTURE=")) {
++        } else if (line.startsWith("GRUB_BACKGROUND=") || line.startsWith("export GRUB_MENU_PICTURE=")) {
+             QString picturePath = line.section('=', 1).remove('"');
+             ui->pushBgFile->setText(picturePath);
+             ui->pushBgFile->setProperty("file", picturePath);
+             ui->checkBackground->setChecked(true);
+             ui->pushBgFile->setEnabled(true);
+-        } else if (line.startsWith("#export GRUB_MENU_PICTURE=")
++        } else if ((line.startsWith("#GRUB_BACKGROUND=") || line.startsWith("#export GRUB_MENU_PICTURE="))
+                    && ui->pushBgFile->property("file").toString().isEmpty()) {
+             // Remember the image from a disabled background line so re-enabling does not require re-picking it.
+             QString picturePath = line.section('=', 1).remove('"');
+@@ -2165,11 +2208,13 @@ void MainWindow::pushApplyClicked()
+         const QString themeFilePath = ui->pushThemeFile->property("file").toString();
+ 
+         if (ui->checkBackground->isChecked() && QFile::exists(bgFilePath)) {
+-            if (!replaceGrubArg("export GRUB_MENU_PICTURE", "\"" + bgFilePath + "\"")) {
+-                // Uncomments a previously disabled line with the same image in place, or appends a new one.
+-                enableGrubLine("export GRUB_MENU_PICTURE=\"" + bgFilePath + "\"");
++            if (!replaceGrubArg("GRUB_BACKGROUND", "\"" + bgFilePath + "\"")
++                && !replaceGrubArg("export GRUB_MENU_PICTURE", "\"" + bgFilePath + "\"")) {
++                // Re-enable an identical disabled line when present; otherwise add the standard GRUB setting.
++                enableGrubLine("GRUB_BACKGROUND=\"" + bgFilePath + "\"");
+             }
+         } else if (!ui->checkBackground->isChecked()) {
++            disableGrubLine("GRUB_BACKGROUND=");
+             disableGrubLine("export GRUB_MENU_PICTURE");
+         }
+ 
+@@ -2529,7 +2574,12 @@ void MainWindow::pushLogClicked()
+     const QString rootPath = targetRootPath();
+ 
+     const bool systemdEnv = isSystemdEnvironment();
+-    if (systemdEnv) {
++    if (detectPackageManager() == PackageManager::Xbps) {
++        // Void uses runit rather than bootlogd, so there is no /var/log/boot. The kernel ring buffer is the
++        // boot log available on a standard Void installation.
++        logContent = cmd.getOutAsRoot("dmesg", {"--color=never"}, QuietMode::Yes);
++    }
++    if (systemdEnv && logContent.isEmpty()) {
+         if (rootPath.isEmpty()) {
+             logContent = cmd.getOutAsRoot("journalctl", {"-b", "--no-pager"}, QuietMode::Yes);
+         } else {
+@@ -2643,21 +2693,31 @@ void MainWindow::pushPreviewClicked()
+             tr("Your current system is running in a Virtual Machine,\n"
+                "Plymouth bootsplash will work in a limited way, you also won't be able to preview the theme"));
+     }
+-    if (rootPath.isEmpty()) {
+-        cmd.procAsRoot("plymouth-set-default-theme", {ui->comboTheme->currentText()});
+-    } else {
+-        cmd.procAsRootInTarget(rootPath, "plymouth-set-default-theme", {ui->comboTheme->currentText()});
++    const bool themeSet = rootPath.isEmpty()
++        ? cmd.procAsRoot("plymouth-set-default-theme", {ui->comboTheme->currentText()})
++        : cmd.procAsRootInTarget(rootPath, "plymouth-set-default-theme", {ui->comboTheme->currentText()});
++    if (!themeSet) {
++        QMessageBox::critical(this, tr("Preview failed"),
++                              tr("Could not set the selected Plymouth theme. Ensure plymouth and plymouth-data "
++                                 "are installed."));
++        return;
+     }
+ 
+     QTimer tick;
+     tick.start(100ms);
+     connect(&tick, &QTimer::timeout, this, &MainWindow::sendMouseEvents);
+-    cmd.previewPlymouthAsRoot();
++    const bool previewed = cmd.previewPlymouthAsRoot();
+     if (rootPath.isEmpty()) {
+         cmd.procAsRoot("plymouth-set-default-theme", {current_theme});
+     } else {
+         cmd.procAsRootInTarget(rootPath, "plymouth-set-default-theme", {current_theme});
+     }
++    if (!previewed) {
++        QMessageBox::critical(
++            this, tr("Preview failed"),
++            tr("Plymouth could not start a preview. Run the application from an X11 session and check that your "
++               "graphics driver supports kernel mode setting."));
++    }
+ }
+ 
+ void MainWindow::comboEnableFlatmenusClicked(bool checked)
+@@ -2767,6 +2827,9 @@ void MainWindow::btnThemeFileClicked()
+ {
+     QString themeDirectory = live && !installedMode && !bootLocation.isEmpty() ? bootLocation + "/boot/grub/theme"
+                                                                            : chroot.section(' ', 1, 1) + "/boot/grub/themes";
++    if (!QDir(themeDirectory).exists()) {
++        themeDirectory = chroot.section(' ', 1, 1) + "/boot/grub";
++    }
+     QString selected = QFileDialog::getOpenFileName(this, tr("Select GRUB theme"), themeDirectory, "*.txt;; *.*");
+ 
+     if (!selected.isEmpty()) {
+diff --git a/src/mainwindow.h b/src/mainwindow.h
+index f0984a8..60396c3 100644
+--- a/src/mainwindow.h
++++ b/src/mainwindow.h
+@@ -80,7 +80,7 @@ protected:
+     void keyPressEvent(QKeyEvent *event) override;
+ 
+ private:
+-    enum struct PackageManager { Apt, Pacman, Unknown };
++    enum struct PackageManager { Apt, Pacman, Xbps, Unknown };
+ 
+     Ui::MainWindow *ui;
+     Cmd cmd;

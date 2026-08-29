@@ -1,0 +1,22 @@
+--- a/common.h	2026-03-08 04:14:11.000000000 +0400
++++ b/common.h	2026-08-28 23:57:09.658124679 +0400
+@@ -27,7 +27,7 @@
+ namespace Paths
+ {
+ // Locale configuration files
+-inline const QString localeGen {"/etc/locale.gen"};
++inline const QString localeGen {"/etc/default/libc-locales"};
+ #ifdef MX_LOCALE_ARCH
+ inline const QString defaultLocale {"/etc/locale.conf"};
+ #else
+@@ -39,8 +39,8 @@
+ inline const QString mxLocaleDoc {"/usr/share/doc/mx-locale"};
+ 
+ // System locale directories
+-inline const QString i18nSupported {"/usr/share/i18n/SUPPORTED"};
+-inline const QString i18nSupportedLocal {"/usr/local/share/i18n/SUPPORTED"};
++inline const QString i18nSupported {"/etc/default/libc-locales"};
++inline const QString i18nSupportedLocal {"/etc/default/libc-locales"};
+ inline const QString i18nLocales {"/usr/share/i18n/locales"};
+ inline const QString i18nLocalesLocal {"/usr/local/share/i18n/locales"};
+ 

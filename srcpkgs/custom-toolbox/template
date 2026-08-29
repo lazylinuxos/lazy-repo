@@ -1,0 +1,38 @@
+# Template file for 'custom-toolbox'
+pkgname=custom-toolbox
+version=26.07
+revision=1
+build_style=cmake
+configure_args="-DCMAKE_BUILD_TYPE=Release
+ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ -DPROJECT_VERSION_OVERRIDE=${version}"
+hostmakedepends="qt6-tools"
+makedepends="qt6-base-devel"
+short_desc="A customizable toolbox application built with Qt"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/MX-Linux/custom-toolbox"
+distfiles="https://github.com/MX-Linux/custom-toolbox/archive/refs/tags/${version}.tar.gz"
+checksum=6a2b17bd49d53f2030396675156035adb2011fbdd8b53ff32c6bfecd0b4958b4
+
+post_install() {
+	for qm in build/*.qm; do
+		[ -f "$qm" ] || continue
+		vinstall "$qm" 644 usr/share/custom-toolbox/locale
+	done
+
+	vinstall custom-toolbox.conf 644 etc/custom-toolbox
+	vinstall example.list 644 etc/custom-toolbox
+
+	vinstall custom-toolbox.desktop 644 usr/share/applications
+
+	vinstall icons/custom-toolbox.svg 644 usr/share/pixmaps
+	vinstall icons/custom-toolbox.svg 644 usr/share/icons/hicolor/scalable/apps
+
+	if [ -d help ]; then
+		for file in help/*; do
+			[ -f "$file" ] || continue
+			vinstall "$file" 644 usr/share/doc/custom-toolbox
+		done
+	fi
+}

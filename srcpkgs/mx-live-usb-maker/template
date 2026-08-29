@@ -1,0 +1,38 @@
+# Template file for 'mx-live-usb-maker'
+pkgname=mx-live-usb-maker
+version=26.04.1
+revision=1
+build_style=cmake
+configure_args="-DCMAKE_BUILD_TYPE=None
+ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ -DPROJECT_VERSION_OVERRIDE=${version}"
+hostmakedepends="qt6-tools dpkg"
+makedepends="qt6-base-devel"
+depends="polkit parted dosfstools e2fsprogs exfatprogs ntfs-3g
+ xorriso rsync syslinux cryptsetup util-linux libarchive"
+short_desc="Graphical utility for creating bootable live USB drives"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://mxlinux.org"
+distfiles="https://github.com/MX-Linux/mx-live-usb-maker/archive/refs/tags/${version}a.tar.gz"
+checksum=ebc10e44ffa7e05f9936185c43d076be786c3e54fc1875bbbe988c04752814a1
+
+post_install() {
+	for qm in build/*.qm; do
+		[ -f "$qm" ] || continue
+		vinstall "$qm" 644 usr/share/mx-live-usb-maker/locale
+	done
+
+	vinstall scripts/org.mxlinux.pkexec.mxlum-helper.policy 644 usr/share/polkit-1/actions
+	vinstall mx-live-usb-maker.desktop 644 usr/share/applications
+	vinstall mx-live-usb-maker.png 644 usr/share/icons/hicolor/256x256/apps
+	vinstall mx-live-usb-maker.png 644 usr/share/pixmaps
+	vinstall mx-live-usb-maker.svg 644 usr/share/icons/hicolor/scalable/apps
+
+	if [ -d help ]; then
+		for file in help/*; do
+			[ -f "$file" ] || continue
+			vinstall "$file" 644 usr/share/doc/mx-live-usb-maker
+		done
+	fi
+}

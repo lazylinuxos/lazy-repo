@@ -1,0 +1,22 @@
+--- a/helper.cpp	2026-08-28 23:55:14.606947577 +0400
++++ b/helper.cpp	2026-08-28 23:55:35.955221063 +0400
+@@ -341,7 +341,7 @@
+     if (!arguments.isEmpty()) {
+         return fail(QObject::tr("run-locale-gen does not accept arguments"));
+     }
+-    return runExternal("locale-gen", {});
++    return runExternal("xbps-reconfigure", {"-f", "glibc-locales"});
+ }
+ 
+ bool purgePackages(const QStringList &arguments)
+--- a/helper.cpp	2026-08-29 17:33:08.316160094 +0400
++++ b/helper.cpp	2026-08-29 17:36:16.396345751 +0400
+@@ -296,7 +296,7 @@
+         const QString body = commented ? trimmed.mid(1).trimmed() : trimmed;
+         if (body == entry) {
+             if (!handled) {
+-                const QString commentedLine = "# " + entry;
++                const QString commentedLine = "#" + entry;
+                 updatedLocaleGen.append(commentedLine);
+                 handled = true;
+                 localeGenChanged |= line != commentedLine;

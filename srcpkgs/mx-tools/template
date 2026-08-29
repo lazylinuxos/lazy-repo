@@ -1,0 +1,34 @@
+# Template file for 'mx-tools'
+pkgname=mx-tools
+version=26.06
+revision=1
+build_style=cmake
+configure_args="-DCMAKE_BUILD_TYPE=Release
+ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ -DPROJECT_VERSION_OVERRIDE=${version}"
+hostmakedepends="qt6-tools"
+makedepends="qt6-base-devel"
+short_desc="Dashboard application launcher for various MX tools"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/MX-Linux/mx-tools"
+distfiles="https://github.com/MX-Linux/mx-tools/archive/refs/tags/${version}.tar.gz"
+checksum=5b4715be5660e2b1bdbee2be1da6bbc395668cbb2473195243b4757a0d0adc55
+
+post_install() {
+	for qm in build/*.qm; do
+		[ -f "$qm" ] || continue
+		vinstall "$qm" 644 usr/share/mx-tools/locale
+	done
+
+	vinstall mx-tools.desktop 644 usr/share/applications
+	vinstall icons/mx-tools.png 644 usr/share/icons/hicolor/96x96/apps
+	vinstall icons/mx-tools.svg 644 usr/share/icons/hicolor/scalable/apps
+
+	if [ -d help ]; then
+		for file in help/*; do
+			[ -f "$file" ] || continue
+			vinstall "$file" 644 usr/share/doc/mx-tools
+		done
+	fi
+}

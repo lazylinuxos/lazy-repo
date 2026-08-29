@@ -1,0 +1,11 @@
+--- a/mainwindow.h	2026-03-08 04:14:11.000000000 +0400
++++ b/mainwindow.h	2026-08-29 16:52:31.912844704 +0400
+@@ -99,7 +99,7 @@
+     void displayLocalesGen();
+     void localeGen();
+     void processLocaleFiles(const QStringList &localeFiles);
+-    void readLocaleFile(QFile &file, const QStringList &enabledLocale);
++    void readLocaleFile(QFile &file);
+     void removeManuals();
+     void resetLocaleGen();
+     void setButtons();

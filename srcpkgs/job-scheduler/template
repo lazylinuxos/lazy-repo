@@ -1,0 +1,35 @@
+pkgname=job-scheduler
+version=26.05
+revision=1
+build_style=cmake
+configure_args="-DCMAKE_BUILD_TYPE=Release
+ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ -DPROJECT_VERSION_OVERRIDE=${version}"
+hostmakedepends="cmake ninja qt6-tools"
+makedepends="qt6-base-devel"
+depends="polkit cronie"
+short_desc="Graphical job scheduling utility for cron"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://mxlinux.org"
+distfiles="https://github.com/MX-Linux/job-scheduler/archive/refs/tags/${version}.tar.gz"
+checksum=263c9cde5f9b9c316d9ab238ed1e0c4443f462fc2549b62086439bd600385d85
+
+post_install() {
+	for qm in build/*.qm; do
+		[ -f "$qm" ] || continue
+		vinstall "$qm" 644 usr/share/job-scheduler/locale
+	done
+
+	vbin scripts/job-scheduler-launcher
+	vinstall scripts/org.mxlinux.pkexec.job-scheduler-launcher.policy 644 usr/share/polkit-1/actions
+	vinstall job-scheduler.desktop 644 usr/share/applications
+	vinstall images/job-scheduler.svg 644 usr/share/icons/hicolor/scalable/apps
+
+	if [ -d help ]; then
+		for file in help/*; do
+			[ -f "$file" ] || continue
+			vinstall "$file" 644 usr/share/doc/job-scheduler
+		done
+	fi
+}

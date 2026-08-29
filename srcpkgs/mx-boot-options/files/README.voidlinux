@@ -1,0 +1,5 @@
+Optional dependencies:
+
+* `grub` for GRUB configuration support
+* `plymouth` for bootsplash support
+* `uefi-manager` for UEFI manager integration

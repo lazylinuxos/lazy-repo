@@ -1,0 +1,37 @@
+pkgname=mx-locale
+version=26.03
+revision=1
+build_style=cmake
+configure_args="-DCMAKE_BUILD_TYPE=Release
+ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+ -DPROJECT_VERSION_OVERRIDE=${version}
+ -DARCH_BUILD=ON"
+hostmakedepends="qt6-tools"
+makedepends="qt6-base-devel"
+depends="polkit"
+short_desc="GUI configuration tool for locales"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-3.0-or-later"
+homepage="https://github.com/MX-Linux/mx-locale"
+distfiles="https://github.com/MX-Linux/mx-locale/archive/refs/tags/${version}.tar.gz"
+checksum=9190a083a233d7e4d6abd5dbd39535600024fc5625aa79bc8d60c38b20194bdd
+
+post_install() {
+	vinstall lib/locale.gen 644 usr/lib/mx-locale
+	vinstall lib/locale.lib 644 usr/lib/mx-locale
+
+	for qm in build/*.qm; do
+		[ -f "$qm" ] || continue
+		vinstall "$qm" 644 usr/share/mx-locale/locale
+	done
+
+	vinstall polkit-actions/org.mxlinux.pkexec.mx-locale.policy 644 usr/share/polkit-1/actions
+	vinstall mx-locale.desktop 644 usr/share/applications
+
+	if [ -d help ]; then
+		for file in help/*; do
+			[ -f "$file" ] || continue
+			vinstall "$file" 644 usr/share/doc/mx-locale/help
+		done
+	fi
+}
