@@ -1,6 +1,6 @@
 # Template file for 'superproductivity'
 pkgname=superproductivity
-version=18.21.1
+version=18.21.2
 revision=1
 _electronver=35
 _electron="electron${_electronver}"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://super-productivity.com"
 distfiles="https://github.com/super-productivity/super-productivity/archive/v${version}.tar.gz"
-checksum=da18cb1af924839620d69097c4b35c43bfc4f9d38da547260c71e4443b5c77e1
+checksum=2e783f40638f22ee42987004806a764c4b98dc5ad0c2836f19a7f072effeaaa8
 
 do_build() {
 	_electron_ver=$(cat ${_electron_dist}/version)

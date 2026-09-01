@@ -1,7 +1,7 @@
 # Template file for 'fluffychat-bin'
 pkgname=fluffychat-bin
 version=2.9.1
-revision=1
+revision=2
 archs="x86_64"
 depends="gtk+3 jsoncpp libsecret xdg-user-dirs zenity libwebkit2gtk41"
 short_desc="Cutest instant messenger in the [matrix]"

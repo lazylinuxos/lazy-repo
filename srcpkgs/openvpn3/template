@@ -2,7 +2,7 @@
 _pkgname=openvpn3-linux
 pkgname=openvpn3
 version=27
-revision=2
+revision=3
 build_style=meson
 build_helper=qemu
 configure_args="-Dselinux=disabled -Dselinux_policy=disabled -Dbash-completion=enabled
