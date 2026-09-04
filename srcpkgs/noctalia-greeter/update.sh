@@ -7,7 +7,7 @@ __dir="$(dirname "${BASH_SOURCE[0]}")"
 
 GH_REPO="noctalia-dev/noctalia-greeter"
 
-LATEST_VERSION=$(gh release list --repo ${GH_REPO} --json name,tagName,isLatest --jq '.[] | select(.isLatest)|.tagName')
+LATEST_VERSION=$(gh api repos/${GH_REPO}/tags --jq '.[0].name')
 export VERSION=${LATEST_VERSION#"v"}
 CURRENT_VERSION=$(grep -E '^version=' ${__dir}/template | cut -d= -f2)
 

@@ -1,6 +1,6 @@
 # Template file for 'odin'
 pkgname=odin
-version=2026.07a
+version=2026.09
 revision=1
 _tag="dev-${version//./-}"
 build_style="gnu-makefile"
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="zlib"
 homepage="https://odin-lang.org/"
 distfiles="https://github.com/odin-lang/Odin/archive/refs/tags/${_tag}.tar.gz"
-checksum=8f4f02fd9a3426b441cd0dfbe0aca1b95fd93c95d86940fcb4417ef6044c83cd
+checksum=f52230de6ad28bed99b4440018cb659c13e3fd78c4521ca3ce661698c1f6135d
 skiprdeps="/usr/lib/odin/vendor/raylib/linux-arm64/libraylib.so.600"
 nostrip=yes
 
@@ -39,9 +39,12 @@ pre_build() {
 }
 
 post_build() {
-	make -C vendor/miniaudio/src
-	make -C vendor/stb/src unix
-	make -C vendor/cgltf/src unix
+	cd ${wrksrc}/vendor/miniaudio/src
+	./build_miniaudio.sh
+	cd ${wrksrc}/vendor/stb/src
+	./build_stb.sh
+	cd ${wrksrc}/vendor/cgltf/src
+	./build_cgltf.sh
 }
 
 do_check() {

@@ -1,7 +1,7 @@
 # Template file for 'noctalia'
 pkgname=noctalia
-version=5.0.0
-revision=8
+version=5.0.1
+revision=1
 build_style=meson
 hostmakedepends="pkg-config"
 makedepends="sdbus-c++-devel cmake wayland-devel wayland-protocols freetype-devel fontconfig-devel cairo-devel
@@ -14,8 +14,8 @@ short_desc="Sleek and minimal desktop shell (Beta)"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/noctalia-dev/noctalia"
-distfiles="https://github.com/noctalia-dev/noctalia/archive/v${version}-beta.8.tar.gz"
-checksum=a60e4ab8723f428e11b9a2bac97811aaa6a494648730abc61025c35cb728539e
+distfiles="https://github.com/noctalia-dev/noctalia/archive/v${version}.tar.gz"
+checksum=ed8334f294e9f94f4744e315b674511fc51203a6a56c561af8803a6eb6884698
 
 post_install() {
 	vlicense LICENSE
