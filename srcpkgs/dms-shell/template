@@ -1,18 +1,17 @@
 # Template file for 'dms-shell'
 pkgname=dms-shell
-_pkg1=DankMaterialShell
 version=1.6.1
 revision=1
 archs="x86_64"
 build_style=go
-go_import_path="github.com/AvengeMedia/${_pkg1}"
+go_import_path="github.com/AvengeMedia/DankMaterialShell"
 go_ldflags="-linkmode=external"
 depends="dgop quickshell font-inter font-fira-ttf font-firacode material-symbols-variable-ttf"
 short_desc="Quickshell-based desktop shell with Material 3 design principles"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
-license="GPL-3.0-only"
+license="MIT"
 homepage="https://github.com/AvengeMedia/DankMaterialShell"
-distfiles="https://github.com/AvengeMedia/${_pkg1}/archive/v${version}/${_pkg1}-${version}.tar.gz"
+distfiles="https://github.com/AvengeMedia/DankMaterialShell/archive/v${version}/DankMaterialShell-${version}.tar.gz"
 checksum=abd50f97df1a4714526089825e5ba4bba2850e5d635f7618511c68a4a6276bbd
 
 do_build() {
@@ -31,21 +30,21 @@ do_install() {
 	vmkdir etc/xdg/quickshell/dms
 	vcopy quickshell/* etc/xdg/quickshell/dms/
 
-	vmkdir usr/share/doc/${pkgname}
-	vinstall README.md 644 usr/share/doc/${pkgname}/
-	vcopy docs/* usr/share/doc/${pkgname}/
+	vmkdir usr/share/doc/dms-shell
+	vcopy docs/* usr/share/doc/dms-shell/
+	vdoc README.md
+	vlicense LICENSE
 }
 
 dms-greeter_package() {
 	short_desc="DankMaterialShell greeter for greetd"
 	depends="${sourcepkg} greetd"
 	pkg_install() {
-		vbin quickshell/Modules/Greetd/assets/${pkgname}
+		vbin quickshell/Modules/Greetd/assets/dms-greeter
 
-		vmkdir usr/share/quickshell/${pkgname}
-		vcopy quickshell/* usr/share/quickshell/${pkgname}/
+		vmkdir usr/share/quickshell/dms-greeter
+		vcopy quickshell/* usr/share/quickshell/dms-greeter
 
-		vmkdir usr/share/doc/${pkgname}
-		vinstall quickshell/Modules/Greetd/README.md 644 usr/share/doc/${pkgname}/
+		vdoc quickshell/Modules/Greetd/README.md
 	}
 }

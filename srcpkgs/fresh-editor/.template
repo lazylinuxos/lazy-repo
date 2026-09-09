@@ -21,7 +21,7 @@ do_install() {
 
 	vmkdir usr/share/${pkgname}
 	vcopy crates/fresh-editor/plugins usr/share/${pkgname}/
-	vcopy crates/fresh-editor/keymaps usr/share/${pkgname}/
+	vcopy crates/fresh-editor-core/keymaps usr/share/${pkgname}/
 
 	vmkdir usr/share/doc/${pkgname}
 	vinstall README.md 644 usr/share/doc/${pkgname}

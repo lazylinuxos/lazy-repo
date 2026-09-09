@@ -11,6 +11,7 @@ license="AGPL-3.0-or-later"
 homepage="https://github.com/readest/readest"
 distfiles="https://github.com/readest/readest/releases/download/v${version}/Readest_${version}_amd64.deb"
 checksum="99e53c46b35606cf0bfc68b5aa1138efa2fefb3605bee4ce1568c10f16f92916"
+ignore_elf_dirs="/usr/share/Readest"
 
 do_extract() {
 	mkdir -p ${DESTDIR}
