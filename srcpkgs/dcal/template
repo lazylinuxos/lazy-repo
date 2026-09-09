@@ -1,6 +1,6 @@
 # Template file for 'dcal'
 pkgname=dcal
-version=1.6.0
+version=1.6.1
 revision=1
 _dqml_commit="ea5cb4e"
 build_style=gnu-makefile
@@ -15,7 +15,7 @@ license="MIT"
 homepage="https://danklinux.com"
 distfiles="https://github.com/AvengeMedia/dankcalendar/archive/refs/tags/v${version}.tar.gz
  https://github.com/AvengeMedia/dank-qml-common/archive/${_dqml_commit}.tar.gz>dank-qml-common.tar.gz"
-checksum="2c89bd2c9d92df98ac94a1de678a8e117281c5f23753c1ba2328ed62dd83c258
+checksum="b348853ab2fff7cae2e744a5d97a73bad2e43449375ddd9e2f021e73d8d35c80
  e5f292e820e05132b81b3b277a7e7f18a7c304c91b168d089b7b6ec2d468a23e"
 skip_extraction="dank-qml-common.tar.gz"
 
