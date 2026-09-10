@@ -1,0 +1,20 @@
+# Template file for 'skarwm'
+pkgname=skarwm
+version=0.2.0
+revision=1
+build_style=gnu-makefile
+make_install_args="PREFIX=/usr"
+hostmakedepends="odin"
+makedepends="libX11-devel libxcb-devel"
+short_desc="Tiling + scrollable x11 WM written in Odin"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://github.com/nerdyslacker/skarwm"
+distfiles="https://github.com/nerdyslacker/skarwm/archive/refs/tags/v${version}.tar.gz"
+checksum=f04f8b6b17ece59afd8d3a8bfc349e0ef9b13a5d98b5c80441652cfdbead8ea4
+
+post_install() {
+	vlicense LICENSE
+	vdoc README.md
+	vdoc docs/IPC.md
+}
