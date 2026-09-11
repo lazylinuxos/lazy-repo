@@ -1,7 +1,7 @@
 # Template file for 'dms-greeter'
 pkgname=dms-greeter
-version=1.6.1
-revision=2
+version=1.6.2
+revision=1
 _dank_qml_version=1.6.0
 archs="x86_64"
 build_style=go
@@ -18,7 +18,7 @@ license="MIT"
 homepage="https://github.com/AvengeMedia/dank-greeter"
 distfiles="https://github.com/AvengeMedia/dank-greeter/archive/refs/tags/v${version}.tar.gz
  https://github.com/AvengeMedia/dank-qml-common/archive/refs/tags/v${_dank_qml_version}.tar.gz>dank-qml.tar.gz"
-checksum="43785f11e7960023feb948c514491c7b2d3316610d2ca5f79baf95473be87719
+checksum="2e9fda9690da100ab8aac23c4c0305e4030ef7f419d4971081c071e787907d42
  1d2a7820054ed7efdcf3bffe4ba611a37c2e701844de575a168cece66f57027e"
 skip_extraction="dank-qml.tar.gz"
 
