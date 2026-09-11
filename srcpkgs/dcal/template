@@ -1,46 +1,44 @@
 # Template file for 'dcal'
 pkgname=dcal
 version=1.6.1
-revision=2
-_dank_qml_version=1.6.0
-build_style=gnu-makefile
-build_helper="qemu"
-make_build_target="build"
-hostmakedepends="go pkg-config automake tar"
+revision=3
+build_style=go
+build_wrksrc="core"
+go_import_path="github.com/AvengeMedia/dankcalendar/core"
+go_package="${go_import_path}/cmd/dcal"
+go_build_tags="withshell"
+go_ldflags="-linkmode=external -X main.Version=${version}"
+hostmakedepends="pkg-config tar"
 makedepends="qt6-base-devel qt6-declarative-devel qt6-svg-devel qt6-wayland-devel qt6-tools-devel"
 depends="font-inter ttf-material-icons"
 short_desc="Standalone calendar app that brings all your calendars together"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
-homepage="https://danklinux.com"
-distfiles="https://github.com/AvengeMedia/dankcalendar/archive/refs/tags/v${version}.tar.gz
- https://github.com/AvengeMedia/dank-qml-common/archive/refs/tags/v${_dank_qml_version}.tar.gz>dank-qml.tar.gz"
-checksum="b348853ab2fff7cae2e744a5d97a73bad2e43449375ddd9e2f021e73d8d35c80
- 1d2a7820054ed7efdcf3bffe4ba611a37c2e701844de575a168cece66f57027e"
-skip_extraction="dank-qml.tar.gz"
+homepage="https://github.com/AvengeMedia/dankcalendar"
+distfiles="https://github.com/AvengeMedia/dankcalendar/releases/download/v${version}/dankcalendar-${version}.tar.gz"
+checksum=4fb321efe73091305116aff0044ebf72f63a3d9204907c9e05ce2974f7f6989a
 
-post_extract() {
-	vsrcextract -C "${wrksrc}/dank-qml-common" "dank-qml.tar.gz"
-}
-
-do_install() {
-	vbin core/bin/dcal
-
-	vmkdir usr/share/quickshell/dankcal
-	vcopy "quickshell/*" usr/share/quickshell/dankcal
-
-	vdoc README.md
-
-	vinstall assets/com.danklinux.dankcalendar.desktop 644 usr/share/applications
-	vinstall assets/com.danklinux.dankcalendar.svg 644 usr/share/icons/hicolor/scalable/apps/
-	vlicense LICENSE
-
-	vsv dcal
+pre_build() {
+	make sync-shell
 }
 
 post_install() {
-	for sh in bash fish zsh; do
-		vtargetrun core/bin/dcal completion "$sh" > "dcal.$sh"
-		vcompletion "dcal.$sh" "$sh" dcal
-	done
+	vinstall "${wrksrc}/assets/com.danklinux.dankcalendar.desktop" 644 usr/share/applications
+	vinstall "${wrksrc}/assets/com.danklinux.dankcalendar.metainfo.xml" 644 usr/share/metainfo
+	vinstall "${wrksrc}/assets/com.danklinux.dankcalendar.svg" 644 usr/share/icons/hicolor/scalable/apps
+
+	vmkdir usr/share/quickshell/dankcal
+	vcopy "${wrksrc}/quickshell/*" usr/share/quickshell/dankcal
+
+	if [ -z "$CROSS_BUILD" ]; then
+		vmkdir usr/share/bash-completion/completions
+		vmkdir usr/share/zsh/site-functions
+		vmkdir usr/share/fish/vendor_completions.d
+		"${DESTDIR}/usr/bin/dcal" completion bash > "${DESTDIR}/usr/share/bash-completion/completions/dcal"
+		"${DESTDIR}/usr/bin/dcal" completion zsh  > "${DESTDIR}/usr/share/zsh/site-functions/_dcal"
+		"${DESTDIR}/usr/bin/dcal" completion fish > "${DESTDIR}/usr/share/fish/vendor_completions.d/dcal.fish"
+	fi
+
+	vlicense "${wrksrc}/LICENSE"
+	vsv dcal
 }

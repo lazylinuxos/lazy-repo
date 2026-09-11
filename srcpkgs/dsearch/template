@@ -1,7 +1,7 @@
 # Template file for 'dsearch'
 pkgname=dsearch
 version=1.6.0
-revision=1
+revision=2
 build_style=go
 go_import_path="github.com/AvengeMedia/danksearch"
 go_package="./cmd/dsearch"
@@ -12,18 +12,7 @@ homepage="https://github.com/AvengeMedia/danksearch"
 distfiles="https://github.com/AvengeMedia/danksearch/archive/refs/tags/v${version}.tar.gz"
 checksum=17edc8ad137c61c6c6546b0272f83a3b4ac2d277b1d753703344f53bece8b06e
 
-do_build() {
-	export CGO_CPPFLAGS="${CPPFLAGS}"
-	export CGO_CFLAGS="${CFLAGS}"
-	export CGO_CXXFLAGS="${CXXFLAGS}"
-	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-
-	go build -o dsearch ./cmd/dsearch
-}
-
-do_install() {
-	vbin dsearch
-	vsv ${pkgname}
+post_install() {
+	vsv dsearch
 	vlicense LICENSE
 }

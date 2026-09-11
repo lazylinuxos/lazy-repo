@@ -1,13 +1,12 @@
 # Template file for 'dms-shell'
 pkgname=dms-shell
 version=1.6.1
-revision=2
-_dank_qml_version=1.6.0
-archs="x86_64"
+revision=3
 build_style=go
 build_wrksrc="core"
 go_import_path="github.com/AvengeMedia/DankMaterialShell/core"
 go_package="${go_import_path}/cmd/dms"
+go_build_tags="distro_binary withshell"
 go_ldflags="-linkmode=external -X main.Version=${version}"
 hostmakedepends="tar"
 depends="dgop quickshell font-inter font-fira-ttf font-firacode material-symbols-variable-ttf"
@@ -15,15 +14,8 @@ short_desc="Quickshell-based desktop shell with Material 3 design principles"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/AvengeMedia/DankMaterialShell"
-distfiles="https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v${version}.tar.gz
- https://github.com/AvengeMedia/dank-qml-common/archive/refs/tags/v${_dank_qml_version}.tar.gz>dank-qml.tar.gz"
-checksum="abd50f97df1a4714526089825e5ba4bba2850e5d635f7618511c68a4a6276bbd
- 1d2a7820054ed7efdcf3bffe4ba611a37c2e701844de575a168cece66f57027e"
-skip_extraction="dank-qml.tar.gz"
-
-post_extract() {
-	vsrcextract -C "${wrksrc}/dank-qml-common" "dank-qml.tar.gz"
-}
+distfiles="https://github.com/AvengeMedia/DankMaterialShell/releases/download/v${version}/dms-source.tar.gz"
+checksum=76fb32a224a46957c3af37b6fb3b223940d70e5660595bf2c945b9bb356f8d02
 
 pre_build() {
 	make sync-shell
@@ -34,6 +26,9 @@ post_install() {
 	vinstall "${wrksrc}/assets/com.danklinux.dms.desktop" 644 usr/share/applications
 	vinstall "${wrksrc}/assets/com.danklinux.dms.notepad.desktop" 644 usr/share/applications
 	vinstall "${wrksrc}/assets/danklogo.svg" 644 usr/share/icons/hicolor/scalable/apps
+
+	vmkdir usr/share/quickshell/dms
+	vcopy "${wrksrc}/quickshell/*" usr/share/quickshell/dms
 
 	if [ -z "$CROSS_BUILD" ]; then
 		vmkdir usr/share/bash-completion/completions

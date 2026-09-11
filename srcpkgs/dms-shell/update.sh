@@ -15,7 +15,7 @@ printf "Latest version is: %s\nLatest built version is: %s\n" "${VERSION}" "${CU
 [ "${CURRENT_VERSION}" = "${VERSION}" ] && printf "No new version to release\n" && exit 0
 
 # No preprepped checksum files, need to download the binary and calculate it myself
-gh release download -R ${GH_REPO} --archive=tar.gz --output "${VERSION}.tar.gz"
+curl -L "https://github.com/${GH_REPO}/releases/download/v${VERSION}/dms-source.tar.gz" -o "${VERSION}.tar.gz"
 export SHA256=$(sha256sum ./${VERSION}.tar.gz | cut -d ' ' -f1 )
 rm ./${VERSION}.tar.gz
 [[ ! ${SHA256} =~ ^[a-z0-9]+$ ]] && printf "got junk instead of sha256\n" && exit 1

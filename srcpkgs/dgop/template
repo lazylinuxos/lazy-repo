@@ -5,6 +5,7 @@ revision=1
 archs="x86_64"
 build_style=go
 go_import_path="github.com/AvengeMedia/dgop"
+go_package="./cmd/dgop"
 go_ldflags="-linkmode=external"
 depends="glibc"
 short_desc="System monitoring CLI + REST API"
@@ -14,17 +15,6 @@ homepage="https://github.com/AvengeMedia/dgop"
 distfiles="https://github.com/AvengeMedia/dgop/archive/refs/tags/v${version}.tar.gz"
 checksum=ab97d4bd9483de47051f984ecf3f877d289c316f8a35a9c3d9e5cfaa73b7f2b9
 
-do_build() {
-	cd ${wrksrc}
-	export CGO_CPPFLAGS="$CPPFLAGS"
-	export CGO_CFLAGS="$CFLAGS"
-	export CGO_CXXFLAGS="$CXXFLAGS"
-	export CGO_LDFLAGS="$LDFLAGS"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=${go_ldflags}"
-	go build -o dgop ./cmd/dgop
-}
-
-do_install() {
-	vbin dgop
+post_install() {
 	vlicense LICENSE
 }
