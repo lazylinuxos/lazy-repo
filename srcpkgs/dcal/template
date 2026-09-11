@@ -1,8 +1,8 @@
 # Template file for 'dcal'
 pkgname=dcal
 version=1.6.1
-revision=1
-_dqml_commit="ea5cb4e"
+revision=2
+_dank_qml_version=1.6.0
 build_style=gnu-makefile
 build_helper="qemu"
 make_build_target="build"
@@ -14,13 +14,13 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://danklinux.com"
 distfiles="https://github.com/AvengeMedia/dankcalendar/archive/refs/tags/v${version}.tar.gz
- https://github.com/AvengeMedia/dank-qml-common/archive/${_dqml_commit}.tar.gz>dank-qml-common.tar.gz"
+ https://github.com/AvengeMedia/dank-qml-common/archive/refs/tags/v${_dank_qml_version}.tar.gz>dank-qml.tar.gz"
 checksum="b348853ab2fff7cae2e744a5d97a73bad2e43449375ddd9e2f021e73d8d35c80
- e5f292e820e05132b81b3b277a7e7f18a7c304c91b168d089b7b6ec2d468a23e"
-skip_extraction="dank-qml-common.tar.gz"
+ 1d2a7820054ed7efdcf3bffe4ba611a37c2e701844de575a168cece66f57027e"
+skip_extraction="dank-qml.tar.gz"
 
 post_extract() {
-	vsrcextract -C "${wrksrc}/dank-qml-common" "dank-qml-common.tar.gz"
+	vsrcextract -C "${wrksrc}/dank-qml-common" "dank-qml.tar.gz"
 }
 
 do_install() {

@@ -2,49 +2,47 @@
 pkgname=dms-shell
 version=${VERSION}
 revision=1
+_dank_qml_version=1.6.0
 archs="x86_64"
 build_style=go
-go_import_path="github.com/AvengeMedia/DankMaterialShell"
-go_ldflags="-linkmode=external"
+build_wrksrc="core"
+go_import_path="github.com/AvengeMedia/DankMaterialShell/core"
+go_package="${go_import_path}/cmd/dms"
+go_ldflags="-linkmode=external -X main.Version=${version}"
+hostmakedepends="tar"
 depends="dgop quickshell font-inter font-fira-ttf font-firacode material-symbols-variable-ttf"
 short_desc="Quickshell-based desktop shell with Material 3 design principles"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/AvengeMedia/DankMaterialShell"
-distfiles="https://github.com/AvengeMedia/DankMaterialShell/archive/v${version}/DankMaterialShell-${version}.tar.gz"
-checksum=${SHA256}
+distfiles="https://github.com/AvengeMedia/DankMaterialShell/archive/refs/tags/v${version}.tar.gz
+ https://github.com/AvengeMedia/dank-qml-common/archive/refs/tags/v${_dank_qml_version}.tar.gz>dank-qml.tar.gz"
+checksum="${SHA256}
+ 1d2a7820054ed7efdcf3bffe4ba611a37c2e701844de575a168cece66f57027e"
+skip_extraction="dank-qml.tar.gz"
 
-do_build() {
-	cd core
-	export CGO_CPPFLAGS="$CPPFLAGS"
-	export CGO_CFLAGS="$CFLAGS"
-	export CGO_CXXFLAGS="$CXXFLAGS"
-	export CGO_LDFLAGS="$LDFLAGS"
-	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -ldflags=${go_ldflags}"
-	go build -o dms ./cmd/dms
+post_extract() {
+	vsrcextract -C "${wrksrc}/dank-qml-common" "dank-qml.tar.gz"
 }
 
-do_install() {
-	vbin core/dms
-
-	vmkdir etc/xdg/quickshell/dms
-	vcopy quickshell/* etc/xdg/quickshell/dms/
-
-	vmkdir usr/share/doc/dms-shell
-	vcopy docs/* usr/share/doc/dms-shell/
-	vdoc README.md
-	vlicense LICENSE
+pre_build() {
+	make sync-shell
 }
 
-dms-greeter_package() {
-	short_desc="DankMaterialShell greeter for greetd"
-	depends="${sourcepkg} greetd"
-	pkg_install() {
-		vbin quickshell/Modules/Greetd/assets/dms-greeter
+post_install() {
+	vinstall "${wrksrc}/assets/dms-open.desktop" 644 usr/share/applications
+	vinstall "${wrksrc}/assets/com.danklinux.dms.desktop" 644 usr/share/applications
+	vinstall "${wrksrc}/assets/com.danklinux.dms.notepad.desktop" 644 usr/share/applications
+	vinstall "${wrksrc}/assets/danklogo.svg" 644 usr/share/icons/hicolor/scalable/apps
 
-		vmkdir usr/share/quickshell/dms-greeter
-		vcopy quickshell/* usr/share/quickshell/dms-greeter
+	if [ -z "$CROSS_BUILD" ]; then
+		vmkdir usr/share/bash-completion/completions
+		vmkdir usr/share/zsh/site-functions
+		vmkdir usr/share/fish/vendor_completions.d
+		"${DESTDIR}/usr/bin/dms" completion bash > "${DESTDIR}/usr/share/bash-completion/completions/dms"
+		"${DESTDIR}/usr/bin/dms" completion zsh  > "${DESTDIR}/usr/share/zsh/site-functions/_dms"
+		"${DESTDIR}/usr/bin/dms" completion fish > "${DESTDIR}/usr/share/fish/vendor_completions.d/dms.fish"
+	fi
 
-		vdoc quickshell/Modules/Greetd/README.md
-	}
+	vlicense "${wrksrc}/LICENSE"
 }

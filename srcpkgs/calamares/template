@@ -22,7 +22,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://calamares.io"
 distfiles="https://codeberg.org/Calamares/calamares/releases/download/v${version}/calamares-${version}.tar.gz"
-checksum=7515bf959b73b956ceb967351c7e299cbb3668a53d35f9c770eb72e00d93ced6
+checksum=144cbbf6bdcebfb21685950db4f0777218519df095f62f4aa392f28348110d18
 
 pre_configure() {
 	vsed -i 's/services-systemd/services-runit/g' settings.conf

@@ -14,7 +14,7 @@ short_desc="Sleek and minimal desktop shell"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/noctalia-dev/noctalia"
-distfiles="https://github.com/noctalia-dev/noctalia/archive/v${version}-beta1.tar.gz"
+distfiles="https://github.com/noctalia-dev/noctalia/archive/v${version}.tar.gz"
 checksum=fcf37d99ecb6093b38df8f0d6a18012f518895cd8d3934fd16164a7d0b7b3062
 
 post_install() {
