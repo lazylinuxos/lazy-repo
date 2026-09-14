@@ -5,7 +5,8 @@ revision=1
 build_style=go
 go_import_path="github.com/bjarneo/cliamp"
 hostmakedepends="pkg-config"
-makedepends="alsa-lib-devel libflac-devel libvorbis-devel libogg-devel ffmpeg-devel"
+makedepends="alsa-lib-devel libflac-devel libvorbis-devel libogg-devel
+ ffmpeg-devel mpg123-devel"
 depends="yt-dlp"
 short_desc="Retro terminal music player inspired by Winamp 2.x"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
