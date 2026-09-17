@@ -1,14 +1,14 @@
 # Template file for 'anush'
 pkgname=anush
 version=0.1.0
-revision=1
+revision=2
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
-depends="skarwm quickshell python3 nerd-fonts-ttf picom dunst feh kitty
- clipmenu xdotool setxkbmap xkb-switch renCal NetworkManager bluez curl
- pavucontrol brightnessctl power-profiles-daemon xset xrandr redshift-gtk
- xclip xcolor xdg-utils xinput flameshot xinput libnotify ImageMagick
- lxqt-policykit xss-lock betterlockscreen udiskie elogind xterm
+depends="skarwm quickshell python3 picom dunst feh kitty clipmenu xdotool
+ setxkbmap xkb-switch renCal NetworkManager bluez curl pavucontrol xset
+ brightnessctl power-profiles-daemon  xrandr redshift-gtk xclip xcolor
+ xdg-utils xinput flameshot xinput libnotify ImageMagick lxqt-policykit
+ xss-lock betterlockscreen udiskie elogind xterm nerd-font-jetbrainsmono
  papirus-icon-theme papirus-folders"
 short_desc="Full desktop configuration for skarwm"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
