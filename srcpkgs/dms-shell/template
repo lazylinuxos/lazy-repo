@@ -1,7 +1,7 @@
 # Template file for 'dms-shell'
 pkgname=dms-shell
-version=1.6.1
-revision=3
+version=1.6.2
+revision=1
 build_style=go
 build_wrksrc="core"
 go_import_path="github.com/AvengeMedia/DankMaterialShell/core"
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/AvengeMedia/DankMaterialShell"
 distfiles="https://github.com/AvengeMedia/DankMaterialShell/releases/download/v${version}/dms-source.tar.gz"
-checksum=76fb32a224a46957c3af37b6fb3b223940d70e5660595bf2c945b9bb356f8d02
+checksum=6e3a1ff6e028d1b363a119e18a2ed664d99b0a9287a0189897efe56b9099db23
 
 pre_build() {
 	make sync-shell
