@@ -1,64 +1,65 @@
 # Template file for 'wallpaperengine-git'
 pkgname=wallpaperengine-git
 _pkgname=linux-wallpaperengine
-version=r601.be77336
+version=r627.b016d7d
 revision=1
+_glslang_commit=b775500
+_spirv_cross_commit=ad4d022
+_stb_commit=2c980bb
+_json_commit=c41152e
+_mimetypes_commit=8990d6a
+_kissfft_commit=e5e3fac
+_argparse_commit=d924b84
+_catch2_commit=02f8b55
+_quickjs_commit=6d46d07
+_cef_ver="146.0.11+g3a0fcf1+chromium-146.0.7680.179"
+_cef_pkg="cef_binary_${_cef_ver}_linux64_minimal"
 build_style=cmake
 configure_args="
  -DCMAKE_BUILD_TYPE=Release
  -DCMAKE_INSTALL_PREFIX=/opt/${_pkgname}
- -Wno-dev
-"
-hostmakedepends="pkg-config"
+ -Wno-dev"
+hostmakedepends="pkg-config git"
 makedepends="liblz4-devel ffmpeg6-devel mpv-devel glfw-devel glew-devel
  libfreeglut-devel pulseaudio-devel cups-devel at-spi2-core-devel nss-devel
- nspr-devel SDL2-devel glm wayland-protocols libXrandr-devel gmpxx-devel
-"
+ nspr-devel SDL2-devel glm wayland-protocols libXrandr-devel gmpxx-devel"
 depends="ffmpeg6 mpv"
 short_desc="Use Steam's Wallpaper Engine on Linux"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/Almamu/linux-wallpaperengine"
-_cef_ver="135.0.17+gcbc1c5b+chromium-135.0.7049.52"
-_cef_pkg="cef_binary_${_cef_ver}_linux64_minimal"
-distfiles="
- https://github.com/Almamu/linux-wallpaperengine/archive/be77336.tar.gz
- https://github.com/Almamu/glslang-WallpaperEngine/archive/refs/heads/main.zip>glslang-WallpaperEngine.zip
- https://github.com/Almamu/SPIRV-Cross-WallpaperEngine/archive/refs/heads/main.zip>SPIRV-Cross-WallpaperEngine.zip
- https://github.com/nothings/stb/archive/refs/heads/master.zip>stb.zip
- https://github.com/nlohmann/json/archive/refs/heads/develop.zip>json.zip
- https://github.com/lasselukkari/MimeTypes/archive/refs/heads/master.zip>MimeTypes.zip
- https://github.com/mborgerding/kissfft/archive/refs/heads/master.zip>kissfft.zip
- https://github.com/p-ranav/argparse/archive/refs/heads/master.zip>argparse.zip
- https://github.com/catchorg/Catch2/archive/refs/heads/devel.zip>Catch2.zip
- https://github.com/quickjs-ng/quickjs/archive/refs/heads/master.zip>quickjs.zip
- https://cef-builds.spotifycdn.com/${_cef_pkg}.tar.bz2
-"
-checksum="
- 2002e8a651227ee2e290f1a7654d5c7ee808c2de091ab1b19ec9b5fed2224138
- 943ed566fd995fc01d1c91fb2ba4bd05db89cfe218d67e767096af6be6d5ee5e
- 40bd2741804ca8a17f0d2e18c0460e8116381f5557875416ee6644d54939472a
- cc3b31a1c6a0e1ea7cbc2f0e0288c6c522be5790bd2c6b7426c9234b1a514a83
- 0a312fb7910e0cdeb61d70f774495664d458e275079eb7cf6d108c4f8d8cf47c
- 14622c0062b348796763f404a878b457bdb880ce80ec12a365af41e1e19e8374
- 9e7ea9e4fd359952034a67e757ff1c79121ea063879d2d0ea3de391e430a4d2d
- 5365148de683ef9cf7d2514a9167e31adf4cc840e2b3a6f9c06211fbc8391d37
- 13b504c4e423d127a10b8898810aaa131b29e9564791385a40fe19225c69edc6
- 3e4b83c361eb9b59bbbd82e4a394ff55228d56e088b455b7b6506251d8214e6c
- 24ac1980e62be7b1aea2c337d6bd4bc770dccd8b37e47c6db94b397f13ec4dc6
-"
-skip_extraction="
-glslang-WallpaperEngine.zip
-SPIRV-Cross-WallpaperEngine.zip
-stb.zip
-json.zip
-MimeTypes.zip
-kissfft.zip
-argparse.zip
-Catch2.zip
-quickjs.zip
-${_cef_pkg}.tar.bz2
-"
+distfiles="https://github.com/Almamu/linux-wallpaperengine/archive/b016d7d.tar.gz
+ https://github.com/Almamu/glslang-WallpaperEngine/archive/${_glslang_commit}.tar.gz>glslang-WallpaperEngine.tar.gz
+ https://github.com/Almamu/SPIRV-Cross-WallpaperEngine/archive/${_spirv_cross_commit}.tar.gz>SPIRV-Cross-WallpaperEngine.tar.gz
+ https://github.com/nothings/stb/archive/${_stb_commit}.tar.gz>stb.tar.gz
+ https://github.com/nlohmann/json/archive/${_json_commit}.tar.gz>json.tar.gz
+ https://github.com/lasselukkari/MimeTypes/archive/${_mimetypes_commit}.tar.gz>MimeTypes.tar.gz
+ https://github.com/mborgerding/kissfft/archive/${_kissfft_commit}.tar.gz>kissfft.tar.gz
+ https://github.com/p-ranav/argparse/archive/${_argparse_commit}.tar.gz>argparse.tar.gz
+ https://github.com/catchorg/Catch2/archive/${_catch2_commit}.tar.gz>Catch2.tar.gz
+ https://github.com/quickjs-ng/quickjs/archive/${_quickjs_commit}.tar.gz>quickjs.tar.gz
+ https://cef-builds.spotifycdn.com/${_cef_pkg}.tar.bz2"
+checksum="70c377bbd0f1703d6dca7c5ba9e5aaf4ecaa6ba4cbc4bba79951c1d2c9e3c63f
+ 4a837d909e9a2c676c9fab98e4368ec1ce7c2a5897ba823b44ed3b8f6c9d33db
+ 91508eca9b1199ddef1c8d3e45924b46e65c056bc4a1f503ea8dc56f38e34cbf
+ 9a955b1b49a4410088a2e0ee2a9c057c3c907d0c1d75454144cb980aca0ba515
+ cd14c7fdaf90fea906094a1359025320951d08d6faebfbb68d026593f750d40b
+ e0e03a7538ba14987941c1eb18bab637ee9d68b8cb5b5733daa695e0ff27db9a
+ bbb053ba9839dec7cc68b009073187b871f1c20ce777f3c6b44666e2a6d5dc8b
+ 3a77a43590dcae7609d4f7e84d8830b51880b4c69e423fab3eff02ecbc682a48
+ e7f1f93c5dfa1788c25e5bf2d048b8c1a85b9bb271b72a1367470273b64a573e
+ a62cf1ff7d6d2f82b90a2d247a57e9eb56b81c03feb1f372a53923426e358cb0
+ 4320d0a18a8d7fbae1e2539030a9315094b34af8a2000999ad8caa7befda7625"
+skip_extraction="glslang-WallpaperEngine.tar.gz
+SPIRV-Cross-WallpaperEngine.tar.gz
+stb.tar.gz
+json.tar.gz
+MimeTypes.tar.gz
+kissfft.tar.gz
+argparse.tar.gz
+Catch2.tar.gz
+quickjs.tar.gz
+${_cef_pkg}.tar.bz2"
 
 CFLAGS+=" -Wno-builtin-macro-redefined"
 CXXFLAGS+=" -ffat-lto-objects -Wno-builtin-macro-redefined"
@@ -71,8 +72,8 @@ post_extract() {
 			cef_binary_*.tar.bz2)
 				vsrcextract -C "${wrksrc}/build/cef" "$archive"
 				;;
-			*.zip)
-				target="${archive%.zip}"
+			*.tar.gz)
+				target="${archive%.tar.gz}"
 				vsrcextract -C "${wrksrc}/src/External/$target" "$archive"
 				;;
 		esac
