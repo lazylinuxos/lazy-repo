@@ -1,9 +1,10 @@
 # Template file for 'anush'
 pkgname=anush
-version=0.1.0
-revision=2
+version=0.2.1
+revision=1
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
+hostmakedepends="odin"
 depends="skarwm quickshell python3 picom dunst feh kitty clipmenu xdotool
  setxkbmap xkb-switch renCal NetworkManager bluez curl pavucontrol xset
  brightnessctl power-profiles-daemon  xrandr redshift-gtk xclip xcolor
@@ -15,9 +16,10 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/anush"
 distfiles="https://github.com/nerdyslacker/anush/archive/refs/tags/v${version}.tar.gz"
-checksum=28dbeb56afae16096e5c89fe2775be1876475d295aa7d5be921b4c935a31c66f
+checksum=3b2099714aee046ab740da06ca4cde87cab1c781f1834acc90b13dc6bdbd24b4
 
 post_install() {
-	vlicense LICENSE
+	for f in $(find docs -type f -name '*.md'); do vdoc "$f"; done
 	vdoc README.md
+	vlicense LICENSE
 }

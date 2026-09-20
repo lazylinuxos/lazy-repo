@@ -4,6 +4,7 @@ version=${VERSION}
 revision=1
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
+hostmakedepends="odin"
 depends="skarwm quickshell python3 picom dunst feh kitty clipmenu xdotool
  setxkbmap xkb-switch renCal NetworkManager bluez curl pavucontrol xset
  brightnessctl power-profiles-daemon  xrandr redshift-gtk xclip xcolor
@@ -18,6 +19,7 @@ distfiles="https://github.com/nerdyslacker/anush/archive/refs/tags/v${version}.t
 checksum=${SHA256}
 
 post_install() {
-	vlicense LICENSE
+	for f in $(find docs -type f -name '*.md'); do vdoc "$f"; done
 	vdoc README.md
+	vlicense LICENSE
 }
