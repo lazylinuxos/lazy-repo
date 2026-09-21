@@ -10,7 +10,7 @@ depends="skarwm quickshell python3 picom dunst feh kitty clipmenu xdotool
  brightnessctl power-profiles-daemon  xrandr redshift-gtk xclip xcolor
  xdg-utils xinput flameshot xinput libnotify ImageMagick lxqt-policykit
  xss-lock betterlockscreen udiskie elogind xterm nerd-font-jetbrainsmono
- papirus-icon-theme papirus-folders"
+ papirus-icon-theme papirus-folders matugen adw-gtk3-theme"
 short_desc="Full desktop configuration for skarwm"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"

@@ -1,6 +1,6 @@
 # Template file for 'anush'
 pkgname=anush
-version=0.2.1
+version=0.3.0
 revision=1
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
@@ -10,13 +10,13 @@ depends="skarwm quickshell python3 picom dunst feh kitty clipmenu xdotool
  brightnessctl power-profiles-daemon  xrandr redshift-gtk xclip xcolor
  xdg-utils xinput flameshot xinput libnotify ImageMagick lxqt-policykit
  xss-lock betterlockscreen udiskie elogind xterm nerd-font-jetbrainsmono
- papirus-icon-theme papirus-folders"
+ papirus-icon-theme papirus-folders matugen adw-gtk3-theme"
 short_desc="Full desktop configuration for skarwm"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/anush"
 distfiles="https://github.com/nerdyslacker/anush/archive/refs/tags/v${version}.tar.gz"
-checksum=3b2099714aee046ab740da06ca4cde87cab1c781f1834acc90b13dc6bdbd24b4
+checksum=7e98ae01e9ae2945d7cb1c9c1c3b742a6c22e344c9c009a49de941e959e1730f
 
 post_install() {
 	for f in $(find docs -type f -name '*.md'); do vdoc "$f"; done
