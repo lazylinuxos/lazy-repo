@@ -1,6 +1,6 @@
 # Template file for 'yserver'
 pkgname=yserver
-version=1.5.1
+version=1.6.0
 revision=1
 build_style=cargo
 build_helper=rust
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/joske/yserver"
 distfiles="https://github.com/joske/yserver/archive/refs/tags/v${version}.tar.gz"
-checksum=e03a9d7004ebda6b3a510421adc1c8b733380e4b47c6082a1fa2d1c3f209a0bf
+checksum=2beb4bfdf19f54da0c16cc52cb8ac6f166e02e4f477962b548155489b28019f6
 
 export CARGO_PROFILE_RELEASE_LTO=false
 export CARGO_INCREMENTAL=0

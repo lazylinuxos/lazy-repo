@@ -10,4 +10,4 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/xapp-project/fingwit"
 distfiles="https://github.com/xapp-project/fingwit/archive/refs/tags/${version}.tar.gz"
-checksum=9fd3513794464e9a1a7ff584a233a6c6b366b32c8d45d7455d18c48b3a2b01ec
+checksum=b428ea9b706f66c429065d28b0f8ee384cb9e19e2bef590cbb671c0be0f71ffc
