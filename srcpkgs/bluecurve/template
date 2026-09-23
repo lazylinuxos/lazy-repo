@@ -1,23 +1,18 @@
 # Template file for 'bluecurve'
 pkgname=bluecurve
 version=3.1.0
-revision=1
-archs="x86_64"
-create_wrksrc=yes
-hostmakedepends="tar"
+revision=2
+build_style=cmake
+hostmakedepends="pkg-config python3-lxml"
+makedepends="gtk+-devel gtk+3-devel"
 short_desc="Red Hat Bluecurve theme for GTK 3"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/neeeeow/Bluecurve"
-distfiles="https://github.com/neeeeow/Bluecurve/releases/download/v${version}/bluecurve-${version}.tar.gz"
-checksum=a0b771ee23b2e76b1e2e658468915562db2247129f5fa75b1bf03649ab5b92c6
+distfiles="https://github.com/neeeeow/Bluecurve/archive/refs/tags/v${version}.tar.gz"
+checksum=cf03fd57becb72dfb24df6f703acb81bc00cafbc9cb57ab1b26d33d7d0d18316
 
-do_install() {
-	# Install the files
-	vmkdir /usr/share/themes
-	vmkdir /usr/share/icons
+post_install() {
 	vmkdir /usr/share/fonts
-	vcopy Bluecurve/themes/* /usr/share/themes
-	vcopy Bluecurve/icons/* /usr/share/icons
-	vcopy Bluecurve/fonts/*.ttf /usr/share/fonts
+	vcopy fonts/*.ttf /usr/share/fonts
 }
