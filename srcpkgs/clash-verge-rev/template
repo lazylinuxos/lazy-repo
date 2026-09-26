@@ -1,8 +1,8 @@
 # Template file for 'clash-verge-rev'
 pkgname=clash-verge-rev
-version=2.5.2
+version=2.5.6
 revision=1
-_ipc_version=2.3.3
+_ipc_version=2.7.3
 # Only supported on x86_64 and aarch64 (glibc)
 archs="x86_64 aarch64"
 build_helper=rust
@@ -15,8 +15,8 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/clash-verge-rev/clash-verge-rev"
 distfiles="https://github.com/clash-verge-rev/clash-verge-rev/archive/refs/tags/v${version}.tar.gz
  https://github.com/clash-verge-rev/clash-verge-service-ipc/archive/refs/tags/v${_ipc_version}.tar.gz"
-checksum="31187d435e83b33b481b01d52e15f2e3a829ae65e288d3beead94cdaf8c16988
- 144b39fe20b23940dafe5082e8944427dc2a01eaec26fc4468cef6df38f7098d"
+checksum="b300058185890bcea2365aeaafeff563eb394a0e1b688981cdff994ee7faac89
+ c64fee5cdf6c269c4660256a0ee49264bbbebfb21539ac1e97382897cdcc32fc"
 _pkg_dir="clash-verge-rev-${version}"
 _ipc_dir="clash-verge-service-ipc-${_ipc_version}"
 
@@ -37,6 +37,7 @@ do_configure() {
 		sponge src-tauri/tauri.conf.json
 
 	pnpm install --frozen-lockfile
+	pnpm run prebuild
 
 	cd src-tauri
 
@@ -49,7 +50,7 @@ do_build() {
 	export CFLAGS="${CFLAGS} -ffat-lto-objects"
 	export AWS_LC_SYS_NO_JITTER_ENTROPY=1
 
-	cargo auditable build --frozen --release --locked --features standalone --target "${RUST_TARGET}"
+	cargo auditable build --frozen --release --locked --features "standalone client" --target "${RUST_TARGET}"
 
 	local _sidecar_dir="${wrksrc}/${_pkg_dir}/src-tauri/sidecar"
 
