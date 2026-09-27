@@ -1,6 +1,6 @@
 # Template file for 'noctalia-greeter'
 pkgname=noctalia-greeter
-version=1.5.0
+version=1.6.0
 revision=1
 build_style=meson
 hostmakedepends="pkg-config"
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/noctalia-dev/noctalia-greeter"
 distfiles="https://github.com/noctalia-dev/noctalia-greeter/archive/v${version}.tar.gz"
-checksum=268bf4e4c5a5d915cd7d9f75d725959222474043b63c671092fe0fda0908d018
+checksum=f23ebf07cbe4508971c08b0b81d2b5bfc4ec1ec45605d8f8fb01b799743a70b6
 
 post_install() {
 	vlicense LICENSE
