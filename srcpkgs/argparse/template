@@ -1,0 +1,17 @@
+# Template file for 'argparse'
+pkgname=argparse
+version=3.2
+revision=1
+build_style=cmake
+configure_args="-DARGPARSE_BUILD_TESTS=OFF
+ -DARGPARSE_BUILD_SAMPLES=OFF"
+short_desc="Argument Parser for Modern C++"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/p-ranav/argparse"
+distfiles="https://github.com/p-ranav/argparse/archive/refs/tags/v${version}.zip"
+checksum=14c1a0e975d6877dfeaf52a1e79e54f70169a847e29c7e13aa7fe68a3d0ecbf1
+
+post_install() {
+	vlicense LICENSE
+}
