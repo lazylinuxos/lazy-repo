@@ -1,6 +1,6 @@
 # Template file for 'anush'
 pkgname=anush
-version=0.4.0
+version=0.5.0
 revision=1
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
@@ -17,7 +17,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/anush"
 distfiles="https://github.com/nerdyslacker/anush/archive/refs/tags/v${version}.tar.gz"
-checksum=4173d93ee817a86114203d29f30d930869539f7b526040f1f3cb160854e07ca1
+checksum=4ff240d5ba78486a03326bcfbb309296b11a9db1b2bb2b383a7b59e408d3f9fa
 
 post_install() {
 	for f in $(find docs -type f -name '*.md'); do vdoc "$f"; done

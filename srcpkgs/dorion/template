@@ -1,6 +1,6 @@
 # Template file for 'dorion'
 pkgname=dorion
-version=6.12.2
+version=6.13.2
 revision=1
 hostmakedepends="cargo rust nodejs pnpm cmake pkg-config patchelf"
 makedepends="gtk+3-devel openssl-devel libwebkit2gtk41-devel libayatana-appindicator-devel librsvg-devel"
@@ -12,7 +12,7 @@ homepage="https://github.com/SpikeHD/Dorion"
 _shelter_build_commit=e6aa4a1
 distfiles="https://github.com/SpikeHD/Dorion/archive/refs/tags/v${version}.tar.gz
  https://github.com/uwu/shelter-builds/archive/${_shelter_build_commit}.tar.gz>shelter-builds.tar.gz"
-checksum="30a494d9ce589b33941377923fb7bd5ed5aaebb87928b6d4e0ecc4ba53877d7c
+checksum="2ec9fffa94df04b1ad16927303e96a868cccae18b3bf3f6065a5fa5745b6b09b
  a583c8163a49b072995ad8931d23d989675e02d313e619996235f2cf8f7acd5b"
 skip_extraction="shelter-builds.tar.gz"
 
