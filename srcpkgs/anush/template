@@ -1,14 +1,14 @@
 # Template file for 'anush'
 pkgname=anush
-version=0.5.0
-revision=1
+version=0.6.0
+revision=2
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
 hostmakedepends="odin"
 depends="skarwm quickshell python3 python3-gobject picom dunst feh kitty
  clipmenu xdotool setxkbmap xkb-switch renCal NetworkManager bluez curl
  pavucontrol xset brightnessctl power-profiles-daemon xrandr redshift-gtk
- xclip xcolor xdg-utils xinput flameshot xinput libnotify ImageMagick
+ xclip xcolor xdg-utils xinput flameshot xmodmap libnotify ImageMagick
  polkit lxqt-policykit xss-lock betterlockscreen udiskie elogind xterm
  iproute2 iw dnsmasq hostapd create_ap plocate fd matugen adw-gtk3-theme
  papirus-icon-theme papirus-folders nerd-font-jetbrainsmono"
@@ -17,7 +17,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/anush"
 distfiles="https://github.com/nerdyslacker/anush/archive/refs/tags/v${version}.tar.gz"
-checksum=4ff240d5ba78486a03326bcfbb309296b11a9db1b2bb2b383a7b59e408d3f9fa
+checksum=aa7f9865e502593ce4f6180c64558f3c37998b6349047c191b4836ddaf914131
 
 post_install() {
 	for f in $(find docs -type f -name '*.md'); do vdoc "$f"; done
