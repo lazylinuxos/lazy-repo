@@ -1,0 +1,16 @@
+# Template file for '12to11'
+pkgname=12to11
+version=${VERSION}
+revision=1
+build_style=gnu-makefile
+make_build_args="ANALYZE=0"
+hostmakedepends="pkg-config"
+makedepends="wayland-devel pixman-devel libX11-devel libXi-devel
+ libxkbfile-devel libglvnd-devel libXrandr-devel libXcursor-devel
+ libxcb-devel libdrm-devel libxshmfence-devel libXpresent-devel"
+short_desc="Tool for running Wayland applications on an X server"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/fish4terrisa-MSDSM/12to11"
+distfiles="https://github.com/fish4terrisa-MSDSM/12to11/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
