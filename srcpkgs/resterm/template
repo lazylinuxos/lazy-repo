@@ -1,6 +1,6 @@
 # Template file for 'resterm'
 pkgname=resterm
-version=1.10.3
+version=1.11.0
 revision=1
 build_style=go
 go_import_path="github.com/unkn0wn-root/resterm"
@@ -10,4 +10,4 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="Apache-2.0"
 homepage="https://github.com/unkn0wn-root/resterm"
 distfiles="https://github.com/unkn0wn-root/resterm/archive/refs/tags/v${version}.tar.gz"
-checksum=664731d28cc78463eff0a3620c6b8eeba0d1157972ea26ae6b5773551c1404d1
+checksum=2cac1d02098f1dfbf0e1187d5866c1e650b3ca6ed645394472ddc42975c8de38
