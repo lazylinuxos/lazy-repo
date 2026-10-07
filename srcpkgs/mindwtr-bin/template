@@ -10,6 +10,7 @@ license="AGPL-3.0-only"
 homepage="https://github.com/dongdongbh/Mindwtr"
 distfiles="https://github.com/dongdongbh/Mindwtr/releases/download/v${version}/mindwtr_${version}_amd64.deb"
 checksum=c2c982dfe4979eea4930174d1fd8b37b257d255ab6e05c7df0a386ef50fa82b2
+nopie=yes
 
 do_extract() {
 	mkdir -p ${DESTDIR}
