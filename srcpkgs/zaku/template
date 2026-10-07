@@ -1,8 +1,7 @@
 # Template file for 'zaku'
 pkgname=zaku
-version=26.0.beta.2
+version=26.0
 revision=1
-_tag="${version/.beta/-beta}"
 build_style=cargo
 build_helper="rust"
 hostmakedepends="clang cmake llvm pkg-config git"
@@ -12,8 +11,8 @@ short_desc="Fast, native, local-first API client"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="AGPL-3.0-or-later"
 homepage="https://zaku.dev"
-distfiles="https://github.com/buildzaku/zaku/archive/refs/tags/${_tag}.tar.gz"
-checksum=5f6cdaeebbf295b3b1a09fd6f5731c4c5aaa096f2eccb6a90b0c2e111f51c6cd
+distfiles="https://github.com/buildzaku/zaku/archive/refs/tags/${version}.tar.gz"
+checksum=e65d7ccb7d71fc2a17065e4dfcbf15594bf47f9e00f391bcf49cdc2ed3b15e79
 
 pre_configure() {
 	sed -i '/fn commit_sha()/,/^}/c\
