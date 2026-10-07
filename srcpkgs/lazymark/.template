@@ -1,0 +1,17 @@
+# Template file for 'lazymark'
+pkgname=lazymark
+version=${VERSION}
+revision=1
+build_style=go
+go_package="./cmd/lazymark"
+go_import_path="github.com/MathiasDrizzy/lazymark"
+short_desc="Lazy markdown notes, tasks and a Kanban board in your terminal"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/MathiasDrizzy/lazymark"
+distfiles="https://github.com/MathiasDrizzy/lazymark/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	vlicense LICENSE
+}
