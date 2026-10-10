@@ -1,0 +1,19 @@
+# Template file for 'kernwatch'
+pkgname=kernwatch
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config nasm"
+makedepends="libpcap-devel"
+depends="traceroute"
+short_desc="Linux kernel observability in your terminal"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://www.netwatchlabs.com"
+distfiles="https://github.com/matthart1983/kernwatch/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	vdoc README.md
+	vlicense LICENSE
+}

@@ -1,8 +1,8 @@
 # Template file for 'renCal'
 pkgname=renCal
-version=0.7.2
+version=0.8.0
 revision=1
-_caldir_version=0.14.2
+_caldir_version=0.14.6
 hostmakedepends="cargo nodejs pnpm pkg-config rust"
 makedepends="atk-devel cairo-devel gdk-pixbuf-devel glib-devel gtk+3-devel
  harfbuzz-devel libsoup3-devel openssl-devel pango-devel libwebkit2gtk41-devel
@@ -14,8 +14,8 @@ license="MIT"
 homepage="https://github.com/t4t5/rencal"
 distfiles="https://github.com/t4t5/rencal/archive/refs/tags/v${version}.tar.gz
  https://github.com/t4t5/caldir/releases/download/v${_caldir_version}/caldir-x86_64-unknown-linux-musl.tar.gz>caldir.tar.gz"
-checksum="f40ddb0c62a46638f0270b32fc5c76749d0532d9760c80a2fcab3e2ed96b3c31
- 8a9bace607d5eccaf79c1dfddf4f0fcf77823a0ee304fd0c0cbd8e9ee927739a"
+checksum="96c8da98d9b9bf99b8c4ab94a0b2733f5f206c840f9ce0bda6e922e2b61cf5f9
+ ebc295e0da06f06a394aa894b994524936d08dc6b9ab8c4f22e54dfc1e0ac296"
 skip_extraction="caldir.tar.gz"
 
 post_extract() {

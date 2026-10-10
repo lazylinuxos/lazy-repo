@@ -1,6 +1,6 @@
 # Template file for 'gaze'
 pkgname=gaze
-version=0.3.9
+version=${VERSION}
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config clang21 llvm21"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/GunduLabs/gaze"
 distfiles="https://github.com/GunduLabs/gaze/archive/refs/tags/v${version}.tar.gz"
-checksum=66db4a734e5575f5f78a95fa8974b037664d9a19c6f6ee54341613ad30211877
+checksum=${SHA256}
 conf_files="/etc/dbus-1/system.d/com.gundulabs.Gaze.conf
  /etc/gaze/config.toml"
 make_dirs="/var/lib/gaze 0700 root root
@@ -26,14 +26,11 @@ subpackages="gaze-gui
 do_install() {
 	vbin target/${RUST_TARGET}/release/gaze
 	vbin target/${RUST_TARGET}/release/gazed
-
 	vinstall target/${RUST_TARGET}/release/libpam_gaze.so 644 usr/lib/security pam_gaze.so
 	vinstall target/${RUST_TARGET}/release/libpam_gaze_grosshack.so 644 usr/lib/security pam_gaze_grosshack.so
-
 	vinstall packaging/config/com.gundulabs.Gaze.conf 644 etc/dbus-1/system.d/
 	vinstall packaging/config/com.gundulabs.gaze.policy 644 usr/share/polkit-1/actions
 	vinstall packaging/config/config.toml 644 etc/gaze
-
 	vsv gazed
 	vlicense LICENSE
 }
@@ -43,7 +40,6 @@ gaze-gui_package() {
 	depends="gaze"
 	pkg_install() {
 		vbin target/${RUST_TARGET}/release/gaze-gui
-
 		vinstall packaging/gui/com.gundulabs.Gaze.svg 644 usr/share/icons/hicolor/scalable/apps
 		vinstall packaging/gui/com.gundulabs.Gaze.desktop 644 usr/share/applications
 		vinstall packaging/gui/com.gundulabs.Gaze.metainfo.xml 644 usr/share/metainfo
@@ -66,7 +62,6 @@ gaze-gnome-extension_package() {
 		vinstall packaging/gdm/00-gaze-defaults 644	etc/dconf/db/gdm.d
 		vinstall packaging/gdm/profile 644 etc/dconf/profile gdm
 		vinstall packaging/config/org.gnome.shell.extensions.gaze.gschema.xml 644 usr/share/glib-2.0/schemas
-
 		vmkdir usr/share/gnome-shell/extensions/gaze@gundulabs.com
 		vcopy integrations/gnome-shell/* usr/share/gnome-shell/extensions/gaze@gundulabs.com
 	}
