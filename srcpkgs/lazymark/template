@@ -1,6 +1,6 @@
 # Template file for 'lazymark'
 pkgname=lazymark
-version=1.0.0
+version=1.1.0
 revision=1
 build_style=go
 go_package="./cmd/lazymark"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/MathiasDrizzy/lazymark"
 distfiles="https://github.com/MathiasDrizzy/lazymark/archive/refs/tags/v${version}.tar.gz"
-checksum=26b5e9a9a5e0460dea1c8295100b4d09997fa3991504ef85790c44c513243232
+checksum=84e7ec2436e18df1cfc3a1c4111c06b1e96f22053f0d510ac92719fee980b732
 
 post_install() {
 	vlicense LICENSE
