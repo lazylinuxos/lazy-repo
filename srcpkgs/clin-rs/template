@@ -1,0 +1,24 @@
+
+# Template file for 'clin-rs'
+pkgname=clin-rs
+version=0.13.2
+revision=1
+build_style=cargo
+configure_args="--all-features"
+hostmakedepends="pkg-config"
+makedepends="libgit2-1.9-devel libssh2-devel"
+depends="hicolor-icon-theme"
+short_desc="Feature-packed TUI note management app inspired by Obsidian"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/reekta92/clin-rs"
+distfiles="https://github.com/reekta92/clin-rs/archive/v${version}.tar.gz"
+checksum=7a0ae7c0f60d81b05ac3e9f08981642838bd89f2c14ad421f846b093cc7d13ce
+
+export LIBGIT2_NO_VENDOR=1
+
+post_install() {
+	vinstall assets/clin.desktop 644 usr/share/applications
+	vinstall assets/clin.png 644 usr/share/icons/hicolor/256x256/apps
+	vdoc README.md
+}
