@@ -5,7 +5,7 @@ revision=1
 _electronver=35
 _electron="electron${_electronver}"
 _electron_dist=/usr/lib/${_electron}
-hostmakedepends="nodejs cargo pkg-config ${_electron}"
+hostmakedepends="nodejs cargo pkg-config git ${_electron}"
 depends="${_electron}"
 short_desc="Advanced todo list app with timeboxing and time tracking"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -16,8 +16,9 @@ checksum=${SHA256}
 
 do_build() {
 	_electron_ver=$(cat ${_electron_dist}/version)
-	npm install
-	npm run build
+	npm ci
+	npm run buildFrontend:prod:es6
+	npm run electron:build
 	npx electron-builder --linux dir --config.electronDist=${_electron_dist} --config.electronVersion=${_electron_ver}
 }
 

@@ -1,23 +1,24 @@
 # Template file for 'superproductivity'
 pkgname=superproductivity
-version=19.1.0
+version=19.2.0
 revision=1
 _electronver=35
 _electron="electron${_electronver}"
 _electron_dist=/usr/lib/${_electron}
-hostmakedepends="nodejs cargo pkg-config ${_electron}"
+hostmakedepends="nodejs cargo pkg-config git ${_electron}"
 depends="${_electron}"
 short_desc="Advanced todo list app with timeboxing and time tracking"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://super-productivity.com"
 distfiles="https://github.com/super-productivity/super-productivity/archive/v${version}.tar.gz"
-checksum=c913fa5195d68f7204a45aa75e80db1e28ff16f6fa2c43eb26cdd56cdb95f8cc
+checksum=d82e2334d81d90fad91a4d0a05ab5d7ebc2c0c9764e6651c17499cc362a4e6ab
 
 do_build() {
 	_electron_ver=$(cat ${_electron_dist}/version)
-	npm install
-	npm run build
+	npm ci
+	npm run buildFrontend:prod:es6
+	npm run electron:build
 	npx electron-builder --linux dir --config.electronDist=${_electron_dist} --config.electronVersion=${_electron_ver}
 }
 
