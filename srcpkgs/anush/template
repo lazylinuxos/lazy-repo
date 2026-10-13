@@ -1,26 +1,75 @@
 # Template file for 'anush'
 pkgname=anush
-version=0.6.2
+version=0.7.0
 revision=1
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
 hostmakedepends="odin"
-depends="skarwm quickshell python3 python3-gobject picom dunst feh kitty
- clipmenu xdotool setxkbmap xkb-switch renCal NetworkManager bluez curl
+depends="quickshell python3 python3-gobject picom dunst feh kitty
+ clipmenu xprop setxkbmap xkb-switch renCal NetworkManager bluez curl
  pavucontrol xset brightnessctl power-profiles-daemon xrandr redshift-gtk
  xclip xcolor xdg-utils xinput flameshot xmodmap libnotify ImageMagick
  polkit lxqt-policykit xss-lock betterlockscreen udiskie elogind xterm
  iproute2 iw dnsmasq hostapd create_ap plocate fd matugen adw-gtk3-theme
- papirus-icon-theme papirus-folders nerd-font-jetbrainsmono"
-short_desc="Full desktop configuration for skarwm"
+ papirus-icon-theme papirus-folders fontconfig nerd-font-jetbrainsmono"
+short_desc="Desktop shell for X11 window managers"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/anush"
 distfiles="https://github.com/nerdyslacker/anush/archive/refs/tags/v${version}.tar.gz"
-checksum=944fd95c08c8a41e7cfc0b35117908d77968b18482451c57e2408514626e19f3
+checksum=b1e124b90d20935a4aaafa88313a5815b7b6a4010f8aaae5f46a1e5bfca4a6ec
 
 post_install() {
 	for f in $(find docs -type f -name '*.md'); do vdoc "$f"; done
 	vdoc README.md
 	vlicense LICENSE
+}
+
+anush-skarwm_package() {
+	metapackage=yes
+	depends="${sourcepkg}>=${version}_${revision} skarwm"
+	short_desc="${sourcepkg} desktop shell - skarwm integration"
+	license="Public Domain"
+}
+
+anush-bspwm_package() {
+	metapackage=yes
+	depends="${sourcepkg}>=${version}_${revision} bspwm sxhkd"
+	short_desc="${sourcepkg} desktop shell - bspwm integration"
+	license="Public Domain"
+}
+
+anush-herbstluftwm_package() {
+	metapackage=yes
+	depends="${sourcepkg}>=${version}_${revision} herbstluftwm"
+	short_desc="${sourcepkg} desktop shell - herbstluftwm integration"
+	license="Public Domain"
+}
+
+anush-i3_package() {
+	metapackage=yes
+	depends="${sourcepkg}>=${version}_${revision} i3"
+	short_desc="${sourcepkg} desktop shell - i3 integration"
+	license="Public Domain"
+}
+
+anush-spectrwm_package() {
+	metapackage=yes
+	depends="${sourcepkg}>=${version}_${revision} spectrwm xdotool"
+	short_desc="${sourcepkg} desktop shell - spectrwm integration"
+	license="Public Domain"
+}
+
+anush-dwm_package() {
+	metapackage=yes
+	depends="${sourcepkg}>=${version}_${revision} dwm xdotool"
+	short_desc="${sourcepkg} desktop shell - dwm integration"
+	license="Public Domain"
+}
+
+anush-openbox_package() {
+	metapackage=yes
+	depends="${sourcepkg}>=${version}_${revision} openbox xdotool"
+	short_desc="${sourcepkg} desktop shell - Openbox integration"
+	license="Public Domain"
 }
