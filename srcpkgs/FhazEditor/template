@@ -1,0 +1,30 @@
+# Template file for 'FhazEditor'
+pkgname=FhazEditor
+version=0.2.0
+revision=1
+hostmakedepends="lazarus fpc make binutils"
+makedepends="qt6pas-devel"
+short_desc="Blazing-fast, zero-bloat native IDE built for speed and efficiency"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/CodeInPas/FhazEditor"
+distfiles="https://github.com/CodeInPas/FhazEditor/archive/refs/tags/release02.tar.gz"
+checksum=9142735f661d1624e53aed1a0e58b25785a7bbba9b617c20b9132c4d1492e656
+nopie=yes
+
+pre_build() {
+	mv src/ufrmMain.lfm src/ufrmmain.lfm
+}
+
+do_build() {
+	cd src
+	lazbuild --lazarusdir=/usr/lib/lazarus \
+		-B --bm=Release --ws=qt6 \
+		--os=linux --cpu=x86_64 \
+		FhazEditor.lpi
+}
+
+do_install() {
+	vbin bin/FhazEditor
+    vinstall "${FILESDIR}/FhazEditor.desktop" 644 usr/share/applications
+}

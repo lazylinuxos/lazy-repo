@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=FhazEditor
+GenericName=FhazEditor
+Comment=Blazing-fast, zero-bloat native IDE
+Exec=FhazEditor %F
+Icon=accessories-text-editor
+Terminal=false
+Categories=Utility;TextEditor;
+MimeType=text/plain;
+StartupNotify=true
