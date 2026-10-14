@@ -5,10 +5,22 @@ printf "Checking latest version of kaidan\n"
 
 __dir="$(dirname "${BASH_SOURCE[0]}")"
 
-REPO_URL="https://invent.kde.org/network/kaidan.git"
+REPO_URL="https://github.com/KDE/kaidan.git"
 
 # Get latest tag from remote
-LATEST_VERSION=$(git ls-remote --tags --refs "${REPO_URL}" | awk -F/ '{print $3}' | sort -V | tail -n1)
+LATEST_VERSION=$(
+    git ls-remote --tags --refs "$REPO_URL" |
+        awk -F/ '{print $3}' |
+        grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' |
+        sort -V |
+        tail -n1
+)
+
+[[ -n "$LATEST_VERSION" ]] || {
+    printf "Failed to determine latest version\n" >&2
+    exit 1
+}
+
 VERSION=${LATEST_VERSION#"v"}
 CURRENT_VERSION=$(grep -E '^version=' "${__dir}/template" | cut -d= -f2)
 

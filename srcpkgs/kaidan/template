@@ -14,5 +14,5 @@ short_desc="User-friendly XMPP client"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://www.kaidan.im/"
-distfiles="https://invent.kde.org/network/kaidan/-/archive/v${version}/kaidan-v${version}.tar.gz"
+distfiles="https://github.com/KDE/kaidan/archive/refs/tags/v${version}.tar.gz"
 checksum=88afb9cbed19560efbe9300678083bb19be7c41da35756c6af9744e01f4f8776
