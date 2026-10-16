@@ -1,6 +1,6 @@
 # Template file for 'noctalia'
 pkgname=noctalia
-version=5.2.1
+version=5.3.0
 revision=1
 build_style=meson
 hostmakedepends="pkg-config"
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/noctalia-dev/noctalia"
 distfiles="https://github.com/noctalia-dev/noctalia/archive/v${version}.tar.gz"
-checksum=5418f6b759de96e56a4bbca809c5a4c60a8a9594bdf67ecb8c5a341f97c221d1
+checksum=7677b5d7da80cf89c7a8232de26d25380aa5fcaf34fb38abddd4fe7cb676161a
 
 post_install() {
 	vlicense LICENSE
