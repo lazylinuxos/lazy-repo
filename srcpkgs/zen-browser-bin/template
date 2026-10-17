@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0"
 homepage="https://www.zen-browser.app/"
 distfiles="https://github.com/zen-browser/desktop/releases/download/${_version}/zen.linux-x86_64.tar.xz"
-checksum=77d70789cb1ac48871774169cf1750772e89eb671f4a258724ef45d69c886f15
+checksum=bb2045d3e21654d40fe841250092eeadfd2c1fc831eefb509222773c8bdca149
 replaces="zen-browser>=0"
 
 do_install() {
