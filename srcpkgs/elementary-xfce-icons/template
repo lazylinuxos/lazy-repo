@@ -1,0 +1,23 @@
+# Template file for 'elementary-xfce-icons'
+pkgname=elementary-xfce-icons
+version=0.23
+revision=1
+build_style=gnu-configure
+hostmakedepends="pkg-config gdk-pixbuf optipng"
+makedepends="librsvg-devel"
+depends="hicolor-icon-theme"
+short_desc="Elementary icon theme with improved Xfce support"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/shimmerproject/elementary-xfce"
+distfiles="https://github.com/shimmerproject/elementary-xfce/archive/v${version}.tar.gz"
+checksum=2f4e6b6e4e46692c18c2f41cf7b7c9a2bac4433d5528e98c8a301631c5b285d2
+
+post_install() {
+    find "${DESTDIR}/usr/share/icons" \
+        -type f \( \
+            -name AUTHORS \
+            -o -name CONTRIBUTORS \
+            -o -name LICENSE \
+        \) -delete
+}

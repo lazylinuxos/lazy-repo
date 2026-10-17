@@ -1,0 +1,22 @@
+# Template file for 'human-theme-gtk'
+pkgname=human-theme-gtk
+version=3.2.0
+revision=1
+short_desc="Human theme for GTK"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/luigifab/human-theme"
+distfiles="https://github.com/luigifab/human-theme/archive/v${version}.tar.gz"
+checksum=2b45568ac8fa95b69da65d8ec030436388227e6ea36ad3270e6144394f01d5e3
+
+do_install() {
+    vinstall data/profile.sh 644 etc/profile.d human-theme-gtk.sh
+
+    vmkdir usr/share/themes
+    vcopy src/Human usr/share/themes
+    vcopy src/Human-blue usr/share/themes
+    vcopy src/Human-green usr/share/themes
+    vcopy src/Human-orange usr/share/themes
+
+    vdoc README.md
+}
