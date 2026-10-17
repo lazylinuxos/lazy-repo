@@ -1,8 +1,8 @@
 # Template file for 'python3-proton-vpn-api-core'
 pkgname=python3-proton-vpn-api-core
-version=5.6.20
+version=5.8.7
 revision=1
-_protun_tag=2.2.1
+_protun_tag=3.0.1
 build_style=python3-pep517
 hostmakedepends="python3-build python3-installer python3-setuptools
  python3-wheel python3-packaging-bootstrap cargo rust pkg-config"
@@ -19,8 +19,8 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/ProtonVPN/python-proton-vpn-api-core"
 distfiles="https://github.com/ProtonVPN/python-proton-vpn-api-core/archive/refs/tags/v${version}.tar.gz
  https://github.com/ProtonVPN/protun/archive/refs/tags/v${_protun_tag}.tar.gz>protun.tar.gz"
-checksum="43ee24e8a13516d17c99a2c251d9a0081bab8edbe97dfabeb40fa03979350248
- 4bf7eab3255332ffd97e1906a79d048fddb0d1bc40b6caefb899de9106e322cc"
+checksum="0dde2259400db065d1bd998954ab29ed6d17df4b9d41cc60c78399a57ea2a136
+ 6204027ab912c33aacc7ae9535d1f622154e9d85076785824f6e05baf9514d0a"
 skip_extraction="protun.tar.gz"
 provides="py3:proton-vpn-local-agent-${version}_${revision}"
 replaces="python3-proton-vpn-local-agent>=0"
@@ -29,14 +29,17 @@ post_extract() {
 	vsrcextract -C "${wrksrc}/dependencies/protun" "protun.tar.gz"
 }
 
+post_patch() {
+	sed -i '/^SystemdService=/d' resources/nm-protun.name
+}
+
 pre_build() {
 	CARGO_REGISTRIES_PROTON_INDEX="sparse+https://rust-registry.proton.me/index/" \
 		cargo build --release --locked \
 			--bin nm-protun-service \
-			--bin nm-protun-auth-dialog \
 			--bin proton-vpn-kill-switch-service \
 			--lib \
-			--features "protun,nm_protun_auth_dialog,python,core,local_agent,kill_switch"
+			--features "protun,python,core,local_agent,kill_switch,telemetry"
 
 	# The Python extension must be present before the PEP517 wheel is built.
 	install -Dm755 target/release/libproton_vpn_platform.so	proton/vpn/platform.abi3.so
@@ -46,7 +49,6 @@ post_install() {
 	vdoc ${FILESDIR}/README.voidlinux
 
 	vinstall target/release/nm-protun-service 755 usr/lib
-	vinstall target/release/nm-protun-auth-dialog 755 usr/lib
 	vinstall target/release/proton-vpn-kill-switch-service 755 usr/lib
 
 	vinstall resources/nm-protun-service.conf 644 usr/share/dbus-1/system.d
