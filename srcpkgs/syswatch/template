@@ -1,6 +1,6 @@
 # Template file for 'syswatch'
 pkgname=syswatch
-version=0.14.3
+version=0.14.4
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config nasm"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://www.netwatchlabs.com"
 distfiles="https://github.com/matthart1983/syswatch/archive/refs/tags/v${version}.tar.gz"
-checksum=fe80d113258e60b0293de102733f9f250afdbc7c44398a2c802bcd273af38da3
+checksum=390c0bf558e8c1859ffb77e05dcce47f7af073b26a38fc8800129c2d550ff44a
 
 post_install() {
 	vdoc README.md
