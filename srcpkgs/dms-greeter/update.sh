@@ -5,7 +5,7 @@ printf "Checking latest version\n"
 
 __dir="$(dirname "${BASH_SOURCE[0]}")"
 
-GH_REPO="AvengeMedia/dank-greeter"
+GH_REPO="duxlabs-dev/dux-greeter"
 
 LATEST_VERSION=$(gh release list --repo ${GH_REPO} --json name,tagName,isLatest --jq '.[] | select(.isLatest)|.tagName')
 export VERSION=${LATEST_VERSION#"v"}

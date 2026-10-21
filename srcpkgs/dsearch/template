@@ -3,13 +3,13 @@ pkgname=dsearch
 version=2.0.0
 revision=1
 build_style=go
-go_import_path="github.com/AvengeMedia/danksearch"
+go_import_path="github.com/duxlabs-dev/dux-search"
 go_package="./cmd/dsearch"
 short_desc="Fast filesystem search service"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
-homepage="https://github.com/AvengeMedia/danksearch"
-distfiles="https://github.com/AvengeMedia/danksearch/archive/refs/tags/v${version}.tar.gz"
+homepage="https://github.com/duxlabs-dev/dux-search"
+distfiles="https://github.com/duxlabs-dev/dux-search/archive/refs/tags/v${version}.tar.gz"
 checksum=b33665b22692e12075b23acdbe3f03e4f3d64e50223f92820117e525d18aabe4
 
 post_install() {

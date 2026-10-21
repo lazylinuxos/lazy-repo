@@ -4,15 +4,15 @@ version=2.0.0
 revision=1
 archs="x86_64"
 build_style=go
-go_import_path="github.com/AvengeMedia/dgop"
+go_import_path="github.com/duxlabs-dev/dux-gop"
 go_package="./cmd/dgop"
 go_ldflags="-linkmode=external"
 depends="glibc"
 short_desc="System monitoring CLI + REST API"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
-homepage="https://github.com/AvengeMedia/dgop"
-distfiles="https://github.com/AvengeMedia/dgop/archive/refs/tags/v${version}.tar.gz"
+homepage="https://github.com/duxlabs-dev/dux-gop"
+distfiles="https://github.com/duxlabs-dev/dux-gop/archive/refs/tags/v${version}.tar.gz"
 checksum=e5d2cee5b34c9be5098423b4ee5b602c0cc1503adbfe227df1d732c5d614837e
 
 post_install() {

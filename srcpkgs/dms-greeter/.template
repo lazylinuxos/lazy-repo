@@ -4,7 +4,7 @@ version=${VERSION}
 revision=1
 build_style=go
 build_wrksrc="core"
-go_import_path="github.com/AvengeMedia/dank-greeter/core"
+go_import_path="github.com/duxlabs-dev/dux-greeter/core"
 go_package="${go_import_path}/cmd/dms-greeter"
 go_build_tags="withshell"
 go_ldflags="-linkmode=external -X main.Version=${version}"
@@ -13,8 +13,8 @@ depends="greetd quickshell acl-progs dbus elogind pam_rundir mesa-dri"
 short_desc="Greetd login screen with the Dank Material aesthetic"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
-homepage="https://github.com/AvengeMedia/dank-greeter"
-distfiles="https://github.com/AvengeMedia/dank-greeter/releases/download/v${version}/dank-greeter-${version}.tar.gz"
+homepage="https://github.com/duxlabs-dev/dux-greeter"
+distfiles="https://github.com/duxlabs-dev/dux-greeter/releases/download/v${version}/dank-greeter-${version}.tar.gz"
 checksum=${SHA256}
 
 pre_build() {
