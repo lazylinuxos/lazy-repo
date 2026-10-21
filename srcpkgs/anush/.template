@@ -6,7 +6,7 @@ build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
 hostmakedepends="odin"
 depends="quickshell python3 python3-gobject picom dunst feh kitty
- clipmenu xprop setxkbmap xkb-switch renCal NetworkManager bluez curl
+ minni xprop setxkbmap xkb-switch renCal NetworkManager bluez curl
  pavucontrol xset brightnessctl power-profiles-daemon xrandr redshift-gtk
  xclip xcolor xdg-utils xinput flameshot xmodmap libnotify ImageMagick
  polkit lxqt-policykit xss-lock betterlockscreen udiskie elogind xterm
