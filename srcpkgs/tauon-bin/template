@@ -1,7 +1,7 @@
 # Template file for 'tauon-bin'
 pkgname=tauon-bin
 version=13.0.0
-revision=1
+revision=2
 depends="python3-pychromecast"
 short_desc="Modern music player"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -17,7 +17,10 @@ do_install() {
 	vmkdir usr/lib/tauon
 	vcopy * usr/lib/tauon/
 
-	vinstall _internal/assets/icon-128.png 644 usr/share/pixmaps tauonmb.png
+    # Disable portable mode for system-wide installation
+    rm -f "${DESTDIR}/usr/lib/tauon/_internal/portable"
+
+	vinstall _internal/assets/svg/app-icon.svg 644 usr/share/pixmaps tauonmb.svg
 	vinstall ${FILESDIR}/tauon.desktop 644 usr/share/applications
 
 	vbin ${FILESDIR}/tauon.sh tauon
