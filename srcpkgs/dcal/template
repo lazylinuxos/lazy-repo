@@ -1,7 +1,7 @@
 # Template file for 'dcal'
 pkgname=dcal
-version=1.6.1
-revision=3
+version=2.0.0
+revision=1
 build_style=go
 build_wrksrc="core"
 go_import_path="github.com/AvengeMedia/dankcalendar/core"
@@ -16,7 +16,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/AvengeMedia/dankcalendar"
 distfiles="https://github.com/AvengeMedia/dankcalendar/releases/download/v${version}/dankcalendar-${version}.tar.gz"
-checksum=4fb321efe73091305116aff0044ebf72f63a3d9204907c9e05ce2974f7f6989a
+checksum=8c435530000c72beb12b756890c6553e0125cff0143975b512946259dc85cd10
 
 pre_build() {
 	make sync-shell

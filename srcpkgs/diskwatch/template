@@ -1,6 +1,6 @@
 # Template file for 'diskwatch'
 pkgname=diskwatch
-version=0.6.1
+version=0.7.0
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config nasm"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://www.netwatchlabs.com"
 distfiles="https://github.com/matthart1983/diskwatch/archive/refs/tags/v${version}.tar.gz"
-checksum=ece3421dad97054318d3e511dd360cae019e26bbbf7d29b5214aafb8de6da9aa
+checksum=0c85e1f3d7edb600fff80778813f9c507db4c663f61b2fc017c1ba1ad3d2caf8
 
 post_install() {
 	vdoc README.md

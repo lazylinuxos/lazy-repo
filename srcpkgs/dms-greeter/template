@@ -1,7 +1,7 @@
 # Template file for 'dms-greeter'
 pkgname=dms-greeter
-version=1.6.2
-revision=2
+version=2.0.0
+revision=1
 build_style=go
 build_wrksrc="core"
 go_import_path="github.com/AvengeMedia/dank-greeter/core"
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/AvengeMedia/dank-greeter"
 distfiles="https://github.com/AvengeMedia/dank-greeter/releases/download/v${version}/dank-greeter-${version}.tar.gz"
-checksum=3bbb8d900d0efe1b5702aa7bea411027afab1b272a6e3e12a072c852c5d2d6c6
+checksum=62ed5f170dfcc37224692e63fb4ba76ab42a77fbd76deb67a06bc5eae55ae2ce
 
 pre_build() {
 	make sync-shell

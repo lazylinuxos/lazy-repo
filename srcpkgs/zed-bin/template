@@ -1,6 +1,6 @@
 # Template file for 'zed-bin'
 pkgname=zed-bin
-version=1.24.3
+version=1.24.4
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later OR Apache-2.0"
 homepage="https://zed.dev/"
 distfiles="https://github.com/zed-industries/zed/releases/download/v${version}/zed-linux-x86_64.tar.gz"
-checksum=0e94b9826cf72bef9e903e4b405b33e760fe317c73a6e9d31c7646f27a1bb60f
+checksum=ecf2a7969fc71f74a7392b5022c3037c526108f9fe4b6da60355e259cd0dd4d2
 conflicts="zed>=0"
 replaces="zed>=0"
 noshlibprovides=yes
