@@ -4,7 +4,7 @@ printf "Checking latest version\n"
 
 __dir="$(dirname "${BASH_SOURCE[0]}")"
 
-GH_REPO="nerdyslacker/anush"
+GH_REPO="nerdyslacker/minni"
 
 LATEST_VERSION=$(gh release list --exclude-pre-releases --repo ${GH_REPO} --json name,tagName,isLatest --jq '.[] | select(.isLatest)|.tagName')
 export VERSION=${LATEST_VERSION#"v"}
@@ -21,4 +21,4 @@ rm ./${VERSION}.tar.gz
 
 envsubst '${SHA256} ${VERSION}' < ${__dir}/.template > ${__dir}/template
 
-printf "anush template updated\n"
+printf "minni template updated\n"
