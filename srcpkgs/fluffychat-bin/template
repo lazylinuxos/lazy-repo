@@ -1,6 +1,6 @@
 # Template file for 'fluffychat-bin'
 pkgname=fluffychat-bin
-version=2.11.1
+version=2.11.2
 revision=1
 archs="x86_64"
 depends="gtk+3 jsoncpp libsecret xdg-user-dirs zenity libwebkit2gtk41"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="AGPL-3.0-only"
 homepage="https://fluffy.chat"
 distfiles="https://github.com/krille-chan/fluffychat/releases/download/v${version}/fluffychat-linux-x64.tar.gz"
-checksum=3425337c059d7bc9f3a96576277da02dc18ff3c54669983f4639174306655fb0
+checksum=016ba881a998d9e62bc881dbea6e8010d19bee87128e864b817f906f3aad0886
 
 do_install() {
 	vmkdir opt/fluffychat

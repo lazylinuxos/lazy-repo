@@ -12,6 +12,7 @@ checksum=${SHA256}
 nopie=yes
 noverifyrdeps=yes
 noshlibprovides=yes
+python_version=3
 
 do_install() {
 	vmkdir usr/lib/tauon
@@ -20,7 +21,7 @@ do_install() {
     # Disable portable mode for system-wide installation
     rm -f "${DESTDIR}/usr/lib/tauon/_internal/portable"
 
-	vinstall _internal/assets/svg/app-icon.svg 644 usr/share/pixmaps tauonmb.svg
+	vinstall ${FILESDIR}/tauonmb.svg 644 usr/share/pixmaps
 	vinstall ${FILESDIR}/tauon.desktop 644 usr/share/applications
 
 	vbin ${FILESDIR}/tauon.sh tauon

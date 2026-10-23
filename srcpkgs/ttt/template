@@ -1,6 +1,6 @@
 # Template file for 'ttt'
 pkgname=ttt
-version=1.8.0
+version=1.9.0
 revision=1
 build_style=go
 go_import_path="github.com/eugenioenko/ttt"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/eugenioenko/ttt"
 distfiles="https://github.com/eugenioenko/ttt/archive/refs/tags/v${version}.tar.gz"
-checksum=4f69cd910c91727083c4a54deed866404f014021a6e30dfb47aaa78e9265680f
+checksum=87b7623f5b02f1a7a549e7c33150740e7406b069124b7e48327c23c4586ec353
 
 post_install() {
 	vmkdir usr/share/ttt/
