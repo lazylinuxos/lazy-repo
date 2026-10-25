@@ -1,6 +1,6 @@
 # Template file for 'gram-bin'
 pkgname=gram-bin
-version=3.3.0
+version=3.4.1
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later OR Apache-2.0"
 homepage="https://gram.liten.app"
 distfiles="https://codeberg.org/GramEditor/gram/releases/download/${version}/gram-linux-x86_64-${version}.tar.gz"
-checksum=9b970939f45866bef819acddf9cf6744e3ad7de17037a3feeab1b0501ea9592e
+checksum=6a92eabb61ced515eed491e41cfd67ec7b9117cc69c082c588c454954cf3e143
 conflicts="gram>=0"
 replaces="gram>=0"
 noshlibprovides=yes

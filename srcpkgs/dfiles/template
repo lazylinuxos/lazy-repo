@@ -1,0 +1,47 @@
+# Template file for 'dfiles'
+pkgname=dfiles
+version=2.0.0
+revision=1
+build_style=go
+build_wrksrc="core"
+go_import_path="github.com/duxlabs-dev/dux-files/core"
+go_package="${go_import_path}/cmd/dfiles"
+go_build_tags="withshell"
+go_ldflags="-X main.Version=${version}"
+short_desc="File manager for the Dux Labs desktop"
+hostmakedepends="pkg-config tar"
+depends="quickshell qt6-declarative"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/duxlabs-dev/dux-files"
+changelog="https://github.com/duxlabs-dev/dux-files/releases"
+distfiles="https://github.com/duxlabs-dev/dux-files/releases/download/v${version}/dfiles-${version}.tar.gz"
+checksum=5883246328482b37928c16a795d9f4a97f2fd71ed2f8772210284dede6a49739
+
+pre_build() {
+	make sync-shell
+}
+
+post_install() {
+	vinstall "${wrksrc}/assets/dev.duxlabs.files.desktop" 644 usr/share/applications
+	vinstall "${wrksrc}/assets/dev.duxlabs.files.svg" 644 usr/share/icons/hicolor/scalable/apps
+	vinstall "${wrksrc}/assets/dev.duxlabs.files.metainfo.xml" 644 usr/share/metainfo
+	vinstall "${wrksrc}/assets/dev.duxlabs.files.policy" 644 usr/share/polkit-1/actions
+	vinstall "${wrksrc}/assets/dbus/dev.duxlabs.files.FileManager1.service" 644 usr/share/dbus-1/services
+	vinstall "${wrksrc}/assets/dbus/org.freedesktop.impl.portal.desktop.dfiles.service" 644 usr/share/dbus-1/services
+	vinstall "${wrksrc}/assets/portal/dfiles.portal" 644 usr/share/xdg-desktop-portal/portals
+
+	vmkdir usr/share/quickshell/dfiles
+	vcopy "${wrksrc}/quickshell/*" usr/share/quickshell/dfiles
+
+	vmkdir usr/share/bash-completion/completions
+	vmkdir usr/share/zsh/site-functions
+	vmkdir usr/share/fish/vendor_completions.d
+	if [ -z "$CROSS_BUILD" ]; then
+		"${DESTDIR}/usr/bin/dfiles" completion bash > "${DESTDIR}/usr/share/bash-completion/completions/dfiles"
+		"${DESTDIR}/usr/bin/dfiles" completion zsh  > "${DESTDIR}/usr/share/zsh/site-functions/_dfiles"
+		"${DESTDIR}/usr/bin/dfiles" completion fish > "${DESTDIR}/usr/share/fish/vendor_completions.d/dfiles.fish"
+	fi
+
+	vlicense "${wrksrc}/LICENSE"
+}

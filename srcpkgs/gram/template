@@ -1,6 +1,6 @@
 # Template file for 'gram'
 pkgname=gram
-version=3.3.0
+version=3.4.1
 revision=1
 build_style=cargo
 build_helper=rust
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later OR Apache-2.0"
 homepage="https://gram.liten.app"
 distfiles="https://codeberg.org/GramEditor/gram/archive/${version}.tar.gz"
-checksum=eda5c167ed2c29ebd03310b236a06f3f29fd0007be3c58bd341992e52f765629
+checksum=07b849e711c01f2434704b180c16b6b578c3c6aa00a87857c36bd0ac6993aee0
 nocross=yes
 _appid=se.ziran.Gram
 
@@ -28,8 +28,6 @@ pre_build() {
 	export APP_ID="${_appid}"
 	export APP_ARGS="%U"
 	envsubst < "crates/gram/resources/gram.desktop.in" > ${_appid}.desktop
-
-	./script/generate-licenses
 }
 
 do_build() {
@@ -48,5 +46,5 @@ do_install() {
 	vinstall target/release/gram 0755 usr/lib/gram/ gram-editor
 	vinstall ${_appid}.desktop 644 usr/share/applications/
 	vinstall crates/gram/resources/app-icon.png 644 usr/share/pixmaps gram.png
-	vlicense LICENSE-APACHE
+	vlicense LICENSE
 }

@@ -1,0 +1,7 @@
+case "$ACTION" in
+post)
+    # Create temp directory with proper permissions
+    mkdir -p /usr/share/siproxylin/sip_dev_paths
+    chmod 1777 /usr/share/siproxylin/sip_dev_paths
+    ;;
+esac

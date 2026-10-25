@@ -1,0 +1,64 @@
+# Template file for 'siproxylin'
+pkgname=siproxylin
+version=0.0.33
+revision=1
+hostmakedepends="cmake python3 python3-pip patchelf pkg-config protobuf file wget"
+makedepends="gstreamer1-devel gst-plugins-base1-devel gst-plugins-bad1-devel
+ libnice-devel grpc-devel spdlog libunwind-devel libsrtp-devel alsa-lib-devel protobuf-devel"
+depends="python3 gst-plugins-good1 dbus libnotify xdg-utils enchant2 hunspell
+ drunk-call-service>=${version}_${revision}"
+short_desc="Encrypted self-hosted messaging app with VoIP and XMPP"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/confund0/siproxylin"
+distfiles="https://github.com/confund0/siproxylin/archive/refs/tags/v${version}.tar.gz"
+checksum=834b93b2f84ea85376aaee4344d4c99d9386a741279ad6b32833bf5a2659279b
+noverifyrdeps=yes
+noshlibprovides=yes
+
+do_build() {
+	cd drunk_call_service
+	export CXXFLAGS+=" -DSPDLOG_FMT_EXTERNAL"
+	make clean
+	make release
+}
+
+do_install() {
+	local _prefix="usr"
+
+	vmkdir "${_prefix}/share/${pkgname}"
+	vmkdir "${_prefix}/share/icons/hicolor/scalable/apps"
+	vmkdir "${_prefix}/share/applications"
+
+	vcopy siproxylin "${_prefix}/share/${pkgname}/"
+	vcopy drunk_xmpp "${_prefix}/share/${pkgname}/"
+	vcopy drunk_call_hook "${_prefix}/share/${pkgname}/"
+	vcopy main.py "${_prefix}/share/${pkgname}/"
+	vcopy version.sh "${_prefix}/share/${pkgname}/"
+
+	vinstall siproxylin/resources/icons/siproxylin.svg 644 "${_prefix}/share/icons/hicolor/scalable/apps/"
+	vinstall ${FILESDIR}/Siproxylin.desktop 644 "${_prefix}/share/applications/"
+
+	python3 -m pip install --ignore-installed \
+		--root="${DESTDIR}" \
+		--prefix="${_prefix}" \
+		-r requirements.txt \
+		--no-warn-script-location \
+		--quiet
+
+	vbin drunk_call_service/bin/drunk-call-service-linux
+	vbin drunk_call_service/bin/drunk-call-service-linux drunk-call-service
+	vbin ${FILESDIR}/siproxylin.sh siproxylin
+
+	vlicense LICENSE
+}
+
+drunk-call-service_package() {
+	short_desc="Siproxylin standalone C++ call service binary (VoIP)"
+	depends="${shlibs}"
+
+	pkg_install() {
+		vmove usr/bin/drunk-call-service
+		vmove usr/bin/drunk-call-service-linux
+	}
+}

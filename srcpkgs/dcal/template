@@ -1,10 +1,10 @@
 # Template file for 'dcal'
 pkgname=dcal
-version=1.6.1
-revision=3
+version=2.0.0
+revision=1
 build_style=go
 build_wrksrc="core"
-go_import_path="github.com/AvengeMedia/dankcalendar/core"
+go_import_path="github.com/duxlabs-dev/dux-calendar/core"
 go_package="${go_import_path}/cmd/dcal"
 go_build_tags="withshell"
 go_ldflags="-linkmode=external -X main.Version=${version}"
@@ -14,18 +14,18 @@ depends="font-inter ttf-material-icons"
 short_desc="Standalone calendar app that brings all your calendars together"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
-homepage="https://github.com/AvengeMedia/dankcalendar"
-distfiles="https://github.com/AvengeMedia/dankcalendar/releases/download/v${version}/dankcalendar-${version}.tar.gz"
-checksum=4fb321efe73091305116aff0044ebf72f63a3d9204907c9e05ce2974f7f6989a
+homepage="https://github.com/duxlabs-dev/dux-calendar"
+distfiles="https://github.com/duxlabs-dev/dux-calendar/releases/download/v${version}/dankcalendar-${version}.tar.gz"
+checksum=8c435530000c72beb12b756890c6553e0125cff0143975b512946259dc85cd10
 
 pre_build() {
 	make sync-shell
 }
 
 post_install() {
-	vinstall "${wrksrc}/assets/com.danklinux.dankcalendar.desktop" 644 usr/share/applications
-	vinstall "${wrksrc}/assets/com.danklinux.dankcalendar.metainfo.xml" 644 usr/share/metainfo
-	vinstall "${wrksrc}/assets/com.danklinux.dankcalendar.svg" 644 usr/share/icons/hicolor/scalable/apps
+	vinstall "${wrksrc}/assets/dev.duxlabs.calendar.desktop" 644 usr/share/applications
+	vinstall "${wrksrc}/assets/dev.duxlabs.calendar.metainfo.xml" 644 usr/share/metainfo
+	vinstall "${wrksrc}/assets/dev.duxlabs.calendar.svg" 644 usr/share/icons/hicolor/scalable/apps
 
 	vmkdir usr/share/quickshell/dankcal
 	vcopy "${wrksrc}/quickshell/*" usr/share/quickshell/dankcal
