@@ -1,16 +1,17 @@
 # Template file for 'skippy-xd'
 pkgname=skippy-xd
-version=2026.09.26
+version=2026.10.25
 revision=1
 build_style=meson
 hostmakedepends="pkg-config"
 makedepends="libX11-devel libXext-devel libXft-devel libXcomposite-devel libXdamage-devel
  libXfixes-devel libXinerama-devel libXmu-devel libXrender-devel freetype-devel imlib2-devel
- fontconfig-devel giflib-devel libjpeg-turbo-devel libpng-devel zlib-devel Chipmunk2D-devel"
+ fontconfig-devel giflib-devel libjpeg-turbo-devel libpng-devel zlib-devel Chipmunk2D-devel
+ libXi-devel libXrandr-devel"
 conf_files="/etc/xdg/*.rc"
 short_desc="Expose-like full-screen task-switcher for X11"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="https://github.com/felixfung/skippy-xd"
 distfiles="${homepage}/archive/v${version}.tar.gz"
-checksum=bb2eee25ef11c66b9dd0b5ae75d87613ad980495c11c6f66e3121cd605b95edb
+checksum=e373151f7b9637cd98f1f8191a950b42a98296975a4cb678b592d5e04f830d84

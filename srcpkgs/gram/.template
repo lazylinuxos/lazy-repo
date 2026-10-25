@@ -28,8 +28,6 @@ pre_build() {
 	export APP_ID="${_appid}"
 	export APP_ARGS="%U"
 	envsubst < "crates/gram/resources/gram.desktop.in" > ${_appid}.desktop
-
-	./script/generate-licenses
 }
 
 do_build() {
@@ -48,5 +46,5 @@ do_install() {
 	vinstall target/release/gram 0755 usr/lib/gram/ gram-editor
 	vinstall ${_appid}.desktop 644 usr/share/applications/
 	vinstall crates/gram/resources/app-icon.png 644 usr/share/pixmaps gram.png
-	vlicense LICENSE-APACHE
+	vlicense LICENSE
 }
