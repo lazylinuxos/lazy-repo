@@ -1,6 +1,6 @@
 # Template file for 'sesh'
 pkgname=sesh
-version=2.33.0
+version=2.34.0
 revision=1
 build_style=go
 go_import_path="github.com/joshmedeski/sesh/v2"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/joshmedeski/sesh"
 distfiles="https://github.com/joshmedeski/sesh/archive/refs/tags/v${version}.tar.gz"
-checksum=43110dcc20b91996a12dab3424f7685c029d6700d99bc497b889dac355c72dbb
+checksum=40cf45bb326fae61e06835182ce0987a83de9c823a6c0ea0eb3ef5d7e0344136
 
 post_install() {
 	vlicense LICENSE

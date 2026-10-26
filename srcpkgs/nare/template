@@ -1,19 +1,19 @@
 # Template file for 'nare'
 pkgname=nare
-version=0.3.0
+version=0.4.0
 revision=1
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
 hostmakedepends="odin"
-makedepends="base-devel libX11-devel fontconfig-devel freetype-devel
- harfbuzz-devel libglvnd-devel ncurses-devel"
+makedepends="base-devel libX11-devel libXrandr-devel fontconfig-devel
+ freetype-devel harfbuzz-devel libglvnd-devel ncurses-devel"
 depends="dejavu-fonts-ttf xdg-utils"
 short_desc="Lightweight terminal emulator written in Odin"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/nare"
 distfiles="https://github.com/nerdyslacker/nare/archive/refs/tags/v${version}.tar.gz"
-checksum=1707312ba58b6f3d1c866275db3e15fc1e26a98705c8b0b143c8d80fc8617624
+checksum=a42cb9c1e6d7fedfaed4996e95dccbdc10b5a6856c80ff729c8510791f869a89
 
 post_install() {
 	vdoc README.md
