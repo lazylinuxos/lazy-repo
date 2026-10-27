@@ -5,8 +5,8 @@ revision=1
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
 hostmakedepends="odin"
-makedepends="base-devel libX11-devel libXrandr-devel fontconfig-devel
- freetype-devel harfbuzz-devel libglvnd-devel ncurses-devel"
+makedepends="base-devel libX11-devel libXrandr-devel libXext-devel
+ fontconfig-devel freetype-devel harfbuzz-devel libglvnd-devel ncurses-devel"
 depends="dejavu-fonts-ttf xdg-utils"
 short_desc="Lightweight terminal emulator written in Odin"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
