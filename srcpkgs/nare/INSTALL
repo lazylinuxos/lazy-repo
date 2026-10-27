@@ -1,0 +1,18 @@
+case "$ACTION" in
+post)
+	echo ">>"
+	echo ">>    Nare and Nare Lite configuration"
+	echo ">>"
+	echo ">>    You can copy the default configuration to your home directory"
+	echo ">>    and customize it without modifying the system-wide defaults."
+	echo ">>"
+	echo ">>    Nare:"
+	echo ">>      mkdir -p ~/.config/nare"
+	echo ">>      cp /etc/nare/nare.conf ~/.config/nare/nare.conf"
+	echo ">>"
+	echo ">>    Nare Lite:"
+	echo ">>      mkdir -p ~/.config/nare-lite"
+	echo ">>      cp /etc/nare-lite/nare.conf ~/.config/nare-lite/nare.conf"
+	echo ">>"
+	;;
+esac

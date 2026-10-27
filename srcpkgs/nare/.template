@@ -3,19 +3,34 @@ pkgname=nare
 version=${VERSION}
 revision=1
 build_style=gnu-makefile
+make_build_target="release"
 make_install_args="PREFIX=/usr"
-hostmakedepends="odin"
-makedepends="base-devel libX11-devel libXrandr-devel libXext-devel
- fontconfig-devel freetype-devel harfbuzz-devel libglvnd-devel ncurses-devel"
+hostmakedepends="odin ncurses"
+makedepends="libX11-devel libXrandr-devel libXext-devel
+ fontconfig-devel freetype-devel harfbuzz-devel libglvnd-devel"
 depends="dejavu-fonts-ttf xdg-utils"
-short_desc="Lightweight terminal emulator written in Odin"
+short_desc="GPU-accelerated terminal emulator written in Odin"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/nare"
 distfiles="https://github.com/nerdyslacker/nare/archive/refs/tags/v${version}.tar.gz"
 checksum=${SHA256}
+conf_files="/etc/nare/nare.conf"
 
 post_install() {
 	vdoc README.md
 	vlicense LICENSE
+}
+
+nare-lite_package() {
+	short_desc="Lightweight software-rendered Nare terminal emulator"
+	depends="dejavu-fonts-ttf xdg-utils"
+	conf_files="/etc/nare-lite/nare.conf"
+
+	pkg_install() {
+		vmove usr/bin/nare-lite
+		vmove usr/share/icons/hicolor/256x256/apps/nare-lite.png
+		vmove usr/share/applications/nare-lite.desktop
+		vmove etc/nare-lite
+	}
 }

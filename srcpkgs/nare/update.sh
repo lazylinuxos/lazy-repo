@@ -21,4 +21,4 @@ rm ./${VERSION}.tar.gz
 
 envsubst '${SHA256} ${VERSION}' < ${__dir}/.template > ${__dir}/template
 
-printf "nare template updated\n"
+printf "nare and nare-lite templates updated\n"
