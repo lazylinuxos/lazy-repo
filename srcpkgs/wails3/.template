@@ -1,0 +1,26 @@
+# Template file for 'wails3'
+pkgname=wails3
+version=${VERSION}
+revision=1
+build_style=go
+build_wrksrc="v3"
+go_import_path="github.com/wailsapp/wails/v3"
+go_package="./cmd/wails3"
+go_mod_mode="readonly"
+go_ldflags="-linkmode=external"
+hostmakedepends="pkg-config"
+makedepends="gtk4-devel libwebkitgtk60-devel"
+depends="nodejs"
+short_desc="Create desktop apps using Go and Web Technologies"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/wailsapp/wails"
+changelog="https://github.com/wailsapp/wails/CHANGELOG.md"
+distfiles="https://github.com/wailsapp/wails/archive/v${version}/wails-${version}.tar.gz"
+checksum=${SHA256}
+make_check="no"
+
+post_install() {
+	vdoc ${wrksrc}/README.md
+	vlicense ${wrksrc}/LICENSE
+}
