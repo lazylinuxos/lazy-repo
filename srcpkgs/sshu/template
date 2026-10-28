@@ -1,14 +1,14 @@
 # Template file for 'sshu'
 pkgname=sshu
-version=2.0.0
+version=3.0.1
 revision=1
 build_style=go
 go_package="./cmd/sshu"
-go_import_path="github.com/vulcanshen/sshu"
+go_import_path="github.com/vulcanshen/sshu/v3"
 depends="openssh"
 short_desc="Keyboard-driven TUI for SSH & SFTP"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/vulcanshen/sshu"
 distfiles="https://github.com/vulcanshen/sshu/archive/refs/tags/v${version}.tar.gz"
-checksum=86c6f0738983b0e9efdf532cfaa072268eaab8feeb17861fbc1f3bba78ed30af
+checksum=e28091f041b93d307c4345dce7c8a4f823adc9191dde93e7cbb828276222f33e
