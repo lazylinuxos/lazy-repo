@@ -21,11 +21,10 @@ noshlibprovides=yes
 
 do_install() {
 	vmkdir usr/lib/freelens
-	cp -a * ${DESTDIR}/usr/lib/freelens
+	vcopy * usr/lib/freelens
+	chmod -R o-w "${DESTDIR}/usr/lib/freelens"
 
 	vinstall ${wrksrc}/usr/share/icons/hicolor/512x512/apps/freelens.png 644 usr/share/icons/hicolor/512x512/apps
-
-	vmkdir usr/share/applications
 	vinstall ${wrksrc}/freelens.desktop 644 usr/share/applications
 
 	vmkdir usr/bin
