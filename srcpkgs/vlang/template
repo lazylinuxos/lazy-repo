@@ -1,0 +1,59 @@
+# Template file for 'vlang'
+pkgname=vlang
+version=0.5.2
+revision=1
+build_style=gnu-makefile
+makedepends="libX11-devel sqlite-devel"
+short_desc="Simple, fast, safe, compiled language for maintainable software"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://vlang.io"
+_vc_commit=7eb8c54a3843e5107d5af06d7a8c3e928f322475
+distfiles="https://github.com/vlang/v/archive/refs/tags/${version}.tar.gz
+ https://github.com/vlang/vc/archive/${_vc_commit}.tar.gz>vc.tar.gz"
+checksum="1a05f646fba9516ec6307979b282d0cc5327075bef268d40c0ca7d0b887e4f52
+ 255d5e999edf71dd2786c06a0fdcda47ecfd79d9fde3c9cf7548e36996284f45"
+skip_extraction="vc.tar.gz"
+nopie=yes
+
+post_extract() {
+	vsrcextract -C "${wrksrc}/vc" "vc.tar.gz"
+}
+
+do_configure() {
+	make fresh_tcc
+}
+
+do_build() {
+	local build_home="${wrksrc}/.build-home"
+
+	mkdir -p "$build_home"
+
+	HOME="$build_home" \
+	TMPDIR="$build_home" \
+	CFLAGS="" \
+	LDFLAGS="" \
+	make prod=1 local=1
+
+	LDFLAGS="" ./v build-tools
+}
+
+do_install() {
+	vmkdir usr/lib/vlang
+	vmkdir usr/share/vlang
+	vmkdir usr/bin
+
+	vlicense LICENSE
+
+	vinstall v 755 usr/lib/vlang
+
+	vcopy cmd usr/lib/vlang
+	vcopy thirdparty usr/lib/vlang
+	vcopy vlib usr/lib/vlang
+	vcopy v.mod usr/lib/vlang
+
+	vcopy examples usr/share/vlang
+
+	ln -s /usr/lib/vlang/v "${DESTDIR}/usr/bin/v"
+	touch "${DESTDIR}/usr/lib/vlang/cmd/tools/.disable_autorecompilation"
+}
