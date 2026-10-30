@@ -1,0 +1,21 @@
+# Template file for 'aethertune'
+pkgname=aethertune
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="openssl-devel"
+depends="mpv libpulseaudio"
+short_desc="Terminal-based internet radio player with real-time audio visualization"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/nevermore23274/AetherTune"
+distfiles="https://github.com/nevermore23274/AetherTune/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	vmkdir usr/bin/
+	ln -sf /usr/bin/AetherTune ${DESTDIR}/usr/bin/aethertune
+	vlicense LICENSE
+	vdoc README.md
+}
