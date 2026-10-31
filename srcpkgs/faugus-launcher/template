@@ -1,6 +1,6 @@
 # Template file for 'faugus-launcher'
 pkgname=faugus-launcher
-version=2.5.4
+version=2.5.5
 revision=1
 build_style=meson
 hostmakedepends="gettext"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/Faugus/faugus-launcher"
 distfiles="https://github.com/Faugus/${pkgname}/archive/refs/tags/${version}.tar.gz"
-checksum=479f2d46a632a9b89c37de1b835a4a30e6f1fca01b54a808f6ae6fb2f9aaf508
+checksum=6109783545294f7be3111c98a0997b284d693678c836013f9a313932766b1f6a
 
 post_install() {
 	vlicense LICENSE
