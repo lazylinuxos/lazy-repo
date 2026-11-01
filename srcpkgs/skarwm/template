@@ -1,6 +1,6 @@
 # Template file for 'skarwm'
 pkgname=skarwm
-version=0.11.1
+version=0.12.0
 revision=1
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/skarwm"
 distfiles="https://github.com/nerdyslacker/skarwm/archive/refs/tags/v${version}.tar.gz"
-checksum=161b8b034addaac25e8fcace8cb780440c419d2ac3afcdf40df9b64500c36235
+checksum=4b398a42cb5e12d5c8f474d8153f91dad44ac04e80a93a1cbe8c18cb912ebd29
 
 post_install() {
 	for f in $(find docs -type f -name '*.md'); do vdoc "$f"; done
