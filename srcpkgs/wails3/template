@@ -1,6 +1,6 @@
 # Template file for 'wails3'
 pkgname=wails3
-version=3.0.0
+version=3.1.0
 revision=1
 build_style=go
 build_wrksrc="v3"
@@ -17,7 +17,7 @@ license="MIT"
 homepage="https://github.com/wailsapp/wails"
 changelog="https://github.com/wailsapp/wails/CHANGELOG.md"
 distfiles="https://github.com/wailsapp/wails/archive/v${version}/wails-${version}.tar.gz"
-checksum=cd80ce78e70c2bb2580b8454230f068b2ba936bce3c17b4b12bb0b88dc6d3761
+checksum=d98866b5f7a2e2378a3cc5ca76422bcef27d669bbe1dd5792a35db2589262e1f
 make_check="no"
 
 post_install() {
