@@ -1,6 +1,6 @@
 # Template file for 'dfiles'
 pkgname=dfiles
-version=2.0.0
+version=2.1.0
 revision=1
 build_style=go
 build_wrksrc="core"
@@ -16,7 +16,7 @@ license="MIT"
 homepage="https://github.com/duxlabs-dev/dux-files"
 changelog="https://github.com/duxlabs-dev/dux-files/releases"
 distfiles="https://github.com/duxlabs-dev/dux-files/releases/download/v${version}/dfiles-${version}.tar.gz"
-checksum=5883246328482b37928c16a795d9f4a97f2fd71ed2f8772210284dede6a49739
+checksum=4a43c2bdd543322d7cf8f28a6bb72165e554024063ddc60aec2012b3c39f33be
 
 pre_build() {
 	make sync-shell

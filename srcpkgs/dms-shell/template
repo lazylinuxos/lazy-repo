@@ -1,6 +1,6 @@
 # Template file for 'dms-shell'
 pkgname=dms-shell
-version=2.0.0
+version=2.1.0
 revision=1
 build_style=go
 build_wrksrc="core"
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/duxlabs-dev/dux-shell"
 distfiles="https://github.com/duxlabs-dev/dux-shell/releases/download/v${version}/dms-source.tar.gz"
-checksum=5e498216d3ad0b0d487848957ca6aec53862d1ba21582dbd4ef15483c88fd041
+checksum=7940c60a776b1280609d0eb80ea8845d4f388b28cd087599c70ab15da659543c
 
 pre_build() {
 	make sync-shell

@@ -1,6 +1,6 @@
 # Template file for 'dsearch'
 pkgname=dsearch
-version=2.0.0
+version=2.1.0
 revision=1
 build_style=go
 go_import_path="github.com/duxlabs-dev/dux-search"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/duxlabs-dev/dux-search"
 distfiles="https://github.com/duxlabs-dev/dux-search/archive/refs/tags/v${version}.tar.gz"
-checksum=b33665b22692e12075b23acdbe3f03e4f3d64e50223f92820117e525d18aabe4
+checksum=f7ad915d74769532960d9d220ac85de5f94410335de9870d59fbd18487f35855
 
 post_install() {
 	vsv dsearch
