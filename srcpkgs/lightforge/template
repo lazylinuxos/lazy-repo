@@ -1,0 +1,39 @@
+# Template file for 'lightforge'
+pkgname=lightforge
+version=1.0.0.beta.9
+revision=1
+_tag="${version/.beta/-beta}"
+archs="x86_64"
+build_style=cargo
+hostmakedepends="pkg-config"
+makedepends="libudev-devel libzstd-devel"
+depends="fontconfig python3"
+short_desc="Install, update and play World of Warcraft and Battle.net games"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/LightforgeProject/lightforge"
+distfiles="https://github.com/LightforgeProject/lightforge/archive/refs/tags/v${_tag}.tar.gz"
+checksum=1ef572a485eaa539897e7997ce427edc3941bf1149ecf1d9e7754dd41d470369
+
+do_install() {
+	vbin target/${RUST_TARGET}/release/lightforge-gui
+	vbin target/${RUST_TARGET}/release/lightforge
+
+	vinstall packaging/pro.tuxcore.Lightforge.desktop 644 usr/share/applications
+	vinstall packaging/pro.tuxcore.Lightforge.metainfo.xml 644 usr/share/metainfo
+
+	local size
+	for size in 16 22 24 32 48 64 128 256 512; do
+		vinstall packaging/icons/hicolor/${size}x${size}/apps/pro.tuxcore.Lightforge.png \
+			644 usr/share/icons/hicolor/${size}x${size}/apps
+	done
+
+	vinstall packaging/icons/hicolor/scalable/apps/pro.tuxcore.Lightforge.svg \
+		644 usr/share/icons/hicolor/scalable/apps
+
+	vdoc README.md
+	vdoc RELEASES.md
+	vdoc TROUBLESHOOTING.md
+	vdoc docs/CLI.md
+	vdoc ${FILESDIR}/README.voidlinux
+}

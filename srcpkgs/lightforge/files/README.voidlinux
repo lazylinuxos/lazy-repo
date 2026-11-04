@@ -1,0 +1,7 @@
+Optional dependencies:
+
+* `gnutls-32bit` 32-bit runtime for Battle.net (needs multilib)
+* `freetype-32bit` 32-bit runtime for Battle.net (needs multilib)
+* `vulkan-loader-32bit` 32-bit runtime for Battle.net (needs multilib)
+* `MangoHud` the in-game overlay Lightforge can enable per game
+* `wine-32bit` pulls in all 32-bit libraries Proton needs (needs multilib)
