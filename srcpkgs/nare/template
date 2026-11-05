@@ -1,6 +1,6 @@
 # Template file for 'nare'
 pkgname=nare
-version=0.7.0
+version=0.7.1
 revision=1
 build_style=gnu-makefile
 make_build_target="release"
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/nare"
 distfiles="https://github.com/nerdyslacker/nare/archive/refs/tags/v${version}.tar.gz"
-checksum=daf6bb373caa45b7ace990250e733a6158d1d0668d6b7700d3bc5eb1ccc4d14e
+checksum=f93f9bf7c9ef35e5b003102d181aa9cb96bf2fa2437fc4cff31ac0766931d19a
 conf_files="/etc/nare/nare.conf"
 
 post_install() {

@@ -3,7 +3,8 @@ pkgname=dorion
 version=7.0.1
 revision=1
 hostmakedepends="cargo rust nodejs pnpm cmake pkg-config patchelf"
-makedepends="gtk+3-devel openssl-devel libwebkit2gtk41-devel libayatana-appindicator-devel librsvg-devel"
+makedepends="gtk+3-devel openssl-devel libwebkit2gtk41-devel libayatana-appindicator-devel
+ librsvg-devel nss-devel nspr-devel"
 depends="gst-plugins-base1 gst-plugins-good1"
 short_desc="Tiny Discord client with a smaller footprint"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -26,7 +27,9 @@ do_configure() {
 
 do_build() {
 	pnpm build:updater
+	export RUSTFLAGS="${RUSTFLAGS:+${RUSTFLAGS} }-C link-arg=-Wl,-rpath-link,/usr/lib"
 	pnpm tauri build --no-bundle
+	bash scripts/bundle-cef.sh
 }
 
 do_install() {

@@ -4699,3 +4699,4 @@ libchibi-scheme.so.0 chibi-scheme-0.12_1
 libgdbuspp.so.3 gdbuspp-3_1
 libQt6Pas.so.6 qt6pas-6.2.10_1
 libchipmunk.so.7 Chipmunk2D-devel-7.0.3_1
+libcef.so dorion-7.0.1_1
