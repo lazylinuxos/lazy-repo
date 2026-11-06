@@ -8,11 +8,11 @@ makedepends="qt6-base-devel qt6-declarative-devel qt6-svg-devel qt6-multimedia-d
  qt6-location-devel qt6-base-private-devel kf6-prison-devel kf6-kirigami-devel kf6-kio-devel
  KDSingleApplication kirigami-addons-devel qxmpp-devel qtkeychain-qt6-devel kf6-kcrash-devel
  kf6-knotifications-devel kf6-kcoreaddons-devel kquickimageeditor-devel kf6-qqc2-desktop-style-devel
- gstreamer1-devel"
+ kf6-kitemmodels-devel gstreamer1-devel"
 depends="gst-plugins-good1-qml6 qt6-location kquickimageeditor kirigami-addons"
 short_desc="User-friendly XMPP client"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://www.kaidan.im/"
 distfiles="https://github.com/KDE/kaidan/archive/refs/tags/v${version}.tar.gz"
-checksum=a5ac9e26551a31f8de951976913c7572f1ac365434c8440d09e38262e8d47cd8
+checksum=1158cfb18618cb6963abe36e6fce50e95bf6d2befc0ccc81b5ae8deb89b8c73b

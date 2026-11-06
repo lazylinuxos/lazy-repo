@@ -28,7 +28,7 @@ printf "Latest version is: %s\nCurrent template version is: %s\n" "${VERSION}" "
 [ "${CURRENT_VERSION}" = "${VERSION}" ] && printf "No new version to release\n" && exit 0
 
 # Download source tarball to calculate checksum
-TARBALL_URL="https://invent.kde.org/network/kaidan/-/archive/v${VERSION}/kaidan-v${VERSION}.tar.gz"
+TARBALL_URL="https://github.com/KDE/kaidan/archive/refs/tags/v${VERSION}.tar.gz"
 TEMP_FILE="${VERSION}.tar.gz"
 curl -L -o "${TEMP_FILE}" "${TARBALL_URL}"
 
