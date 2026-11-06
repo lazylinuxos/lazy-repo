@@ -1,6 +1,6 @@
 # Template file for 'readest-bin'
 pkgname=readest-bin
-version=0.12.16
+version=0.12.20
 revision=1
 hostmakedepends="tar xz"
 depends="cairo desktop-file-utils libgcc fontconfig gdk-pixbuf glib gtk+3
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="AGPL-3.0-or-later"
 homepage="https://github.com/readest/readest"
 distfiles="https://github.com/readest/readest/releases/download/v${version}/Readest_${version}_amd64.deb"
-checksum="0233654792d33342c620a0f4ea48344ba8216f4133cf04abe4d5e79ff79e6f52"
+checksum="5b9da36232b3df905e4d9b5d3a73c12419f7bfd9b8e50f8c630c2de5ab6ab7b5"
 ignore_elf_dirs="/usr/share/Readest"
 
 do_extract() {

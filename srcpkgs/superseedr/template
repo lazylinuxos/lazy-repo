@@ -1,6 +1,6 @@
 # Template file for 'superseedr'
 pkgname=superseedr
-version=1.0.16
+version=1.0.17
 revision=1
 build_style=cargo
 # These offline_move_* and storage tests rely on filesystem space detection
@@ -17,4 +17,4 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/Jagalite/superseedr"
 distfiles="https://github.com/Jagalite/superseedr/archive/refs/tags/v${version}.tar.gz"
-checksum=35febb814a10a16db6fa6fa85da48ae897d54e30a45ce835a6f4e3ed43d58195
+checksum=f3d0f61aa910631d03f3cc649a8f7f80a5d838618902d5cd3e2bd577b330922e
