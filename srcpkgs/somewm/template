@@ -1,6 +1,6 @@
 # Template file for 'somewm'
 pkgname=somewm
-version=2.1.1
+version=2.1.2
 revision=1
 build_style=meson
 configure_args=" -Db_sanitize=none -Dwerror=false"
@@ -16,7 +16,7 @@ license="GPL-3.0-or-later"
 homepage="https://github.com/trip-zip/somewm"
 changelog="https://raw.githubusercontent.com/trip-zip/somewm/refs/heads/main/CHANGELOG.md"
 distfiles="https://github.com/trip-zip/somewm/archive/refs/tags/v${version}.tar.gz"
-checksum=2c05fa7e5d94e313a986d029f6dee422bdf4c8c0872fc3ee97262a8363f556dd
+checksum=e4edb6f4b3c08af87b00c7e30d9b8196ac28a3b4587a41078748a657b0337220
 
 post_extract() {
     sed -i \
