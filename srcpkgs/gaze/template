@@ -1,6 +1,6 @@
 # Template file for 'gaze'
 pkgname=gaze
-version=0.4.2
+version=0.5.0
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config clang21 llvm21"
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/GunduLabs/gaze"
 distfiles="https://github.com/GunduLabs/gaze/archive/refs/tags/v${version}.tar.gz"
-checksum=0b8b7c13645f78af17c078de21630b98986cc74147d01eb97c6a382f705fc1f8
+checksum=bd61dd7a41afce78bad30057eb23d3c0ee100d41e88348f844ac669f1456c665
 conf_files="/etc/dbus-1/system.d/com.gundulabs.Gaze.conf
  /etc/gaze/config.toml"
 make_dirs="/var/lib/gaze 0700 root root

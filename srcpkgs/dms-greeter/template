@@ -1,6 +1,6 @@
 # Template file for 'dms-greeter'
 pkgname=dms-greeter
-version=2.1.1
+version=2.1.2
 revision=1
 build_style=go
 build_wrksrc="core"
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/duxlabs-dev/dux-greeter"
 distfiles="https://github.com/duxlabs-dev/dux-greeter/releases/download/v${version}/dank-greeter-${version}.tar.gz"
-checksum=9158926e85209a80918aa077b33829446fea2567de1ededd71fd73a316a4a897
+checksum=38d4d5e0d2d2e1d7f556c8af34e314787ed522768bd660c1957c108e283e32f6
 
 pre_build() {
 	make sync-shell
