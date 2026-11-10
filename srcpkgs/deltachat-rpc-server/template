@@ -1,6 +1,6 @@
 # Template file for 'deltachat-rpc-server'
 pkgname=deltachat-rpc-server
-version=2.68.0
+version=2.69.0
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config sqlcipher-devel openssl-devel"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0"
 homepage="https://github.com/chatmail/core/tree/main/deltachat-rpc-server"
 distfiles="https://github.com/chatmail/core/archive/refs/tags/v${version}.tar.gz"
-checksum=b61445039b0dbc6c0b5e47a5bd85d714ac55f6aad65e795cb19921c40fe5320c
+checksum=35adeea65de8bd2815b3ce4c217e48bb5bb2653e3f054deaee5b321f783b6faa
 
 do_build() {
 	CFLAGS="${CFLAGS} -ffat-lto-objects"
