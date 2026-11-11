@@ -1,0 +1,29 @@
+# Template file for 'umbriel-git'
+pkgname=umbriel-git
+version=r1562.49b2970
+revision=1
+_gitrev="${version##*.}"
+build_style=meson
+configure_args="-Db_ndebug=true -Dtests=disabled -Dharness=disabled"
+hostmakedepends="pkg-config ninja wayland-devel"
+makedepends="cairo-devel jemalloc-devel lcms2-devel libdrm-devel
+ libdisplay-info-devel libei-devel libglvnd-devel libinput-devel
+ libxcb-devel libxkbcommon-devel MesaLib-devel pango-devel
+ pixman-devel tomlplusplus-devel wayland-devel wlroots-devel
+ xcb-util-wm-devel json-c++"
+depends="xorg-server-xwayland"
+short_desc="Wayland compositor with scrolling, dwindle and master layouts"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/noctalia-dev/umbriel"
+distfiles="https://github.com/noctalia-dev/umbriel/archive/${_gitrev}.tar.gz"
+checksum=15b26624adbf38a48b0089923a29b7352793ad393d10b5264f8a8e9a463f2a95
+
+pre_configure() {
+	# Disable automatic dependency downloads in Meson.
+	export MESON_WRAP_MODE=nodownload
+}
+
+post_install() {
+	vlicense LICENSE
+}

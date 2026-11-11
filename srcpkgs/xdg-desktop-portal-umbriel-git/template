@@ -1,0 +1,22 @@
+# Template file for 'xdg-desktop-portal-umbriel-git'
+pkgname=xdg-desktop-portal-umbriel-git
+version=r73.5695142
+revision=1
+_gitrev="${version##*.}"
+build_style=meson
+configure_args="-Db_ndebug=true -Dpicker=enabled"
+hostmakedepends="pkg-config ninja wayland-protocols"
+makedepends="cairo-devel gtk4-devel libdrm-devel pipewire-devel
+ MesaLib-devel sdbus-c++-devel tomlplusplus-devel wayland-devel
+ libei-devel json-c++"
+depends="xdg-desktop-portal"
+short_desc="xdg-desktop-portal backend for the Umbriel compositor"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/noctalia-dev/xdg-desktop-portal-umbriel"
+distfiles="https://github.com/noctalia-dev/xdg-desktop-portal-umbriel/archive/${_gitrev}.tar.gz"
+checksum=9b06e0b352499dce6a6ed3147998645a0d9959f959c7480da5b6bc0fc41256a8
+
+post_install() {
+	vlicense LICENSE
+}

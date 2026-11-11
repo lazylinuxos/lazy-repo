@@ -1,0 +1,19 @@
+# Template file for 'omtalk'
+pkgname=omtalk
+version=0.1.12
+revision=1
+build_style=cargo
+build_helper="rust"
+hostmakedepends="pkg-config cmake"
+makedepends="sqlite-devel"
+short_desc="Terminal-based XMPP chat client"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/gAlleb/omtalk"
+distfiles="https://github.com/gAlleb/omtalk/archive/refs/tags/v${version}.tar.gz"
+checksum=776c4aa98509354f29c4d108b72820a05afc03ff48e8fb527722e2d3d5afec06
+
+do_install() {
+    vbin target/${RUST_TARGET}/release/omtalk
+    vbin target/${RUST_TARGET}/release/omtalk-cli
+}

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Crabber
+Comment=XMPP messenger
+Exec=crabber
+Icon=crabber
+Terminal=false
+Categories=Network;InstantMessaging;Chat;

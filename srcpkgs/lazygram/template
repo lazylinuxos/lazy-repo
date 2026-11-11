@@ -1,0 +1,19 @@
+# Template file for 'lazygram'
+pkgname=lazygram
+version=0.4.30
+revision=1
+build_style=go
+go_import_path=lazygram
+go_package="./cmd/lazygram"
+depends="hicolor-icon-theme"
+short_desc="Terminal Telegram client with IRC-style windows"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://github.com/t0d0r/lazygram"
+distfiles="https://github.com/t0d0r/lazygram/archive/refs/tags/v${version}.tar.gz"
+checksum=87c91787238eb4fa2a42b7a21420ee1c79e83dbe2155ec66583f9218d43cda83
+
+post_install() {
+	vlicense LICENSE
+	vdoc README.md
+}

@@ -1,0 +1,22 @@
+# Template file for 'flectar-mail'
+pkgname=flectar-mail
+version=0.1.0.alpha.7
+revision=1
+_tag="${version/.alpha/-alpha}"
+build_style=cargo
+hostmakedepends="pkg-config python3"
+makedepends="dbus-devel fontconfig-devel sqlite-devel"
+depends="hicolor-icon-theme xdg-utils"
+short_desc="Lightweight, native client for email, calendars and contacts"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="AGPL-3.0-only"
+homepage="https://flectar.com"
+distfiles="https://github.com/flectar/mail/archive/refs/tags/v${_tag}.tar.gz"
+checksum=457f9844c30bd2548fc4bc4166426eb4d7ef6efe5a2918d6cb13b3b2f184258b
+
+export CARGO_PROFILE_RELEASE_LTO=false
+export CARGO_PROFILE_RELEASE_CODEGEN_UNITS=16
+
+post_install() {
+	vlicense LICENSE
+}

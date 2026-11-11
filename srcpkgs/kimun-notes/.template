@@ -4,7 +4,8 @@ version=${VERSION}
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
-makedepends="openssl-devel sqlite-devel oniguruma-devel"
+makedepends="openssl-devel sqlite-devel oniguruma-devel
+ fontconfig-devel libxcb-devel libxkbcommon-devel"
 short_desc="Simple note taking, powerful search, AI ready"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"

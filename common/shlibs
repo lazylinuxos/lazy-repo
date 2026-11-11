@@ -872,8 +872,8 @@ librhythmbox-core.so.10 librhythmbox-3.4.1_1
 libdmapsharing-4.0.so.3 libdmapsharing-3.9.13_1
 libgexiv2.so.2 libgexiv2-0.6.1_1
 libgexiv2-0.16.so.4 libgexiv2-0.16-0.16.0_1
-libraw.so.23 libraw-0.21.0_1
-libraw_r.so.23 libraw-0.21.0_1
+libraw.so.25 libraw-0.22.3_1
+libraw_r.so.25 libraw-0.22.3_1
 libdjvulibre.so.21 libdjvulibre-3.5.24_1
 libgxps.so.2 libgxps-0.2.0_1
 libt1.so.5 libt1-5.1.2_1
@@ -3025,7 +3025,7 @@ libiscsi.so.9 libiscsi-1.19.0_1
 libgme.so.0 libgme-0.6.1_1
 libzmusic.so.1 ZMusic-1.1.2_1
 libzmusiclite.so.1 ZMusic-1.1.2_1
-libsidplayfp.so.6 libsidplayfp-2.1.0_1
+libsidplayfp.so.7 libsidplayfp-3.1.2_1
 libstilview.so.0 libsidplayfp-1.8.7_1
 libczmq.so.4 czmq-4.0.1_1
 liblz.so.1 lzlib-1.8_1
