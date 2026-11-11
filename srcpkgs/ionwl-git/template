@@ -1,0 +1,27 @@
+# Template file for 'ionwl-git'
+pkgname=ionwl-git
+version=r2573.0830a45d24
+revision=1
+_gitrev="${version##*.}"
+hostmakedepends="cargo python3 python3-Sphinx weston pkg-config"
+makedepends="fontconfig-devel libinput-devel libxkbcommon-devel
+ wayland-devel libudev-devel libseat-devel libdisplay-info-devel
+ libgbm-devel weston-devel"
+depends="seatd mesa python3"
+short_desc="Manual tiling Wayland compositor"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://codeberg.org/ideasman42/ionwl"
+distfiles="https://codeberg.org/ideasman42/ionwl/archive/${_gitrev}.tar.gz"
+checksum=c6abca9e3a3520982029c385e81a7653d5cf000a94d6a732d2c604efb9e4b1b7
+
+do_build() {
+	export CARGO_HOME="$wrksrc/cargo-home"
+
+	make build
+	make -j1 doc doc-stubs
+}
+
+do_install() {
+	make DESTDIR="$DESTDIR" PREFIX=/usr install_only
+}

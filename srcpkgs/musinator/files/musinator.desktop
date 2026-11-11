@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Musinator
+GenericName=Music Player
+Comment=A modern-looking terminal music player
+Exec=musinator
+Icon=musinator
+Terminal=true
+Categories=Audio;AudioVideo;Player;ConsoleOnly;
+Keywords=music;player;flac;mp3;
