@@ -1,29 +1,39 @@
-# Template file for 'sev'
-pkgname=sev
-version=0.1.0
+# Template file for 'sev-git'
+pkgname=sev-git
+version=r521.adbea50
 revision=1
+_gitrev="${version##*.}"
+_pcre2_version=10.49
 _tree_sitter_version=0.26.8
+_tree_sitter_json_version=0.24.8
 _tree_sitter_scheme_version=0.24.7-1
 build_style=cmake
 configure_args="-DUSE_VENDORED=OFF"
 hostmakedepends="pkg-config"
-makedepends="libglvnd-devel SDL3-devel SDL3_image-devel SDL3_ttf-devel chibi-scheme-devel" # tree-sitter-devel tree-sitter-scheme
+makedepends="libglvnd-devel SDL3-devel SDL3_image-devel SDL3_ttf-devel chibi-scheme-devel" # tree-sitter-devel tree-sitter-scheme pcre2-devel
 short_desc="Graphical Emacs-like text editor"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/dylancobb/sev"
-distfiles="https://github.com/dylancobb/sev/archive/refs/tags/v${version}.tar.gz
+distfiles="https://github.com/dylancobb/sev/archive/${_gitrev}.tar.gz
+ https://github.com/PCRE2Project/pcre2/archive/refs/tags/pcre2-${_pcre2_version}.tar.gz>pcre2.tar.gz
  https://github.com/tree-sitter/tree-sitter/archive/refs/tags/v${_tree_sitter_version}.tar.gz>tree-sitter.tar.gz
+ https://github.com/tree-sitter/tree-sitter-json/archive/refs/tags/v${_tree_sitter_json_version}.tar.gz>tree-sitter-json.tar.gz
  https://github.com/6cdh/tree-sitter-scheme/archive/refs/tags/v${_tree_sitter_scheme_version}.tar.gz>tree-sitter-scheme.tar.gz"
-checksum="b0fbe138548e247a610edac1dfb7d4bff4b6169ec61b66319a53df1a7a8eb65a
+checksum="b9672d91b3ed9c78206d5203517e623096a80c9b6dfb5169f33f3af70dc0aeec
+ 69d04dcddcf9e038aeae8f58b0c07ee5e08abb835ee8daa2bd6acee433dc112c
  e6826b7533ec3a885aba598377a6d20b5a6321ff3db76968e960c2352d3a5077
+ acf6e8362457e819ed8b613f2ad9a0e1b621a77556c296f3abea58f7880a9213
  64a549fae70004794ea75a08dd7d678e3971235813adf290b66f1cb6cb6d282f"
-skip_extraction="
+skip_extraction="pcre2.tar.gz
  tree-sitter.tar.gz
+ tree-sitter-json.tar.gz
  tree-sitter-scheme.tar.gz"
 
 post_extract() {
+	vsrcextract -C "${wrksrc}/vendored/pcre2" "pcre2.tar.gz"
 	vsrcextract -C "${wrksrc}/vendored/tree-sitter" "tree-sitter.tar.gz"
+	vsrcextract -C "${wrksrc}/vendored/tree-sitter-json" "tree-sitter-json.tar.gz"
 	vsrcextract -C "${wrksrc}/vendored/tree-sitter-scheme" "tree-sitter-scheme.tar.gz"
 }
 
@@ -31,13 +41,13 @@ do_install() {
 	vmkdir usr/lib/sev
 	vcopy build/resources usr/lib/sev/
 	vcopy build/scheme usr/lib/sev/
-	vcopy build/app usr/lib/sev/
+	vcopy build/Sev usr/lib/sev/
 
 	vinstall build/resources/icon.png 644 usr/share/pixmaps sev.png
 	vinstall ${FILESDIR}/sev.desktop 644 usr/share/applications
 
 	vmkdir usr/bin/
-	ln -s /usr/lib/sev/app ${DESTDIR}/usr/bin/sev
+	ln -s /usr/lib/sev/Sev ${DESTDIR}/usr/bin/sev
 
 	vlicense LICENSE
 }

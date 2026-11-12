@@ -1,0 +1,97 @@
+# Template file for 'skykeep'
+pkgname=skykeep
+version=${VERSION}
+revision=1
+build_style=cargo
+build_helper="rust"
+hostmakedepends="nodejs pkgconf"
+makedepends="cairo-devel gdk-pixbuf-devel glib-devel dbus-devel gtk+3-devel
+ gstreamer1-devel gst-plugins-base1-devel libheif-devel libsoup3-devel
+ libwebkit2gtk41-devel"
+depends="gst-libav gst-plugins-good1 hicolor-icon-theme fuse3"
+short_desc="Your iPhone's iCloud on Linux"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-only"
+homepage="https://github.com/YashwanthKamireddi/Skykeep"
+distfiles="https://github.com/YashwanthKamireddi/Skykeep/archive/refs/tags/v${version}.tar.gz"
+checksum="${SHA256}"
+
+do_configure() {
+    cargo fetch --locked
+    npm ci --no-audit --no-fund
+}
+
+do_build() {
+    npm run build
+    cargo build --release --frozen -p quince-app
+}
+
+do_install() {
+    local _id="io.github.yashwanthkamireddi.Skykeep"
+    local size
+
+    vbin target/release/quince-app skykeep
+
+    vsed -i -e 's/{{name}}/Skykeep/' \
+        -e 's/{{comment}}/Your iCloud, on this computer/' \
+        -e 's/{{exec}}/skykeep/g' \
+        -e "s/{{icon}}/${_id}/" \
+        -e 's/{{categories}}/Office;Calendar;ContactManagement;/' \
+        "packaging/${_id}.desktop.in"
+
+    vinstall "packaging/${_id}.desktop.in" 644 \
+        usr/share/applications "${_id}.desktop"
+
+    for f in packaging/apps/*.desktop; do
+        vinstall "$f" 644 usr/share/applications
+    done
+
+    vsed -i -e "s|>Skykeep.desktop<|>${_id}.desktop<|" \
+        "packaging/${_id}.metainfo.xml"
+
+    vinstall "packaging/${_id}.metainfo.xml" 644 \
+        usr/share/metainfo "${_id}.metainfo.xml"
+
+    for size in 16x16 24x24 32x32 48x48 64x64 128x128 256x256 512x512; do
+        case "$size" in
+            256x256) icon="128x128@2x" ;;
+            512x512) icon="icon" ;;
+            *) icon="$size" ;;
+        esac
+
+        vinstall "src-tauri/icons/${icon}.png" 644 \
+            "usr/share/icons/hicolor/${size}/apps" "${_id}.png"
+    done
+
+    for app in notes reminders calendar contacts drive photos send; do
+        icon_name="${app^}"
+
+        vinstall "packaging/icons/apps/${app}.svg" 644 \
+            usr/share/icons/hicolor/scalable/apps \
+            "${_id}.${icon_name}.svg"
+    done
+
+    # GNOME Shell search provider
+    vsed -i -e "s|^DesktopId=Skykeep.desktop$|DesktopId=${_id}.desktop|" \
+        "packaging/${_id}.search-provider.ini"
+
+    vinstall "packaging/${_id}.search-provider.ini" 644 \
+        usr/share/gnome-shell/search-providers "${_id}.search-provider.ini"
+
+    vinstall "packaging/${_id}.SearchProvider.service" 644 \
+        usr/share/dbus-1/services
+
+    # KRunner integration
+    vinstall "packaging/${_id}.krunner.desktop" 644 \
+        usr/share/krunner/dbusplugins
+
+    # File manager integrations
+    vinstall packaging/file-managers/skykeep-send-to-iphone.desktop \
+        644 usr/share/kio/servicemenus
+
+    vinstall packaging/file-managers/skykeep-send-to-iphone.nemo_action \
+        644 usr/share/nemo/actions
+
+    vinstall packaging/file-managers/skykeep_send_to_iphone.py \
+        644 usr/share/nautilus-python/extensions        
+}

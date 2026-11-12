@@ -1,6 +1,6 @@
 # Template file for 'musinator'
 pkgname=musinator
-version=0.1.3
+version=0.1.5
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config clang"
@@ -11,11 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/smanookian/musinator"
 distfiles="https://github.com/smanookian/musinator/archive/v${version}.tar.gz"
-checksum=35b32cf56b23900b54a351d9668abaab1007daf1dde815c1a98f2738abf2039a
-
-do_install() {
-	:
-}
+checksum=66181e1c7c29aefadb52683e56b5b03b649a07fbb2c124cd17edac0f2bd32b56
 
 post_install() {
 	vinstall ${FILESDIR}/musinator.desktop 644 usr/share/applications

@@ -8,7 +8,7 @@ short_desc="Unofficial GTK3 port of libadwaita"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="LGPL-2.1-or-later"
 homepage="https://github.com/lassekongo83/adw-gtk3"
-distfiles="${homepage}/releases/download/v${version}/${_pkgname}v${version}.tar.xz"
+distfiles="https://github.com/lassekongo83/adw-gtk3/releases/download/v${version}/${_pkgname}v${version}.tar.xz"
 checksum=a81780fadfc432be0fc3d89c4ebb41aa28e4f032d42c36f9789c57dd10cfa41c
 
 do_install() {

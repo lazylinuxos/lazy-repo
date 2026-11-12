@@ -1,6 +1,6 @@
 # Template file for 'chimerautils'
 pkgname=chimerautils
-version=15.1.1
+version=15.1.2
 revision=1
 build_style=meson
 hostmakedepends="bison flex ninja pkg-config"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/chimera-linux/chimerautils"
 distfiles="https://github.com/chimera-linux/chimerautils/archive/refs/tags/v${version}.tar.gz"
-checksum=18c558f0165af078a1a213617c2241d80164dc846ffb05c49f22a476720df773
+checksum=b03e279e0e291968852094ec2946329ac450c863eda909bed0b8a2e1baf884fe
 
 do_configure() {
 	meson setup \

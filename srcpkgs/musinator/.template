@@ -1,0 +1,21 @@
+# Template file for 'musinator'
+pkgname=musinator
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config clang"
+makedepends="opus-devel pipewire-devel sqlite-devel"
+depends="libpipewire playerctl"
+short_desc="Modern-looking terminal music player"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/smanookian/musinator"
+distfiles="https://github.com/smanookian/musinator/archive/v${version}.tar.gz"
+checksum=${SHA256}
+
+post_install() {
+	vinstall ${FILESDIR}/musinator.desktop 644 usr/share/applications
+	vinstall ${FILESDIR}/musinator.svg 644 usr/share/icons/hicolor/scalable/apps
+	vlicense LICENSE
+	vdoc README.md
+}

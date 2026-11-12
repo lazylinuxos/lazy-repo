@@ -1,0 +1,26 @@
+# Template file for 'crabber'
+pkgname=crabber
+version=${VERSION}
+revision=1
+build_style=cargo
+build_helper="rust"
+hostmakedepends="clang pkgconf"
+makedepends="Vulkan-Headers alsa-lib-devel dbus-devel fontconfig-devel
+ freetype-devel libX11-devel libxcb-devel libxkbcommon-devel pipewire-devel
+ vulkan-loader-devel wayland-devel sqlite-devel"
+depends="noto-fonts-emoji"
+short_desc="XMPP messenger built on GPUI"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/auf-gg/crabber"
+distfiles="https://github.com/auf-gg/crabber/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+do_install() {
+ vbin target/${RUST_TARGET}/release/crabber
+
+ vinstall icon.png 644 usr/share/icons/hicolor/1024x1024/apps crabber.png
+ vinstall icon.svg 644 usr/share/icons/hicolor/scalable/apps crabber.svg
+
+ vinstall ${FILESDIR}/crabber.desktop 644 usr/share/applications
+}

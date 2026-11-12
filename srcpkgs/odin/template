@@ -1,6 +1,6 @@
 # Template file for 'odin'
 pkgname=odin
-version=2026.10
+version=2026.11
 revision=1
 _tag="dev-${version//./-}"
 build_style="gnu-makefile"
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="zlib"
 homepage="https://odin-lang.org/"
 distfiles="https://github.com/odin-lang/Odin/archive/refs/tags/${_tag}.tar.gz"
-checksum=f72a045c956c6fe09937d8283b9a3a69ca11197993a6cee8bdaf1ed5205e9f13
+checksum=8b2a0297705e0dd383f5b8567f13a581e4832cc7e8c8ce73197575f806a36f22
 skiprdeps="/usr/lib/odin/vendor/raylib/linux-arm64/libraylib.so.600"
 nostrip=yes
 
