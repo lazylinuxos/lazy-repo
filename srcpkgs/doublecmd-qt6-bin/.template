@@ -1,25 +1,25 @@
-# Template file for 'doublecmd-gtk-bin'
-pkgname=doublecmd-gtk-bin
+# Template file for 'doublecmd-qt6-bin'
+pkgname=doublecmd-qt6-bin
 version=${VERSION}
 revision=1
 archs="x86_64"
-create_wrksrc=yes
-
 hostmakedepends="tar xz"
+depends="qt6pas desktop-file-utils hicolor-icon-theme shared-mime-info"
 short_desc="Twin-panel (commander-style) file manager"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-or-later"
 homepage="http://doublecmd.sourceforge.net/"
-distfiles="https://github.com/doublecmd/doublecmd/releases/download/v${version}/doublecmd-${version}.gtk2.x86_64.tar.xz"
-checksum="${SHA256}"
+distfiles="https://github.com/doublecmd/doublecmd/releases/download/v${version}/doublecmd-${version}.qt6.x86_64.tar.xz"
+checksum=${SHA256}
+make_dirs="/usr/lib/doublecmd/settings 1777 root root"
 nopie=yes
 noshlibprovides=yes
 
 do_install() {
 	vmkdir usr/lib/doublecmd
-	vcopy ${wrksrc}/doublecmd/* usr/lib/doublecmd
+	vcopy ${wrksrc}/* usr/lib/doublecmd
 
-	vinstall ${wrksrc}/doublecmd/doublecmd.png 644 usr/share/pixmaps
+	vinstall ${wrksrc}/doublecmd.png 644 usr/share/pixmaps
 	vinstall ${FILESDIR}/doublecmd.desktop 644 usr/share/applications
 
 	vmkdir usr/bin/
