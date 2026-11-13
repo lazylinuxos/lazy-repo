@@ -1,6 +1,6 @@
 # Template file for 'leaf'
 pkgname=leaf
-version=1.29.2
+version=1.29.3
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/RivoLink/leaf"
 distfiles="https://github.com/RivoLink/leaf/archive/refs/tags/${version}.tar.gz"
-checksum=ef5097249de15d99d749e51bb77efea43a8d7b2bab2a3b49a94244ac6ea87a4f
+checksum=6d7343042c072f0065d4357666aa3530a3fce03d79cea7378fe20e816e2b5240
 
 post_install() {
 	vdoc README.md
