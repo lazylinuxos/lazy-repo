@@ -1,0 +1,27 @@
+# Template file for 'butterview'
+pkgname=butterview
+version=0.4.6
+revision=1
+hostmakedepends="zig16 pkg-config librsvg"
+makedepends="SDL3-devel SDL3_image-devel SDL3_ttf-devel
+ libjpeg-turbo-devel dbus-devel"
+depends="fontconfig wl-clipboard xclip xdg-utils glib"
+short_desc="Small, fast image viewer on SDL3"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://justaguy.dev/drew/butterview"
+distfiles="https://justaguy.dev/drew/butterview/archive/v${version}.tar.gz"
+checksum=91d1cd60f6e53aa55a0da1cca98a149b389f6111c96f6e08dfcefc3638d56b61
+
+do_build() {
+    zig build -Doptimize=ReleaseSafe -Dversion="${version}" 
+}
+
+do_install() {
+    vbin zig-out/bin/butterview
+	vinstall data/butterview.desktop 644 usr/share/applications
+	vinstall data/butterview.svg 644 usr/share/icons/hicolor/scalable/apps
+	vman data/butterview.1
+	vdoc README.md
+	vdoc data/butterview.conf.example
+}

@@ -1,0 +1,26 @@
+# Template file for 'passenger-ide-bin'
+pkgname=passenger-ide-bin
+version=${VERSION}
+revision=1
+depends="fontconfig libX11 libICE libSM"
+short_desc="Open-source IDE for C# and .NET"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://passenger-ide.net"
+distfiles="https://github.com/Zaneris/passenger/releases/download/v${version}/Passenger-linux-x64.tar.gz"
+checksum=${SHA256}
+
+do_install() {
+	vmkdir /opt/passenger-ide
+	vcopy * /opt/passenger-ide/
+
+	vmkdir /usr/bin
+	ln -s /opt/passenger-ide/passenger "${DESTDIR}/usr/bin/passenger-ide"
+
+	vinstall io.github.zaneris.passenger.desktop 644 /usr/share/applications
+	vinstall io.github.zaneris.passenger.png 644 /usr/share/icons/hicolor/256x256/apps
+	vinstall io.github.zaneris.passenger.svg 644 /usr/share/icons/hicolor/scalable/apps
+	vinstall io.github.zaneris.passenger.xml 644 /usr/share/mime/packages
+
+	vlicense ${FILESDIR}/LICENSE
+}
