@@ -1,6 +1,6 @@
 # Template file for 'netwatch'
 pkgname=netwatch
-version=0.40.0
+version=0.40.1
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
@@ -11,7 +11,7 @@ license="MIT"
 homepage="https://www.netwatchlabs.com"
 changelog="https://raw.githubusercontent.com/matthart1983/netwatch/refs/heads/main/CHANGELOG.md"
 distfiles="https://github.com/matthart1983/netwatch/archive/refs/tags/v${version}.tar.gz"
-checksum=f72a0d41530f86f81a18f719b59115fd3a995e211eadda35685f68ceba469164
+checksum=0a8cccd31d1ffff41f6ab832731e4de02885078d8475750fd1a9baafb894d727
 
 post_install() {
 	vdoc README.md
