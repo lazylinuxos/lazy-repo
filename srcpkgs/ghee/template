@@ -1,0 +1,24 @@
+
+# Template file for 'ghee'
+pkgname=ghee
+version=0.1.4
+revision=1
+hostmakedepends="zig16"
+depends="git openssh"
+short_desc="Git TUI over every repository in a folder"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-or-later"
+homepage="https://justaguy.dev/drew/ghee"
+distfiles="https://justaguy.dev/drew/ghee/archive/v${version}.tar.gz"
+checksum=2f283408483f0183fa8b73f8348d7f88daebe8ff7f9146cae8563da569af0437
+
+do_build() {
+    zig build -Doptimize=ReleaseSafe -Dcpu=baseline \
+        -Dversion="${version}"
+}
+
+do_install() {
+    vbin zig-out/bin/ghee
+    vman data/ghee.1
+    vdoc README.md
+}
