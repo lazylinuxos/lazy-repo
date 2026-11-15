@@ -533,8 +533,8 @@ libgimpconfig-3.0.so.0 libgimp-3.0.0_1
 libgimpmath-3.0.so.0 libgimp-3.0.0_1
 libgimpcolor-3.0.so.0 libgimp-3.0.0_1
 libgimpmodule-3.0.so.0 libgimp-3.0.0_1
-libgmic.so.3 libgmic-3.5.3_1
-libcgmic.so.3 libgmic-3.5.3_1
+libgmic.so.4 libgmic-4.0.7_1
+libcgmic.so.4 libgmic-4.0.7_1
 libexiv2.so.28 exiv2-0.28.1_1
 libKF5Holidays.so.5 kholidays-5.47.0_1
 libKF6PulseAudioQt.so.5 pulseaudio-qt-1.5_1
@@ -3117,7 +3117,7 @@ libbctoolbox.so.1 bctoolbox-0.6.0_1
 libbcmatroska2.so.0 bcmatroska2-5.2.1_1
 libbcg729.so.0 bcg729-1.1.1_1
 libortp.so.15 ortp-4.4.0_1
-libsuperlu.so.6 superlu-6.0.1_1
+libsuperlu.so.7 superlu-7.0.1_1
 libgosu.so.0 gosu-0.12.0_1
 libyara.so.10 libyara-4.3.0_1
 libyaz_icu.so.5 yaz-5.23.1_1
@@ -3556,7 +3556,7 @@ libSoapySDR.so.0.9 SoapySDR-0.9.0_1
 libeditorconfig.so.0 editorconfig-0.12.2_1
 libcfitsio.so.10 cfitsio-4.2.0_1
 libapparmor.so.1 libapparmor-2.12.0_1
-libplacebo.so.360 libplacebo-7.360.1_1
+libplacebo.so.387 libplacebo-7.387.0_1
 libw2xc.so waifu2x-converter-cpp-5.2_1
 libnova-0.15.so.0 libnova-0.15.0_1
 libcue.so.2 libcue-2.2.0_1
@@ -4562,11 +4562,11 @@ libpanel-1.so.1 libpanel-1.0.1_1
 libqrtr.so.1 qrtr-ns-1.0_1
 libbpf.so.1 libbpf-1.0.0_1
 libImath-3_1.so.29 imath-3.1.9_1
-libIex-3_2.so.31 libopenexr-3.2.1_1
-libIlmThread-3_2.so.31 libopenexr-3.2.1_1
-libOpenEXR-3_2.so.31 libopenexr-3.2.1_1
-libOpenEXRCore-3_2.so.31 libopenexr-3.2.1_1
-libOpenEXRUtil-3_2.so.31 libopenexr-3.2.1_1
+libIex-3_5.so.34 libopenexr-3.5.3_1
+libIlmThread-3_5.so.34 libopenexr-3.5.3_1
+libOpenEXR-3_5.so.34 libopenexr-3.5.3_1
+libOpenEXRCore-3_5.so.34 libopenexr-3.5.3_1
+libOpenEXRUtil-3_5.so.34 libopenexr-3.5.3_1
 libdate-tz.so.3 chrono-date-3.0.1_1
 libayatana-ido3-0.4.so.0 ayatana-ido-0.9.2_1
 libayatana-indicator3.so.7 libayatana-indicator-0.9.3_1
@@ -4683,7 +4683,7 @@ libMpvQt.so.4 mpvqt-1.2.1_1
 libtomlplusplus.so.3 tomlplusplus-3.4.0_1
 libglycin-2.so.0 glycin-2.0.7_1
 libglycin-gtk4-2.so.0 glycin-gtk4-2.0.7_1
-libresvg.so.0.48 libresvg0-0.48.1_1
+libresvg.so.0.50 libresvg0-0.50.0_1
 libgpiod.so.3 libgpiod-2.2_4
 libgpiodcxx.so.2 libgpiod-2.2_4
 libigloo.so.0 libigloo-0.9.5_1
