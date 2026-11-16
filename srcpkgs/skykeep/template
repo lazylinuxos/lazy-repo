@@ -1,20 +1,20 @@
 # Template file for 'skykeep'
 pkgname=skykeep
-version=0.1.26
+version=0.1.27
 revision=1
 build_style=cargo
 build_helper="rust"
-hostmakedepends="nodejs pkgconf"
+hostmakedepends="nodejs pkgconf clang libclang"
 makedepends="cairo-devel gdk-pixbuf-devel glib-devel dbus-devel gtk+3-devel
  gstreamer1-devel gst-plugins-base1-devel libheif-devel libsoup3-devel
- libwebkit2gtk41-devel"
+ libwebkit2gtk41-devel pipewire-devel"
 depends="gst-libav gst-plugins-good1 hicolor-icon-theme fuse3"
 short_desc="Your iPhone's iCloud on Linux"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/YashwanthKamireddi/Skykeep"
 distfiles="https://github.com/YashwanthKamireddi/Skykeep/archive/refs/tags/v${version}.tar.gz"
-checksum="6b5b5946cbecc9300ecf6f7065a99e4f1cc6c37cd6b0469478722337d8790639"
+checksum="7d9bc674a8c8ac8aa16e40f01b1947c161771991819e952b91f98ac14035a34b"
 
 do_configure() {
     cargo fetch --locked
