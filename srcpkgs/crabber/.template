@@ -4,7 +4,7 @@ version=${VERSION}
 revision=1
 build_style=cargo
 build_helper="rust"
-hostmakedepends="clang pkgconf"
+hostmakedepends="clang cmake pkgconf"
 makedepends="Vulkan-Headers alsa-lib-devel dbus-devel fontconfig-devel
  freetype-devel libX11-devel libxcb-devel libxkbcommon-devel pipewire-devel
  vulkan-loader-devel wayland-devel sqlite-devel"
