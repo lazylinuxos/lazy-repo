@@ -1,6 +1,6 @@
 # Template file for 'crabber'
 pkgname=crabber
-version=0.9.6
+version=0.9.7
 revision=1
 build_style=cargo
 build_helper="rust"
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/auf-gg/crabber"
 distfiles="https://github.com/auf-gg/crabber/archive/refs/tags/v${version}.tar.gz"
-checksum=00094a48ffd265650b2a7eda8b9ebde46593fb2aef9cb5fb47eaf0a18c5ef1c9
+checksum=c90ab2a79eea85c9483c5743634b21e37ea84584aa44a2e57db75ae395c9dd04
 
 do_install() {
  vbin target/${RUST_TARGET}/release/crabber
