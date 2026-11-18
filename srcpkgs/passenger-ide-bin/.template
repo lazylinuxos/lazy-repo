@@ -9,6 +9,8 @@ license="MIT"
 homepage="https://passenger-ide.net"
 distfiles="https://github.com/Zaneris/passenger/releases/download/v${version}/Passenger-linux-x64.tar.gz"
 checksum=${SHA256}
+noverifyrdeps=yes
+noshlibprovides=yes
 
 do_install() {
 	vmkdir /opt/passenger-ide
