@@ -1,6 +1,6 @@
 # Template file for 'zsh-theme-powerlevel10k'
 pkgname=zsh-theme-powerlevel10k
-version=1.20.0
+version=1.21.0
 revision=1
 archs="x86_64"
 create_wrksrc=yes
@@ -12,7 +12,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/romkatv/powerlevel10k"
 distfiles="https://github.com/romkatv/powerlevel10k/archive/refs/tags/v${version}.tar.gz"
-checksum=d8187d44b697b3a37a8c4896678b4380e717cbf2850179529358348780a2d3d7
+checksum=352e277a60dbdda0a2005758b0c20b35e04a315b98f06bb8a75ef649e9b8c881
 
 do_install() {
 	# Install the files

@@ -1,6 +1,6 @@
 # Template file for 'skykeep'
 pkgname=skykeep
-version=0.1.32
+version=0.1.33
 revision=1
 build_style=cargo
 build_helper="rust"
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/YashwanthKamireddi/Skykeep"
 distfiles="https://github.com/YashwanthKamireddi/Skykeep/archive/refs/tags/v${version}.tar.gz"
-checksum=801e455f775e47757a19720444cfe5467fbb4c9e1262869e31c672331bbf9725
+checksum="d936ec7d128ea6d0b40bf9cb6ab5d3b4811bed4bc1867dd1dd919f5c18a3c3c2"
 
 do_configure() {
     cargo fetch --locked
