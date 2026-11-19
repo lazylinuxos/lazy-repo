@@ -1,18 +1,16 @@
 # Template file for 'linux-enable-ir-emitter'
 pkgname=linux-enable-ir-emitter
-version=6.1.2
+version=7.0.0
 revision=1
-build_style=meson
-hostmakedepends="pkg-config cmake"
-makedepends="fmt-devel gtk+3-devel libopencv-devel
- yaml-cpp-devel qt6-base-devel zlib-devel argparse"
-depends="spdlog"
+build_style=cargo
+hostmakedepends="pkg-config clang libclang"
+makedepends="linux-headers"
 short_desc="Enables infrared cameras that are not directly enabled out-of-the-box"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/EmixamPP/linux-enable-ir-emitter"
 distfiles="https://github.com/EmixamPP/linux-enable-ir-emitter/archive/refs/tags/${version}.tar.gz"
-checksum=cf32e366745793fc9849409a845b799cb6fd467cf5553a08708b7e5078cd80e7
+checksum=3c30c37806eec4ab9ba47cf159f1b0e0124d99bfc5d5f169fe651b6e74d52d3e
 
 post_install() {
 	vlicense LICENSE

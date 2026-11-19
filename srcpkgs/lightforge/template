@@ -1,6 +1,6 @@
 # Template file for 'lightforge'
 pkgname=lightforge
-version=1.0.0.beta.10
+version=1.0.0.beta.13
 revision=1
 _tag="${version/.beta/-beta}"
 archs="x86_64"
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/LightforgeProject/lightforge"
 distfiles="https://github.com/LightforgeProject/lightforge/archive/refs/tags/v${_tag}.tar.gz"
-checksum=aa2053c38c511e7c32582a56d8a12d41571f8c5771fe4232d4efa9c645c48086
+checksum=7836b5c891d61780f1e648ee94abe6ff02f88596e0f1f80156704ddb2d6d7b20
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/lightforge-gui
