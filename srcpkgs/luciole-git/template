@@ -1,0 +1,27 @@
+# Template file for 'luciole-git'
+pkgname=luciole-git
+version=r363.0b37f2c
+revision=1
+_gitrev="${version##*.}"
+build_style=meson
+configure_args="-Db_ndebug=true -Dbuild_revision=${_gitrev}
+ -Dcpp_args=-Wno-error=expansion-to-defined -Dtests=disabled"
+hostmakedepends="ninja pkg-config wayland-protocols"
+makedepends="acl-devel cairo-devel libcurl-devel dconf-devel
+ fontconfig-devel freetype-devel gdk-pixbuf-devel glib-devel
+ harfbuzz-devel libarchive-devel libglvnd-devel libpng-devel
+ librsvg-devel libxkbcommon-devel libxml2-devel pango-devel
+ tomlplusplus-devel wayland-devel json-c++ stb"
+depends="adwaita-icon-theme gsettings-desktop-schemas gvfs
+ hicolor-icon-theme shared-mime-info"
+short_desc="Native Wayland file manager with previews, tabs and Miller columns"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/noctalia-dev/luciole"
+distfiles="https://github.com/noctalia-dev/luciole/archive/${_gitrev}.tar.gz"
+checksum=e70efcd6e9a8aba3a899102ce1f0b73df3653f3a711ab2c5cf6fd99e76c8c61e
+
+post_install() {
+	vlicense LICENSE
+	vdoc README.md
+}
