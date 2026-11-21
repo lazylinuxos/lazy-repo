@@ -1,0 +1,16 @@
+# Template file for 'python3-pystray'
+pkgname=python3-pystray
+version=0.19.5
+revision=1
+build_style=python3-pep517
+make_build_args="--skip-dependency-check"
+hostmakedepends="python3-build python3-installer python3-wheel python3-setuptools
+ python3-six python3-Pillow python3-Sphinx"
+depends="python3-six python3-Pillow python3-xlib python3-gobject gtk+3 gobject-introspection
+ libayatana-appindicator"
+short_desc="Python library for creating system tray icons"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="LGPL-3.0-or-later"
+homepage="https://github.com/moses-palmer/pystray"
+distfiles="https://github.com/moses-palmer/pystray/archive/refs/tags/v${version}.tar.gz"
+checksum=2ab6bd15c14b400c9e8271a82c9de8adc0f1a0cacfc14080bdd4fb42bb88ec92
