@@ -1,0 +1,13 @@
+# Template file for 'aralez'
+pkgname=aralez
+version=${VERSION}
+revision=1
+build_style=cargo
+hostmakedepends="pkg-config cmake"
+makedepends="openssl-devel libssh2-devel zlib-devel libzstd-devel"
+short_desc="Reverse proxy built on top of Cloudflare's Pingora"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Apache-2.0"
+homepage="https://github.com/sadoyan/aralez"
+distfiles="https://github.com/sadoyan/aralez/archive/refs/tags/v.${version}.tar.gz"
+checksum=${SHA256}

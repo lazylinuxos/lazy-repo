@@ -1,0 +1,28 @@
+# Template file for 'instantmenu'
+pkgname=instantmenu
+version=${VERSION}
+revision=1
+build_style=cargo
+build_helper="rust"
+make_build_args="--bin instantmenu --bin itest"
+hostmakedepends="pkg-config"
+makedepends="fontconfig-devel libxcb-devel libxkbcommon-devel"
+depends="bash"
+short_desc="A dynamic menu for X11 and Wayland"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/instantOS/instantMENU"
+distfiles="https://github.com/instantOS/instantMENU/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+do_install() {
+	vbin target/${RUST_TARGET}/release/instantmenu
+	vbin target/${RUST_TARGET}/release/itest
+
+	vbin instantmenu_path
+	vbin instantmenu_run
+
+	vman instantmenu.1
+	vlicense LICENSE
+	vdoc README.md
+}

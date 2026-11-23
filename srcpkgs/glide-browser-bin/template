@@ -1,7 +1,7 @@
 # Template file for 'glide-browser-bin'
 pkgname=glide-browser-bin
 _pkgname=glide-browser
-version=0.1.65a
+version=0.1.66a
 revision=1
 archs="x86_64"
 depends="libnotify libavcodec xdg-utils desktop-file-utils hicolor-icon-theme"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0"
 homepage="https://glide-browser.app"
 distfiles="https://github.com/glide-browser/glide/releases/download/${version}/glide.linux-x86_64.tar.xz"
-checksum=82335b35b24e88aee287c5a1ad0cc4f28eccc502ff54686fd26bcb7a02eac257
+checksum=854b70479557a85a32922f66cdeeede1c5a1ba7af2af9d817ca754aaafdf30f1
 
 do_install() {
 	vmkdir opt/${_pkgname}

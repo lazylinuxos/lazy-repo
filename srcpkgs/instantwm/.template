@@ -1,0 +1,39 @@
+# Template file for 'instantwm'
+pkgname=instantwm
+version=${VERSION}
+revision=1
+build_style=cargo
+make_build_args="--bin instantwm --bin instantwmctl"
+hostmakedepends="pkg-config cmake"
+makedepends="libX11-devel libXinerama-devel libXft-devel libXrender-devel
+ fontconfig-devel freetype-devel libxcb-devel libxkbcommon-devel libXcursor-devel
+ libinput-devel eudev-libudev-devel MesaLib-devel libdrm-devel wayland-devel libseat-devel"
+depends="dbus xkeyboard-config"
+short_desc="Hybrid tiling window manager for X11 and Wayland"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://instantos.io"
+distfiles="https://github.com/instantOS/instantWM/archive/refs/tags/v${version}.tar.gz"
+checksum=${SHA256}
+
+do_install() {
+	vbin target/${RUST_TARGET}/release/instantwm
+	vbin target/${RUST_TARGET}/release/instantwmctl
+	vbin scripts/startinstantos
+	vbin scripts/instantwm-debug.sh instantwm-debug
+
+	vinstall utils/instantwm-x11.desktop 644 usr/share/xsessions instantwm.desktop
+
+	vinstall utils/instantwm-wayland.desktop 644 usr/share/wayland-sessions instantwm-wayland.desktop
+	vinstall utils/instantwm-wayland-debug.desktop 644 usr/share/wayland-sessions instantwm-debug.desktop
+
+	vinstall resources/instantwm-portals.conf 644 usr/share/xdg-desktop-portal
+	vinstall resources/instantwm.portal 644 usr/share/xdg-desktop-portal/portals
+
+	vlicense LICENSE
+	vdoc README.md
+
+	if [ -f instantwm.1 ]; then
+		vman instantwm.1
+	fi
+}
