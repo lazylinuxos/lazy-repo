@@ -1,6 +1,6 @@
 # Template file for 'passenger-ide-bin'
 pkgname=passenger-ide-bin
-version=0.4.2
+version=0.4.3
 revision=1
 depends="fontconfig libX11 libICE libSM"
 short_desc="Open-source IDE for C# and .NET"
@@ -8,7 +8,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://passenger-ide.net"
 distfiles="https://github.com/Zaneris/passenger/releases/download/v${version}/Passenger-linux-x64.tar.gz"
-checksum=f85eb7dfec6db6f93472c396019d6909be849b9bfc74a2b857cfa265ecef188f
+checksum=0306f74c3bc4d56435f7ff562faf930a3624b3671a5cc009da726edef6c3cc93
 noverifyrdeps=yes
 noshlibprovides=yes
 
