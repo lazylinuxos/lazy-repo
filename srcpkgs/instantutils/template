@@ -1,0 +1,31 @@
+# Template file for 'instantutils'
+pkgname=instantutils
+version=2026.11.17.10.1
+revision=1
+_version="$(echo "$version" | sed 's/\.\([^.]*\)\.\([^.]*\)$/-\1-\2/')"
+build_style=gnu-makefile
+make_install_args="PREFIX=/usr"
+hostmakedepends="curl"
+depends="acpi wget feh dash xdotool instantmenu instantwm
+ imenu-git instantassist-git"
+short_desc="Core utilities for instantVOID"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/instantOS/instantOS"
+distfiles="https://github.com/instantOS/instantOS/archive/refs/tags/v${_version}.tar.gz"
+checksum=672de211f49e0e1fb01e7b520fa8ddbd4ea3b8cd8a21b6ad964003fd2ce5e14c
+
+post_install() {
+	vmkdir usr/share/instantos
+	vcopy config usr/share/instantos
+
+	# Move Xorg configuration files to the correct Void location
+	if [ -d "${DESTDIR}/etc/X11/xorg.conf.d" ]; then
+		vmkdir usr/share/X11/xorg.conf.d
+
+		mv "${DESTDIR}/etc/X11/xorg.conf.d/"* \
+			"${DESTDIR}/usr/share/X11/xorg.conf.d/"
+
+		rmdir "${DESTDIR}/etc/X11/xorg.conf.d"
+	fi	
+}

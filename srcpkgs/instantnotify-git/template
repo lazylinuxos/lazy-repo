@@ -1,0 +1,14 @@
+# Template file for 'instantnotify-git'
+pkgname=instantnotify-git
+version=r46.2fe65c6
+revision=1
+_gitrev="${version##*.}"
+build_style=gnu-makefile
+make_install_args="PREFIX=/usr/"
+depends="instantmenu dunst"
+short_desc="Notification center for instantVOID"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/instantOS/instantNOTIFY"
+distfiles="https://github.com/instantOS/instantNOTIFY/archive/${_gitrev}.tar.gz"
+checksum=9473e6da209074663905f123f69bc71f112799b68e5c9cb88408a233d7c9b815

@@ -1,0 +1,12 @@
+# Template file for 'instantmeta'
+pkgname=instantmeta
+version=2026.11.24
+revision=1
+metapackage=yes
+depends="instantcli instantutils instantwm instantmenu
+ instantassist-git instantlock-git instantsearch-git
+ islide-git imenu-git instantnotify-git nerd-fonts-ttf"
+short_desc="Meta package for instantVOID"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="Public Domain"
+homepage="https://github.com/instantOS"

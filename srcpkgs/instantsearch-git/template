@@ -1,0 +1,19 @@
+# Template file for 'instantsearch-git'
+pkgname=instantsearch-git
+version=r50.6bbe2b8
+revision=1
+_gitrev="${version##*.}"
+depends="instantmenu plocate"
+short_desc="Simple file search GUI for instantVOID"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/instantOS/instantsearch"
+distfiles="https://github.com/instantOS/instantsearch/archive/${_gitrev}.tar.gz"
+checksum=98c17b31c8f8638547138abd8db58aa1d09c876f753d4907959b0420928439b2
+
+do_install() {
+	vbin instantsearch.sh instantsearch
+	vbin update-instantsearch.sh update-instantsearch
+
+	vman instantsearch.1
+}

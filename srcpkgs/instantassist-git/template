@@ -1,0 +1,21 @@
+# Template file for 'instantassist-git'
+pkgname=instantassist-git
+version=r434.2fbc2b4
+revision=1
+_gitrev="${version##*.}"
+depends="bash instantmenu ImageMagick slop xclip pamixer brightnessctl"
+short_desc="Bunch of shortcuts for instantVOID"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/instantOS/instantASSIST"
+distfiles="https://github.com/instantOS/instantASSIST/archive/${_gitrev}.tar.gz"
+checksum=1d3946bc40616775914a15ce1efb53fbced62f82f0a0cd3697714d10279d8b35
+
+do_install() {
+	ASSISTPREFIX="${DESTDIR}" ./install.sh
+
+	for desktop in ./*.desktop; do
+		[ -f "$desktop" ] || continue
+		vinstall "$desktop" 644 usr/share/applications
+	done
+}

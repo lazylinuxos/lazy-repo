@@ -1,0 +1,24 @@
+# Template file for 'islide-git'
+pkgname=islide-git
+version=r601.f3c4fcc
+revision=1
+_gitrev="${version##*.}"
+build_style=gnu-makefile
+hostmakedepends="pkgconf"
+makedepends="libX11-devel libXinerama-devel libXft-devel
+ freetype-devel fontconfig-devel"
+short_desc="Slider for instantVOID"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/instantOS/islide"
+distfiles="https://github.com/instantOS/islide/archive/${_gitrev}.tar.gz"
+checksum=c07b10d7bc30e6498b7e03881c939ae3379ecd3a2b56e96d0c9c12ebf4085966
+
+pre_build() {
+	CFLAGS+=" -I/usr/include/freetype2 -DVERSION=\\\"${version}\\\""
+	LDFLAGS+=" -lX11 -lXinerama -lXft -lfontconfig -lfreetype"
+}
+
+post_install() {
+	vlicense LICENSE
+}

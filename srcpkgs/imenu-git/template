@@ -1,0 +1,18 @@
+# Template file for 'imenu-git'
+pkgname=imenu-git
+version=r59.64cfdac
+revision=1
+_gitrev="${version##*.}"
+depends="instantmenu bash fzf gum"
+short_desc="Simple UI scripts using instantMENU"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="GPL-2.0-only"
+homepage="https://github.com/instantOS/imenu"
+distfiles="https://github.com/instantOS/imenu/archive/${_gitrev}.tar.gz"
+checksum=8ef769f0a17362618169114766254352cfeec3ca010e0beb6428c482787ceb73
+
+do_install() {
+	for script in *.sh; do
+		vbin "$script" "imenu"
+	done
+}

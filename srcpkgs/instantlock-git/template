@@ -1,0 +1,26 @@
+
+# Template file for 'instantlock-git'
+pkgname=instantlock-git
+version=r42.b6df530
+revision=1
+_gitrev="${version##*.}"
+build_style=gnu-makefile
+make_build_args="LDFLAGS=-lX11 -lXrandr -lXinerama -lXext -lcrypt"
+make_install_args="PREFIX=/usr MANPREFIX=/usr/share/man"
+makedepends="libX11-devel libXrandr-devel libXinerama-devel libxcrypt-devel"
+short_desc="Lock screen for instantVOID"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="MIT"
+homepage="https://github.com/instantOS/instantLOCK"
+distfiles="https://github.com/instantOS/instantLOCK/archive/${_gitrev}.tar.gz"
+checksum=5ce4194ee28cf80493f2b685a87dfaf978fd20748a770ab953f3c3ac1adca6ad
+
+pre_build() {
+	sed -i '1i#include <crypt.h>\n#include <grp.h>' instantlock.c
+	sed -i "1i#define VERSION \"${version}\"" instantlock.c
+	sed -i '/^instantlock: ${OBJ}/,+1 s/${LDFLAGS}/${LDFLAGS} ${LIBS}/' Makefile
+}
+
+post_install() {
+	vlicense LICENSE
+}
