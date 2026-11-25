@@ -11,6 +11,8 @@ homepage="https://www.usebruno.com"
 distfiles="https://github.com/usebruno/bruno/releases/download/v${version}/${_pkgname}_${version}_amd64_linux.deb"
 checksum=${SHA256}
 nostrip=yes
+noverifyrdeps=yes
+noshlibprovides=yes
 replaces="bruno>=0"
 
 do_extract() {

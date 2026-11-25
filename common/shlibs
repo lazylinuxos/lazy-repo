@@ -358,7 +358,7 @@ libMagickCore-7.Q16HDRI.so.10 libmagick-7.1.0.10_1
 libMagickWand-7.Q16HDRI.so.10 libmagick-7.1.0.10_1
 libMagick++-7.Q16HDRI.so.5 libmagick-7.0.11.1_1
 libltdl.so.7 libltdl-2.2.6_1
-libpoppler.so.165 libpoppler-26.10.0_1
+libpoppler.so.166 libpoppler-26.11.0_1
 libpoppler-glib.so.8 poppler-glib-0.18.2_1
 libpoppler-cpp.so.3 poppler-cpp-26.04.0_1
 libpoppler-qt5.so.1 poppler-qt5-0.31.0_1
@@ -1087,9 +1087,9 @@ libxar.so.1 xar-1.6.1_9
 libmikmod.so.3 libmikmod-3.1.12_1
 libSDL_sound-1.0.so.1 SDL_sound-1.0.3_1
 libgtksourceview-2.0.so.0 gtksourceview2-2.10.5_1
-libxdot.so.4 graphviz-libs-2.28.0_6
+libxdot.so.5 graphviz-libs-16.0.0_1
 libgvpr.so.2 graphviz-libs-2.28.0_6
-libcgraph.so.8 graphviz-libs-14.0.0_1
+libcgraph.so.10 graphviz-libs-16.0.0_1
 libgvc.so.7 graphviz-libs-13.0.0_1
 libcdt.so.6 graphviz-libs-13.0.0_1
 libpathplan.so.4 graphviz-libs-2.28.0_6
@@ -1896,7 +1896,7 @@ libqwt-qt5.so.6.3 qwt-6.3.0_1
 libqwt-qt6.so.6.3 qwt-qt6-6.3.0_1
 
 # KDE6 plasma-frameworks
-KDE_Frameworks.6.30 kf6-base-6.30.0_1
+KDE_Frameworks.6.31 kf6-base-6.31.0_1
 libKF6BreezeIcons.so.6 libbreeze-icons-6.19.0_1
 libKF6Attica.so.6 kf6-attica-6.19.0_1
 libKF6Baloo.so.6 kf6-baloo-6.19.0_1
@@ -1996,7 +1996,7 @@ libKF6Syndication.so.6 kf6-syndication-6.19.0_1
 libKF6SyntaxHighlighting.so.6 kf6-syntax-highlighting-6.19.0_1
 libKF6ThreadWeaver.so.6 kf6-threadweaver-6.19.0_1
 # KDE Plasma
-KDE_Plasma.6.7.5 kde-plasma-base-6.7.5_1
+KDE_Plasma.6.8.3 kde-plasma-base-6.8.3_1
 libKQuickImageEditor.so.1 kquickimageeditor-0.6.0_1
 libKNightTime.so.0 knighttime-6.5.1_1
 libklookandfeel.so.6 plasma-workspace-6.5.1_1
@@ -2016,15 +2016,15 @@ libkworkspace6.so.6 kworkspace-6.5.1_1
 libKPipeWire.so.6 kpipewire-6.5.1_1
 libKPipeWireRecord.so.6 kpipewire-6.5.1_1
 libKPipeWireDmaBuf.so.6 kpipewire-6.5.1_1
+libKPipeWireMonitor.so.6 kpipewire-6.8.2_1
 libPlasmaActivities.so.7 plasma-activities-6.5.1_1
 libPlasmaActivitiesStats.so.1 plasma-activities-stats-6.5.1_1
-libPlasma.so.7 libplasma-6.6.1_1
-libPlasmaQuick.so.7 libplasma-6.6.1_1
+libPlasma.so.8 libplasma-6.8.2_1
+libPlasmaQuick.so.8 libplasma-6.8.2_1
 libPlasma5Support.so.6 plasma5support-6.5.1_1
 libkdecorations3.so.6 kf6-kdecoration-6.5.1_1
 libkdecorations3private.so.2 kf6-kdecoration-6.5.1_1
 libkwin.so.6 kwin-6.5.1_1
-libkwin-x11.so.6 kwin-x11-6.5.1_1
 libLayerShellQtInterface.so.6 layer-shell-qt-6.5.1_1
 libcxx-rust-cssparser.so.1 cxx-rust-cssparser-1.0.0_1
 libUnion.so.6 union-6.7.4_1
@@ -4694,6 +4694,7 @@ libcpptrace.so.1 cpptrace-1.0.4_1
 libcgif.so.0 cgif-0.5.3_1
 libdsk.so.5 libdsk-1.5.22_1
 libblend2d.so libblend2d-0.21.2_1
+libqjs.so.0 libquickjs-ng-0.18.0_1
 # Custom
 libtext-engine-0.1.so.0 text-engine-0.1.1_1
 libvgm-player.so libvgm-player-0.0.1_1

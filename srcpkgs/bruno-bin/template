@@ -2,7 +2,8 @@
 pkgname=bruno-bin
 _pkgname=bruno
 version=4.4.0
-revision=1
+revision=2
+archs="x86_64"
 hostmakedepends="tar xz"
 short_desc="Opensource IDE For Exploring and Testing Api's"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
@@ -11,6 +12,8 @@ homepage="https://www.usebruno.com"
 distfiles="https://github.com/usebruno/bruno/releases/download/v${version}/${_pkgname}_${version}_amd64_linux.deb"
 checksum=5d9e05b4fd2c4ecfbf24fc4280622d4c3a17db22c5ab709eea8ab13db46cf2a0
 nostrip=yes
+noverifyrdeps=yes
+noshlibprovides=yes
 replaces="bruno>=0"
 
 do_extract() {
@@ -20,5 +23,17 @@ do_extract() {
 
 do_install() {
 	tar xf data.tar.xz -C ${DESTDIR}
+
+	# Remove bundled ARM64 ELF binaries from the AMD64 package.
+	find "${DESTDIR}" -type f -print0 |
+		while IFS= read -r -d '' f; do
+			case "$(file -b "${f}")" in
+				ELF*ARM\ aarch64*)
+					echo "Removing foreign architecture binary: ${f}"
+					rm -f "${f}"
+					;;
+			esac
+		done
+	
 	vlicense ${FILESDIR}/license.md
 }
