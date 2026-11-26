@@ -1,6 +1,6 @@
 # Template file for 'sysentra'
 pkgname=sysentra
-version=0.3.0
+version=0.4.0
 revision=1
 hostmakedepends="go wails3 nodejs pkg-config"
 makedepends="gtk4-devel libwebkitgtk60-devel"
@@ -10,7 +10,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/Sysentra"
 distfiles="https://github.com/nerdyslacker/Sysentra/archive/refs/tags/v${version}.tar.gz"
-checksum=970b21ae9cff5547798068a3a8d42694b7b6bdbf931fbbec4f7384e7bb14fe34
+checksum=e5ca609ff2573adcdccf35a9b205e7bcfdde1b7b1ad7cd6e2e7652f66d3c3056
 nopie=yes
 
 do_build() {

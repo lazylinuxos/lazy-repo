@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MPL-2.0"
 homepage="https://konform-browser.codeberg.page"
 distfiles="https://codeberg.org/api/packages/konform-browser/generic/konform-browser/${_version}/${_pkgname}-${_version}-linux-x86_64-deb.deb"
-checksum=8425f766421f942a5abece43fa71c854440e089309fb32871d5037dbf40a3eff
+checksum=213d59f897413965761a090713d7cf7c145e97458600415732cdf10aeb0930f7
 replaces="konform-browser>=0"
 
 do_install() {
