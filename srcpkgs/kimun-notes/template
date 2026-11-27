@@ -1,6 +1,6 @@
 # Template file for 'kimun-notes'
 pkgname=kimun-notes
-version=0.25.5
+version=0.25.6
 revision=1
 build_style=cargo
 hostmakedepends="pkg-config"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/nico2sh/kimun"
 distfiles="https://github.com/nico2sh/kimun/archive/refs/tags/kimun-notes-v${version}.tar.gz"
-checksum=8ee81720bf3acd3606ab2a9fef13f1f8a18f704a3e22962c688201fc27ac1a14
+checksum=a4b8f71b009a5298717896107bef6e51775d18025d5940b8f06e16b4c3b65bec
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/kimun

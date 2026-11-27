@@ -1,6 +1,6 @@
 # Template file for 'instantwm'
 pkgname=instantwm
-version=0.8.2
+version=0.9.0
 revision=1
 build_style=cargo
 make_build_args="--bin instantwm --bin instantwmctl"
@@ -14,7 +14,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://instantos.io"
 distfiles="https://github.com/instantOS/instantWM/archive/refs/tags/v${version}.tar.gz"
-checksum=2bc38fa3ccb943db2656c748184e14d5fad30774771fd0d2e5f4137e4b4fc879
+checksum=414f86f5f8ce2535a60cc367adce2cc7300a536cb3c30ade6e9aeb2800d0ba59
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/instantwm

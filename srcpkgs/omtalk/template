@@ -1,6 +1,6 @@
 # Template file for 'omtalk'
 pkgname=omtalk
-version=0.1.14
+version=0.1.15
 revision=1
 build_style=cargo
 build_helper="rust"
@@ -11,7 +11,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-or-later"
 homepage="https://github.com/gAlleb/omtalk"
 distfiles="https://github.com/gAlleb/omtalk/archive/refs/tags/v${version}.tar.gz"
-checksum=9b96817bf7db20415b6f70798c46eb15d66d3db0a906766cf65d2013bf6d4442
+checksum=cf8ed6f8c885ed139a345487895ef22d954ddee19997663216d1fbbf226bcbc1
 
 do_install() {
     vbin target/${RUST_TARGET}/release/omtalk
