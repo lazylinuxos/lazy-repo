@@ -1,0 +1,11 @@
+diff --git a/Meta/CMake/compile_options.cmake b/Meta/CMake/compile_options.cmake
+--- a/Meta/CMake/compile_options.cmake
++++ b/Meta/CMake/compile_options.cmake
+@@ -107,6 +107,7 @@
+ add_cxx_compile_options(-Wno-unknown-warning-option)
+ add_cxx_compile_options(-Wno-unused-command-line-argument)
+ add_cxx_only_compile_options(-Wno-user-defined-literals)
++add_cxx_compile_options(-Wno-restrict)
+ 
+ add_cxx_compile_options(-Werror)
+ 

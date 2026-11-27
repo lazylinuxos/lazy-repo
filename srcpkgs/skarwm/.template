@@ -6,7 +6,7 @@ build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
 hostmakedepends="odin"
 makedepends="libX11-devel libxcb-devel libXft-devel fontconfig-devel"
-depends="st xsetroot"
+depends="nare xsetroot"
 short_desc="Tiling + scrolling X11/XLibre WM written in Odin"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"

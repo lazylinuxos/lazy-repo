@@ -1,0 +1,96 @@
+# Template file for 'ladybird'
+pkgname=ladybird
+version=2026.47.8
+revision=1
+archs="x86_64"
+_vcpkg_rev=8f363bdc11359ede4bc51e5eb32a2617538049c8
+hostmakedepends="autoconf autoconf-archive automake cargo rust
+ cmake git libtool nasm ninja patch pkgconf tar unzip zip
+ curl python3 jq m4 perl flex bison gperf"
+makedepends="libcurl-devel ffmpeg-devel MesaLib-devel
+ qt6-base-devel qt6-base-private-devel qt6-multimedia-devel
+ qt6-position-devel qt6-tools-devel qt6-wayland-devel
+ vulkan-loader-devel Vulkan-Headers wayland-devel
+ wayland-protocols xcb-util-wm-devel
+ pulseaudio-devel ncurses-devel"
+depends="liberation-fonts-ttf"
+short_desc="Truly independent web browser"
+maintainer="nerdyslacker <karyan40024@gmail.com>"
+license="BSD-2-Clause"
+homepage="https://github.com/LadybirdBrowser/ladybird"
+distfiles="https://github.com/LadybirdBrowser/ladybird/archive/refs/tags/${version}.tar.gz
+ https://github.com/microsoft/vcpkg/archive/${_vcpkg_rev}.tar.gz>vcpkg.tar.gz"
+checksum="77edac3a0e9635fa1ad4efe9f35210559787545da259a0d13a2ca9c3fa3d1f35
+ 058b2acdb61d9d775a6cbbfe493e13fbe1b4aa675de97676f114c631fd4d3d3f"
+skip_extraction="vcpkg.tar.gz"
+nostrip=yes
+nopie=yes
+
+post_extract() {
+	vsrcextract -C "${wrksrc}/vcpkg" "vcpkg.tar.gz"
+}
+
+post_patch() {
+	jq 'del(."builtin-baseline", .overrides)
+		| walk(if type == "object"
+			then del(."version>=")
+			else .
+			end)' vcpkg.json > vcpkg.json.tmp
+
+	mv vcpkg.json.tmp vcpkg.json
+}
+
+do_configure() {
+	export VCPKG_ROOT="${PWD}/vcpkg"
+	export VCPKG_DISABLE_METRICS=true
+	unset CARGO_TARGET_DIR
+
+	local use_linker=
+
+	if ! printf '#if defined(__clang__)\nCLANG\n#endif\n' |
+		"${CC:-cc}" -E - | grep -q '^CLANG$'; then
+		use_linker="-DENABLE_LTO_FOR_RELEASE=OFF"
+	fi
+
+	"${VCPKG_ROOT}/bootstrap-vcpkg.sh" -disableMetrics
+
+	cmake --preset Release \
+		-B build \
+		-S . \
+		-G Ninja \
+		-DBUILD_SHARED_LIBS=OFF \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DLADYBIRD_VERSION="${version}" \
+		${use_linker} \
+		-DLADYBIRD_VCPKG_TYPE=distribution \
+		-DCMAKE_INSTALL_PREFIX=/opt/ladybird \
+		-DCMAKE_TOOLCHAIN_FILE="${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" \
+		-DENABLE_INSTALL_HEADERS=OFF \
+		-Wno-dev
+}
+
+do_build() {
+	export VCPKG_ROOT="${PWD}/vcpkg"
+	export VCPKG_DISABLE_METRICS=true
+	unset CARGO_TARGET_DIR
+
+	cmake --build build --parallel "${XBPS_MAKEJOBS}"
+}
+
+do_install() {
+	local component
+
+	for component in ladybird_Runtime ladybird_SystemIntegration js wasm; do
+		DESTDIR="${DESTDIR}" cmake --install build \
+			--component "${component}"
+	done
+
+	vmkdir usr/bin
+	ln -s /opt/ladybird/bin/js "${DESTDIR}/usr/bin/js"
+	ln -s /opt/ladybird/bin/wasm "${DESTDIR}/usr/bin/wasm"
+
+	find "${DESTDIR}" -name '*.a' -delete
+	find "${DESTDIR}" -name '*.cmake' -delete
+
+	vlicense LICENSE
+}

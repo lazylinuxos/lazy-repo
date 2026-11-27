@@ -1,18 +1,18 @@
 # Template file for 'skarwm'
 pkgname=skarwm
-version=0.12.0
+version=0.13.0
 revision=1
 build_style=gnu-makefile
 make_install_args="PREFIX=/usr"
 hostmakedepends="odin"
 makedepends="libX11-devel libxcb-devel libXft-devel fontconfig-devel"
-depends="st xsetroot"
+depends="nare xsetroot"
 short_desc="Tiling + scrolling X11/XLibre WM written in Odin"
 maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="BSD-2-Clause"
 homepage="https://github.com/nerdyslacker/skarwm"
 distfiles="https://github.com/nerdyslacker/skarwm/archive/refs/tags/v${version}.tar.gz"
-checksum=4b398a42cb5e12d5c8f474d8153f91dad44ac04e80a93a1cbe8c18cb912ebd29
+checksum=bac1c8c2f81ee9c2ac418dc2cb2a6bf10a7289a6d6d90bc65d7a2c73dcb5cd00
 
 post_install() {
 	for f in $(find docs -type f -name '*.md'); do vdoc "$f"; done
