@@ -1,6 +1,6 @@
 # Template file for 'instantmenu'
 pkgname=instantmenu
-version=5.2.3
+version=5.2.4
 revision=1
 build_style=cargo
 build_helper="rust"
@@ -13,7 +13,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="MIT"
 homepage="https://github.com/instantOS/instantMENU"
 distfiles="https://github.com/instantOS/instantMENU/archive/refs/tags/v${version}.tar.gz"
-checksum=5821c450be175f45c156d61980ee090e1294ffb03d98b43c6139b9215caedc29
+checksum=f4a92003aed7d724170c6bdb85a700b024e37edc056f9aa13dfd4b32b2061a0a
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/instantmenu
