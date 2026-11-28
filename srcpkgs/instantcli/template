@@ -1,6 +1,6 @@
 # Template file for 'instantcli'
 pkgname=instantcli
-version=0.16.0
+version=0.17.0
 revision=1
 build_style=cargo
 build_helper="rust"
@@ -15,7 +15,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-2.0-only"
 homepage="https://instantos.io"
 distfiles="https://github.com/instantOS/instantCLI/archive/refs/tags/v${version}.tar.gz"
-checksum=c76a620eb2d0e3d09e643cb484be5ae2bc1d6a821ec2ef638849984be4485229
+checksum=65a41afc6def159301a3dad4f60b0091545ea330cf5abda91f7f20f1e261be88
 
 do_install() {
 	vbin target/${RUST_TARGET}/release/ins

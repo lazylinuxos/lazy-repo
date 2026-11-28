@@ -1,6 +1,6 @@
 # Template file for 'vesktop'
 pkgname=vesktop
-version=1.7.0
+version=1.7.2
 revision=1
 hostmakedepends="nodejs pnpm"
 depends="alsa-lib gtk+3 nss"
@@ -9,7 +9,7 @@ maintainer="nerdyslacker <karyan40024@gmail.com>"
 license="GPL-3.0-only"
 homepage="https://github.com/Vencord/Vesktop"
 distfiles="https://github.com/Vencord/Vesktop/archive/v${version}.tar.gz"
-checksum=f3feadb58133a6e4555eee878f7e1ce3128abc93ba5203ace18ceafd1856e4a4
+checksum=48f38100d7135626d880be366c126f26f9cfa81d3c266209c87d7f4de791ba66
 nostrip=yes
 
 do_build() {
